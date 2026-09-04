@@ -1,4 +1,4 @@
-// TOEIC vocabulary patch: keep both Core 1250 and Full 9537 decks, with Chinese-only valid meanings.
+// TOEIC vocabulary patch: Core 1250 + current complete bilingual deck, with invalid meanings blocked.
 (function(){
   const BAD_MEANING=/^(?:n\/?a|na|none|null|undefined|暂无释义|暂无|无|-)$/i;
   const validMeaning=v=>{v=String(v||'').trim();return !!v&&!BAD_MEANING.test(v)&&/[\u3400-\u9fff]/.test(v)};
@@ -6,21 +6,21 @@
   Object.assign(BUILTIN_VOCAB.toeic_core,{
     title:'TOEIC 核心 1250',
     expected:1250,
-    description:'从 9,537 词完整 TOEIC 双语词库中按重要度筛出的核心 1,250 词。',
-    source:'完整 TOEIC 单字库（English–Chinese）· CC BY 4.0',
+    description:'从完整 TOEIC 双语词库中按重要度筛出的核心 1,250 词。',
+    source:'完整 TOEIC 单字库（English–Traditional Chinese）· CC BY-SA 4.0',
     kind:'toeic',
-    version:'2026.09.2'
+    version:'2026.09.3'
   });
 
   BUILTIN_VOCAB.toeic_full={
     id:'toeic_full',
-    title:'TOEIC 完整 9537',
-    expected:9537,
+    title:'TOEIC 完整 11154',
+    expected:11154,
     icon:'🧳',
-    description:'完整 9,537 词 TOEIC 双语词库；含中文释义，适合核心词学完后继续扩展。',
-    source:'完整 TOEIC 单字库（English–Chinese）· CC BY 4.0',
+    description:'当前完整 TOEIC 双语词库，共 11,154 词；点击后下载并缓存到本机。',
+    source:'完整 TOEIC 单字库（English–Traditional Chinese）· CC BY-SA 4.0',
     kind:'toeic',
-    version:'2026.09.2',
+    version:'2026.09.3',
     deferred:true
   };
 
@@ -31,7 +31,7 @@
   };
 
   fetchToeic=async function(meta){
-    const url='https://huggingface.co/datasets/LEE-WHITE/toeic-vocab-tw/resolve/main/data/toeic_vocabulary.json';
+    const url='https://huggingface.co/datasets/kknono668/toeic-vocab-tw/resolve/main/data/toeic_vocabulary.json';
     const r=await fetch(url,{cache:'no-store'});
     if(!r.ok)throw new Error('TOEIC 完整词库下载失败 HTTP '+r.status);
     const j=await r.json();
@@ -47,7 +47,7 @@
     await simplifyTraditional(arr);
     arr=arr.filter(x=>x.word&&validMeaning(x.meaning));
     if(meta.id==='toeic_core') return arr.slice(0,1250);
-    return arr.slice(0,9537);
+    return arr.slice(0,11154);
   };
 
   const originalDownloadBuiltin=downloadBuiltin;
@@ -84,4 +84,7 @@
     $$('[data-builtin-spell]').forEach(b=>b.onclick=async()=>{const d=await installBuiltin(b.dataset.builtinSpell,false);if(d)startVocabSpell(d.id)});
     $$('[data-builtin-refresh]').forEach(b=>b.onclick=async()=>installBuiltin(b.dataset.builtinRefresh,true));
   };
+
+  // Make the new card visible immediately even when an older page state was already rendered.
+  setTimeout(()=>{try{renderVocabHome()}catch{}},0);
 })();
