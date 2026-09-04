@@ -1,4 +1,4 @@
-// TOEIC vocabulary patch: Core 1250 + Full 11154. Uses Hugging Face Dataset Viewer row API instead of a 22.6 MB one-shot file.
+// TOEIC vocabulary patch: Core 1250 + Full 11154. Stable paged installer with retry/backoff.
 (function(){
   const BAD_MEANING=/^(?:n\/?a|na|none|null|undefined|暂无释义|暂无|无|-)$/i;
   const validMeaning=v=>{v=String(v||'').trim();return !!v&&!BAD_MEANING.test(v)&&/[\u3400-\u9fff]/.test(v)};
@@ -8,12 +8,12 @@
   Object.assign(BUILTIN_VOCAB.toeic_core,{
     title:'TOEIC 核心 1250',expected:1250,icon:'💼',
     description:'从完整 TOEIC 双语词库中筛出的核心 1,250 词，优先按重要度学习。',
-    source:'完整 TOEIC 单字库 · CC BY-SA 4.0',kind:'toeic',version:'2026.09.4'
+    source:'完整 TOEIC 单字库 · CC BY-SA 4.0',kind:'toeic',version:'2026.09.5'
   });
   BUILTIN_VOCAB.toeic_full={
     id:'toeic_full',title:'TOEIC 完整 11154',expected:11154,icon:'🧳',
-    description:'完整 11,154 词 TOEIC 双语词库。采用轻量分批安装，不再一次下载 22.6 MB 大文件。',
-    source:'完整 TOEIC 单字库 · CC BY-SA 4.0',kind:'toeic',version:'2026.09.4',deferred:true
+    description:'完整 11,154 词 TOEIC 双语词库。首次安装采用稳定分批下载，之后直接读取本机缓存。',
+    source:'完整 TOEIC 单字库 · CC BY-SA 4.0',kind:'toeic',version:'2026.09.5',deferred:true
   };
 
   const originalFetchWordTyper=fetchWordTyper;
@@ -22,39 +22,65 @@
     return items.filter(x=>x.word&&validMeaning(x.meaning));
   };
 
-  function installStatus(meta,text){
-    const el=document.querySelector('[data-builtin-card="'+meta.id+'"] .install-status');
-    if(el){el.textContent=text;el.className='install-status loading'}
+  function statusEl(meta){return document.querySelector('[data-builtin-card="'+meta.id+'"] .install-status')}
+  function installStatus(meta,text,cls='loading'){
+    const el=statusEl(meta);if(el){el.textContent=text;el.className='install-status '+cls}
   }
   const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-  async function fetchPage(offset,length=100,retry=0){
+
+  async function fetchPage(meta,offset,length=100){
     const u=new URL(ROWS_API);
     u.searchParams.set('dataset',DATASET);u.searchParams.set('config','default');u.searchParams.set('split','train');
     u.searchParams.set('offset',String(offset));u.searchParams.set('length',String(length));
-    try{
-      const r=await fetch(u.toString(),{cache:'no-store'});
-      if(!r.ok)throw new Error('HTTP '+r.status);
-      const j=await r.json();
-      if(!Array.isArray(j.rows))throw new Error('词库接口格式异常');
-      return j.rows.map(x=>x.row||{});
-    }catch(e){
-      if(retry<2){await sleep(500*(retry+1));return fetchPage(offset,length,retry+1)}
-      throw e;
-    }
-  }
-  async function fetchPages(meta,total){
-    const offsets=[];for(let i=0;i<total;i+=100)offsets.push(i);
-    const results=new Array(offsets.length);let next=0,done=0;
-    async function worker(){
-      while(true){
-        const idx=next++;if(idx>=offsets.length)return;
-        results[idx]=await fetchPage(offsets[idx],Math.min(100,total-offsets[idx]));
-        done++;installStatus(meta,`正在安装 ${Math.min(done*100,total)} / ${total}`);
+
+    const waits=[0,2500,5000,10000,18000,30000,45000];
+    let lastErr=null;
+    for(let attempt=0;attempt<waits.length;attempt++){
+      if(waits[attempt]){
+        installStatus(meta,`下载到 ${offset} 词 · 网络限流，${Math.round(waits[attempt]/1000)} 秒后自动继续`);
+        await sleep(waits[attempt]);
+      }
+      const ctl=new AbortController();
+      const timer=setTimeout(()=>ctl.abort(),20000);
+      try{
+        const r=await fetch(u.toString(),{signal:ctl.signal});
+        clearTimeout(timer);
+        if(r.status===429||r.status===408||r.status>=500){
+          lastErr=new Error('HTTP '+r.status);continue;
+        }
+        if(!r.ok)throw new Error('HTTP '+r.status);
+        const j=await r.json();
+        if(!Array.isArray(j.rows))throw new Error('词库接口格式异常');
+        return {rows:j.rows.map(x=>x.row||{}),total:Number(j.num_rows_total||0)};
+      }catch(e){
+        clearTimeout(timer);lastErr=e;
+        if(attempt===waits.length-1)break;
       }
     }
-    await Promise.all(Array.from({length:Math.min(6,offsets.length)},worker));
-    return results.flat();
+    throw lastErr||new Error('这一批下载失败');
   }
+
+  async function fetchPages(meta,target){
+    const results=[];
+    let total=target;
+    for(let offset=0;offset<total;offset+=100){
+      installStatus(meta,`正在安装 ${Math.min(offset,total)} / ${total}`);
+      const page=await fetchPage(meta,offset,Math.min(100,total-offset));
+      if(page.total>0) total=Math.min(target,page.total);
+      results.push(...page.rows);
+      const done=Math.min(offset+page.rows.length,total);
+      installStatus(meta,`正在安装 ${done} / ${total}`);
+      // Avoid anonymous API burst throttling. Cached pages return immediately through the service worker.
+      await sleep(450);
+      if(offset>0&&offset%2000===0){
+        installStatus(meta,`已完成 ${done} / ${total} · 稍等 3 秒继续`);
+        await sleep(3000);
+      }
+      if(page.rows.length===0)break;
+    }
+    return results;
+  }
+
   function compactRows(rows){
     const seen=new Set();
     return rows.map((x,i)=>({
@@ -66,7 +92,6 @@
   }
 
   fetchToeic=async function(meta){
-    // Core only needs a smaller candidate window; full deck loads every row in lightweight 100-row slices.
     const target=meta.id==='toeic_core'?2200:11154;
     installStatus(meta,'正在连接完整词库…');
     let arr=compactRows(await fetchPages(meta,target));
