@@ -1,6 +1,6 @@
-const CACHE='english-memory-lab-v5-ui-20260905-4';
-const CORE=['./','./index.html','./manifest.webmanifest','./icon.svg','./styles.css','./theme.css','./boot.js','./ui.html','./app.js','./vocab-patch.js','./app-1.js','./app-2.js','./app-3.js','./app-4.js','./app-5.js'];
-const ALLOWED_REMOTE=['https://raw.githubusercontent.com','https://cdn.jsdelivr.net','https://huggingface.co','https://datasets-server.huggingface.co','https://docs.google.com'];
+const CACHE='english-memory-lab-v5-ui-20260905-5';
+const CORE=['./','./index.html','./manifest.webmanifest','./icon.svg','./styles.css','./theme.css','./boot.js','./ui.html','./app.js','./app-1.js','./app-2.js','./app-3.js','./app-4.js','./app-5.js','./data/toeic-manifest.json','./data/toeic-core.json'];
+const ALLOWED_REMOTE=['https://raw.githubusercontent.com','https://cdn.jsdelivr.net'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
 self.addEventListener('fetch',event=>{
@@ -11,11 +11,11 @@ self.addEventListener('fetch',event=>{
     event.respondWith(fetch(event.request,{cache:'no-store'}).then(response=>{
       if(response&&response.ok){const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(event.request,copy)).catch(()=>{})}
       return response;
-    }).catch(()=>caches.match(event.request).then(hit=>hit||caches.match('./index.html'))));
+    }).catch(()=>caches.match(event.request,{ignoreSearch:true}).then(hit=>hit||caches.match('./index.html'))));
     return;
   }
   event.respondWith(fetch(event.request,{cache:'no-store'}).then(response=>{
     if(response&&response.ok){const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(event.request,copy)).catch(()=>{})}
     return response;
-  }).catch(()=>caches.match(event.request)));
+  }).catch(()=>caches.match(event.request,{ignoreSearch:true})));
 });
