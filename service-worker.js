@@ -1,5 +1,5 @@
-const CACHE='english-memory-lab-v5-ui';
-const CORE=['./','./index.html','./manifest.webmanifest','./icon.svg','./styles.css','./boot.js','./ui.html','./app.js'];
+const CACHE='english-memory-lab-v5-ui-20260905-1';
+const CORE=['./','./index.html','./manifest.webmanifest','./icon.svg','./styles.css','./boot.js','./ui.html','./app.js','./vocab-patch.js'];
 const ALLOWED_REMOTE=['https://raw.githubusercontent.com','https://cdn.jsdelivr.net','https://huggingface.co','https://docs.google.com'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
