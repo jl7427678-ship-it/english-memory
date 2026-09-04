@@ -1,0 +1,122 @@
+<div class="app">
+  <header class="top">
+    <div class="brand"><div class="mark">M</div><div><h1>串题记忆室</h1><p>English Memory Lab · 为自己的材料做主动回忆</p></div></div>
+    <div class="top-actions"><button class="btn" id="installApp" style="display:none">⬇ 安装到设备</button><button class="btn" id="quickReview">⚡ 今日复习</button><button class="btn primary" id="newMaterial">＋ 加资料</button></div>
+  </header>
+  <div class="shell">
+    <aside class="sidebar">
+      <button class="navbtn active" data-page="library"><span class="nav-icon">▦</span>资料库</button>
+      <button class="navbtn" data-page="study"><span class="nav-icon">◫</span>背诵训练</button>
+      <button class="navbtn" data-page="vocab"><span class="nav-icon">Aa</span>背单词</button>
+      <button class="navbtn" data-page="exam"><span class="nav-icon">◆</span>串题考试</button>
+      <button class="navbtn" data-page="review"><span class="nav-icon">↻</span>错句复习</button>
+      <button class="navbtn" data-page="stats"><span class="nav-icon">▥</span>学习统计</button>
+      <button class="navbtn" data-page="settings"><span class="nav-icon">⚙</span>设置</button>
+      <div class="side-foot">所有学习记录默认保存在这个浏览器本地。<br>不用登录，也不会上传你的材料。</div>
+    </aside>
+    <main class="main">
+      <section class="page active" id="page-library">
+        <div class="hero">
+          <div class="card">
+            <div class="row between"><div><h2>把资料扔进来</h2><div class="sub">粘贴文字，或导入 TXT / MD / DOCX / PDF。导入后自动拆成句子与故事节点。</div></div><span class="tag">本地优先</span></div>
+            <div class="drop" id="dropZone"><strong>拖文件到这里</strong><span class="sub">或</span><div style="margin-top:10px"><button class="btn" id="pickFile">选择文件</button><input id="fileInput" type="file" accept=".txt,.md,.docx,.pdf" hidden></div><div class="sub" style="margin-top:9px">DOCX / PDF 导入需要联网加载解析组件；TXT / MD 与全部背诵训练可离线</div></div>
+            <textarea class="paste" id="pasteText" placeholder="也可以直接把你刚刚的 TOEIC 串题故事粘贴到这里……"></textarea>
+            <div class="row" style="margin-top:10px"><input class="field" id="materialTitle" style="flex:1" placeholder="资料名称，例如：TOEIC 写作人生故事"><button class="btn primary" id="createMaterial">生成背诵材料</button></div>
+          </div>
+          <div class="card">
+            <h2>今天的状态</h2><div class="sub">只统计这个浏览器里的训练。</div>
+            <div class="grid3" style="margin-top:16px"><div class="metric"><b id="todayReviewed">0</b><span>今日复习句</span></div><div class="metric"><b id="todayCorrect">0%</b><span>今日掌握率</span></div><div class="metric"><b id="dueCount">0</b><span>现在待复习</span></div></div>
+            <div style="margin-top:18px"><div class="row between small"><b>总掌握进度</b><span id="overallPct">0%</span></div><div class="progress" style="margin-top:8px"><i id="overallBar"></i></div></div>
+            <div class="divider"></div>
+            <div class="sub"><b style="color:var(--text)">推荐顺序</b><br>完整阅读 → 30%挖空 → 60%挖空 → 首字母提示 → 关键词复述 → 随机题串故事。</div>
+          </div>
+        </div>
+        <div class="card" style="margin-top:16px"><div class="row between"><div><h2>我的资料</h2><div class="sub">点“开始背”会自动进入上次进度。</div></div><button class="btn" id="loadDemo">载入示例故事</button></div><div class="library-list" id="libraryList"></div></div>
+      </section>
+
+      <section class="page" id="page-study">
+        <div class="card">
+          <div class="study-head"><div><div class="sub" id="studyDocName">还没有选择资料</div><h2 style="margin-top:4px">背诵训练</h2></div><div class="modebar" id="modebar"><button class="mode active" data-mode="full">全文</button><button class="mode" data-mode="cloze30">30%挖空</button><button class="mode" data-mode="cloze60">60%挖空</button><button class="mode" data-mode="initials">首字母</button><button class="mode" data-mode="keywords">关键词</button><button class="mode" data-mode="recall">完整复述</button></div></div>
+          <div class="row between" style="margin-top:14px"><div class="sub">句子 <b id="sentenceIndex" style="color:var(--text)">0 / 0</b></div><div class="row"><button class="btn" id="shuffleSentence">随机一句</button><button class="btn" id="speakSentence">🔊 朗读</button></div></div>
+          <div class="study-card"><div class="cue" id="cueLabel">请选择资料</div><div class="sentence" id="sentenceDisplay">先到资料库导入你的串题故事。</div><div class="cloze-tools" id="clozeTools"><button class="btn primary" id="checkCloze">检查填空</button><button class="btn" id="resetCloze">重填</button></div><div class="cloze-feedback" id="clozeFeedback" aria-live="polite"></div><button class="btn" id="revealAnswer" style="display:none;margin-top:18px">显示原句</button><div class="answer" id="answerDisplay" style="display:none"></div>
+            <div class="rec-box" id="recBox" style="display:none"><div class="row between"><b>你来复述</b><button class="btn" id="speechBtn">🎙️ 开始语音识别</button></div><textarea class="rec-text" id="recInput" placeholder="可以直接说，也可以打字。说完后点“即时评分”。"></textarea><div class="row" style="margin-top:10px"><button class="btn primary" id="localScoreBtn">即时评分</button><button class="btn" id="aiScoreBtn">AI 深度评分</button><span class="sub" id="speechStatus"></span></div><div id="scoreResult"></div></div>
+          </div>
+          <div class="study-actions"><button class="btn" id="prevSentence">← 上一句</button><button class="btn" id="nextSentence">下一句 →</button></div>
+          <div class="rate"><button class="btn again" data-rate="again">完全不会</button><button class="btn hard" data-rate="hard">有点卡</button><button class="btn good" data-rate="good">能说出来</button><button class="btn easy" data-rate="easy">非常熟</button></div>
+        </div>
+        <div class="card" style="margin-top:16px"><div class="row between"><div><h3>故事骨架</h3><div class="sub">只看节点，把故事自己串回来。</div></div><button class="btn" id="hideMap">隐藏/显示</button></div><div class="story-map" id="storyMap"></div></div>
+      </section>
+
+      <section class="page" id="page-vocab">
+        <div class="vocab-hero">
+          <div class="card">
+            <div class="row between"><div><h2>我的自定义词库</h2><div class="sub">你自己的串题词、真题生词继续从这里添加；系统内置考试词库在下方。</div></div><span class="tag">本地保存</span></div>
+            <input class="field" id="vocabDeckTitle" style="margin-top:14px" placeholder="词库名称，例如：TOEIC 写作高频词">
+            <textarea class="paste" id="vocabPaste" style="min-height:230px" placeholder="每行一个，例如：
+collaboration | 合作
+responsibility | 责任
+feedback | 反馈
+deadline | 截止日期
+
+也支持 Tab、冒号，或“word 中文释义”。"></textarea>
+            <div class="row" style="margin-top:10px"><button class="btn primary" id="createVocabDeck">创建词库</button><button class="btn" id="loadVocabDemo">载入示例</button></div>
+            <div class="sub" style="margin-top:10px">四选一至少需要 4 个带释义的单词。不会联网查词，保证核心功能离线可用。</div>
+          </div>
+          <div class="card">
+            <div class="row between"><div><h2>单词训练</h2><div class="sub">第一轮四选一快速筛；再按答错和反应速度自动重复。</div></div><div class="row"><span class="vocab-badge" id="vocabDueBadge">待复习 0</span><button class="btn" id="reviewDueVocab">复习到期</button></div></div>
+            <div class="vocab-controls" style="margin-top:12px"><span class="sub">每轮词数</span><select id="vocabBatchSize" aria-label="每轮单词数量"><option value="100">100 词</option><option value="300">300 词</option><option value="500">500 词</option><option value="all">全库过一遍</option></select><span class="sub">想按你说的“所有词先过一遍”，选「全库过一遍」。</span></div>
+            <div class="grid3" style="margin-top:16px"><div class="metric"><b id="vocabDeckCount">0</b><span>词库</span></div><div class="metric"><b id="vocabWordCount">0</b><span>单词</span></div><div class="metric"><b id="vocabMasteredCount">0</b><span>已熟练</span></div></div>
+            <div class="divider"></div>
+            <div class="sub"><b style="color:var(--text)">强化规则</b><br>首轮答错 → 最多再见 5 次；答对但慢 → 3 次；有点犹豫 → 2 次；秒选正确 → 1 次。强化轮答错还会自动回流。</div>
+            <div class="sub mobile-note" style="margin-top:10px">📱 手机端按钮已按触控尺寸优化，建议竖屏使用。</div>
+            <div class="vocab-decks" id="vocabDeckList"></div>
+          </div>
+        </div>
+
+        <div class="card builtin-wrap">
+          <div class="row between"><div><h2>预装考试词库</h2><div class="sub">首次联网会自动安装并缓存；之后直接训练，手机和电脑使用同一套逻辑。</div></div><button class="btn" id="installAllBuiltin">重新检查词库</button></div>
+          <div class="builtin-note" style="margin-top:10px">📦 词库数据与学习进度分开保存。大词库放在浏览器 IndexedDB 中，避免几千个单词塞进 localStorage 导致手机不稳定。首次安装需要联网；安装成功后核心背词可离线。</div>
+          <div class="builtin-grid" id="builtinVocabList"></div>
+        </div>
+
+        <div class="card vocab-trainer" id="vocabTrainer" style="display:none">
+          <div class="vocab-topline">
+            <div><div class="sub" id="vocabDeckName">未选择词库</div><h2 style="margin-top:4px" id="vocabPhaseTitle">极速四选一</h2></div>
+            <div class="row"><span class="vocab-badge" id="vocabRepeatBadge">第 0 / 0</span><button class="btn" id="exitVocabTrain">结束本轮</button></div>
+          </div>
+          <div class="progress" style="margin-top:14px"><i id="vocabProgress"></i></div>
+          <div class="vocab-stage" style="margin-top:14px">
+            <div class="cue" id="vocabCue">看英文，快速选出中文释义</div>
+            <div id="vocabQuestionArea">
+              <div class="vocab-word" id="vocabWord">word</div><div class="vocab-phonetic" id="vocabPhonetic"></div>
+              <div class="row" style="justify-content:center"><button class="btn" id="vocabSpeak">🔊 发音</button><span class="sub" id="vocabTimerHint">电脑可按 1 / 2 / 3 / 4 快速作答</span></div>
+              <div class="vocab-options" id="vocabOptions"></div>
+              <div class="vocab-spell" id="vocabSpellBox" style="display:none"><div class="vocab-meaning" id="vocabSpellMeaning"></div><input id="vocabSpellInput" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="输入英文单词"><div class="row" style="justify-content:center;margin-top:14px"><button class="btn primary" id="checkVocabSpell">检查拼写</button><button class="btn" id="showVocabSpell">显示答案</button></div></div>
+              <div class="vocab-feedback" id="vocabFeedback" aria-live="polite"></div>
+            </div>
+            <div id="vocabSessionResult" style="display:none;text-align:center;width:100%"></div>
+          </div>
+          <div class="vocab-session-actions">
+            <button class="btn" id="vocabUnknown">完全不认识</button>
+            <button class="btn" id="vocabSkip">暂时跳过</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="page-exam">
+        <div class="exam-layout">
+          <div class="card"><div class="row between"><div><h2>题目池</h2><div class="sub">系统会根据常见 TOEIC / IELTS 观点题调用你的故事。</div></div><button class="btn" id="newExam">随机</button></div><div class="question-list" id="questionList" style="margin-top:14px"></div></div>
+          <div class="card"><div class="sub">模拟题</div><div class="question" id="examQuestion">先选择一份资料，再开始串题考试。</div><div class="hint" id="examHint">故事调用提示会出现在这里。</div><div class="rec-box"><div class="row between"><b>你的回答</b><div class="row"><button class="btn" id="examSpeak">🎙️ 语音识别</button><button class="btn" id="toggleHint">隐藏/显示提示</button></div></div><textarea class="rec-text" id="examInput" placeholder="直接完整说或打出来。重点不是一字不差，而是能把故事调出来。"></textarea><div class="row" style="margin-top:10px"><button class="btn primary" id="examScore">考试评分</button><button class="btn" id="examAIScore">AI 深度评分</button></div><div id="examScoreResult"></div></div></div>
+        </div>
+      </section>
+
+      <section class="page" id="page-review"><div class="card"><div class="row between"><div><h2>错句复习</h2><div class="sub">“完全不会”和“有点卡”的句子会更快回来。</div></div><button class="btn primary" id="startDue">开始复习到期句</button></div><div class="review-list" id="reviewList"></div></div></section>
+
+      <section class="page" id="page-stats"><div class="hero"><div class="card"><h2>最近 7 天</h2><div class="sub">每天实际训练过的句子数。</div><div class="stats-chart" id="weekChart"></div></div><div class="card"><h2>总览</h2><div class="grid3" style="margin-top:16px"><div class="metric"><b id="statDocs">0</b><span>资料</span></div><div class="metric"><b id="statSentences">0</b><span>句子</span></div><div class="metric"><b id="statMastered">0</b><span>高熟练句</span></div></div><div class="divider"></div><div class="sub" id="weakWords">训练后，这里会显示你经常卡住的关键词。</div></div></div></section>
+
+      <section class="page" id="page-settings"><div class="card"><h2>设置</h2><div class="sub">网页不强制依赖 AI。你急着背时，本地功能全部可用。</div><div class="divider"></div><div class="formgrid"><div><div class="label">朗读速度</div><input class="field" type="range" min="0.6" max="1.25" step="0.05" id="speechRate"></div><div><div class="label">英语口音</div><select class="field" id="speechLang"><option value="en-US">美式英语 en-US</option><option value="en-GB">英式英语 en-GB</option></select></div></div><div class="divider"></div><h3>可选 AI 深度评分</h3><div class="sub">如果你有 OpenAI-compatible 接口，可以填入。密钥只保存在当前浏览器本地；不填也完全不影响背诵。</div><div class="formgrid" style="margin-top:12px"><div><div class="label">API Endpoint</div><input class="field" id="apiEndpoint" placeholder="例如 https://api.openai.com/v1/chat/completions"></div><div><div class="label">Model</div><input class="field" id="apiModel" placeholder="模型名称"></div></div><div style="margin-top:12px"><div class="label">API Key</div><input class="field" type="password" id="apiKey" placeholder="sk-..."></div><div class="row" style="margin-top:12px"><button class="btn primary" id="saveSettings">保存设置</button><button class="btn danger" id="resetAll">清空全部学习数据</button></div><div class="divider"></div><h3>手机 / 电脑迁移</h3><div class="sub">进度默认只在当前设备。你可以导出一个 JSON 备份，在另一台设备导入继续学。</div><div class="data-actions"><button class="btn" id="exportData">导出学习数据</button><button class="btn" id="importDataBtn">导入学习数据</button><input type="file" id="importDataFile" accept="application/json,.json" hidden></div><div class="divider"></div><div class="sub"><b style="color:var(--text)">评分逻辑</b><br>本地评分：内容覆盖、关键词调用、结构完整、流畅度代理指标。<br>AI评分：额外检查语法、自然度、是否真正回答题目，并给出一版最小修改。</div></div></section>
+    </main>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<div class="modal" id="loadingModal"><div class="modal-card"><h3 id="loadingTitle">正在处理资料</h3><p class="sub" id="loadingText">请稍候……</p></div></div>
