@@ -1,0 +1,6 @@
+const CACHE='english-memory-lab-v5-ui';
+const CORE=['./','./index.html','./manifest.webmanifest','./icon.svg','./styles.css','./boot.js','./ui.html','./app.js'];
+const ALLOWED_REMOTE=['https://raw.githubusercontent.com','https://cdn.jsdelivr.net','https://huggingface.co','https://docs.google.com'];
+self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)).then(()=>self.skipWaiting()))});
+self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
+self.addEventListener('fetch',event=>{if(event.request.method!=='GET')return;const url=new URL(event.request.url),sameOrigin=url.origin===self.location.origin,cacheableRemote=ALLOWED_REMOTE.some(origin=>url.origin===origin);if(!sameOrigin&&!cacheableRemote)return;event.respondWith(caches.match(event.request).then(hit=>{const network=fetch(event.request).then(response=>{if(response&&response.ok){const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(event.request,copy)).catch(()=>{})}return response});if(hit){event.waitUntil(network.catch(()=>{}));return hit}return network.catch(()=>sameOrigin?caches.match('./index.html'):Promise.reject(new Error('offline')))}))});
