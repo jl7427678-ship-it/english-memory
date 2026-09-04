@@ -25,8 +25,7 @@ for (const file of ['ui.html', 'app.js', 'app-1.js', 'app-2.js', 'app-3.js', 'ap
 assert(index.includes('boot.js?v=20260905-3'), 'index.html does not load the current boot.js version');
 assert(boot.includes("ui.html?v=20260905-3") && boot.includes("app.js?v=20260905-3"), 'boot.js resource versions are inconsistent');
 assert(!app.includes('vocab-patch.js'), 'The retired vocabulary patch is still loaded');
-assert(app2.includes('/vocabularies/ielts.json'), 'IELTS does not use the verified ielts.json URL');
-assert(!app2.includes('ielts_core.json'), 'The invalid IELTS URL is still present');
+assert(app2.includes('/vocabularies/ielts_core.json'), 'IELTS does not use the verified ielts_core.json URL');
 assert(app2.includes("manifest:'data/toeic-manifest.json'"), 'TOEIC does not use the same-origin manifest');
 assert(!app3.includes('huggingface.co') && !app3.includes('datasets-server'), 'Runtime code still downloads TOEIC from Hugging Face');
 assert(app3.includes("progressKey(deck.id,w.word)"), 'Built-in progress key contract changed');

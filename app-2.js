@@ -27,7 +27,7 @@ setupRecognition($('#speechBtn'),$('#recInput'),$('#speechStatus'));setupRecogni
 const BUILTIN_VOCAB={
   toeic_core:{id:'toeic_core',title:'TOEIC 核心 1250',expected:1250,icon:'💼',description:'从完整 TOEIC 双语词库中筛出的核心 1,250 词，优先按重要度学习。',source:'完整 TOEIC 单字库 · CC BY-SA 4.0',kind:'static-toeic',manifest:'data/toeic-manifest.json',version:'2026.09.05-static.1'},
   toeic_full:{id:'toeic_full',title:'TOEIC 完整 11154',expected:11154,icon:'🧳',description:'完整 11,154 词 TOEIC 双语词库。首次安装读取本站静态分片，之后直接使用本机缓存。',source:'完整 TOEIC 单字库 · CC BY-SA 4.0',kind:'static-toeic',manifest:'data/toeic-manifest.json',version:'2026.09.05-static.1',deferred:true},
-  ielts_core:{id:'ielts_core',title:'IELTS 核心词汇',expected:4974,icon:'🌍',description:'IELTS 核心词汇，适合后续雅思阅读、听力、写作与口语。',source:'WordTyper Vocabularies，客观派生自 ECDICT · MIT',kind:'wordtyper',url:'https://raw.githubusercontent.com/grhliu/wordtyper-vocabularies/main/vocabularies/ielts.json',version:'2.0.1'},
+  ielts_core:{id:'ielts_core',title:'IELTS 核心词汇',expected:4974,icon:'🌍',description:'IELTS 核心词汇，适合后续雅思阅读、听力、写作与口语。',source:'WordTyper Vocabularies，客观派生自 ECDICT · MIT',kind:'wordtyper',url:'https://raw.githubusercontent.com/grhliu/wordtyper-vocabularies/main/vocabularies/ielts_core.json',version:'2.0.1'},
   kaoyan_core:{id:'kaoyan_core',title:'考研英语核心',expected:4787,icon:'📚',description:'考研英语大纲核心词汇，可直接四选一筛查并做拼写强化。',source:'WordTyper Vocabularies，客观派生自 ECDICT · MIT',kind:'wordtyper',url:'https://raw.githubusercontent.com/grhliu/wordtyper-vocabularies/main/vocabularies/kaoyan.json',version:'2.0.0'}
 };
 const VOCAB_DB='englishMemoryLab_vocab_cache_v1', VOCAB_STORE='decks';

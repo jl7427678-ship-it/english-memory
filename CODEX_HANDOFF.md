@@ -170,17 +170,13 @@ scripts/build-toeic.mjs
 
 这会比现在稳定很多，也是用户明确更希望的方案。
 
-## 7. 一个必须顺手修的现有 bug：IELTS URL
+## 7. IELTS URL（2026-09-05 线上复核）
 
-当前主代码里 IELTS 配置仍可能写成：
+线上仓库实际存在的文件是：
 
 `https://raw.githubusercontent.com/grhliu/wordtyper-vocabularies/main/vocabularies/ielts_core.json`
 
-这个文件名之前验证过是错的。
-
-正确为：
-
-`https://raw.githubusercontent.com/grhliu/wordtyper-vocabularies/main/vocabularies/ielts.json`
+`ielts.json` 经 GitHub Pages 线上测试返回 404；不要改成该地址。
 
 该词库约 4974 词。
 
@@ -331,7 +327,7 @@ Codex 可以考虑逐步迁移到 Vite，但不要一次重写所有功能。优
 
 1. 拉取仓库并跑本地静态站
 2. 检查 Console 是否有 JS error
-3. 修 IELTS `ielts.json` URL
+3. 验证 IELTS `ielts_core.json` URL
 4. 把 TOEIC 11154 预处理成仓库静态分片
 5. 删除/停用浏览器实时 Hugging Face 下载逻辑
 6. 测试 TOEIC 核心和完整版：安装 → 四选一 → 拼写 → 刷新 → IndexedDB 恢复
