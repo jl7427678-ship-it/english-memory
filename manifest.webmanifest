@@ -1,0 +1,19 @@
+{
+  "name": "串题记忆室 · English Memory Lab",
+  "short_name": "串题记忆室",
+  "description": "英语串题故事、写作填空、自适应背单词与间隔复习工具",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f6f7fb",
+  "theme_color": "#6c63e8",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
