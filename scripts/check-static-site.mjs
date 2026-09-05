@@ -22,17 +22,19 @@ for (const file of ['ui.html', 'app.js', 'app-1.js', 'app-2.js', 'app-3.js', 'ap
   await exists(file);
 }
 
-assert(index.includes('boot.js?v=20260905-7'), 'index.html does not load the current boot.js version');
-assert(index.includes('styles.css?v=20260905-7') && index.includes('theme.css?v=20260905-7'), 'stylesheet versions are inconsistent');
-assert(boot.includes("ui.html?v=20260905-7") && boot.includes("app.js?v=20260905-7"), 'boot.js resource versions are inconsistent');
-assert(app.includes("src+'?v=20260905-7'"), 'split application scripts are not on the current version');
+assert(index.includes('boot.js?v=20260905-8'), 'index.html does not load the current boot.js version');
+assert(index.includes('styles.css?v=20260905-8') && index.includes('theme.css?v=20260905-8'), 'stylesheet versions are inconsistent');
+assert(boot.includes("ui.html?v=20260905-8") && boot.includes("app.js?v=20260905-8"), 'boot.js resource versions are inconsistent');
+assert(app.includes("src+'?v=20260905-8'"), 'split application scripts are not on the current version');
 assert(!app.includes('vocab-patch.js'), 'The retired vocabulary patch is still loaded');
 assert(app2.includes('/vocabularies/ielts_core.json'), 'IELTS does not use the verified ielts_core.json URL');
 assert(app2.includes("manifest:'data/toeic-manifest.json'"), 'TOEIC does not use the same-origin manifest');
 assert(!app3.includes('huggingface.co') && !app3.includes('datasets-server'), 'Runtime code still downloads TOEIC from Hugging Face');
 assert(app3.includes("progressKey(deck.id,w.word)"), 'Built-in progress key contract changed');
 assert(worker.includes("{ignoreSearch:true}"), 'Offline cache does not ignore version query strings');
-assert(worker.includes("CACHE='english-memory-lab-v5-ui-20260905-7'"), 'Service Worker cache version was not bumped');
+assert(worker.includes("CACHE='english-memory-lab-v5-ui-20260905-8'"), 'Service Worker cache version was not bumped');
+for (const mascot of ['hello', 'thinking', 'celebrate', 'active', 'reading', 'rest']) await exists(`assets/mascot/wanwang-${mascot}.webp`);
+assert(worker.includes('wanwang-hello.webp') && worker.includes('wanwang-celebrate.webp'), 'Active mascot states are not cached for offline use');
 assert(app2.includes("addEventListener('voiceschanged',refreshSpeechVoices)"), 'TTS voice loading compatibility is missing');
 assert(app2.includes("{userInitiated:true}"), 'Manual TTS actions are not marked as user initiated');
 assert(!app4.includes('setTimeout(()=>speak('), 'Vocabulary auto-read still loses the user gesture through setTimeout');

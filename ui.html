@@ -15,8 +15,11 @@
     <main class="main">
       <section class="page active" id="page-today">
         <div class="today-welcome">
-          <div><div class="eyebrow">TODAY</div><h2 id="todayGreeting">你好，静！</h2><p>不用把所有事情一起想完。先完成眼前这一小步。</p></div>
-          <div class="today-date" id="todayDate"></div>
+          <div class="today-welcome-copy"><div class="eyebrow">TODAY</div><h2 id="todayGreeting">你好，静！</h2><p>不用把所有事情一起想完。先完成眼前这一小步。</p></div>
+          <div class="today-mascot" aria-live="polite">
+            <img id="todayMascot" src="assets/mascot/wanwang-hello.webp" width="512" height="512" alt="旺旺抬起爪子和你打招呼" fetchpriority="high" decoding="async">
+            <div><div class="today-date" id="todayDate"></div><p id="todayMascotMessage">旺旺陪你，从第一项开始。</p></div>
+          </div>
         </div>
         <div class="today-grid">
           <article class="card today-plan-card">

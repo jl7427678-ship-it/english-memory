@@ -155,7 +155,9 @@ Desktop 使用 sidebar，Mobile 使用 bottom navigation。“今日 / 学习库
 
 视觉方向：Apple / iOS inspired，clean、bright、minimal、airy、friendly、cute but not childish。使用大留白、圆角卡片、克制色彩与柔和阴影。
 
-狗狗 mascot 必须优先使用用户后续提供的正式图片资源。未收到资源前，不允许用 CSS、emoji 或临时插画伪造另一只狗。
+狗狗 mascot 已使用用户提供的正式旺旺插画资源接入，不允许再用 CSS、emoji 或临时插画替换。仓库中保留 6 个优化后的 WebP 状态：`hello`、`thinking`、`celebrate`、`active`、`reading`、`rest`。当前“今日”欢迎区使用 `hello`，六项计划全部完成后自动切换 `celebrate`；其余状态留给后续真实场景，避免每张卡片都放狗。原始 1254px PNG 未放入站点，网页版本统一为 512px WebP，每张约 27–35 KB。
+
+本次 mascot 接入没有增加或迁移任何 localStorage / IndexedDB 字段。活动中的两个图片状态已经加入 Service Worker 核心离线缓存，缓存版本为 `english-memory-lab-v5-ui-20260905-8`。
 
 专业名称必须始终写作“土地资源管理”，禁止写成图书馆资源管理、图书情报或图管。
 

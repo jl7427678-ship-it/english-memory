@@ -37,5 +37,7 @@ for (const label of ['TOEIC 背词', 'TOEIC 串题', 'Italiano', '考研政治',
   assert(runtime.includes(label), `Today project is missing: ${label}`);
 }
 assert(ui.includes('🔊 朗读') && ui.includes('🎙️ 语音识别'), 'TTS and speech recognition are not clearly distinguished');
+assert(ui.includes('assets/mascot/wanwang-hello.webp'), 'Today welcome mascot is missing');
+assert(runtime.includes('assets/mascot/wanwang-celebrate.webp'), 'Today completion mascot state is missing');
 
 console.log(`Validated ${staticIds.length} unique UI ids, ${pages.size} pages, and all navigation targets.`);
