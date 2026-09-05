@@ -1,5 +1,5 @@
-const CACHE='english-memory-lab-v5-ui-20260905-12';
-const CORE=['./','./index.html','./manifest.webmanifest','./icon.svg','./styles.css','./theme.css','./boot.js','./ui.html','./app.js','./app-1.js','./app-2.js','./app-3.js','./app-4.js','./app-5.js','./app-6.js','./app-7.js','./app-8.js','./assets/mascot/wanwang-hello.webp','./assets/mascot/wanwang-celebrate.webp','./assets/mascot/wanwang-reading.webp','./data/toeic-manifest.json','./data/toeic-core.json','./data/preqin-literature.json'];
+const CACHE='english-memory-lab-v5-ui-20260905-13';
+const CORE=['./','./index.html','./manifest.webmanifest','./icon.svg','./styles.css','./theme.css','./boot.js','./ui.html','./app.js','./app-1.js','./app-2.js','./app-3.js','./app-4.js','./app-5.js','./app-6.js','./app-7.js','./app-8.js','./app-9.js','./assets/mascot/wanwang-hello.webp','./assets/mascot/wanwang-celebrate.webp','./assets/mascot/wanwang-reading.webp','./data/toeic-manifest.json','./data/toeic-core.json','./data/preqin-literature.json'];
 const ALLOWED_REMOTE=['https://raw.githubusercontent.com','https://cdn.jsdelivr.net'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});

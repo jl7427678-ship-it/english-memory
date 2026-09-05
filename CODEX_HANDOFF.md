@@ -248,28 +248,46 @@ Phase 0 静态回归已通过全部语法、词库、题库、站点、UI 与存
 
 新增运行时文件 `app-8.js` 与 `npm run check:planner`。当前 Service Worker cache 为 `english-memory-lab-v5-ui-20260905-12`。Phase 2 的全部语法、存储、计划、词库、题库、静态站点与 UI contract 检查通过；浏览器与 Safari 真机验证限制同上。
 
-## 13. 后续阶段顺序
+## 13. 通用 Exam Engine（Phase 3）
 
-1. Phase 3：通用 Exam Engine adapter；保留 Vocabulary Engine，并按项目配置允许题型。
-2. 后续再按用户给定顺序推进题库资源研究、私人题库、本地机考/教学、听说读写，最后才接安全 serverless AI Gateway。
-3. 土地资源管理与考研政治必须等各自资料和题型配置，不使用先秦文学题型比例。
-4. GitHub Pages 前端不得继续作为未来 API Key 存储位置；AI Gateway 完成前不要新增前端 AI 能力。
+已新增 adapter 层，不替换也不改写 Vocabulary Engine：
 
-## 14. 每阶段回归清单
+- 每个 profile 新增 `state.examEngine`：`questions`、`attempts`、`wrong`、`review`。
+- `normalizeExamQuestion()` 提供统一题目字段，包括 `id/projectId/type/section/stem/options/answer/keywords/referenceAnswer/points/explanation/source/sourceType/license/attribution/tags/content/audio`。
+- `adaptPreqinQuestion()` 将现有先秦文学数据映射到统一接口，但现有课程 UI 与 `state.questionEngine` 继续原样工作。
+- 汉语言 / 先秦文学：仅 `term_definition`、`short_answer`、`essay`。
+- TOEIC：Listening Part 1–4、Reading Part 5–7。
+- IELTS：Reading、Listening；Writing / Speaking 明确保留到后续。
+- 自定义项目可自行勾选选择、判断、填空、名词解释、简答、论述，至少保留一种。
+- 没有本地题库的分区诚实显示“等待题库接入”，不伪造题目、不调用 AI。
+
+新增运行时文件 `app-9.js`、考试训练入口和 `npm run check:exam`。当前 Service Worker cache 为 `english-memory-lab-v5-ui-20260905-13`。Phase 3 的语法、存储、计划、Exam Engine、词库、题库、站点与 UI contract 检查全部通过；浏览器与 Safari 真机验证限制同上。
+
+## 14. 后续阶段顺序
+
+1. Phase 4：研究明确许可证的 TOEIC / IELTS 开源资源，保存 source/license/attribution/sourceType，只接原创或许可允许内容。
+2. Phase 5：私人题库本地导入；PDF/音频 IndexedDB、SHA-256 去重、Section 绑定、答案预览与人工修改，绝不提交私人资料。
+3. Phase 6–8：真正机考 UI、本地老师、听说读写整理。
+4. Phase 9–11：完成本地系统后才接 serverless AI Gateway、缓存/预算/熔断和管理员总开关。
+5. 土地资源管理与考研政治必须等各自资料和题型配置，不使用先秦文学题型比例。
+6. GitHub Pages 前端不得继续作为未来 API Key 存储位置；AI Gateway 完成前不要新增前端 AI 能力。
+
+## 15. 每阶段回归清单
 
 1. `node --check` 检查所有运行时 JS
 2. `npm run check:data`
 3. `npm run check:questions`
 4. `npm run check:storage`
 5. `npm run check:planner`
-6. `npm run check:site`
-7. `npm run check:ui`
-8. 浏览器检查主要交互和 Console
-9. 检查 Service Worker 与离线入口
-10. 检查 TOEIC 核心 1250、完整 11154、IELTS、考研
-11. 刷新后确认 localStorage / IndexedDB 状态仍在
-12. 重大前端更新同步 bump Service Worker cache version 和静态资源版本
+6. `npm run check:exam`
+7. `npm run check:site`
+8. `npm run check:ui`
+9. 浏览器检查主要交互和 Console
+10. 检查 Service Worker 与离线入口
+11. 检查 TOEIC 核心 1250、完整 11154、IELTS、考研
+12. 刷新后确认 localStorage / IndexedDB 状态仍在
+13. 重大前端更新同步 bump Service Worker cache version和静态资源版本
 
-## 15. 下一位 Codex 的起始要求
+## 16. 下一位 Codex 的起始要求
 
 先读取 GitHub `main` 最新提交和真实代码，再读本文档。保留全部现有功能与数据契约；每次只完成一个清晰阶段。若文档与代码或线上行为冲突，以代码和线上行为为准。不要重新实现已经完成的 TOEIC 静态词库，不要恢复 `vocab-patch.js`，不要进行全量重写。

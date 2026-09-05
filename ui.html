@@ -96,12 +96,18 @@
       <section class="page" id="page-training">
         <div class="page-intro"><div class="eyebrow">TRAINING</div><h2>训练中心</h2><p>选择一种练习方式，直接进入训练，不用重新设置资料。</p></div>
         <div class="training-grid">
+          <button class="training-card" data-go-page="exam-engine"><span class="training-icon">EX</span><div><b>考试训练</b><p>按项目进入 TOEIC、IELTS、先秦文学或自定义考试题型。</p></div><span class="arrow">→</span></button>
           <button class="training-card" data-go-page="vocab"><span class="training-icon">Aa</span><div><b>单词四选一</b><p>快速筛词，错词和慢词自动强化。</p></div><span class="arrow">→</span></button>
           <button class="training-card" data-go-page="vocab"><span class="training-icon">⌨</span><div><b>单词拼写</b><p>在词库页选择词库后进入中文到英文拼写。</p></div><span class="arrow">→</span></button>
           <button class="training-card" data-go-page="study"><span class="training-icon">◫</span><div><b>串题背诵</b><p>全文、挖空、首字母、关键词和完整复述。</p></div><span class="arrow">→</span></button>
           <button class="training-card" data-go-page="exam"><span class="training-icon">◆</span><div><b>串题考试</b><p>随机观点题，调用自己的故事完成回答。</p></div><span class="arrow">→</span></button>
           <button class="training-card" data-go-page="review"><span class="training-icon">↻</span><div><b>错句复习</b><p>优先复习完全不会和有点卡的句子。</p></div><span class="arrow">→</span></button>
         </div>
+      </section>
+
+      <section class="page" id="page-exam-engine">
+        <div class="page-intro"><div class="eyebrow">EXAM ENGINE</div><h2>考试训练</h2><p>每个项目使用自己的真实题型集合；统一的是数据接口，不是题型比例。</p></div>
+        <div class="card exam-engine-shell"><div class="exam-engine-head"><label><span class="label">学习项目</span><select class="field" id="examProjectSelect"></select></label><div><span class="label">可用题型 / 分区</span><div class="exam-type-tabs" id="examTypeTabs"></div></div></div><div class="exam-engine-body"><div><div class="eyebrow" id="examEngineEyebrow">PROJECT</div><h3 id="examEngineTitle">选择项目</h3><p class="sub" id="examEngineDescription"></p><div id="customExamTypeConfig" class="custom-type-config"></div></div><div class="exam-engine-summary" id="examEngineSummary"></div></div><div class="row"><button class="btn primary" id="startExamEngine">进入训练</button><span class="sub" id="examEngineStatus"></span></div></div>
       </section>
 
       <section class="page" id="page-study">
