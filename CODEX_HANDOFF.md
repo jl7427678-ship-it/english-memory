@@ -265,7 +265,7 @@ Phase 0 静态回归已通过全部语法、词库、题库、站点、UI 与存
 
 ## 14. 后续阶段顺序
 
-1. Phase 7–8：本地 IELTS / TOEIC 老师与听说读写整理。
+1. Phase 8：听说读写入口与本地能力整理。
 2. Phase 9–11：完成本地系统后才接 serverless AI Gateway、缓存/预算/熔断和管理员总开关。
 3. 土地资源管理与考研政治必须等各自资料和题型配置，不使用先秦文学题型比例。
 4. GitHub Pages 前端不得继续作为未来 API Key 存储位置；AI Gateway 完成前不要新增前端 AI 能力。
@@ -318,7 +318,23 @@ Phase 0 静态回归已通过全部语法、词库、题库、站点、UI 与存
 
 新增运行时文件 `app-12.js` 与 `npm run check:computer-exam`。全部语法与九项 contract / 数据回归通过；浏览器、Console、Service Worker runtime、Safari/iPhone 音频与 IndexedDB 仍需在线上真机验证，未声称已验证。
 
-## 18. 每阶段回归清单
+## 18. 本地 IELTS / TOEIC 老师（Phase 7）
+
+新增完全离线、无需 AI 的固定教学策略：
+
+- IELTS Reading：定位、同义替换、T/F/NG 区分、Matching 排除、常见范围与因果陷阱。
+- IELTS Listening：答案内容与词性预测、signal words、自我纠正型 distractor、拼写、单复数、数字与 word limit。
+- TOEIC Part 1–4 分别提供图片动作、问答类型、对话预读、独白场景策略；Part 5–7 分别提供语法空格、篇章衔接与多篇阅读定位策略。
+- Learning Mode 在作答阶段显示固定策略；Exam Mode 作答时不显示，交卷后统一展示分析。
+- 本地交卷结果按错题展示用户答案、参考答案、已有 explanation 和对应答题步骤。
+- 错因可多选记录：定位、同义替换、词汇、干扰项、拼写、单复数、粗心、时间不足。
+- 错因保存在当前 profile 的 `state.examEngine.wrong[questionId].reasons`，重复做错不会覆盖历史已选原因。
+- 不调用 AI、不写 API Key，也没有增加高频写盘；错因只在用户点击时进入原有合并保存。
+- 当前 Service Worker cache 为 `english-memory-lab-v5-ui-20260905-17`。
+
+新增运行时文件 `app-13.js` 与 `npm run check:local-teacher`。全套语法、数据、存储、计划、机考、教学策略、站点与 UI contract 回归通过；浏览器与真机验证限制同前。
+
+## 19. 每阶段回归清单
 
 1. `node --check` 检查所有运行时 JS
 2. `npm run check:data`
@@ -334,6 +350,6 @@ Phase 0 静态回归已通过全部语法、词库、题库、站点、UI 与存
 12. 刷新后确认 localStorage / IndexedDB 状态仍在
 13. 重大前端更新同步 bump Service Worker cache version和静态资源版本
 
-## 19. 下一位 Codex 的起始要求
+## 20. 下一位 Codex 的起始要求
 
 先读取 GitHub `main` 最新提交和真实代码，再读本文档。保留全部现有功能与数据契约；每次只完成一个清晰阶段。若文档与代码或线上行为冲突，以代码和线上行为为准。不要重新实现已经完成的 TOEIC 静态词库，不要恢复 `vocab-patch.js`，不要进行全量重写。
