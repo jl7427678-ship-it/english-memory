@@ -1,7 +1,7 @@
 import { readFile } from 'node:fs/promises';
 
 const ROOT = new URL('../', import.meta.url);
-const runtimeFiles = ['app-1.js', 'app-2.js', 'app-3.js', 'app-4.js', 'app-5.js', 'app-6.js'];
+const runtimeFiles = ['app-1.js', 'app-2.js', 'app-3.js', 'app-4.js', 'app-5.js', 'app-6.js', 'app-7.js'];
 const ui = await readFile(new URL('ui.html', ROOT), 'utf8');
 const runtime = (await Promise.all(runtimeFiles.map(file => readFile(new URL(file, ROOT), 'utf8')))).join('\n');
 
@@ -41,5 +41,8 @@ assert(ui.includes('assets/mascot/wanwang-hello.webp'), 'Today welcome mascot is
 assert(runtime.includes('assets/mascot/wanwang-celebrate.webp'), 'Today completion mascot state is missing');
 assert(ui.includes('名词解释、简答题、论述题'), 'Pre-Qin literature course entry is missing its real question types');
 assert(!ui.match(/先秦文学[^<]{0,80}选择题/), 'Pre-Qin literature is incorrectly presented as choice-first');
+for (const id of ['profileSelect','addProfile','renameProfile','deleteProfile','projectManagerList','addCustomProject']) assert(staticIds.includes(id), `Local Profile UI is missing: ${id}`);
+assert(runtime.includes("PROFILE_META_KEY='englishMemoryLab_profiles_v1'"), 'Local Profile metadata contract is missing');
+assert(runtime.includes('activeStateKey()'), 'Profile-specific state storage is missing');
 
 console.log(`Validated ${staticIds.length} unique UI ids, ${pages.size} pages, and all navigation targets.`);

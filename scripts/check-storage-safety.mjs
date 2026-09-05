@@ -2,16 +2,16 @@ import { readFile } from 'node:fs/promises';
 
 const ROOT = new URL('../', import.meta.url);
 const read = path => readFile(new URL(path, ROOT), 'utf8');
-const [app1, app5, app6, worker] = await Promise.all([
-  read('app-1.js'), read('app-5.js'), read('app-6.js'), read('service-worker.js')
+const [app1, app5, app6, app7, worker] = await Promise.all([
+  read('app-1.js'), read('app-5.js'), read('app-6.js'), read('app-7.js'), read('service-worker.js')
 ]);
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
 }
 
-const runtime = [app1, app5, app6].join('\n');
-assert((runtime.match(/localStorage\.setItem\(/g) || []).length === 1, 'localStorage writes must be centralized');
+const runtime = [app1, app5, app6, app7].join('\n');
+assert((app1.match(/localStorage\.setItem\(activeStateKey\(\)/g) || []).length === 1, 'active profile state writes must be centralized');
 assert(app1.includes('STATE_WRITE_MIN_INTERVAL=5000'), 'state write coalescing is missing');
 assert(app1.includes("addEventListener('pagehide',()=>persistStateNow())"), 'pagehide state flush is missing');
 assert(app6.includes('setTimeout(()=>saveCourseDraft(question,false),800)'), 'course draft debounce is missing');

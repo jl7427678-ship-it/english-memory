@@ -207,21 +207,36 @@ Desktop 使用 sidebar，Mobile 使用 bottom navigation。“今日 / 学习库
 - 文档导入只在用户选文件后读取；同一份文件以 SHA-256 识别，避免重复保存结构化资料。
 - PDF / DOCX 解析后默认只保存抽取文字与来源元数据，`retained:false`；不保存原文件 Blob。
 - 运行时没有每秒持久化计时器、`audio timeupdate` 持久化或 AI streaming token 持久化。
-- Service Worker 核心缓存没有 PDF、MP3、WAV 或 M4A；当前 cache 为 `english-memory-lab-v5-ui-20260905-10`。
+- Service Worker 核心缓存没有 PDF、MP3、WAV 或 M4A。
 - 新增 `npm run check:storage`，持续检查集中写入、草稿 debounce、SHA-256 去重和大文件 precache 禁令。
 
 Phase 0 静态回归已通过全部语法、词库、题库、站点、UI 与存储检查。云端浏览器无法连接本地 `terminal.local:4173`，因此本阶段没有声称完成真实浏览器交互或 Safari 真机验证；部署后仍需在实际 Chrome / Safari / iPhone PWA 上补验。
 
-## 11. 后续阶段顺序
+## 11. Local Profile（Phase 1）
 
-1. Phase 1：Local Profile；每个 profile 隔离项目、计划、题库、错题、复习和学习记录，并允许项目添加、隐藏、排序、归档。
-2. Phase 2：项目考试日、D-x、自由周计划、每日数量/时长、Day 0/1/3/7/14/30 与 Today 自动任务。
-3. Phase 3：通用 Exam Engine adapter；保留 Vocabulary Engine，并按项目配置允许题型。
-4. 后续再按用户给定顺序推进题库资源研究、私人题库、本地机考/教学、听说读写，最后才接安全 serverless AI Gateway。
-5. 土地资源管理与考研政治必须等各自资料和题型配置，不使用先秦文学题型比例。
-6. GitHub Pages 前端不得继续作为未来 API Key 存储位置；AI Gateway 完成前不要新增前端 AI 能力。
+已建立不侵入原业务逻辑的本地学习空间：
 
-## 12. 每阶段回归清单
+- Profile 元数据 key：`englishMemoryLab_profiles_v1`。
+- 默认 profile ID：`local-default`；默认 profile 继续直接读写原 `englishMemoryLab_v1`，已有学习数据不搬迁、不复制。
+- 新 profile 使用 `englishMemoryLab_v1:profile:<id>`，切换前立即 flush 当前状态，切换后整页重新初始化，避免跨 profile 的内存缓存泄漏。
+- 每个 profile 独立保存资料、计划、题库状态、错题/复习、词汇进度、学习日志、设置和项目配置。
+- IndexedDB 中的大型内置词库仍作为只读缓存共享，避免同一套 11154 词重复占空间；每个 profile 的 `deckId|word` 学习进度仍独立存在自己的 localStorage 状态中。
+- “我的”支持新增、切换、改名和删除非默认空间；清空学习数据只清空当前空间。
+- 项目支持显示、隐藏、上下排序、归档/恢复，以及新增自定义考试、专业课或语言项目。
+- 预设项目：TOEIC、IELTS、Italiano、考研政治、汉语言、土地资源管理、自定义考试/专业课；另保留现有考研英语词库项目。
+- 默认空间只显示 TOEIC 与汉语言，其他预设保留但默认隐藏；“今日”与内置词库均按当前 profile 的项目配置过滤，不再展示所有课程。
+
+新增运行时文件 `app-7.js`。当前 Service Worker cache 为 `english-memory-lab-v5-ui-20260905-11`。Phase 1 的语法、存储、词库、题库、静态站点和 UI contract 检查均通过；本地浏览器连接限制仍存在，因此未声称浏览器或 Safari 真机验证。
+
+## 12. 后续阶段顺序
+
+1. Phase 2：项目考试日、D-x、自由周计划、每日数量/时长、Day 0/1/3/7/14/30 与 Today 自动任务。
+2. Phase 3：通用 Exam Engine adapter；保留 Vocabulary Engine，并按项目配置允许题型。
+3. 后续再按用户给定顺序推进题库资源研究、私人题库、本地机考/教学、听说读写，最后才接安全 serverless AI Gateway。
+4. 土地资源管理与考研政治必须等各自资料和题型配置，不使用先秦文学题型比例。
+5. GitHub Pages 前端不得继续作为未来 API Key 存储位置；AI Gateway 完成前不要新增前端 AI 能力。
+
+## 13. 每阶段回归清单
 
 1. `node --check` 检查所有运行时 JS
 2. `npm run check:data`
@@ -235,6 +250,6 @@ Phase 0 静态回归已通过全部语法、词库、题库、站点、UI 与存
 10. 刷新后确认 localStorage / IndexedDB 状态仍在
 11. 重大前端更新同步 bump Service Worker cache version 和静态资源版本
 
-## 13. 下一位 Codex 的起始要求
+## 14. 下一位 Codex 的起始要求
 
 先读取 GitHub `main` 最新提交和真实代码，再读本文档。保留全部现有功能与数据契约；每次只完成一个清晰阶段。若文档与代码或线上行为冲突，以代码和线上行为为准。不要重新实现已经完成的 TOEIC 静态词库，不要恢复 `vocab-patch.js`，不要进行全量重写。
