@@ -1,7 +1,7 @@
 import { readFile } from 'node:fs/promises';
 
 const ROOT = new URL('../', import.meta.url);
-const runtimeFiles = ['app-1.js', 'app-2.js', 'app-3.js', 'app-4.js', 'app-5.js'];
+const runtimeFiles = ['app-1.js', 'app-2.js', 'app-3.js', 'app-4.js', 'app-5.js', 'app-6.js'];
 const ui = await readFile(new URL('ui.html', ROOT), 'utf8');
 const runtime = (await Promise.all(runtimeFiles.map(file => readFile(new URL(file, ROOT), 'utf8')))).join('\n');
 
@@ -30,7 +30,7 @@ const pageTargets = new Set([
 const missingPages = [...pageTargets].filter(page => !pages.has(page));
 assert(!missingPages.length, `Navigation targets without pages: ${missingPages.join(', ')}`);
 
-for (const page of ['today', 'library', 'training', 'plan', 'me', 'study', 'vocab', 'exam', 'review', 'stats', 'settings']) {
+for (const page of ['today', 'library', 'training', 'plan', 'me', 'study', 'vocab', 'exam', 'review', 'stats', 'settings', 'preqin-literature']) {
   assert(pages.has(page), `Required page is missing: ${page}`);
 }
 for (const label of ['TOEIC 背词', 'TOEIC 串题', 'Italiano', '考研政治', '汉语言', '土地资源管理']) {
@@ -39,5 +39,7 @@ for (const label of ['TOEIC 背词', 'TOEIC 串题', 'Italiano', '考研政治',
 assert(ui.includes('🔊 朗读') && ui.includes('🎙️ 语音识别'), 'TTS and speech recognition are not clearly distinguished');
 assert(ui.includes('assets/mascot/wanwang-hello.webp'), 'Today welcome mascot is missing');
 assert(runtime.includes('assets/mascot/wanwang-celebrate.webp'), 'Today completion mascot state is missing');
+assert(ui.includes('名词解释、简答题、论述题'), 'Pre-Qin literature course entry is missing its real question types');
+assert(!ui.match(/先秦文学[^<]{0,80}选择题/), 'Pre-Qin literature is incorrectly presented as choice-first');
 
 console.log(`Validated ${staticIds.length} unique UI ids, ${pages.size} pages, and all navigation targets.`);

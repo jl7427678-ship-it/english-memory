@@ -3,7 +3,7 @@ const TODAY_PROJECTS=[
   {id:'toeic-story',name:'TOEIC 串题',meta:'背诵 · 挖空 · 模拟题',minutes:20,color:'blue',page:'training',glyph:'◫'},
   {id:'italiano',name:'Italiano',meta:'意大利语词库',minutes:20,color:'green',glyph:'It'},
   {id:'politics',name:'考研政治',meta:'资料与题型待接入',minutes:20,color:'red',glyph:'政'},
-  {id:'chinese',name:'汉语言',meta:'资料与题型待接入',minutes:20,color:'amber',glyph:'文'},
+  {id:'chinese',name:'汉语言',meta:'先秦文学 · 名词解释 · 简答 · 论述',minutes:20,color:'amber',page:'preqin-literature',glyph:'文'},
   {id:'land',name:'土地资源管理',meta:'资料与真题待接入',minutes:20,color:'cyan',glyph:'土'}
 ];
 function currentDayChecklist(){const key=dayKey();state.todayChecklist[key]=state.todayChecklist[key]||{};return state.todayChecklist[key]}

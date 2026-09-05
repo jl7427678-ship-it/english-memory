@@ -1,0 +1,390 @@
+{
+  "version": "2026.09.05-seed.1",
+  "project": {
+    "id": "chinese",
+    "name": "汉语言"
+  },
+  "course": {
+    "id": "preqin-literature",
+    "projectId": "chinese",
+    "name": "先秦文学",
+    "description": "依据《先秦文学（诗歌）》与《先秦文学（散文）》整理的第一版课程。",
+    "allowedTypes": ["term_definition", "short_answer", "essay"],
+    "typeLabels": {
+      "term_definition": "名词解释",
+      "short_answer": "简答题",
+      "essay": "论述题"
+    },
+    "modules": [
+      {"id": "poetry", "name": "先秦文学（诗歌）", "material": "先秦文学（诗歌）"},
+      {"id": "prose", "name": "先秦文学（散文）", "material": "先秦文学（散文）"}
+    ],
+    "planTemplates": [
+      {"type": "term_definition", "count": 5, "label": "名词解释 × 5"},
+      {"type": "short_answer", "count": 3, "label": "简答题 × 3"},
+      {"type": "essay", "count": 1, "label": "论述题 × 1"}
+    ]
+  },
+  "questions": [
+    {
+      "id": "preqin-term-xiucilicheng",
+      "projectId": "chinese",
+      "courseId": "preqin-literature",
+      "moduleId": "poetry",
+      "type": "term_definition",
+      "stem": "名词解释：修辞立其诚",
+      "keywords": [
+        {"label": "内心真实情感", "terms": ["内心真实", "真实情感"]},
+        {"label": "修饰文辞立足于诚", "terms": ["修饰文辞", "立足于内心之诚"]},
+        {"label": "文学用来抒情", "terms": ["文学是用来抒情", "抒情"]},
+        {"label": "为情而造文", "terms": ["为情而造文"]},
+        {"label": "影响《诗经》《楚辞》", "terms": ["诗经", "楚辞"]}
+      ],
+      "referenceAnswer": "“诚”指内心真实的情感；“修辞立其诚”是说修饰文辞要立足于内心之诚，表明文学是用来抒情的。刘勰《文心雕龙》所说“为情而造文”与此相通。这一言语观影响了中国文学的基本性质和走向，也影响了《诗经》《楚辞》的创作主题。",
+      "source": {"material": "先秦文学（诗歌）", "section": "修辞立其诚", "excerpt": "“诚”指内心真实的情感，修饰文辞要立足于内心之诚；文学是用来抒情的，并影响《诗经》《楚辞》的创作主题。"},
+      "tags": ["诗歌", "文学观"]
+    },
+    {
+      "id": "preqin-term-chunqiubifa",
+      "projectId": "chinese",
+      "courseId": "preqin-literature",
+      "moduleId": "prose",
+      "type": "term_definition",
+      "stem": "名词解释：春秋笔法",
+      "keywords": [
+        {"label": "孔子", "terms": ["孔子"]},
+        {"label": "《春秋》", "terms": ["春秋"]},
+        {"label": "文字隐晦", "terms": ["文字隐晦"]},
+        {"label": "文笔婉转", "terms": ["文笔婉转"]},
+        {"label": "寓褒贬于曲折文笔", "terms": ["寓褒贬", "每字必含褒贬"]}
+      ],
+      "referenceAnswer": "春秋笔法是指孔子编撰《春秋》时运用的写作风格，其文字隐晦、文笔婉转，把褒贬寄寓在曲折的文字之中，对后世如司马迁《史记》产生了影响。",
+      "source": {"material": "先秦文学（散文）", "section": "《春秋》", "excerpt": "春秋笔法指孔子编撰《春秋》时运用的文字隐晦、文笔婉转、寓褒贬于曲折文笔之中的写作风格。"},
+      "tags": ["历史散文", "春秋"]
+    },
+    {
+      "id": "preqin-term-fengsao",
+      "projectId": "chinese",
+      "courseId": "preqin-literature",
+      "moduleId": "poetry",
+      "type": "term_definition",
+      "stem": "名词解释：风骚",
+      "keywords": [
+        {"label": "《诗经》和《楚辞》并称", "terms": ["诗经", "楚辞"]},
+        {"label": "《国风》", "terms": ["国风"]},
+        {"label": "《离骚》", "terms": ["离骚"]},
+        {"label": "现实主义传统", "terms": ["现实主义"]},
+        {"label": "浪漫主义传统", "terms": ["浪漫主义"]}
+      ],
+      "referenceAnswer": "“风骚”是《诗经》和《楚辞》的并称，分别取自《诗经》的重要作品《国风》和《楚辞》的重要作品《离骚》。《离骚》问世后，“风”“骚”并肩成为古人诗歌创作的最高标准，代表现实主义和浪漫主义诗歌传统。",
+      "source": {"material": "先秦文学（诗歌）", "section": "屈原 - 地位和影响", "excerpt": "“风骚”是《诗经》和《楚辞》的并称，取《国风》和《离骚》概括而成，代表现实主义和浪漫主义诗歌传统。"},
+      "tags": ["诗经", "楚辞", "文学传统"]
+    },
+    {
+      "id": "preqin-term-zhuangzisanyan",
+      "projectId": "chinese",
+      "courseId": "preqin-literature",
+      "moduleId": "prose",
+      "type": "term_definition",
+      "stem": "名词解释：《庄子》三言",
+      "keywords": [
+        {"label": "寓言", "terms": ["寓言"]},
+        {"label": "重言", "terms": ["重言"]},
+        {"label": "卮言", "terms": ["卮言"]},
+        {"label": "《庄子》", "terms": ["庄子"]}
+      ],
+      "referenceAnswer": "《庄子》三言指《庄子》中的寓言、重言、卮言。资料同时指出，《庄子》以寓言见长，语言汪洋恣肆，想象丰富，具有浓郁的诗情和浪漫色彩。",
+      "source": {"material": "先秦文学（散文）", "section": "《庄子》", "excerpt": "《庄子》三言：寓言、重言、卮言。"},
+      "tags": ["诸子散文", "庄子"]
+    },
+    {
+      "id": "preqin-term-jiuliushijia",
+      "projectId": "chinese",
+      "courseId": "preqin-literature",
+      "moduleId": "prose",
+      "type": "term_definition",
+      "stem": "名词解释：九流十家",
+      "keywords": [
+        {"label": "先秦学术流派", "terms": ["流派", "诸子"]},
+        {"label": "儒家", "terms": ["儒"]},
+        {"label": "道家", "terms": ["道"]},
+        {"label": "法家", "terms": ["法"]},
+        {"label": "小说家排除于九流", "terms": ["小说家", "排除"]}
+      ],
+      "referenceAnswer": "“九流十家”是资料中对先秦学术流派的概括，包括儒、道、法等九流；十家之中，小说家被排除在九流之外。",
+      "source": {"material": "先秦文学（散文）", "section": "散文发展脉络", "excerpt": "“九流十家”：儒、道、法等九流；小说家排除。"},
+      "tags": ["诸子散文", "流派"]
+    },
+    {
+      "id": "preqin-term-shenhua-lishihua",
+      "projectId": "chinese",
+      "courseId": "preqin-literature",
+      "moduleId": "poetry",
+      "type": "term_definition",
+      "stem": "名词解释：神话历史化",
+      "keywords": [
+        {"label": "神话内容", "terms": ["神话"]},
+        {"label": "当作历史事实记录", "terms": ["历史事实", "当作历史"]},
+        {"label": "经过改编", "terms": ["改编"]},
+        {"label": "面目全非", "terms": ["面目全非"]},
+        {"label": "夔一足", "terms": ["夔一足"]}
+      ],
+      "referenceAnswer": "神话历史化是把神话中的内容当作历史事实记录下来，并经过一定改编，甚至改得面目全非。资料所举的例子是“夔一足”。",
+      "source": {"material": "先秦文学（诗歌）", "section": "古代神话", "excerpt": "神话历史化：将神话中的内容当作历史事实记录下来，经过一定改编，但改得面目全非，如“夔一足”。"},
+      "tags": ["古代神话"]
+    },
+    {
+      "id": "preqin-term-fubixing",
+      "projectId": "chinese",
+      "courseId": "preqin-literature",
+      "moduleId": "poetry",
+      "type": "term_definition",
+      "stem": "名词解释：赋、比、兴",
+      "keywords": [
+        {"label": "《诗经》艺术手法", "terms": ["诗经"]},
+        {"label": "赋：铺陈其事，直接言之", "terms": ["铺陈其事", "直接言之"]},
+        {"label": "比：比喻和象征", "terms": ["比喻", "象征"]},
+        {"label": "兴：先言他物", "terms": ["先言他物", "起兴"]},
+        {"label": "引起所咏之辞", "terms": ["引起所咏之辞"]}
+      ],
+      "referenceAnswer": "赋、比、兴是《诗经》的艺术手法。赋是铺陈其事、直接言之；比是比喻和象征；兴即起兴，是先言他物以引起所咏之辞。",
+      "source": {"material": "先秦文学（诗歌）", "section": "《诗经》艺术成就", "excerpt": "赋为铺陈其事、直接言之；比为比喻和象征；兴为先言他物以引起所咏之辞。"},
+      "tags": ["诗经", "艺术手法"]
+    },
+    {
+      "id": "preqin-term-xiangcaomeiren",
+      "projectId": "chinese",
+      "courseId": "preqin-literature",
+      "moduleId": "poetry",
+      "type": "term_definition",
+      "stem": "名词解释：香草美人",
+      "keywords": [
+        {"label": "《离骚》", "terms": ["离骚"]},
+        {"label": "比喻象征系统", "terms": ["比喻象征", "象征系统"]},
+        {"label": "香草象征高洁品质", "terms": ["香草", "高洁品质"]},
+        {"label": "美人象征楚王或屈原", "terms": ["美人", "楚国君王", "屈原"]},
+        {"label": "绮丽浪漫幻想之境", "terms": ["绮丽浪漫", "幻想之境"]}
+      ],
+      "referenceAnswer": "“香草美人”是《离骚》创造的比喻象征系统。幽花香草象征屈原的高洁品质，美人象征楚国君王或屈原自己，这一系统营造了绮丽浪漫的幻想之境。",
+      "source": {"material": "先秦文学（诗歌）", "section": "《离骚》艺术特色", "excerpt": "《离骚》创造香草美人的比喻象征系统：幽花香草象征屈原的高洁品质，美人象征楚国君王或屈原自己。"},
+      "tags": ["离骚", "比兴"]
+    },
+    {
+      "id": "preqin-short-shijing",
+      "projectId": "chinese",
+      "courseId": "preqin-literature",
+      "moduleId": "poetry",
+      "type": "short_answer",
+      "stem": "简述《诗经》的艺术成就。",
+      "scorePoints": [
+        {"id": "fubixing", "label": "赋、比、兴", "keywords": ["赋", "比", "兴"]},
+        {"id": "narrative", "label": "叙事简洁生动、委婉曲折", "keywords": ["叙事简洁生动", "委婉曲折"]},
+        {"id": "lyric-image", "label": "表现抒情主人公形象", "keywords": ["抒情主人公"]},
+        {"id": "language", "label": "重章叠句、反复咏叹，以四言为基本句式", "keywords": ["重章叠句", "反复咏叹", "四言"]}
+      ],
+      "referenceAnswer": "《诗经》善用赋、比、兴；叙事简洁生动，各有侧重且有委婉曲折之妙；能够表现抒情主人公形象；语言上重章叠句、反复咏叹，句式从二言到八言变化，而四言是最主要、最基本的句式。",
+      "source": {"material": "先秦文学（诗歌）", "section": "《诗经》艺术成就", "excerpt": "资料从赋比兴、叙事、抒情主人公形象、重章叠句与四言句式四方面概括《诗经》的艺术成就。"},
+      "tags": ["诗经", "艺术成就"]
+    },
+    {
+      "id": "preqin-short-lisao",
+      "projectId": "chinese",
+      "courseId": "preqin-literature",
+      "moduleId": "poetry",
+      "type": "short_answer",
+      "stem": "简述《离骚》的艺术特色。",
+      "scorePoints": [
+        {"id": "bixing", "label": "比兴贯穿全文并形成香草美人系统", "keywords": ["比兴", "香草美人"]},
+        {"id": "structure", "label": "事实、抒情、幻想交织，前实后虚", "keywords": ["事实", "抒情", "幻想", "前一部分实写", "后一部分虚写"]},
+        {"id": "form", "label": "创造长短不一、韵散相间的楚辞体/骚体", "keywords": ["长短不一", "韵散相间", "楚辞体", "骚体"]},
+        {"id": "language", "label": "主客问答、铺排并吸收“兮”等楚地方言", "keywords": ["主客问答", "铺排", "兮", "楚地方言"]}
+      ],
+      "referenceAnswer": "《离骚》的比兴成批涌现并贯穿全文，创造了香草美人的比喻象征系统；结构上把事实叙述、幽独抒怀和幻想描写交织起来，前实后虚；语言形式长短不一、韵散相间，形成楚辞体或骚体；又用主客问答、铺排描写，并吸收“兮”等楚地方言。",
+      "source": {"material": "先秦文学（诗歌）", "section": "《离骚》艺术特色", "excerpt": "资料从比兴与香草美人、前实后虚的结构、楚辞体/骚体、主客问答和楚地方言概括《离骚》的艺术特色。"},
+      "tags": ["离骚", "艺术特色"]
+    },
+    {
+      "id": "preqin-short-mengzi",
+      "projectId": "chinese",
+      "courseId": "preqin-literature",
+      "moduleId": "prose",
+      "type": "short_answer",
+      "stem": "简述《孟子》的散文特色。",
+      "scorePoints": [
+        {"id": "dialogue", "label": "采用对话体", "keywords": ["对话体"]},
+        {"id": "eloquence", "label": "雄辩色彩突出，以好辩著称", "keywords": ["雄辩", "好辩"]},
+        {"id": "metaphor", "label": "善用比喻和寓言", "keywords": ["比喻", "寓言"]},
+        {"id": "ideas", "label": "包含仁政、民贵君轻、知人论世、以意逆志等思想", "keywords": ["仁政", "民贵君轻", "知人论世", "以意逆志"]}
+      ],
+      "referenceAnswer": "《孟子》采用对话体，是先秦诸子散文中最具雄辩色彩的，孟子以“好辩”著称，善用比喻和寓言。书中还表达了“仁政”“民贵君轻”以及“知人论世”“以意逆志”等思想。",
+      "source": {"material": "先秦文学（散文）", "section": "《孟子》", "excerpt": "《孟子》采用对话体，最具雄辩色彩，孟子以好辩著称，善用比喻和寓言。"},
+      "tags": ["诸子散文", "孟子"]
+    },
+    {
+      "id": "preqin-short-zhuangzi",
+      "projectId": "chinese",
+      "courseId": "preqin-literature",
+      "moduleId": "prose",
+      "type": "short_answer",
+      "stem": "简述《庄子》的文学特点。",
+      "scorePoints": [
+        {"id": "fable", "label": "以寓言见长", "keywords": ["寓言"]},
+        {"id": "language", "label": "语言汪洋恣肆", "keywords": ["汪洋恣肆"]},
+        {"id": "imagination", "label": "想象丰富", "keywords": ["想象丰富", "想像丰富"]},
+        {"id": "poetic", "label": "富有诗情和浪漫色彩", "keywords": ["诗情", "浪漫"]}
+      ],
+      "referenceAnswer": "《庄子》以寓言见长，语言汪洋恣肆，想象丰富，具有浓郁的诗情和浪漫色彩。全书由内篇、外篇、杂篇组成，代表作有《逍遥游》。",
+      "source": {"material": "先秦文学（散文）", "section": "《庄子》", "excerpt": "《庄子》以寓言见长，语言汪洋恣肆，想象丰富，有浓郁的诗情和浪漫。"},
+      "tags": ["诸子散文", "庄子"]
+    },
+    {
+      "id": "preqin-short-zuozhuan",
+      "projectId": "chinese",
+      "courseId": "preqin-literature",
+      "moduleId": "prose",
+      "type": "short_answer",
+      "stem": "简述《左传》的叙事特点。",
+      "scorePoints": [
+        {"id": "mature", "label": "叙事详备，标志叙事散文成熟", "keywords": ["叙事详备", "叙事散文的成熟"]},
+        {"id": "war", "label": "战争叙事突出，关注战争性质和原因", "keywords": ["战争", "性质", "原因"]},
+        {"id": "character", "label": "通过人物语言表现性格", "keywords": ["人物语言", "人物性格"]},
+        {"id": "tendency", "label": "倾向性明确", "keywords": ["倾向性明确", "歌颂明君贤臣", "揭露和批判"]}
+      ],
+      "referenceAnswer": "《左传》重在叙事，是我国第一部叙事详备的编年体史书，标志叙事散文成熟。它的战争叙事最有代表性，重视战争的性质和原因；善于通过人物语言表现人物性格；作品倾向性明确，歌颂明君贤臣，并揭露、批判统治阶级及战争。",
+      "source": {"material": "先秦文学（散文）", "section": "《左传》", "excerpt": "《左传》叙事详备，战争叙事关注性质和原因，善用人物语言表现性格，且倾向性明确。"},
+      "tags": ["历史散文", "左传"]
+    },
+    {
+      "id": "preqin-short-zhanguoce",
+      "projectId": "chinese",
+      "courseId": "preqin-literature",
+      "moduleId": "prose",
+      "type": "short_answer",
+      "stem": "简述《战国策》的语言艺术。",
+      "scorePoints": [
+        {"id": "style", "label": "语言恣肆辩丽", "keywords": ["恣肆辩丽"]},
+        {"id": "rhetoric", "label": "常用排比、对偶", "keywords": ["排比", "对偶"]},
+        {"id": "influence", "label": "为后代汉赋继承", "keywords": ["汉赋", "继承"]},
+        {"id": "height", "label": "标志先秦散文语言的最高水平", "keywords": ["最高水平"]},
+        {"id": "figures", "label": "以历史故事塑造人物形象", "keywords": ["历史故事", "人物形象", "荆轲"]}
+      ],
+      "referenceAnswer": "《战国策》语言恣肆辩丽，常用排比、对偶，后来被汉赋继承；其语言艺术达到当时最高水平，标志先秦散文语言的最高水平。作品还通过历史故事塑造人物形象，如荆轲。",
+      "source": {"material": "先秦文学（散文）", "section": "《战国策》", "excerpt": "《战国策》语言恣肆辩丽，常用排比、对偶，语言艺术达到当时最高水平，并记录历史故事、塑造人物形象。"},
+      "tags": ["历史散文", "战国策"]
+    },
+    {
+      "id": "preqin-short-hanfeizi",
+      "projectId": "chinese",
+      "courseId": "preqin-literature",
+      "moduleId": "prose",
+      "type": "short_answer",
+      "stem": "简述《韩非子》的散文特点。",
+      "scorePoints": [
+        {"id": "style", "label": "文章锋锐峻刻、冷峻峭拔", "keywords": ["锋锐峻刻", "冷峻峭拔"]},
+        {"id": "fables", "label": "收集、加工、创作并分类汇编大量寓言", "keywords": ["寓言", "分类汇编", "说林", "储说"]},
+        {"id": "genre", "label": "使寓言成为独立文学体裁", "keywords": ["独立", "文学体裁"]},
+        {"id": "essays", "label": "寓言之外多为专题论文", "keywords": ["专题论文"]}
+      ],
+      "referenceAnswer": "《韩非子》文章锋锐峻刻、冷峻峭拔；收集、整理、加工、创作了大量寓言并分类汇编，如《说林》《储说》，使寓言成为一种独立文学体裁，在诸子散文中寓言故事最多；寓言之外的文章多为专题论文。",
+      "source": {"material": "先秦文学（散文）", "section": "《韩非子》", "excerpt": "《韩非子》文章锋锐峻刻、冷峻峭拔，寓言故事最多，使寓言成为独立文学体裁，其他文章多为专题论文。"},
+      "tags": ["诸子散文", "韩非子"]
+    },
+    {
+      "id": "preqin-short-prose-development",
+      "projectId": "chinese",
+      "courseId": "preqin-literature",
+      "moduleId": "prose",
+      "type": "short_answer",
+      "stem": "简述先秦散文的发展脉络。",
+      "scorePoints": [
+        {"id": "early", "label": "春秋末至战国初：《论语》《老子》《国语》《左传》", "keywords": ["春秋末", "战国初", "论语", "老子", "国语", "左传"]},
+        {"id": "middle", "label": "战国中期：《孟子》《庄子》", "keywords": ["战国中期", "孟子", "庄子"]},
+        {"id": "late", "label": "战国末期：《荀子》《韩非子》《战国策》", "keywords": ["战国末期", "荀子", "韩非子", "战国策"]},
+        {"id": "branches", "label": "诸子散文与历史散文两条线索", "keywords": ["诸子散文", "历史散文"]}
+      ],
+      "referenceAnswer": "先秦散文可沿诸子散文和历史散文两条线索观察。春秋末至战国初有诸子散文《论语》《老子》，历史散文《国语》《左传》；战国中期有《孟子》《庄子》；战国末期有《荀子》《韩非子》，历史散文则有《战国策》。",
+      "source": {"material": "先秦文学（散文）", "section": "散文发展脉络", "excerpt": "资料按春秋末至战国初、战国中期、战国末期列出诸子散文与历史散文的代表作品。"},
+      "tags": ["散文", "发展脉络"]
+    },
+    {
+      "id": "preqin-essay-lisao",
+      "projectId": "chinese",
+      "courseId": "preqin-literature",
+      "moduleId": "poetry",
+      "type": "essay",
+      "stem": "论述《离骚》的艺术特色及其文学史影响。",
+      "outlinePoints": [
+        {"id": "bixing", "label": "比兴发展与香草美人系统", "keywords": ["比兴", "香草美人"]},
+        {"id": "structure", "label": "事实、抒情、幻想交织的前实后虚结构", "keywords": ["事实", "抒情", "幻想", "实写", "虚写"]},
+        {"id": "form", "label": "楚辞体/骚体与楚地方言", "keywords": ["楚辞体", "骚体", "兮", "楚地方言"]},
+        {"id": "spirit", "label": "屈骚精神及后世影响", "keywords": ["屈骚精神", "黑暗现实", "民生疾苦", "怀才不遇"]},
+        {"id": "history", "label": "浪漫主义开创及风骚并称", "keywords": ["浪漫主义", "风骚", "最高标准"]}
+      ],
+      "keywords": ["比兴", "香草美人", "前实后虚", "楚辞体", "屈骚精神", "浪漫主义", "风骚"],
+      "referenceAnswer": "《离骚》的艺术特色首先表现为比兴手法的发展：比兴成批出现并贯穿全文，形成香草美人的比喻象征系统。结构上把事实叙述、幽独抒怀和幻想描写交织起来，前一部分实写历史，后一部分虚写理想。语言上创造长短不一、韵散相间的楚辞体或骚体，并使用主客问答、铺排和“兮”等楚地方言。文学史上，屈骚精神中的现实批判、民生关怀和怀才不遇之悲影响了贾谊、司马迁、杜甫等人；屈原被视为浪漫主义的开创者，《离骚》的比兴也被后代继承，“风”“骚”并肩成为诗歌创作的最高标准。",
+      "source": {"material": "先秦文学（诗歌）", "section": "《离骚》艺术特色、地位和影响", "excerpt": "资料从比兴、结构、语言概括《离骚》的艺术特色，并从屈骚精神、浪漫主义开创、比兴继承和风骚并称说明其影响。"},
+      "tags": ["离骚", "论述", "文学史"],
+      "suggestedMinutes": 25
+    },
+    {
+      "id": "preqin-essay-shijing-chuci",
+      "projectId": "chinese",
+      "courseId": "preqin-literature",
+      "moduleId": "poetry",
+      "type": "essay",
+      "stem": "结合《诗经》和《楚辞》，论述中国先秦诗歌现实主义与浪漫主义传统的形成。",
+      "outlinePoints": [
+        {"id": "emotion", "label": "修辞立其诚与抒情传统", "keywords": ["修辞立其诚", "抒情"]},
+        {"id": "realism", "label": "《诗经》开创现实主义文学先河", "keywords": ["诗经", "现实主义"]},
+        {"id": "shijing-art", "label": "《诗经》的赋比兴、叙事、抒情与语言形式", "keywords": ["赋", "比", "兴", "重章叠句", "四言"]},
+        {"id": "romantic", "label": "《楚辞》《离骚》开创浪漫主义文学先河", "keywords": ["楚辞", "离骚", "浪漫主义"]},
+        {"id": "fengsao", "label": "风骚并称及两大诗歌传统", "keywords": ["风骚", "现实主义", "浪漫主义"]}
+      ],
+      "keywords": ["修辞立其诚", "诗经", "现实主义", "楚辞", "离骚", "浪漫主义", "风骚"],
+      "referenceAnswer": "先秦盛行“修辞立其诚”，强调文辞应立足于内心真实情感，表明文学用来抒情，这一观念影响了《诗经》《楚辞》的创作主题。《诗经》开创现实主义文学先河，其赋、比、兴，简洁生动的叙事、抒情主人公形象以及重章叠句和四言句式，构成重要艺术传统。《楚辞》开创浪漫主义文学先河，《离骚》以贯穿全篇的比兴、香草美人象征、事实与幻想交织的结构以及楚辞体，形成浪漫主义典范。《离骚》问世后，“风”“骚”并肩成为古人诗歌创作的最高标准，代表现实主义与浪漫主义诗歌传统。",
+      "source": {"material": "先秦文学（诗歌）", "section": "修辞立其诚、《诗经》艺术成就、《离骚》地位和影响", "excerpt": "资料明确指出《诗经》开创现实主义先河，《楚辞》开创浪漫主义先河，二者均为抒情诗；风骚代表两种诗歌传统。"},
+      "tags": ["诗经", "楚辞", "文学传统"],
+      "suggestedMinutes": 30
+    },
+    {
+      "id": "preqin-essay-philosophers",
+      "projectId": "chinese",
+      "courseId": "preqin-literature",
+      "moduleId": "prose",
+      "type": "essay",
+      "stem": "论述先秦诸子散文的发展脉络及其艺术特征。",
+      "outlinePoints": [
+        {"id": "early", "label": "春秋末至战国初：《论语》《老子》", "keywords": ["论语", "老子", "春秋末", "战国初"]},
+        {"id": "middle", "label": "战国中期：《孟子》《庄子》", "keywords": ["孟子", "庄子", "战国中期"]},
+        {"id": "late", "label": "战国末期：《荀子》《韩非子》", "keywords": ["荀子", "韩非子", "战国末期"]},
+        {"id": "forms", "label": "语录、对话、寓言到专题论文的形式发展", "keywords": ["语录体", "对话体", "寓言", "专题论文"]},
+        {"id": "arts", "label": "雄辩、想象、严密说理与冷峻文风等艺术差异", "keywords": ["雄辩", "想象", "逻辑严密", "冷峻"]}
+      ],
+      "keywords": ["论语", "老子", "孟子", "庄子", "荀子", "韩非子", "语录体", "专题论文"],
+      "referenceAnswer": "先秦诸子散文的发展可分三期：春秋末至战国初有《论语》《老子》，战国中期有《孟子》《庄子》，战国末期有《荀子》《韩非子》。艺术形式由《论语》的简约语录体、《老子》更凝练含蓄且已有谋篇意识，发展到《孟子》的对话和雄辩、《庄子》的寓言、丰富想象与诗情浪漫，再到《荀子》主题明确、结构逻辑严密的专题论文和《韩非子》锋锐冷峻、寓言与专题论文并重的形态。",
+      "source": {"material": "先秦文学（散文）", "section": "散文发展脉络及各家条目", "excerpt": "资料分三个时期列出诸子散文代表，并分别概括《论语》《老子》《孟子》《庄子》《荀子》《韩非子》的形式和语言特点。"},
+      "tags": ["诸子散文", "发展脉络", "艺术特征"],
+      "suggestedMinutes": 30
+    },
+    {
+      "id": "preqin-essay-four-philosophers",
+      "projectId": "chinese",
+      "courseId": "preqin-literature",
+      "moduleId": "prose",
+      "type": "essay",
+      "stem": "比较《孟子》《庄子》《荀子》《韩非子》的散文特点。",
+      "outlinePoints": [
+        {"id": "mengzi", "label": "《孟子》：对话、雄辩、比喻和寓言", "keywords": ["孟子", "对话体", "雄辩", "比喻", "寓言"]},
+        {"id": "zhuangzi", "label": "《庄子》：寓言、汪洋恣肆、想象和浪漫", "keywords": ["庄子", "汪洋恣肆", "想象", "浪漫"]},
+        {"id": "xunzi", "label": "《荀子》：专题论文、逻辑严密、说理透彻", "keywords": ["荀子", "专题论文", "逻辑严密", "说理透彻"]},
+        {"id": "hanfei", "label": "《韩非子》：锋锐冷峻、寓言最多并独立成体", "keywords": ["韩非子", "锋锐峻刻", "冷峻峭拔", "寓言", "独立"]},
+        {"id": "comparison", "label": "比较四家的主要差异", "keywords": ["相比", "比较", "不同", "而"]}
+      ],
+      "keywords": ["孟子", "庄子", "荀子", "韩非子", "雄辩", "想象", "逻辑严密", "冷峻"],
+      "referenceAnswer": "《孟子》采用对话体，雄辩色彩最突出，善用比喻和寓言。《庄子》同样以寓言见长，但语言汪洋恣肆、想象丰富，富有诗情和浪漫。《荀子》大多是主题明确、结构完整、逻辑严密、分析详尽的专题论文，并善用比喻、排比、对偶。《韩非子》文风锋锐峻刻、冷峻峭拔，寓言故事在诸子散文中最多，并使寓言成为独立文学体裁，其他文章多为专题论文。四家分别突出雄辩、浪漫想象、严密说理和冷峻锋锐。",
+      "source": {"material": "先秦文学（散文）", "section": "《孟子》《庄子》《荀子》《韩非子》", "excerpt": "资料分别从对话与雄辩、寓言与想象、专题论文与严密结构、锋锐文风与寓言体裁概括四家。"},
+      "tags": ["诸子散文", "比较", "孟子", "庄子", "荀子", "韩非子"],
+      "suggestedMinutes": 30
+    }
+  ]
+}

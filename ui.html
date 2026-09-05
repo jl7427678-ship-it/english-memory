@@ -36,6 +36,15 @@
       </section>
 
       <section class="page" id="page-library">
+        <section class="course-shelf">
+          <div class="section-heading"><div><div class="eyebrow">课程项目</div><h2>按课程训练</h2></div></div>
+          <button class="course-entry card" data-go-page="preqin-literature">
+            <span class="project-glyph large amber">文</span>
+            <span><b>汉语言 · 先秦文学</b><small>诗歌与散文 · 名词解释、简答题、论述题</small></span>
+            <span class="course-entry-meta"><b>20</b><small>道种子题</small></span>
+            <span class="arrow">→</span>
+          </button>
+        </section>
         <div class="hero">
           <div class="card">
             <div class="row between"><div><h2>把资料扔进来</h2><div class="sub">粘贴文字，或导入 TXT / MD / DOCX / PDF。导入后自动拆成句子与故事节点。</div></div><span class="tag">本地优先</span></div>
@@ -52,6 +61,36 @@
           </div>
         </div>
         <div class="card" style="margin-top:16px"><div class="row between"><div><h2>我的资料</h2><div class="sub">点“开始背”会自动进入上次进度。</div></div><button class="btn" id="loadDemo">载入示例故事</button></div><div class="library-list" id="libraryList"></div></div>
+      </section>
+
+      <section class="page" id="page-preqin-literature">
+        <div class="course-header card">
+          <div><div class="eyebrow">汉语言 / 先秦文学</div><h2>先秦文学</h2><p>依据《先秦文学（诗歌）》与《先秦文学（散文）》整理。基础检查只统计关键点覆盖，不给正式考试分数。</p></div>
+          <img src="assets/mascot/wanwang-reading.webp" width="512" height="512" alt="旺旺趴在书前陪你复习先秦文学" decoding="async">
+        </div>
+        <div class="course-controls card">
+          <div class="course-control-row"><div><div class="label">真实考试题型</div><div class="question-type-tabs" id="questionTypeTabs"></div></div><label><span class="label">知识模块</span><select class="field" id="questionModuleFilter"><option value="all">全部资料</option></select></label></div>
+          <div class="course-plan-row"><span class="label">加入今日计划</span><div id="coursePlanTemplates"></div></div>
+        </div>
+        <div class="question-workspace">
+          <article class="card question-answer-card">
+            <div class="question-meta"><span id="courseQuestionType"></span><span id="courseQuestionModule"></span><span id="courseQuestionProgress"></span></div>
+            <h3 id="courseQuestionStem">正在载入题目…</h3>
+            <textarea id="courseAnswerInput" class="course-answer" placeholder="在这里输入答案。系统只检查资料中的关键词和评分点。"></textarea>
+            <div class="answer-toolbar"><span id="courseWordCount">0 字</span><span id="courseDraftStatus">草稿未保存</span></div>
+            <div class="row course-actions"><button class="btn" id="saveCourseDraft">保存草稿</button><button class="btn primary" id="checkCourseAnswer">检查关键点</button><button class="btn" id="toggleCourseReview">加入待复习</button></div>
+            <div id="courseCheckResult" class="course-check-result" aria-live="polite"></div>
+          </article>
+          <aside class="course-reference-column">
+            <article class="card question-guide">
+              <div class="row between"><button class="btn" id="prevCourseQuestion">← 上一题</button><button class="btn" id="nextCourseQuestion">下一题 →</button></div>
+              <div class="divider"></div>
+              <button class="reference-toggle" id="toggleCourseOutline">查看答题提纲</button><div class="reference-panel" id="courseOutlinePanel" hidden></div>
+              <button class="reference-toggle" id="toggleCourseReference">查看参考答案</button><div class="reference-panel" id="courseReferencePanel" hidden></div>
+              <button class="reference-toggle" id="toggleCourseSource">查看资料依据</button><div class="reference-panel" id="courseSourcePanel" hidden></div>
+            </article>
+          </aside>
+        </div>
       </section>
 
       <section class="page" id="page-training">
@@ -144,8 +183,8 @@ deadline | 截止日期
       <section class="page" id="page-review"><div class="card"><div class="row between"><div><h2>错句复习</h2><div class="sub">“完全不会”和“有点卡”的句子会更快回来。</div></div><button class="btn primary" id="startDue">开始复习到期句</button></div><div class="review-list" id="reviewList"></div></div></section>
 
       <section class="page" id="page-plan">
-        <div class="page-intro"><div class="eyebrow">PLAN</div><h2>学习计划</h2><p>第一版计划模块将在下一阶段接入。现在可以先在“今日”勾选当天的六个学习项目。</p></div>
-        <div class="card plan-preview"><div class="plan-preview-icon">□</div><div><h3>计划功能正在准备</h3><p>后续会加入日期、时间、预计时长、重复、优先级和复习提醒。当前页面不会伪装成已经支持系统级通知。</p></div><button class="btn primary" data-go-page="today">返回今日</button></div>
+        <div class="page-intro"><div class="eyebrow">PLAN</div><h2>学习计划</h2><p>当前先支持先秦文学题量计划；日期、重复和系统通知仍在后续阶段。</p></div>
+        <div class="card course-plan-board"><div class="row between"><div><h3>先秦文学训练</h3><p class="sub">可创建名词解释 × 5、简答题 × 3、论述题 × 1。完成时记录题量和基础覆盖率。</p></div><button class="btn" data-go-page="preqin-literature">进入课程</button></div><div id="coursePlanList" class="course-plan-list"></div></div>
       </section>
 
       <section class="page" id="page-me">

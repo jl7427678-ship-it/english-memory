@@ -157,33 +157,69 @@ Desktop 使用 sidebar，Mobile 使用 bottom navigation。“今日 / 学习库
 
 狗狗 mascot 已使用用户提供的正式旺旺插画资源接入，不允许再用 CSS、emoji 或临时插画替换。仓库中保留 6 个优化后的 WebP 状态：`hello`、`thinking`、`celebrate`、`active`、`reading`、`rest`。当前“今日”欢迎区使用 `hello`，六项计划全部完成后自动切换 `celebrate`；其余状态留给后续真实场景，避免每张卡片都放狗。原始 1254px PNG 未放入站点，网页版本统一为 512px WebP，每张约 27–35 KB。
 
-本次 mascot 接入没有增加或迁移任何 localStorage / IndexedDB 字段。活动中的两个图片状态已经加入 Service Worker 核心离线缓存，缓存版本为 `english-memory-lab-v5-ui-20260905-8`。
+本次 mascot 接入没有增加或迁移任何 localStorage / IndexedDB 字段。活动中的图片状态已经加入 Service Worker 核心离线缓存。
 
 专业名称必须始终写作“土地资源管理”，禁止写成图书馆资源管理、图书情报或图管。
 
-## 9. 后续阶段顺序
+## 9. 汉语言 / 先秦文学 Question Engine V1
+
+已根据用户提供的两份真实资料建立首个专业课课程模板：
+
+- `data/preqin-literature.json`：课程配置与 20 道人工 seed questions
+- `app-6.js`：不侵入旧词汇/串题逻辑的 Question Engine adapter
+- 题量严格为：名词解释 8、简答题 8、论述题 4
+- 所有题目、关键词、评分点、提纲、参考答案和来源摘要只依据《先秦文学（诗歌）》与《先秦文学（散文）》
+- 每题保留 `source.material`、`source.section`、`source.excerpt`
+
+课程的 `allowedTypes` 目前仅为：
+
+- `term_definition`
+- `short_answer`
+- `essay`
+
+禁止默认加入选择题或判断题。Question Engine 必须继续按每个课程/项目自己的 `allowedTypes` 渲染，不能用统一题型比例覆盖汉语言、土地资源管理或考研政治。
+
+当前训练能力：
+
+- 诗歌 / 散文模块筛选
+- 名词解释逐关键点覆盖检查
+- 简答题逐评分点覆盖与遗漏提示
+- 论述题大文本、字数、分段结构提示、提纲与参考答案
+- 查看资料依据
+- 草稿保存
+- 手动加入/移出待复习
+- 创建“名词解释 × 5 / 简答题 × 3 / 论述题 × 1”计划
+- 计划记录完成题量与基础关键词覆盖率
+
+以上检查明确不是语义评分或正式考试分数；未接入 AI 深度评分。新增本地状态位于 `state.questionEngine`，属于向后兼容的新字段，没有修改旧 `docs`、`vocab`、`vocab.progress`、`logs`、`vocabLogs` 或 IndexedDB 结构。
+
+当前 Service Worker cache 为 `english-memory-lab-v5-ui-20260905-9`，离线核心已加入 `app-6.js`、`data/preqin-literature.json` 与旺旺读书插画。新增 `npm run check:questions` 验证课程题型配置、8/8/4 题量、唯一 ID、来源和 schema。
+
+## 10. 后续阶段顺序
 
 1. 完成 TTS 局部修复与回归
 2. 更新本 HANDOFF
 3. 建立 Design Tokens、App Shell、新导航和新版“今日”首页（已完成骨架）
 4. 停止并报告，不继续大规模开发
-5. 下一阶段先接入用户提供的正式 UI 参考图与狗狗 mascot assets，再细化首页视觉
-6. 之后做学习库整合、训练中心题型 adapter、计划模块
-7. 安全后端存在后再接 AI Provider；真实 API key 不得写进公开前端
-8. Safari / UI / Plan 稳定后再做 Italiano 静态词库
+5. 狗狗 mascot assets 与先秦文学 Question Engine V1 已接入
+6. 下一阶段补全通用计划的日期、编辑、删除、重复和提醒；不要把当前课程题型强加给其他项目
+7. 土地资源管理与考研政治必须等各自资料和题型配置，不使用先秦文学题型比例
+8. 安全后端存在后再接 AI Provider；真实 API key 不得写进公开前端
+9. Safari / UI / Plan 稳定后再做 Italiano 静态词库
 
-## 10. 每阶段回归清单
+## 11. 每阶段回归清单
 
 1. `node --check` 检查所有运行时 JS
 2. `npm run check:data`
-3. `npm run check:site`
-4. `npm run check:ui`
-5. 浏览器检查主要交互和 Console
-6. 检查 Service Worker 与离线入口
-7. 检查 TOEIC 核心 1250、完整 11154、IELTS、考研
-8. 刷新后确认 localStorage / IndexedDB 状态仍在
-9. 重大前端更新同步 bump Service Worker cache version 和静态资源版本
+3. `npm run check:questions`
+4. `npm run check:site`
+5. `npm run check:ui`
+6. 浏览器检查主要交互和 Console
+7. 检查 Service Worker 与离线入口
+8. 检查 TOEIC 核心 1250、完整 11154、IELTS、考研
+9. 刷新后确认 localStorage / IndexedDB 状态仍在
+10. 重大前端更新同步 bump Service Worker cache version 和静态资源版本
 
-## 11. 下一位 Codex 的起始要求
+## 12. 下一位 Codex 的起始要求
 
 先读取 GitHub `main` 最新提交和真实代码，再读本文档。保留全部现有功能与数据契约；每次只完成一个清晰阶段。若文档与代码或线上行为冲突，以代码和线上行为为准。不要重新实现已经完成的 TOEIC 静态词库，不要恢复 `vocab-patch.js`，不要进行全量重写。
