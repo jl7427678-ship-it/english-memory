@@ -265,7 +265,7 @@ Phase 0 静态回归已通过全部语法、词库、题库、站点、UI 与存
 
 ## 14. 后续阶段顺序
 
-1. Phase 6–8：真正机考 UI、本地老师、听说读写整理。
+1. Phase 7–8：本地 IELTS / TOEIC 老师与听说读写整理。
 2. Phase 9–11：完成本地系统后才接 serverless AI Gateway、缓存/预算/熔断和管理员总开关。
 3. 土地资源管理与考研政治必须等各自资料和题型配置，不使用先秦文学题型比例。
 4. GitHub Pages 前端不得继续作为未来 API Key 存储位置；AI Gateway 完成前不要新增前端 AI 能力。
@@ -300,7 +300,25 @@ Phase 0 静态回归已通过全部语法、词库、题库、站点、UI 与存
 
 新增运行时文件 `app-11.js` 与 `npm run check:private-library`。语法、词库、先秦题库、存储、计划、Exam Engine、练习数据、私人题库、站点和 UI contract 全部通过。浏览器与真机验证限制同 Phase 4，未声称已完成 IndexedDB 真机容量、iPhone 文件选择器或音频格式兼容验证。
 
-## 17. 每阶段回归清单
+## 17. IELTS / TOEIC 机考界面（Phase 6）
+
+已新增通用但按项目配置的机考 runner，不改 Vocabulary Engine：
+
+- Exam Engine 可选择 `Learning Mode / Exam Mode` 与专项练习、Timed Practice、Full Mock。
+- Full Mock 启动前检查项目要求的题型是否都有本地题目；当前资源不足时明确拒绝，不把小型练习包冒充完整套题。
+- IELTS Reading / 通用阅读使用左侧文章、右侧题目的双栏布局，移动端自动改为单栏。
+- 支持题号导航、已答状态、Review 标记、文章选中文字高亮、上一题/下一题。
+- 答案只在内存中逐键更新，900ms 防抖后进入原有合并写机制；倒计时每秒只更新 UI，不每秒写盘。
+- 交卷后按标准答案完全本地判分，未答计错，错题写入当前 profile 的 `state.examEngine.wrong`，attempts 继续限制为最多 500 条。
+- Listening / TOEIC Part 1–4 共用音频 runner；音频按需从私人题库 IndexedDB 读取，不预缓存、不重复保存、不写播放进度。
+- `question.audio` 已支持 `sha256/start/end/sectionId`，为 questionGroup 音频区间预留；timeupdate 只负责到结束点暂停，不持久化。
+- 私人试卷增加明确的 `examType`；列表可直接进入机考。Answer Key 生成本地判题占位题号，PDF 解析文字作为本地题面，Section 音频按题号区间绑定。没有 Answer Key 时拒绝本地判分。
+- IELTS Listening 非 40 题时明确显示“当前资料非标准 40 题”。
+- 当前 Service Worker cache 为 `english-memory-lab-v5-ui-20260905-16`。
+
+新增运行时文件 `app-12.js` 与 `npm run check:computer-exam`。全部语法与九项 contract / 数据回归通过；浏览器、Console、Service Worker runtime、Safari/iPhone 音频与 IndexedDB 仍需在线上真机验证，未声称已验证。
+
+## 18. 每阶段回归清单
 
 1. `node --check` 检查所有运行时 JS
 2. `npm run check:data`
@@ -316,6 +334,6 @@ Phase 0 静态回归已通过全部语法、词库、题库、站点、UI 与存
 12. 刷新后确认 localStorage / IndexedDB 状态仍在
 13. 重大前端更新同步 bump Service Worker cache version和静态资源版本
 
-## 18. 下一位 Codex 的起始要求
+## 19. 下一位 Codex 的起始要求
 
 先读取 GitHub `main` 最新提交和真实代码，再读本文档。保留全部现有功能与数据契约；每次只完成一个清晰阶段。若文档与代码或线上行为冲突，以代码和线上行为为准。不要重新实现已经完成的 TOEIC 静态词库，不要恢复 `vocab-patch.js`，不要进行全量重写。

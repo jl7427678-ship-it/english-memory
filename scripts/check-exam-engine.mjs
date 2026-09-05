@@ -5,7 +5,7 @@ const [app1,app6,app9,data]=await Promise.all([read('app-1.js'),read('app-6.js')
 const catalog=JSON.parse(data);
 function assert(condition,message){if(!condition)throw new Error(message)}
 
-assert(app1.includes('examEngine:{questions:[],attempts:[],wrong:{},review:{}}'), 'Exam Engine profile state is missing');
+assert(app1.includes('examEngine:{questions:[],attempts:[],wrong:{},review:{},activeSession:null}'), 'Exam Engine profile state is missing');
 for(const type of ['toeic_part_1','toeic_part_2','toeic_part_3','toeic_part_4','toeic_part_5','toeic_part_6','toeic_part_7','ielts_reading','ielts_listening','term_definition','short_answer','essay'])assert(app9.includes(type),`Missing exam type ${type}`);
 assert(app9.includes("chinese:['term_definition','short_answer','essay']"), 'Chinese course types were changed');
 assert(!app9.includes("chinese:['choice'"), 'Chinese course was made choice-first');

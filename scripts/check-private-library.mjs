@@ -8,6 +8,7 @@ assert(app11.includes('if(!await getPrivateBlob(audio.sha256))'),'Audio Blob ded
 assert(app11.includes("$('#retainPrivatePdf').checked"),'PDF retention is not explicit opt-in');
 assert(app11.includes('deletePrivateBlob')&&app11.includes('stillUsed'),'Unreferenced Blob cleanup is missing');
 assert(app11.includes('parsePrivateAnswerKey')&&app11.includes('sections:privateDraft.audios.map'),'Answer preview or Section binding is missing');
+assert(app11.includes('examType')&&ui.includes('privateExamType'),'Private papers are not assigned to an IELTS / TOEIC section');
 assert(ui.includes('MP3 / M4A / WAV')&&ui.includes('不会上传'),'Private import disclosure is incomplete');
 assert(!worker.match(/\.(?:pdf|mp3|m4a|wav)'/i),'Large private files were added to Service Worker precache');
 console.log('Validated profile-isolated private papers, SHA-256 Blob dedupe, PDF opt-in retention, and cache exclusions.');
