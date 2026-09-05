@@ -1,4 +1,4 @@
-const CACHE='english-memory-lab-v5-ui-20260905-5';
+const CACHE='english-memory-lab-v5-ui-20260905-7';
 const CORE=['./','./index.html','./manifest.webmanifest','./icon.svg','./styles.css','./theme.css','./boot.js','./ui.html','./app.js','./app-1.js','./app-2.js','./app-3.js','./app-4.js','./app-5.js','./data/toeic-manifest.json','./data/toeic-core.json'];
 const ALLOWED_REMOTE=['https://raw.githubusercontent.com','https://cdn.jsdelivr.net'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)).then(()=>self.skipWaiting()))});

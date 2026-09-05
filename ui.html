@@ -1,21 +1,38 @@
 <div class="app">
-  <header class="top">
-    <div class="brand"><div class="mark">M</div><div><h1>串题记忆室</h1><p>English Memory Lab · 为自己的材料做主动回忆</p></div></div>
-    <div class="top-actions"><button class="btn" id="installApp" style="display:none">⬇ 安装到设备</button><button class="btn" id="quickReview">⚡ 今日复习</button><button class="btn primary" id="newMaterial">＋ 加资料</button></div>
+  <header class="top app-header">
+    <div class="brand"><div class="mark" aria-hidden="true">M</div><div><h1>Memory Lab</h1><p>把今天要学的，变成真正记得的。</p></div></div>
+    <div class="top-actions"><button class="btn" id="installApp" style="display:none">安装 App</button><button class="btn" id="quickReview">今日复习</button><button class="btn primary" id="newMaterial">＋ 加资料</button></div>
   </header>
   <div class="shell">
-    <aside class="sidebar">
-      <button class="navbtn active" data-page="library"><span class="nav-icon">▦</span>资料库</button>
-      <button class="navbtn" data-page="study"><span class="nav-icon">◫</span>背诵训练</button>
-      <button class="navbtn" data-page="vocab"><span class="nav-icon">Aa</span>背单词</button>
-      <button class="navbtn" data-page="exam"><span class="nav-icon">◆</span>串题考试</button>
-      <button class="navbtn" data-page="review"><span class="nav-icon">↻</span>错句复习</button>
-      <button class="navbtn" data-page="stats"><span class="nav-icon">▥</span>学习统计</button>
-      <button class="navbtn" data-page="settings"><span class="nav-icon">⚙</span>设置</button>
+    <aside class="sidebar" aria-label="主导航">
+      <button class="navbtn active" data-page="today"><span class="nav-icon">⌂</span>今日</button>
+      <button class="navbtn" data-page="library"><span class="nav-icon">▦</span>学习库</button>
+      <button class="navbtn" data-page="training"><span class="nav-icon">◇</span>训练</button>
+      <button class="navbtn" data-page="plan"><span class="nav-icon">□</span>计划</button>
+      <button class="navbtn" data-page="me"><span class="nav-icon">○</span>我的</button>
       <div class="side-foot">所有学习记录默认保存在这个浏览器本地。<br>不用登录，也不会上传你的材料。</div>
     </aside>
     <main class="main">
-      <section class="page active" id="page-library">
+      <section class="page active" id="page-today">
+        <div class="today-welcome">
+          <div><div class="eyebrow">TODAY</div><h2 id="todayGreeting">你好，静！</h2><p>不用把所有事情一起想完。先完成眼前这一小步。</p></div>
+          <div class="today-date" id="todayDate"></div>
+        </div>
+        <div class="today-grid">
+          <article class="card today-plan-card">
+            <div class="row between"><div><div class="eyebrow">今日学习计划</div><h3 id="todayTaskCount">0 / 6 完成</h3></div><div class="estimate"><b id="todayEstimate">0</b><span>分钟</span></div></div>
+            <div class="progress today-progress"><i id="todayPlanBar"></i></div>
+            <div class="today-task-list" id="todayTaskList"></div>
+          </article>
+          <aside class="today-side">
+            <article class="card focus-card"><div class="eyebrow">现在开始</div><h3>先做一轮 TOEIC</h3><p>四选一快速筛词，系统会把慢词和错词自动放回强化轮。</p><button class="btn primary wide" data-go-page="vocab">开始背词</button></article>
+            <article class="card mini-summary"><div><span>待复习</span><b id="todayDueTotal">0</b></div><div><span>今日作答</span><b id="todayAnswerTotal">0</b></div><div><span>连续记录</span><b id="todayActiveDays">0 天</b></div></article>
+          </aside>
+        </div>
+        <section class="project-section"><div class="section-heading"><div><div class="eyebrow">学习项目</div><h3>你的学习库</h3></div><button class="btn" data-go-page="library">查看全部</button></div><div class="project-grid" id="todayProjectGrid"></div></section>
+      </section>
+
+      <section class="page" id="page-library">
         <div class="hero">
           <div class="card">
             <div class="row between"><div><h2>把资料扔进来</h2><div class="sub">粘贴文字，或导入 TXT / MD / DOCX / PDF。导入后自动拆成句子与故事节点。</div></div><span class="tag">本地优先</span></div>
@@ -32,6 +49,17 @@
           </div>
         </div>
         <div class="card" style="margin-top:16px"><div class="row between"><div><h2>我的资料</h2><div class="sub">点“开始背”会自动进入上次进度。</div></div><button class="btn" id="loadDemo">载入示例故事</button></div><div class="library-list" id="libraryList"></div></div>
+      </section>
+
+      <section class="page" id="page-training">
+        <div class="page-intro"><div class="eyebrow">TRAINING</div><h2>训练中心</h2><p>选择一种练习方式，直接进入训练，不用重新设置资料。</p></div>
+        <div class="training-grid">
+          <button class="training-card" data-go-page="vocab"><span class="training-icon">Aa</span><div><b>单词四选一</b><p>快速筛词，错词和慢词自动强化。</p></div><span class="arrow">→</span></button>
+          <button class="training-card" data-go-page="vocab"><span class="training-icon">⌨</span><div><b>单词拼写</b><p>在词库页选择词库后进入中文到英文拼写。</p></div><span class="arrow">→</span></button>
+          <button class="training-card" data-go-page="study"><span class="training-icon">◫</span><div><b>串题背诵</b><p>全文、挖空、首字母、关键词和完整复述。</p></div><span class="arrow">→</span></button>
+          <button class="training-card" data-go-page="exam"><span class="training-icon">◆</span><div><b>串题考试</b><p>随机观点题，调用自己的故事完成回答。</p></div><span class="arrow">→</span></button>
+          <button class="training-card" data-go-page="review"><span class="training-icon">↻</span><div><b>错句复习</b><p>优先复习完全不会和有点卡的句子。</p></div><span class="arrow">→</span></button>
+        </div>
       </section>
 
       <section class="page" id="page-study">
@@ -112,9 +140,20 @@ deadline | 截止日期
 
       <section class="page" id="page-review"><div class="card"><div class="row between"><div><h2>错句复习</h2><div class="sub">“完全不会”和“有点卡”的句子会更快回来。</div></div><button class="btn primary" id="startDue">开始复习到期句</button></div><div class="review-list" id="reviewList"></div></div></section>
 
+      <section class="page" id="page-plan">
+        <div class="page-intro"><div class="eyebrow">PLAN</div><h2>学习计划</h2><p>第一版计划模块将在下一阶段接入。现在可以先在“今日”勾选当天的六个学习项目。</p></div>
+        <div class="card plan-preview"><div class="plan-preview-icon">□</div><div><h3>计划功能正在准备</h3><p>后续会加入日期、时间、预计时长、重复、优先级和复习提醒。当前页面不会伪装成已经支持系统级通知。</p></div><button class="btn primary" data-go-page="today">返回今日</button></div>
+      </section>
+
+      <section class="page" id="page-me">
+        <div class="page-intro"><div class="eyebrow">PROFILE</div><h2>我的学习</h2><p>学习记录只保存在当前浏览器；这里集中放统计、设置与数据迁移入口。</p></div>
+        <div class="profile-summary card"><div class="profile-mark">静</div><div><h3>静的 Memory Lab</h3><p>本地优先 · 无需登录</p></div><div class="profile-metrics"><span><b id="meDocCount">0</b>份资料</span><span><b id="meWordCount">0</b>个词</span></div></div>
+        <div class="training-grid profile-links"><button class="training-card" data-go-page="stats"><span class="training-icon">▥</span><div><b>学习统计</b><p>查看最近七天、资料数量和常卡关键词。</p></div><span class="arrow">→</span></button><button class="training-card" data-go-page="settings"><span class="training-icon">⚙</span><div><b>设置与数据</b><p>朗读、AI 可选设置，以及学习数据导入导出。</p></div><span class="arrow">→</span></button></div>
+      </section>
+
       <section class="page" id="page-stats"><div class="hero"><div class="card"><h2>最近 7 天</h2><div class="sub">每天实际训练过的句子数。</div><div class="stats-chart" id="weekChart"></div></div><div class="card"><h2>总览</h2><div class="grid3" style="margin-top:16px"><div class="metric"><b id="statDocs">0</b><span>资料</span></div><div class="metric"><b id="statSentences">0</b><span>句子</span></div><div class="metric"><b id="statMastered">0</b><span>高熟练句</span></div></div><div class="divider"></div><div class="sub" id="weakWords">训练后，这里会显示你经常卡住的关键词。</div></div></div></section>
 
-      <section class="page" id="page-settings"><div class="card"><h2>设置</h2><div class="sub">网页不强制依赖 AI。你急着背时，本地功能全部可用。</div><div class="divider"></div><div class="formgrid"><div><div class="label">朗读速度</div><input class="field" type="range" min="0.6" max="1.25" step="0.05" id="speechRate"></div><div><div class="label">英语口音</div><select class="field" id="speechLang"><option value="en-US">美式英语 en-US</option><option value="en-GB">英式英语 en-GB</option></select></div></div><div class="divider"></div><h3>可选 AI 深度评分</h3><div class="sub">如果你有 OpenAI-compatible 接口，可以填入。密钥只保存在当前浏览器本地；不填也完全不影响背诵。</div><div class="formgrid" style="margin-top:12px"><div><div class="label">API Endpoint</div><input class="field" id="apiEndpoint" placeholder="例如 https://api.openai.com/v1/chat/completions"></div><div><div class="label">Model</div><input class="field" id="apiModel" placeholder="模型名称"></div></div><div style="margin-top:12px"><div class="label">API Key</div><input class="field" type="password" id="apiKey" placeholder="sk-..."></div><div class="row" style="margin-top:12px"><button class="btn primary" id="saveSettings">保存设置</button><button class="btn danger" id="resetAll">清空全部学习数据</button></div><div class="divider"></div><h3>手机 / 电脑迁移</h3><div class="sub">进度默认只在当前设备。你可以导出一个 JSON 备份，在另一台设备导入继续学。</div><div class="data-actions"><button class="btn" id="exportData">导出学习数据</button><button class="btn" id="importDataBtn">导入学习数据</button><input type="file" id="importDataFile" accept="application/json,.json" hidden></div><div class="divider"></div><div class="sub"><b style="color:var(--text)">评分逻辑</b><br>本地评分：内容覆盖、关键词调用、结构完整、流畅度代理指标。<br>AI评分：额外检查语法、自然度、是否真正回答题目，并给出一版最小修改。</div></div></section>
+      <section class="page" id="page-settings"><div class="card"><h2>设置</h2><div class="sub">网页不强制依赖 AI。你急着背时，本地功能全部可用。</div><div class="divider"></div><div class="formgrid"><div><div class="label">朗读速度</div><input class="field" type="range" min="0.6" max="1.25" step="0.05" id="speechRate"></div><div><div class="label">英语口音</div><select class="field" id="speechLang"><option value="en-US">美式英语 en-US</option><option value="en-GB">英式英语 en-GB</option></select></div></div><div class="sub" style="margin-top:10px"><b style="color:var(--text)">🔊 朗读</b>使用设备自带文字语音，Safari、Chrome、Edge 均可尝试使用。<br><b style="color:var(--text)">🎙️ 语音识别</b>是把你的声音转成文字，目前优先支持 Chrome / Edge；两者不是同一功能。</div><div class="divider"></div><h3>可选 AI 深度评分</h3><div class="sub">如果你有 OpenAI-compatible 接口，可以填入。密钥只保存在当前浏览器本地；不填也完全不影响背诵。</div><div class="formgrid" style="margin-top:12px"><div><div class="label">API Endpoint</div><input class="field" id="apiEndpoint" placeholder="例如 https://api.openai.com/v1/chat/completions"></div><div><div class="label">Model</div><input class="field" id="apiModel" placeholder="模型名称"></div></div><div style="margin-top:12px"><div class="label">API Key</div><input class="field" type="password" id="apiKey" placeholder="sk-..."></div><div class="row" style="margin-top:12px"><button class="btn primary" id="saveSettings">保存设置</button><button class="btn danger" id="resetAll">清空全部学习数据</button></div><div class="divider"></div><h3>手机 / 电脑迁移</h3><div class="sub">进度默认只在当前设备。你可以导出一个 JSON 备份，在另一台设备导入继续学。</div><div class="data-actions"><button class="btn" id="exportData">导出学习数据</button><button class="btn" id="importDataBtn">导入学习数据</button><input type="file" id="importDataFile" accept="application/json,.json" hidden></div><div class="divider"></div><div class="sub"><b style="color:var(--text)">评分逻辑</b><br>本地评分：内容覆盖、关键词调用、结构完整、流畅度代理指标。<br>AI评分：额外检查语法、自然度、是否真正回答题目，并给出一版最小修改。</div></div></section>
     </main>
   </div>
 </div>

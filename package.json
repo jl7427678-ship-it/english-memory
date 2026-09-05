@@ -6,7 +6,8 @@
     "dev": "vite --host 0.0.0.0 --port 4173",
     "build:toeic": "node scripts/build-toeic.mjs",
     "check:data": "node scripts/check-vocab-data.mjs",
-    "check:site": "node scripts/check-static-site.mjs"
+    "check:site": "node scripts/check-static-site.mjs",
+    "check:ui": "node scripts/check-ui-contract.mjs"
   },
   "devDependencies": {
     "opencc-js": "1.0.5",

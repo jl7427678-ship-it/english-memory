@@ -2,370 +2,186 @@
 
 更新时间：2026-09-05
 
-## 1. 项目位置
+## 1. 项目与优先级
 
-- GitHub 仓库：`jl7427678-ship-it/english-memory`
-- GitHub Pages：`https://jl7427678-ship-it.github.io/english-memory/`
+- GitHub：`jl7427678-ship-it/english-memory`
 - 默认分支：`main`
-- 当前为纯静态前端/PWA，无后端。
-- 最新已确认 Pages workflow 部署成功的 commit：`4948307681df4fdd014e985b9e91d1bed8c8d00a`。
+- GitHub Pages：`https://jl7427678-ship-it.github.io/english-memory/`
+- 纯静态 HTML / CSS / JavaScript PWA，无后端。
+- 本轮实施起点：GitHub `main` commit `a4062b28bfb47666d7a1d77c083e9ebcc3eda203`。
+- 旧 HANDOFF 曾停留在 `4948307...`，已经过时；永远以 GitHub `main` 最新提交、当前代码和线上行为为准。
 
-## 2. 用户真正想要的产品
+开发必须渐进进行。禁止全量重写、另建项目、强迁 React/Vue，或者为了 UI 调整破坏业务逻辑。
 
-这是一个低认知负担、偏“记忆训练”的英语学习网页，当前主要服务 TOEIC Speaking & Writing，后续扩展 IELTS、考研英语、意大利语。
+## 2. 必须保留的本地数据契约
 
-用户不想做复杂设置，更希望打开就能背。手机 iPhone Safari 和桌面浏览器都要好用，并能“添加到主屏幕”当作 PWA。
+- localStorage key：`englishMemoryLab_v1`
+- 内置大词库 IndexedDB：`englishMemoryLab_vocab_cache_v1`
+- IndexedDB object store：`decks`
+- 内置词库学习进度：`state.vocab.progress`
+- 进度 key：`deckId|word`，不能退回仅使用 `word`
+- 词库数据与用户进度分离，更新静态词库不能清空现有进度。
 
-核心要求：
+任何 UI 或导航重构都必须保留这些 key 和数据形状。除非有明确迁移方案，不得更名。
 
-1. 串题/故事背诵
-2. 句子挖空输入
-3. 口语复述
-4. TOEIC / IELTS 串题考试
-5. 类似百词斩的四选一筛词
-6. 中文释义不能出现 `N/A / undefined / 空白`
-7. 大词库第一次加载后本机缓存
-8. UI 简洁、紫色系、移动端优先
-9. 以后继续增加意大利语学习功能
+## 3. 当前代码结构
 
-## 3. 当前文件结构
+- `index.html`：页面入口及 PWA 元信息
+- `boot.js`：加载 `ui.html` 和 `app.js`
+- `ui.html`：现有页面 DOM
+- `styles.css`：基础样式和功能组件样式
+- `theme.css`：视觉主题、响应式和移动端导航
+- `app.js`：按顺序加载 `app-1.js` 至 `app-5.js`
+- `app-1.js`：状态、localStorage、基础工具
+- `app-2.js`：串题训练、TTS、语音识别、词库配置和 IndexedDB
+- `app-3.js`：内置词库安装、缓存、自定义词库及训练会话
+- `app-4.js`：词汇答题、拼写、考试、AI 可选评分、错句复习
+- `app-5.js`：统计、文件导入、设置、数据备份、PWA 安装
+- `service-worker.js`：PWA 缓存与离线回退
+- `data/`：仓库内静态 TOEIC 数据
+- `scripts/`：词库构建和静态检查
 
-主要文件：
+`vocab-patch.js` 已经退出运行时并从仓库删除。不要重新创建或加载它。
 
-- `index.html`：入口
-- `boot.js`：加载 `ui.html` 和主 JS
-- `ui.html`：页面 DOM
-- `styles.css`：主要样式
-- `theme.css`：UI 补充主题
-- `app.js`：按顺序加载 `app-1.js` ~ `app-5.js` 以及 `vocab-patch.js`
-- `app-1.js` ~ `app-5.js`：主业务逻辑拆分文件
-- `vocab-patch.js`：目前用于覆盖/增强内置词库逻辑，重点是 TOEIC
-- `service-worker.js`：PWA 缓存
-- `manifest.webmanifest`
-- `.github/workflows/pages.yml`：GitHub Pages 自动部署
+## 4. 已完成的 TOEIC 静态词库基础设施
 
-注意：当前代码是迭代过程中拆出来的，`vocab-patch.js` 是补丁式覆盖，不是理想最终架构。Codex 后续应逐渐把补丁逻辑整理进正式模块，而不是继续无限叠 patch。
+TOEIC 不再在手机运行时请求 Hugging Face Dataset Viewer，也不再发送约 111 次 `/rows` 请求。
 
-## 4. 已有功能
+当前文件：
 
-### 串题/句子背诵
+- `data/toeic-core.json`：核心 1250 词
+- `data/toeic-full-01.json` 至 `data/toeic-full-12.json`：完整 11154 词
+- `data/toeic-manifest.json`：版本、数量、分片和校验信息
+- `scripts/build-toeic.mjs`：开发阶段一次性生成数据
+- `scripts/check-vocab-data.mjs`：检查数量、重复项和中文释义
+- `scripts/check-static-site.mjs`：检查入口、词库地址、缓存与进度契约
 
-- TXT / MD 粘贴或导入
-- DOCX / PDF 浏览器解析
-- 自动拆句、故事节点
-- 完整阅读
-- 30% 挖空
-- 60% 挖空
-- 首字母提示
-- 关键词提示
-- 完整复述
-- 英语 TTS
-- 浏览器语音识别（支持时）
-- 本地评分：覆盖率、关键词、完整度
-- 可选 AI 深度评分（用户自己填 API）
-- 熟练度评级与错句复习
+构建阶段已经完成繁体转简体、去重、无效中文释义过滤和重要度排序。运行时从 GitHub Pages 同源静态 JSON 加载，再写入 IndexedDB。
 
-### 写作挖空
-
-- 输入框逐空填写
-- Enter 跳下一个空
-- 最后一个 Enter 自动检查
-- 正确绿色 / 错误红色
-- 可修改后重新检查
-- 百分比成绩
-
-### 单词学习
-
-- 英文 → 中文四选一
-- 桌面 1/2/3/4 快捷键
-- 中文 → 英文拼写
-- 反应速度影响强化次数：
-  - 错：5 次
-  - 慢正确：3 次
-  - 犹豫：2 次
-  - 秒选：1 次
-- 强化轮答错会回流
-- 1/3/7/14/30 天复习思路
-- 100 / 300 / 500 / 全部 批次
-- IndexedDB 缓存内置词库
-- localStorage 保存主要学习状态
+禁止恢复 Hugging Face Runtime Dataset API。
 
 ## 5. 当前内置词库
 
-### TOEIC
+| 词库 | 数量 | 数据方式 |
+| --- | ---: | --- |
+| TOEIC 核心 | 1250 | 同源静态 JSON + IndexedDB |
+| TOEIC 完整 | 11154 | manifest + 12 分片 + IndexedDB |
+| IELTS 核心 | 约 4974 | WordTyper JSON + IndexedDB |
+| 考研英语 | 约 4787 | WordTyper JSON + IndexedDB |
 
-目标保留两个：
-
-- `TOEIC 核心 1250`
-- `TOEIC 完整 11154`
-
-当前 TOEIC 数据来自：
-
-`kknono668/toeic-vocab-tw`
-
-当前 `vocab-patch.js` 使用 Hugging Face Dataset Viewer `/rows` API，每 100 词一批拉取。
-
-代码当前已经改成：
-
-- 单路下载
-- 每批 100 行
-- 20 秒超时
-- 对 429 / 408 / 5xx 自动重试
-- 指数/递增等待：2.5s、5s、10s、18s、30s、45s
-- 每约 2000 词主动暂停
-- 中文释义过滤：N/A / null / undefined / 空释义等不能进入题目
-- 繁体 → 简体使用 `opencc-js`
-
-### 当前实际问题
-
-用户之前安装 `TOEIC 完整 11154` 时，在大约 2200 词卡住。
-
-这是旧的 6 路并发版本造成的 Hugging Face 匿名接口限流。最新版本已经改为单路稳定下载，但**用户还没有确认新版本是否完整安装成功**。
-
-即使最新版本可用，长期仍不推荐运行时从 Hugging Face 拉 11154 词。
-
-## 6. Codex 的第一优先级：彻底解决 TOEIC 完整词库加载
-
-不要继续依赖浏览器实时请求 Hugging Face 111 次。
-
-推荐最终方案：**开发阶段一次性预处理词库，生成静态 JSON 放在本仓库，网页运行时只请求自己 GitHub Pages 同源文件。**
-
-建议实现：
-
-```text
-data/
-  toeic-core.json
-  toeic-full-01.json
-  toeic-full-02.json
-  ...
-  toeic-full-12.json
-```
-
-每个 full chunk 约 800~1000 词，避免单文件过大。
-
-增加构建脚本，例如：
-
-```text
-scripts/build-toeic.mjs
-```
-
-脚本负责：
-
-1. 下载原始 TOEIC 数据
-2. 只保留需要字段
-3. 去重
-4. 删除无中文释义数据
-5. 繁体转简体（最好在构建阶段完成）
-6. 根据 `star_rating` 排序
-7. 生成核心 1250
-8. 生成完整分片
-9. 输出 manifest，例如 `data/toeic-manifest.json`
-
-运行时：
-
-- 核心词库读取 `toeic-core.json`
-- 完整版并行/顺序加载本仓库静态 chunks
-- IndexedDB 缓存
-- 不再调用 Hugging Face Dataset Viewer
-
-这会比现在稳定很多，也是用户明确更希望的方案。
-
-## 7. IELTS URL（2026-09-05 线上复核）
-
-线上仓库实际存在的文件是：
+IELTS 正确地址：
 
 `https://raw.githubusercontent.com/grhliu/wordtyper-vocabularies/main/vocabularies/ielts_core.json`
 
-`ielts.json` 经 GitHub Pages 线上测试返回 404；不要改成该地址。
+`ielts.json` 不存在，不要改回去。
 
-该词库约 4974 词。
+## 6. 必须保留的已有功能
 
-请检查 `app-4.js` 中 `BUILTIN_VOCAB.ielts_core` 并修正。
+### 词汇
 
-考研主词库之前使用约 4787 词的 `kaoyan.json`。
+- 英文到中文四选一
+- 中文到英文拼写
+- 100 / 300 / 500 / 全部批次
+- 桌面 1 / 2 / 3 / 4 快捷键
+- 根据正确率和反应速度安排 1 / 2 / 3 / 5 次强化
+- 强化轮错词回流
+- 1 / 3 / 7 / 14 / 30 日复习
+- 自定义词库
+- 内置词库 IndexedDB 缓存
+- localStorage 学习状态
 
-## 8. 意大利语下一阶段需求
+### 串题 / 写作
 
-用户刚提出要找“意大利语 ↔ 汉语对应词库”。
+- TXT / Markdown / DOCX / PDF 导入
+- 自动拆句和故事节点
+- 完整阅读、30% 挖空、60% 挖空、首字母、关键词、完整复述
+- 逐空输入、Enter 下一空、最后一空自动检查
+- 正确绿色、错误红色、修改后重新检查、百分比成绩
+- TTS 朗读
+- Speech Recognition 语音识别（浏览器支持时）
+- 本地评分、熟练度、错句复习、串题考试
+- 用户自行配置的可选 OpenAI-compatible AI 评分
 
-希望最终在同一个 App 中增加：
+### PWA
 
-- 🇮🇹 意大利语核心词库
-- 🇮🇹 意大利语完整词库
+- GitHub Pages Actions 部署
+- Service Worker 离线回退
+- iPhone 添加到主屏幕提示
+- 导出 / 导入本地学习数据
 
-优先考虑的开放数据来源：
+## 7. Safari / iPhone TTS 修复（本轮）
 
-### Wikidict / open-dict-data
+根因不是“Safari 完全不支持朗读”。TTS 使用 `window.speechSynthesis`；语音识别使用 `SpeechRecognition / webkitSpeechRecognition`，两者兼容范围不同。
 
-已有 `it-zh`（Italian → Chinese）和 `zh-it`（Chinese → Italian）语言对。
+旧词汇自动朗读代码在 `setTimeout(..., 80)` 后调用 `speak()`，可能脱离 Safari 认可的用户 gesture。旧 `speak()` 还会在每次播放前无条件 `cancel()`，没有等待 voice 列表，也没有处理 Safari 取消后立刻播放的不稳定性。
 
-适合生成纯单词/短释义词库。
+当前修复：
 
-### Kaikki / Wiktionary
+- 首次 pointer / keyboard 交互初始化 speech synthesis
+- 监听 `voiceschanged`
+- 缓存与当前 `en-US` / `en-GB` 匹配的英语 voice
+- 手动“朗读 / 发音”按钮直接在点击处理函数中调用 `speak`
+- 移除词汇自动朗读外层 80ms 定时器
+- 仅在已有朗读或待播内容时 cancel，并延迟约 70ms 重启
+- 自动朗读在尚未完成首次交互时安静跳过，不阻塞训练
+- TTS 失败不影响四选一、拼写或串题流程
+- 设置页明确区分“朗读”和“语音识别”
 
-机器可读数据丰富，可补：
+当前只完成代码层兼容修复。尚未在真实 iPhone Safari、iPhone 主屏幕 PWA 或 macOS Safari 上验证声音输出；后续不得把代码检查写成真机验证。
 
-- 词性
-- 词形变化
-- 释义
-- 可能的发音等
+## 8. 新 App Shell 与今日首页（本轮已完成骨架）
 
-但原始数据较大，必须开发阶段预处理，不要让手机运行时直接下载。
+已经在现有技术基础上建立统一 Design Tokens 和导航骨架：
 
-### Tatoeba
+- 今日
+- 学习库
+- 训练
+- 计划
+- 我的
 
-适合补充 Italian ↔ Chinese 例句。
+Desktop 使用 sidebar，Mobile 使用 bottom navigation。“今日 / 学习库 / 训练”是核心行为，“计划”负责调度，“我的”是辅助入口。
 
-长期可以让意大利语词卡包含：
+当前已完成：
 
-```text
-parlare
-说；讲话
-Vorrei parlare con te.
-我想和你谈谈。
-```
+- 新版“今日”默认首页
+- 当天 6 项学习清单、完成数量、剩余预计时间和进度条
+- TOEIC 背词与串题可进入现有功能；尚未开发的项目明确显示“准备中 / 规划中”
+- 学习项目卡：TOEIC 背词、TOEIC 串题、Italiano、考研政治、汉语言、土地资源管理
+- 训练中心聚合现有四选一、拼写、串题背诵、串题考试和错句复习入口
+- 计划页仅提供诚实的功能预告，不伪造通知能力
+- “我的”聚合统计、设置和数据迁移入口
+- 添加 `todayChecklist` 作为 localStorage 状态中的兼容性字段；没有更名或迁移旧字段
+- 添加 `scripts/check-ui-contract.mjs`，检查静态 ID、页面、导航目标和核心项目名称
 
-### 意大利语推荐架构
+视觉方向：Apple / iOS inspired，clean、bright、minimal、airy、friendly、cute but not childish。使用大留白、圆角卡片、克制色彩与柔和阴影。
 
-最好同 TOEIC 一样采用静态预处理：
+狗狗 mascot 必须优先使用用户后续提供的正式图片资源。未收到资源前，不允许用 CSS、emoji 或临时插画伪造另一只狗。
 
-```text
-data/
-  italian-core.json
-  italian-full-01.json
-  italian-full-02.json
-  ...
-```
+专业名称必须始终写作“土地资源管理”，禁止写成图书馆资源管理、图书情报或图管。
 
-并增加 build script，避免运行时依赖外站。
+## 9. 后续阶段顺序
 
-核心版可考虑按 CEFR 做：
+1. 完成 TTS 局部修复与回归
+2. 更新本 HANDOFF
+3. 建立 Design Tokens、App Shell、新导航和新版“今日”首页（已完成骨架）
+4. 停止并报告，不继续大规模开发
+5. 下一阶段先接入用户提供的正式 UI 参考图与狗狗 mascot assets，再细化首页视觉
+6. 之后做学习库整合、训练中心题型 adapter、计划模块
+7. 安全后端存在后再接 AI Provider；真实 API key 不得写进公开前端
+8. Safari / UI / Plan 稳定后再做 Italiano 静态词库
 
-- A1-A2：约 1500~2500 高频生活词
-- B1-B2：进一步扩展
-- Full：完整 Italian → Chinese 词库
+## 10. 每阶段回归清单
 
-如果没有可靠 CEFR 标注，不要伪造等级。可以先按频率源或公开 CEFR 数据做交叉匹配。
+1. `node --check` 检查所有运行时 JS
+2. `npm run check:data`
+3. `npm run check:site`
+4. `npm run check:ui`
+5. 浏览器检查主要交互和 Console
+6. 检查 Service Worker 与离线入口
+7. 检查 TOEIC 核心 1250、完整 11154、IELTS、考研
+8. 刷新后确认 localStorage / IndexedDB 状态仍在
+9. 重大前端更新同步 bump Service Worker cache version 和静态资源版本
 
-## 9. 数据格式建议
+## 11. 下一位 Codex 的起始要求
 
-未来所有内置词库统一一个 schema：
-
-```json
-{
-  "id": "toeic_full",
-  "title": "TOEIC 完整",
-  "language": "en",
-  "targetLanguage": "zh-CN",
-  "version": "2026.09",
-  "words": [
-    {
-      "word": "negotiate",
-      "meaning": "协商；谈判",
-      "phonetic": "",
-      "pos": "v.",
-      "example": "",
-      "exampleZh": "",
-      "tags": ["TOEIC"],
-      "rank": 1
-    }
-  ]
-}
-```
-
-运行时学习进度不要写回词库对象本体，继续存 `state.vocab.progress` / IndexedDB，避免升级词库版本时丢失用户进度。
-
-## 10. UI 风格
-
-当前视觉方向：
-
-- Accent：`#6c63e8` / `#8b7cf6`
-- 浅灰紫背景
-- 24px 大圆角卡片
-- 柔和阴影
-- 紫色渐变主按钮
-- desktop：左侧 sticky 导航
-- mobile：底部导航 + iOS safe area
-- 单词训练尽量一屏只聚焦一个词
-- 手机按钮必须大、易点
-- 输入框至少 16px 字号，防 Safari 自动缩放
-
-不要把 UI 改成复杂后台管理系统。
-
-## 11. PWA / 部署
-
-- GitHub Pages 已启用 Source = GitHub Actions
-- `.github/workflows/pages.yml` 自动部署 `main`
-- Service Worker 目前对同源资源采用 network-first 思路，以减少用户一直吃旧缓存的问题
-- 之前出现过新词库卡片因 PWA 缓存不更新而看不到的问题，所以每次重大 JS 更新要同步 bump cache/version
-
-建议 Codex 后续：
-
-1. 加一个明确的 `APP_VERSION`
-2. 页面设置页显示版本号
-3. service worker cache 名由 `APP_VERSION` 派生
-4. 新版本激活后可提示“发现新版，点此刷新”
-
-这样以后调试会简单很多。
-
-## 12. 已知工程债务
-
-1. `vocab-patch.js` 是临时补丁结构，应最终整合
-2. `app-1.js`~`app-5.js` 是人为拆分，不是模块化工程
-3. 没有 Vite/npm 正式构建系统
-4. 没有自动测试
-5. 无真正浏览器 E2E 测试
-6. 大词库处理仍依赖客户端过多
-7. API Key 当前如果用户填入，会保存在浏览器本地；不能把任何真实 key commit 到 public GitHub
-8. 如果未来多人共享 AI 评分，需要后端 proxy，不能在 public 前端内置 key
-
-Codex 可以考虑逐步迁移到 Vite，但不要一次重写所有功能。优先保持线上可用，分阶段迁移。
-
-## 13. 建议 Codex 接手后的执行顺序
-
-第一阶段：稳定当前版本
-
-1. 拉取仓库并跑本地静态站
-2. 检查 Console 是否有 JS error
-3. 验证 IELTS `ielts_core.json` URL
-4. 把 TOEIC 11154 预处理成仓库静态分片
-5. 删除/停用浏览器实时 Hugging Face 下载逻辑
-6. 测试 TOEIC 核心和完整版：安装 → 四选一 → 拼写 → 刷新 → IndexedDB 恢复
-7. 验证 GitHub Pages
-
-第二阶段：意大利语
-
-1. 调研并下载 Wikidict `it-zh`
-2. 规范化为统一 schema
-3. 清理无中文、重复、短语异常项
-4. 生成 Italian Full 静态 chunks
-5. 选择可靠频率/CEFR 数据生成 Italian Core
-6. 可选用 Tatoeba 补例句
-7. UI 增加 Italian 分类
-8. 增加 Italian TTS（`it-IT`）
-
-第三阶段：工程整理
-
-1. 给词库单独建立 `vocab/` 模块
-2. 提取 IndexedDB service
-3. 提取 spaced repetition service
-4. 添加基本单元测试
-5. 再评估是否迁移 Vite
-
-## 14. 用户体验要求
-
-用户希望 Codex“直接做”，而不是给很多教程。
-
-遇到问题：
-
-- 优先自己读代码、查日志、修复
-- 不要让用户反复手动配置
-- 如果确实必须用户操作，只要求一次、一个最小动作
-- 不要因为某个外部 API 不稳定就让用户一直重试
-- 能静态打包的资源尽量静态打包
-
-## 15. Codex 第一条建议指令
-
-打开仓库后可以直接执行：
-
-> Read `CODEX_HANDOFF.md` first. Inspect the current codebase and keep all existing features working. First fix the vocabulary infrastructure: correct the IELTS source to `ielts.json`, replace the runtime Hugging Face TOEIC full-deck downloader with build-time generated same-origin static JSON chunks, preserve IndexedDB progress, and verify both TOEIC Core 1250 and TOEIC Full 11154 on mobile-sized and desktop layouts. Do not rewrite the whole app at once. After TOEIC is stable, prepare an Italian→Chinese vocabulary ingestion pipeline using Wikidict/open-dict-data, with an Italian core deck and a full deck.
+先读取 GitHub `main` 最新提交和真实代码，再读本文档。保留全部现有功能与数据契约；每次只完成一个清晰阶段。若文档与代码或线上行为冲突，以代码和线上行为为准。不要重新实现已经完成的 TOEIC 静态词库，不要恢复 `vocab-patch.js`，不要进行全量重写。
