@@ -2,7 +2,7 @@
   for(const src of ['app-1.js','app-2.js','app-3.js','app-4.js','app-5.js','app-6.js']){
     await new Promise((resolve,reject)=>{
       const s=document.createElement('script');
-  s.src=src+'?v=20260905-9';
+  s.src=src+'?v=20260905-10';
       s.onload=resolve;
       s.onerror=()=>reject(new Error('加载失败：'+src));
       document.body.appendChild(s);

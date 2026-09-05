@@ -1,6 +1,7 @@
 const QUESTION_CATALOG_URL='data/preqin-literature.json';
 let questionCatalog=null;
 const courseView={type:'term_definition',module:'all',index:0};
+let courseDraftTimer=null;
 
 async function loadQuestionCatalog(){
   if(questionCatalog)return questionCatalog;
@@ -56,10 +57,19 @@ function setReferencePanel(button,panel,showLabel,hideLabel){
 
 function saveCourseDraft(question,notify=true){
   if(!question)return;
+  clearTimeout(courseDraftTimer);courseDraftTimer=null;
   state.questionEngine.drafts[question.id]=$('#courseAnswerInput').value;
-  save();
+  save({immediate:notify});
   $('#courseDraftStatus').textContent='草稿已保存';
   if(notify)toast('草稿已保存');
+}
+
+function scheduleCourseDraftSave(question){
+  if(!question)return;
+  state.questionEngine.drafts[question.id]=$('#courseAnswerInput').value;
+  clearTimeout(courseDraftTimer);
+  $('#courseDraftStatus').textContent='正在保存…';
+  courseDraftTimer=setTimeout(()=>saveCourseDraft(question,false),800);
 }
 
 function courseTypeLabel(type){
@@ -180,7 +190,7 @@ function startCoursePlan(id){
 }
 
 $('#questionModuleFilter').onchange=event=>{courseView.module=event.target.value;courseView.index=0;renderPreqinQuestion()};
-$('#courseAnswerInput').oninput=()=>{$('#courseWordCount').textContent=countChineseWords($('#courseAnswerInput').value)+' 字';$('#courseDraftStatus').textContent='草稿未保存'};
+$('#courseAnswerInput').oninput=()=>{$('#courseWordCount').textContent=countChineseWords($('#courseAnswerInput').value)+' 字';scheduleCourseDraftSave(currentCourseQuestion())};
 $('#saveCourseDraft').onclick=()=>saveCourseDraft(currentCourseQuestion());
 $('#checkCourseAnswer').onclick=checkCourseAnswer;
 $('#toggleCourseReview').onclick=()=>{const question=currentCourseQuestion();if(!question)return;if(state.questionEngine.review[question.id])delete state.questionEngine.review[question.id];else state.questionEngine.review[question.id]={addedAt:Date.now(),courseId:question.courseId};save();$('#toggleCourseReview').textContent=state.questionEngine.review[question.id]?'移出待复习':'加入待复习';toast(state.questionEngine.review[question.id]?'已加入待复习':'已移出待复习')};

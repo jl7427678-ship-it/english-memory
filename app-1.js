@@ -3,7 +3,24 @@ const defaultState={docs:[],activeDoc:null,study:{index:0,mode:'full'},logs:{},v
 let state=load(); state.vocab=state.vocab||{decks:[],activeDeck:null,session:null,builtinInstalled:{},progress:{}}; state.vocab.decks=state.vocab.decks||[]; state.vocab.builtinInstalled=state.vocab.builtinInstalled||{}; state.vocab.progress=state.vocab.progress||{}; state.vocabLogs=state.vocabLogs||{}; state.todayChecklist=state.todayChecklist||{}; state.questionEngine=state.questionEngine||{}; state.questionEngine.drafts=state.questionEngine.drafts||{}; state.questionEngine.review=state.questionEngine.review||{}; state.questionEngine.checks=state.questionEngine.checks||{}; state.questionEngine.planTasks=state.questionEngine.planTasks||[]; state.questionEngine.activePlanId=state.questionEngine.activePlanId||null; state.settings=state.settings||{}; state.settings.vocabBatchSize=state.settings.vocabBatchSize||'100'; let recognition=null; let examQ=0; let vocabAdvanceTimer=null; const builtinDeckCache=new Map(); const deckIndexCache=new WeakMap();
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 function load(){try{return {...structuredClone(defaultState),...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch{return structuredClone(defaultState)}}
-function save(){localStorage.setItem(KEY,JSON.stringify(state));refreshDashboard()}
+const STATE_WRITE_DELAY=900,STATE_WRITE_MIN_INTERVAL=5000;
+let stateWriteTimer=null,lastStateWrite=0;
+function refreshAfterStateChange(){if(typeof refreshDashboard==='function')refreshDashboard()}
+function persistStateNow({refresh=false}={}){
+  clearTimeout(stateWriteTimer);stateWriteTimer=null;
+  localStorage.setItem(KEY,JSON.stringify(state));lastStateWrite=Date.now();
+  if(refresh)refreshAfterStateChange();
+}
+function save({immediate=false,refresh=true}={}){
+  if(immediate){persistStateNow({refresh});return}
+  if(refresh)refreshAfterStateChange();
+  if(stateWriteTimer)return;
+  const sinceLast=Date.now()-lastStateWrite;
+  const delay=Math.max(STATE_WRITE_DELAY,STATE_WRITE_MIN_INTERVAL-sinceLast);
+  stateWriteTimer=setTimeout(()=>persistStateNow(),delay);
+}
+window.addEventListener('pagehide',()=>persistStateNow());
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')persistStateNow()});
 function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1800)}
 function nav(page){const parent={study:'training',vocab:'training',exam:'training',review:'training','preqin-literature':'library',stats:'me',settings:'me'}[page]||page;$$('.page').forEach(x=>x.classList.toggle('active',x.id==='page-'+page));$$('.navbtn').forEach(x=>x.classList.toggle('active',x.dataset.page===parent));if(page==='today')renderToday();if(page==='me')renderProfileSummary();if(page==='review')renderReview();if(page==='stats')renderStats();if(page==='exam')renderExam();if(page==='vocab')renderVocabHome();if(page==='preqin-literature')renderPreqinCourse();if(page==='plan')renderCoursePlans();window.scrollTo({top:0,behavior:'smooth'})}
 $$('.navbtn').forEach(b=>b.addEventListener('click',()=>nav(b.dataset.page)));

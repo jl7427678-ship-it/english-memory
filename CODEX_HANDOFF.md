@@ -8,7 +8,7 @@
 - 默认分支：`main`
 - GitHub Pages：`https://jl7427678-ship-it.github.io/english-memory/`
 - 纯静态 HTML / CSS / JavaScript PWA，无后端。
-- 本轮实施起点：GitHub `main` commit `a4062b28bfb47666d7a1d77c083e9ebcc3eda203`。
+- 当前连续开发起点：GitHub `main` commit `5dbf5446ac65fd20e38ab838c2cf91bfe871d6b2`。
 - 旧 HANDOFF 曾停留在 `4948307...`，已经过时；永远以 GitHub `main` 最新提交、当前代码和线上行为为准。
 
 开发必须渐进进行。禁止全量重写、另建项目、强迁 React/Vue，或者为了 UI 调整破坏业务逻辑。
@@ -31,12 +31,13 @@
 - `ui.html`：现有页面 DOM
 - `styles.css`：基础样式和功能组件样式
 - `theme.css`：视觉主题、响应式和移动端导航
-- `app.js`：按顺序加载 `app-1.js` 至 `app-5.js`
+- `app.js`：按顺序加载 `app-1.js` 至 `app-6.js`
 - `app-1.js`：状态、localStorage、基础工具
 - `app-2.js`：串题训练、TTS、语音识别、词库配置和 IndexedDB
 - `app-3.js`：内置词库安装、缓存、自定义词库及训练会话
 - `app-4.js`：词汇答题、拼写、考试、AI 可选评分、错句复习
 - `app-5.js`：统计、文件导入、设置、数据备份、PWA 安装
+- `app-6.js`：先秦文学 Question Engine adapter、草稿与课程计划
 - `service-worker.js`：PWA 缓存与离线回退
 - `data/`：仓库内静态 TOEIC 数据
 - `scripts/`：词库构建和静态检查
@@ -193,33 +194,47 @@ Desktop 使用 sidebar，Mobile 使用 bottom navigation。“今日 / 学习库
 
 以上检查明确不是语义评分或正式考试分数；未接入 AI 深度评分。新增本地状态位于 `state.questionEngine`，属于向后兼容的新字段，没有修改旧 `docs`、`vocab`、`vocab.progress`、`logs`、`vocabLogs` 或 IndexedDB 结构。
 
-当前 Service Worker cache 为 `english-memory-lab-v5-ui-20260905-9`，离线核心已加入 `app-6.js`、`data/preqin-literature.json` 与旺旺读书插画。新增 `npm run check:questions` 验证课程题型配置、8/8/4 题量、唯一 ID、来源和 schema。
+离线核心已加入 `app-6.js`、`data/preqin-literature.json` 与旺旺读书插画。新增 `npm run check:questions` 验证课程题型配置、8/8/4 题量、唯一 ID、来源和 schema。
 
-## 10. 后续阶段顺序
+## 10. 存储 / SSD 保护（Phase 0）
 
-1. 完成 TTS 局部修复与回归
-2. 更新本 HANDOFF
-3. 建立 Design Tokens、App Shell、新导航和新版“今日”首页（已完成骨架）
-4. 停止并报告，不继续大规模开发
-5. 狗狗 mascot assets 与先秦文学 Question Engine V1 已接入
-6. 下一阶段补全通用计划的日期、编辑、删除、重复和提醒；不要把当前课程题型强加给其他项目
-7. 土地资源管理与考研政治必须等各自资料和题型配置，不使用先秦文学题型比例
-8. 安全后端存在后再接 AI Provider；真实 API key 不得写进公开前端
-9. Safari / UI / Plan 稳定后再做 Italiano 静态词库
+已对真实运行时代码完成写盘审计并做局部修复：
 
-## 11. 每阶段回归清单
+- 保留 `englishMemoryLab_v1`、`englishMemoryLab_vocab_cache_v1`、`decks` 和 `deckId|word`，无数据迁移。
+- `localStorage` 写入集中到 `persistStateNow()`；普通 `save()` 合并写入，并限制持续训练时最多约每 5 秒落盘一次。
+- `pagehide` 与页面转入后台时同步 flush，降低延迟写入导致的进度丢失风险。
+- 先秦文学答题草稿输入时只更新内存，800ms debounce 后保存；用户点击“保存草稿”仍立即落盘。
+- 文档导入只在用户选文件后读取；同一份文件以 SHA-256 识别，避免重复保存结构化资料。
+- PDF / DOCX 解析后默认只保存抽取文字与来源元数据，`retained:false`；不保存原文件 Blob。
+- 运行时没有每秒持久化计时器、`audio timeupdate` 持久化或 AI streaming token 持久化。
+- Service Worker 核心缓存没有 PDF、MP3、WAV 或 M4A；当前 cache 为 `english-memory-lab-v5-ui-20260905-10`。
+- 新增 `npm run check:storage`，持续检查集中写入、草稿 debounce、SHA-256 去重和大文件 precache 禁令。
+
+Phase 0 静态回归已通过全部语法、词库、题库、站点、UI 与存储检查。云端浏览器无法连接本地 `terminal.local:4173`，因此本阶段没有声称完成真实浏览器交互或 Safari 真机验证；部署后仍需在实际 Chrome / Safari / iPhone PWA 上补验。
+
+## 11. 后续阶段顺序
+
+1. Phase 1：Local Profile；每个 profile 隔离项目、计划、题库、错题、复习和学习记录，并允许项目添加、隐藏、排序、归档。
+2. Phase 2：项目考试日、D-x、自由周计划、每日数量/时长、Day 0/1/3/7/14/30 与 Today 自动任务。
+3. Phase 3：通用 Exam Engine adapter；保留 Vocabulary Engine，并按项目配置允许题型。
+4. 后续再按用户给定顺序推进题库资源研究、私人题库、本地机考/教学、听说读写，最后才接安全 serverless AI Gateway。
+5. 土地资源管理与考研政治必须等各自资料和题型配置，不使用先秦文学题型比例。
+6. GitHub Pages 前端不得继续作为未来 API Key 存储位置；AI Gateway 完成前不要新增前端 AI 能力。
+
+## 12. 每阶段回归清单
 
 1. `node --check` 检查所有运行时 JS
 2. `npm run check:data`
 3. `npm run check:questions`
-4. `npm run check:site`
-5. `npm run check:ui`
-6. 浏览器检查主要交互和 Console
-7. 检查 Service Worker 与离线入口
-8. 检查 TOEIC 核心 1250、完整 11154、IELTS、考研
-9. 刷新后确认 localStorage / IndexedDB 状态仍在
-10. 重大前端更新同步 bump Service Worker cache version 和静态资源版本
+4. `npm run check:storage`
+5. `npm run check:site`
+6. `npm run check:ui`
+7. 浏览器检查主要交互和 Console
+8. 检查 Service Worker 与离线入口
+9. 检查 TOEIC 核心 1250、完整 11154、IELTS、考研
+10. 刷新后确认 localStorage / IndexedDB 状态仍在
+11. 重大前端更新同步 bump Service Worker cache version 和静态资源版本
 
-## 12. 下一位 Codex 的起始要求
+## 13. 下一位 Codex 的起始要求
 
 先读取 GitHub `main` 最新提交和真实代码，再读本文档。保留全部现有功能与数据契约；每次只完成一个清晰阶段。若文档与代码或线上行为冲突，以代码和线上行为为准。不要重新实现已经完成的 TOEIC 静态词库，不要恢复 `vocab-patch.js`，不要进行全量重写。
