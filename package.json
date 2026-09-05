@@ -9,6 +9,7 @@
     "check:exam": "node scripts/check-exam-engine.mjs",
     "check:questions": "node scripts/check-question-data.mjs",
     "check:planner": "node scripts/check-planner-contract.mjs",
+    "check:practice": "node scripts/check-practice-data.mjs",
     "check:storage": "node scripts/check-storage-safety.mjs",
     "check:site": "node scripts/check-static-site.mjs",
     "check:ui": "node scripts/check-ui-contract.mjs"

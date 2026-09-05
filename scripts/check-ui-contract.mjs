@@ -1,7 +1,7 @@
 import { readFile } from 'node:fs/promises';
 
 const ROOT = new URL('../', import.meta.url);
-const runtimeFiles = ['app-1.js', 'app-2.js', 'app-3.js', 'app-4.js', 'app-5.js', 'app-6.js', 'app-7.js', 'app-8.js', 'app-9.js'];
+const runtimeFiles = ['app-1.js', 'app-2.js', 'app-3.js', 'app-4.js', 'app-5.js', 'app-6.js', 'app-7.js', 'app-8.js', 'app-9.js', 'app-10.js'];
 const ui = await readFile(new URL('ui.html', ROOT), 'utf8');
 const runtime = (await Promise.all(runtimeFiles.map(file => readFile(new URL(file, ROOT), 'utf8')))).join('\n');
 
@@ -47,5 +47,6 @@ assert(runtime.includes('activeStateKey()'), 'Profile-specific state storage is 
 for (const id of ['planProject','planMode','planAmount','planUnit','maxDailyReviews','examDateList','scheduleList']) assert(staticIds.includes(id), `Planner UI is missing: ${id}`);
 assert(runtime.includes('REVIEW_DAYS=[0,1,3,7,14,30]'), 'Review cadence contract is missing');
 for (const id of ['examProjectSelect','examTypeTabs','examEngineTitle','examEngineSummary','startExamEngine']) assert(staticIds.includes(id), `Exam Engine UI is missing: ${id}`);
+assert(staticIds.includes('practiceWorkspace'), 'Built-in practice workspace is missing');
 
 console.log(`Validated ${staticIds.length} unique UI ids, ${pages.size} pages, and all navigation targets.`);

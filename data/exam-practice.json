@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "label": "Practice / Simulation",
+  "notice": "These are third-party open-source or adapted practice items. They are not official TOEIC or IELTS examination materials.",
+  "packs": [
+    {
+      "id": "toeic-ocean-part5-starter",
+      "projectId": "toeic",
+      "type": "toeic_part_5",
+      "title": "TOEIC Part 5 · Open-source Practice",
+      "sourceType": "open_source_original_simulation",
+      "license": "MIT",
+      "attribution": "Adapted from kdeppaei/toeic-question-ocean",
+      "source": {
+        "repository": "https://github.com/kdeppaei/toeic-question-ocean",
+        "file": "question-bank.js"
+      },
+      "questions": [
+        {"id":"toeic-ocean-p5-001","stem":"All expense reports must be submitted _____ Friday to receive reimbursement this month.","options":["on","by","with","during"],"answer":"by","explanation":"“by” 表示不晚于某个截止时间。","tags":["deadline","preposition"]},
+        {"id":"toeic-ocean-p5-002","stem":"Ms. Huang is responsible _____ training new staff members.","options":["of","with","for","to"],"answer":"for","explanation":"固定搭配 be responsible for。","tags":["collocation","preposition"]},
+        {"id":"toeic-ocean-p5-003","stem":"Customers interested _____ the extended warranty should contact the service desk.","options":["at","in","on","from"],"answer":"in","explanation":"固定搭配 be interested in。","tags":["collocation","preposition"]},
+        {"id":"toeic-ocean-p5-004","stem":"The new software is capable of _____ large amounts of data quickly.","options":["process","processed","processing","processes"],"answer":"processing","explanation":"介词 of 后使用动名词。","tags":["gerund","grammar"]},
+        {"id":"toeic-ocean-p5-005","stem":"Ms. Patel _____ the regional director since last January.","options":["is","was","has been","will be"],"answer":"has been","explanation":"since 引出的时间点通常与现在完成时连用。","tags":["present-perfect","tense"]},
+        {"id":"toeic-ocean-p5-006","stem":"The outdoor event was canceled _____ heavy rain.","options":["although","because of","unless","despite"],"answer":"because of","explanation":"空格后是名词短语，because of 表示原因。","tags":["connector","cause"]},
+        {"id":"toeic-ocean-p5-007","stem":"The downtown branch closes at six, _____ the airport branch remains open until midnight.","options":["whereas","therefore","unless","because"],"answer":"whereas","explanation":"前后两个分句形成对比，使用 whereas。","tags":["connector","contrast"]},
+        {"id":"toeic-ocean-p5-008","stem":"The consultant was _____ recommended by several former clients.","options":["high","higher","highly","highest"],"answer":"highly","explanation":"副词 highly 修饰 recommended。","tags":["adverb","word-form"]},
+        {"id":"toeic-ocean-p5-009","stem":"The company expects online sales to _____ during the holiday season.","options":["increase","increased","increasing","increases"],"answer":"increase","explanation":"expect ... to 后接动词原形。","tags":["infinitive","grammar"]},
+        {"id":"toeic-ocean-p5-010","stem":"Applicants _____ have relevant experience will be contacted for an interview.","options":["who","whose","whom","which"],"answer":"who","explanation":"先行词是人，且关系词在从句中作主语，使用 who。","tags":["relative-clause","grammar"]}
+      ]
+    },
+    {
+      "id": "ielts-synthetic-reading-001-adapted",
+      "projectId": "ielts",
+      "type": "ielts_reading",
+      "title": "Vertical Farming · Synthetic Reading Practice",
+      "sourceType": "open_source_ai_generated_simulation_adapted",
+      "license": "CC BY 4.0",
+      "attribution": "Adapted from LuchoBazz/ielts-ai-dataset, synthetic-official-mocks/reading/ielts-reading-academic-001.json",
+      "source": {
+        "repository": "https://github.com/LuchoBazz/ielts-ai-dataset",
+        "file": "datasets/synthetic-official-mocks/reading/ielts-reading-academic-001.json"
+      },
+      "content": {
+        "title": "The Rise of Vertical Farming",
+        "passage": "Vertical farms grow crops in stacked indoor layers, often in dense urban areas. Instead of relying on fields and seasonal weather, they control light, temperature and nutrients. Hydroponic systems place roots in nutrient-rich water, while aeroponic systems spray roots with a nutrient mist. These methods can greatly reduce water use and allow harvests throughout the year.\n\nThe model also has limitations. Building a controlled farm requires substantial initial investment, and artificial lighting makes energy consumption a major continuing expense. For now, fast-growing crops such as leafy greens and herbs are often more commercially practical than staple grains. Operators are exploring renewable energy sources and more efficient lighting to reduce both cost and environmental impact."
+      },
+      "questions": [
+        {"id":"ielts-synth-r001-q01","stem":"Vertical farming relies mainly on natural sunlight to grow crops efficiently.","options":["TRUE","FALSE","NOT GIVEN"],"answer":"FALSE","explanation":"The passage says indoor farms commonly control artificial light.","tags":["true-false-not-given"]},
+        {"id":"ielts-synth-r001-q02","stem":"Aeroponics always uses less water than hydroponics.","options":["TRUE","FALSE","NOT GIVEN"],"answer":"NOT GIVEN","explanation":"The passage describes both systems but does not make this comparison.","tags":["true-false-not-given"]},
+        {"id":"ielts-synth-r001-q03","stem":"Vertical farms can produce crops throughout the year.","options":["TRUE","FALSE","NOT GIVEN"],"answer":"TRUE","explanation":"The passage explicitly states that controlled conditions allow year-round harvests.","tags":["true-false-not-given"]},
+        {"id":"ielts-synth-r001-q04","stem":"Setting up a vertical farm is cheaper than buying traditional farmland.","options":["TRUE","FALSE","NOT GIVEN"],"answer":"FALSE","explanation":"The passage identifies substantial initial investment as a limitation.","tags":["true-false-not-given"]},
+        {"id":"ielts-synth-r001-q05","stem":"In what kind of areas are vertical farms often located?", "answer":["urban areas","dense urban areas"],"explanation":"The first paragraph places them in dense urban areas.","tags":["short-answer"]},
+        {"id":"ielts-synth-r001-q06","stem":"Which growing method sprays roots with a nutrient mist?", "answer":["aeroponics","aeroponic systems"],"explanation":"Aeroponic systems deliver nutrients as mist.","tags":["short-answer"]},
+        {"id":"ielts-synth-r001-q07","stem":"What is a major continuing expense for vertical farms?", "answer":["energy consumption","energy","electricity"],"explanation":"Artificial lighting makes energy consumption a major ongoing expense.","tags":["short-answer"]},
+        {"id":"ielts-synth-r001-q08","stem":"Which crops are currently among the most commercially practical?", "answer":["leafy greens and herbs","leafy greens","herbs"],"explanation":"The passage names fast-growing leafy greens and herbs.","tags":["short-answer"]},
+        {"id":"ielts-synth-r001-q09","stem":"What type of energy are operators exploring to reduce costs and environmental impact?", "answer":["renewable energy","renewable energy sources"],"explanation":"The passage mentions renewable energy sources.","tags":["short-answer"]}
+      ]
+    }
+  ]
+}
