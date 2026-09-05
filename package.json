@@ -13,6 +13,7 @@
     "check:private-library": "node scripts/check-private-library.mjs",
     "check:computer-exam": "node scripts/check-computer-exam.mjs",
     "check:local-teacher": "node scripts/check-local-teacher.mjs",
+    "check:language-skills": "node scripts/check-language-skills.mjs",
     "check:storage": "node scripts/check-storage-safety.mjs",
     "check:site": "node scripts/check-static-site.mjs",
     "check:ui": "node scripts/check-ui-contract.mjs"

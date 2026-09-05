@@ -114,12 +114,23 @@
       <section class="page" id="page-training">
         <div class="page-intro"><div class="eyebrow">TRAINING</div><h2>训练中心</h2><p>选择一种练习方式，直接进入训练，不用重新设置资料。</p></div>
         <div class="training-grid">
+          <button class="training-card" data-go-page="language-skills"><span class="training-icon">EN</span><div><b>英语听说读写</b><p>听力、录音回放、阅读机考、拼写与默写集中入口。</p></div><span class="arrow">→</span></button>
           <button class="training-card" data-go-page="exam-engine"><span class="training-icon">EX</span><div><b>考试训练</b><p>按项目进入 TOEIC、IELTS、先秦文学或自定义考试题型。</p></div><span class="arrow">→</span></button>
           <button class="training-card" data-go-page="vocab"><span class="training-icon">Aa</span><div><b>单词四选一</b><p>快速筛词，错词和慢词自动强化。</p></div><span class="arrow">→</span></button>
           <button class="training-card" data-go-page="vocab"><span class="training-icon">⌨</span><div><b>单词拼写</b><p>在词库页选择词库后进入中文到英文拼写。</p></div><span class="arrow">→</span></button>
           <button class="training-card" data-go-page="study"><span class="training-icon">◫</span><div><b>串题背诵</b><p>全文、挖空、首字母、关键词和完整复述。</p></div><span class="arrow">→</span></button>
           <button class="training-card" data-go-page="exam"><span class="training-icon">◆</span><div><b>串题考试</b><p>随机观点题，调用自己的故事完成回答。</p></div><span class="arrow">→</span></button>
           <button class="training-card" data-go-page="review"><span class="training-icon">↻</span><div><b>错句复习</b><p>优先复习完全不会和有点卡的句子。</p></div><span class="arrow">→</span></button>
+        </div>
+      </section>
+
+      <section class="page" id="page-language-skills">
+        <div class="page-intro"><div class="eyebrow">ENGLISH SKILLS</div><h2>听说读写</h2><p>全部本地能力集中在这里；不依赖 AI，也不会把录音上传或自动保存。</p></div>
+        <div class="skills-grid">
+          <article class="card skill-hub-card"><span class="skill-letter">L</span><div><h3>听 · Listening</h3><p>私人题库真实音频、Section 练习、听写与错题重听。音频按需读取，不记录 timeupdate。</p></div><div class="row"><button class="btn primary" data-go-page="private-library">导入 / 选择音频</button><button class="btn" data-go-page="exam-engine">进入听力机考</button></div><div class="skills-dictation"><div class="label">当前串题句子听写</div><div class="row"><button class="btn" id="skillsDictationPlay">🔊 播放</button><input class="field" id="skillsDictationInput" placeholder="听到后输入完整句子"><button class="btn" id="skillsDictationCheck">检查</button></div><span class="sub" id="skillsDictationFeedback"></span></div><div id="listeningWrongReplay" class="wrong-audio-list"></div></article>
+          <article class="card skill-hub-card"><span class="skill-letter">S</span><div><h3>说 · Speaking</h3><p>使用现有浏览器语音识别，也可以录音后立即回放。录音只留在内存，刷新即清除。</p></div><textarea class="rec-text" id="skillsSpeakingText" placeholder="语音识别结果会显示在这里，也可以手动输入。"></textarea><div class="row"><button class="btn" id="skillsRecognition">🎙️ 开始语音识别</button><button class="btn primary" id="skillsRecord">● 开始录音</button><button class="btn" id="skillsClearRecording">清除录音</button></div><span class="sub" id="skillsSpeechStatus"></span><audio id="skillsRecordingPlayback" controls hidden></audio></article>
+          <article class="card skill-hub-card"><span class="skill-letter">R</span><div><h3>读 · Reading</h3><p>TOEIC / IELTS 阅读使用双栏机考、定位高亮、题号导航和本地判分。</p></div><button class="btn primary" data-go-page="exam-engine">选择阅读训练</button></article>
+          <article class="card skill-hub-card"><span class="skill-letter">W</span><div><h3>写 · Writing</h3><p>单词拼写、逐空输入、Enter 下一空、挖空与默写继续使用现有训练逻辑。</p></div><div class="row"><button class="btn primary" data-go-page="vocab">单词拼写</button><button class="btn" data-go-page="study">挖空 / 默写</button></div></article>
         </div>
       </section>
 

@@ -265,10 +265,9 @@ Phase 0 静态回归已通过全部语法、词库、题库、站点、UI 与存
 
 ## 14. 后续阶段顺序
 
-1. Phase 8：听说读写入口与本地能力整理。
-2. Phase 9–11：完成本地系统后才接 serverless AI Gateway、缓存/预算/熔断和管理员总开关。
-3. 土地资源管理与考研政治必须等各自资料和题型配置，不使用先秦文学题型比例。
-4. GitHub Pages 前端不得继续作为未来 API Key 存储位置；AI Gateway 完成前不要新增前端 AI 能力。
+1. Phase 9–11：建立 serverless AI Gateway、Provider abstraction、缓存/预算/熔断和管理员总开关；部署与密钥配置需要独立安全环境。
+2. 土地资源管理与考研政治必须等各自资料和题型配置，不使用先秦文学题型比例。
+3. GitHub Pages 前端不得继续作为未来 API Key 存储位置；AI Gateway 完成前不要新增前端 AI 能力。
 
 ## 15. TOEIC / IELTS 开源练习（Phase 4）
 
@@ -334,7 +333,20 @@ Phase 0 静态回归已通过全部语法、词库、题库、站点、UI 与存
 
 新增运行时文件 `app-13.js` 与 `npm run check:local-teacher`。全套语法、数据、存储、计划、机考、教学策略、站点与 UI contract 回归通过；浏览器与真机验证限制同前。
 
-## 19. 每阶段回归清单
+## 19. 英语听说读写（Phase 8）
+
+新增统一入口，但继续复用现有业务能力：
+
+- 听：私人题库真实音频 / Section 机考入口、当前串题句子的 TTS 听写、带音频错题重听。
+- 错题现在只额外保存小型 `audio` 引用、题干与答案，不复制 Blob；错题重听从 IndexedDB 按 SHA-256 读取同一份音频，支持 start/end 范围且不写 timeupdate。
+- 说：继续使用现有 Speech Recognition；新增 MediaRecorder 录音与 `<audio>` 回放。录音 Blob 只留内存，不写 localStorage / IndexedDB，清除或离开页面时停止麦克风并释放 Object URL。
+- 读：直接进入 TOEIC / IELTS 双栏机考与本地判分。
+- 写：复用现有单词拼写、逐空输入、Enter 下一空、挖空和默写，不引入较重的 LanguageTool / Whisper / sherpa；当前也未为了拼写检查强行加入 nspell。
+- 当前 Service Worker cache 为 `english-memory-lab-v5-ui-20260905-18`，仍不缓存音频/PDF。
+
+新增运行时文件 `app-14.js` 与 `npm run check:language-skills`。全部语法和十项专项/回归检查通过；麦克风权限、iOS MediaRecorder 格式与真实音频回放仍需真机验证。
+
+## 20. 每阶段回归清单
 
 1. `node --check` 检查所有运行时 JS
 2. `npm run check:data`
@@ -350,6 +362,6 @@ Phase 0 静态回归已通过全部语法、词库、题库、站点、UI 与存
 12. 刷新后确认 localStorage / IndexedDB 状态仍在
 13. 重大前端更新同步 bump Service Worker cache version和静态资源版本
 
-## 20. 下一位 Codex 的起始要求
+## 21. 下一位 Codex 的起始要求
 
 先读取 GitHub `main` 最新提交和真实代码，再读本文档。保留全部现有功能与数据契约；每次只完成一个清晰阶段。若文档与代码或线上行为冲突，以代码和线上行为为准。不要重新实现已经完成的 TOEIC 静态词库，不要恢复 `vocab-patch.js`，不要进行全量重写。
