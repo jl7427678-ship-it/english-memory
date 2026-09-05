@@ -265,11 +265,10 @@ Phase 0 静态回归已通过全部语法、词库、题库、站点、UI 与存
 
 ## 14. 后续阶段顺序
 
-1. Phase 5：私人题库本地导入；PDF/音频 IndexedDB、SHA-256 去重、Section 绑定、答案预览与人工修改，绝不提交私人资料。
-2. Phase 6–8：真正机考 UI、本地老师、听说读写整理。
-3. Phase 9–11：完成本地系统后才接 serverless AI Gateway、缓存/预算/熔断和管理员总开关。
-4. 土地资源管理与考研政治必须等各自资料和题型配置，不使用先秦文学题型比例。
-5. GitHub Pages 前端不得继续作为未来 API Key 存储位置；AI Gateway 完成前不要新增前端 AI 能力。
+1. Phase 6–8：真正机考 UI、本地老师、听说读写整理。
+2. Phase 9–11：完成本地系统后才接 serverless AI Gateway、缓存/预算/熔断和管理员总开关。
+3. 土地资源管理与考研政治必须等各自资料和题型配置，不使用先秦文学题型比例。
+4. GitHub Pages 前端不得继续作为未来 API Key 存储位置；AI Gateway 完成前不要新增前端 AI 能力。
 
 ## 15. TOEIC / IELTS 开源练习（Phase 4）
 
@@ -286,7 +285,22 @@ Phase 0 静态回归已通过全部语法、词库、题库、站点、UI 与存
 
 新增运行时文件 `app-10.js` 与 `npm run check:practice`。语法、词库、先秦题库、存储、计划、Exam Engine、练习数据、站点和 UI contract 全部通过。Vite 在当前执行环境因 `uv_interface_addresses` 失败，独立 HTTP 会话也无法被另一执行会话访问，因此没有声称完成浏览器、Console、Service Worker runtime 或 Safari 真机验证；上线后仍需在真实浏览器执行该项回归。
 
-## 16. 每阶段回归清单
+## 16. 私人题库（Phase 5）
+
+已新增 `My Library / 私人题库`，用于用户合法拥有的 PDF、MP3、M4A、WAV 和答案文本：
+
+- 独立 IndexedDB：`englishMemoryLab_private_library_v1`，`papers` 保存结构化试卷，`blobs` 保存二进制文件，不改变现有词库 IndexedDB。
+- 每份试卷记录 `profileId`；列表只读取当前 Local Profile 的内容，不把私人元数据写进 public GitHub 或共享内置题库。
+- PDF 在浏览器本地解析，解析文字可预览和人工修改；默认不保存原 PDF，只有用户主动勾选“保留原 PDF”时才写 Blob。
+- 音频支持多选，每个文件绑定一个可编辑 Section；PDF 与音频都读取一次并计算 SHA-256，同一文件只保存一份 Blob。
+- Answer Key 支持逐行粘贴并规范化为题号与答案；Preview 显示项目、页数、PDF 保留状态、Section 绑定与答案数。
+- 删除试卷时会检查全部 profile 的引用，只有不存在其他引用时才删除对应 Blob，避免重复文件与孤儿文件长期占空间。
+- 表单输入只更新内存，不逐键写 localStorage / IndexedDB；点击保存才执行持久化。
+- Service Worker 不缓存任何私人 PDF / MP3 / M4A / WAV，只新增运行时代码，缓存版本为 `english-memory-lab-v5-ui-20260905-15`。
+
+新增运行时文件 `app-11.js` 与 `npm run check:private-library`。语法、词库、先秦题库、存储、计划、Exam Engine、练习数据、私人题库、站点和 UI contract 全部通过。浏览器与真机验证限制同 Phase 4，未声称已完成 IndexedDB 真机容量、iPhone 文件选择器或音频格式兼容验证。
+
+## 17. 每阶段回归清单
 
 1. `node --check` 检查所有运行时 JS
 2. `npm run check:data`
@@ -302,6 +316,6 @@ Phase 0 静态回归已通过全部语法、词库、题库、站点、UI 与存
 12. 刷新后确认 localStorage / IndexedDB 状态仍在
 13. 重大前端更新同步 bump Service Worker cache version和静态资源版本
 
-## 17. 下一位 Codex 的起始要求
+## 18. 下一位 Codex 的起始要求
 
 先读取 GitHub `main` 最新提交和真实代码，再读本文档。保留全部现有功能与数据契约；每次只完成一个清晰阶段。若文档与代码或线上行为冲突，以代码和线上行为为准。不要重新实现已经完成的 TOEIC 静态词库，不要恢复 `vocab-patch.js`，不要进行全量重写。

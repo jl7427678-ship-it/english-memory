@@ -36,6 +36,7 @@
       </section>
 
       <section class="page" id="page-library">
+        <div class="card private-library-entry"><span class="project-glyph large blue">私</span><div><h3>My Library · 私人题库</h3><p>本地导入自己的 PDF、听力音频和答案；不会上传，也不会提交到公开仓库。</p></div><button class="btn primary" data-go-page="private-library">管理私人题库</button></div>
         <section class="course-shelf" id="preqinCourseShelf">
           <div class="section-heading"><div><div class="eyebrow">课程项目</div><h2>按课程训练</h2></div></div>
           <button class="course-entry card" data-go-page="preqin-literature">
@@ -61,6 +62,23 @@
           </div>
         </div>
         <div class="card" style="margin-top:16px"><div class="row between"><div><h2>我的资料</h2><div class="sub">点“开始背”会自动进入上次进度。</div></div><button class="btn" id="loadDemo">载入示例故事</button></div><div class="library-list" id="libraryList"></div></div>
+      </section>
+
+      <section class="page" id="page-private-library">
+        <div class="page-intro"><div class="eyebrow">MY LIBRARY</div><h2>私人题库</h2><p>资料只保存在当前浏览器 IndexedDB。默认仅保存 PDF 解析文字；音频以 SHA-256 去重，只存一份 Blob。</p></div>
+        <div class="private-library-grid">
+          <article class="card private-import-form">
+            <div class="row between"><div><h3>新建试卷</h3><p class="sub">适合导入你合法拥有的 Cambridge IELTS、TOEIC 或自定义练习资料。</p></div><span class="tag">仅本机</span></div>
+            <div class="formgrid"><label><span class="label">所属项目</span><select class="field" id="privateProject"></select></label><label><span class="label">试卷名称</span><input class="field" id="privateTitle" placeholder="例如：Cambridge IELTS 18 Test 1"></label></div>
+            <div class="private-file-zone"><div><b>1. 选择 PDF</b><p class="sub">本地解析后可人工修改文字。不会加入 PWA 预缓存。</p></div><button class="btn" id="pickPrivatePdf">选择 PDF</button><input id="privatePdfInput" type="file" accept="application/pdf,.pdf" hidden><label class="retain-source"><input type="checkbox" id="retainPrivatePdf"> 我主动选择在本机保留原 PDF</label><div class="file-status" id="privatePdfStatus">尚未选择</div></div>
+            <label><span class="label">PDF 解析文字 / Preview</span><textarea class="paste private-preview" id="privateExtractedText" placeholder="选择 PDF 后会在这里显示本地解析结果，可人工修改。"></textarea></label>
+            <div class="private-file-zone"><div><b>2. 上传听力音频</b><p class="sub">支持 MP3 / M4A / WAV；可上传多个并分别绑定 Section。</p></div><button class="btn" id="pickPrivateAudio">选择音频</button><input id="privateAudioInput" type="file" accept="audio/mpeg,audio/mp4,audio/x-m4a,audio/wav,.mp3,.m4a,.wav" multiple hidden><div id="privateAudioBindings" class="audio-binding-list"></div></div>
+            <label><span class="label">3. Answer Key</span><textarea class="paste answer-key-input" id="privateAnswerKey" placeholder="每行一题，例如：\n1 A\n2 TRUE\n3 urban areas"></textarea></label>
+            <div class="row"><button class="btn" id="previewPrivatePaper">更新预览</button><button class="btn primary" id="savePrivatePaper">保存到本机</button><button class="btn" id="resetPrivatePaper">清空表单</button></div>
+          </article>
+          <aside class="card private-preview-card"><div class="eyebrow">PREVIEW</div><h3 id="privatePreviewTitle">等待导入</h3><div id="privatePaperPreview" class="private-paper-preview"><p class="sub">这里会显示项目、PDF 状态、Section 音频绑定和答案数量。</p></div></aside>
+        </div>
+        <article class="card private-paper-list-card"><div class="row between"><div><h3>当前学习空间的试卷</h3><p class="sub">不同 Local Profile 互相不可见。</p></div><span class="sub" id="privateStorageSummary"></span></div><div id="privatePaperList" class="private-paper-list"></div></article>
       </section>
 
       <section class="page" id="page-preqin-literature">
