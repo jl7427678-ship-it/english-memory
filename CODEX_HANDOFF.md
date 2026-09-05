@@ -228,28 +228,48 @@ Phase 0 静态回归已通过全部语法、词库、题库、站点、UI 与存
 
 新增运行时文件 `app-7.js`。当前 Service Worker cache 为 `english-memory-lab-v5-ui-20260905-11`。Phase 1 的语法、存储、词库、题库、静态站点和 UI contract 检查均通过；本地浏览器连接限制仍存在，因此未声称浏览器或 Safari 真机验证。
 
-## 12. 后续阶段顺序
+## 12. 倒数日与自由学习计划（Phase 2）
 
-1. Phase 2：项目考试日、D-x、自由周计划、每日数量/时长、Day 0/1/3/7/14/30 与 Today 自动任务。
-2. Phase 3：通用 Exam Engine adapter；保留 Vocabulary Engine，并按项目配置允许题型。
-3. 后续再按用户给定顺序推进题库资源研究、私人题库、本地机考/教学、听说读写，最后才接安全 serverless AI Gateway。
-4. 土地资源管理与考研政治必须等各自资料和题型配置，不使用先秦文学题型比例。
-5. GitHub Pages 前端不得继续作为未来 API Key 存储位置；AI Gateway 完成前不要新增前端 AI 能力。
+新增兼容字段 `state.planner`，每个 Local Profile 各自保存：
 
-## 13. 每阶段回归清单
+- `maxDailyReviews`：每日最大复习量，默认 100。
+- `schedules`：按项目配置任务名称、数量/分钟、单位、周一至周日、启用状态。
+- `taskStatus`：为后续任务状态扩展预留；当前 Today 完成勾选仍兼容使用既有 `todayChecklist`。
+
+当前能力：
+
+- 每个显示中的项目可设置 `examDate`，Today 项目卡显示 D-x。
+- 可建立“新词 30”“Reading 1 篇”“Listening 1 Section”“名词解释 5 题”等数量计划，也可按分钟学习。
+- 可自由选择周一至周日，暂停、恢复或删除每周计划。
+- Today 根据当前 profile、当天星期与启用计划自动生成任务，不再写死展示所有预设课程。
+- 到期错句与词汇复习始终排在新内容前，并受每日最大复习量约束。
+- 词汇继续使用原有 `[0,1,3,7,14,30]`；串题卡新增向后兼容的 `reviewStep`，旧 `ease/reps/due` 字段保留，并扩展到同样的 Day 0/1/3/7/14/30。
+- 先秦文学现有题量计划仍会进入 Today，不修改其题型或覆盖率逻辑。
+
+新增运行时文件 `app-8.js` 与 `npm run check:planner`。当前 Service Worker cache 为 `english-memory-lab-v5-ui-20260905-12`。Phase 2 的全部语法、存储、计划、词库、题库、静态站点与 UI contract 检查通过；浏览器与 Safari 真机验证限制同上。
+
+## 13. 后续阶段顺序
+
+1. Phase 3：通用 Exam Engine adapter；保留 Vocabulary Engine，并按项目配置允许题型。
+2. 后续再按用户给定顺序推进题库资源研究、私人题库、本地机考/教学、听说读写，最后才接安全 serverless AI Gateway。
+3. 土地资源管理与考研政治必须等各自资料和题型配置，不使用先秦文学题型比例。
+4. GitHub Pages 前端不得继续作为未来 API Key 存储位置；AI Gateway 完成前不要新增前端 AI 能力。
+
+## 14. 每阶段回归清单
 
 1. `node --check` 检查所有运行时 JS
 2. `npm run check:data`
 3. `npm run check:questions`
 4. `npm run check:storage`
-5. `npm run check:site`
-6. `npm run check:ui`
-7. 浏览器检查主要交互和 Console
-8. 检查 Service Worker 与离线入口
-9. 检查 TOEIC 核心 1250、完整 11154、IELTS、考研
-10. 刷新后确认 localStorage / IndexedDB 状态仍在
-11. 重大前端更新同步 bump Service Worker cache version 和静态资源版本
+5. `npm run check:planner`
+6. `npm run check:site`
+7. `npm run check:ui`
+8. 浏览器检查主要交互和 Console
+9. 检查 Service Worker 与离线入口
+10. 检查 TOEIC 核心 1250、完整 11154、IELTS、考研
+11. 刷新后确认 localStorage / IndexedDB 状态仍在
+12. 重大前端更新同步 bump Service Worker cache version 和静态资源版本
 
-## 14. 下一位 Codex 的起始要求
+## 15. 下一位 Codex 的起始要求
 
 先读取 GitHub `main` 最新提交和真实代码，再读本文档。保留全部现有功能与数据契约；每次只完成一个清晰阶段。若文档与代码或线上行为冲突，以代码和线上行为为准。不要重新实现已经完成的 TOEIC 静态词库，不要恢复 `vocab-patch.js`，不要进行全量重写。

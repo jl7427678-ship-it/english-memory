@@ -7,6 +7,7 @@
     "build:toeic": "node scripts/build-toeic.mjs",
     "check:data": "node scripts/check-vocab-data.mjs",
     "check:questions": "node scripts/check-question-data.mjs",
+    "check:planner": "node scripts/check-planner-contract.mjs",
     "check:storage": "node scripts/check-storage-safety.mjs",
     "check:site": "node scripts/check-static-site.mjs",
     "check:ui": "node scripts/check-ui-contract.mjs"
