@@ -382,4 +382,4 @@ Phase 0 静态回归已通过全部语法、词库、题库、站点、UI 与存
 - 新增 `scripts/build-ielts-atlas.mjs` 用于从指定上游 checkout 重建目录，新增 `npm run check:atlas` 验证固定版本、实际数量、按需加载与不预缓存题目分片。
 - PWA cache 已更新为 `english-memory-lab-v5-ui-20260906-19`，仅新增 `app-15.js` 和 Atlas manifest 到核心离线缓存。
 
-本轮完整静态回归通过，包括 15 个运行时脚本语法、TOEIC 1250/11154、先秦文学 20 题、存储保护、计划、Exam Engine、原练习、私人题库、机考、本地老师、听说读写、PWA 入口与 UI contract。当前执行环境的云浏览器无法连接本地 `terminal.local:4173`（`ERR_CONNECTION_REFUSED`），Vite 仍因 `uv_interface_addresses` 环境错误无法启动，因此不能把静态检查描述为浏览器或 Safari 真机验证；部署后必须补做线上 Chrome 交互与 Console 检查。
+本轮完整静态回归通过，包括 15 个运行时脚本语法、TOEIC 1250/11154、先秦文学 20 题、存储保护、计划、Exam Engine、原练习、私人题库、机考、本地老师、听说读写、PWA 入口与 UI contract。本地 Vite 仍因 `uv_interface_addresses` 环境错误无法启动，但部署后已在云端 Chrome 对线上 GitHub Pages 完成真实交互：启用 IELTS 项目、进入 Reading、加载 234 篇 Atlas 目录；“茶叶简史”13 个答案全部正确得到 13/13 并显示 13 条现有解析；“组织设计”复选题限制、配对下拉和错误提交结果正常。过滤浏览器扩展自身日志后，页面 Console 无 error。Safari / iPhone / PWA 真机仍未验证，不得声称已验证。
