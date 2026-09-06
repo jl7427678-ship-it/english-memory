@@ -19,7 +19,7 @@
 - Today 与每周计划的 Italiano 入口现在进入课程页，并显示“继续第 X 课”；Vocabulary 仍直接复用已有 Core 4000 / Full 16327。
 - 新增 profile 隔离的兼容字段 `state.italianCourse`；没有数据迁移，没有改变 `englishMemoryLab_v1`、IndexedDB 或 `deckId|word`。
 - Service Worker 更新为 `english-memory-lab-v5-ui-20260906-22` 并加入 `app-16.js`；176 KB 课程正文按需读取，不进入 precache，第一次成功读取后由现有 runtime cache 保存。
-- 新增 `npm run check:italian-course`。全套语法与静态契约回归通过；云端 Chrome 无法访问本地工作区地址，公开站点交互验证须在发布后完成。
+- 新增 `npm run check:italian-course`。全套语法与静态契约回归通过。公开 GitHub Pages 已用 Chrome 完整走完第 1 课的选择、听辨、词块、填空、配对和输入流程；完成后第 2 课解锁，刷新后仍保持 `1 / 20`，页面自身无 console error。Safari / iPhone 的实际声音仍未真机验证。
 
 ## 24. 冻结边界（Italiano 学习系统起点）
 
