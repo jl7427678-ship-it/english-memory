@@ -64,3 +64,11 @@
 - 审计证明必要且许可适合的分级 Reading / Listening
 
 禁止借此重构冻结的 Vocabulary Engine、全站 UI、现有题库、存储 key 或 PWA 架构。大型课程正文按需加载；大音频不进入 Service Worker precache。
+
+## FROZEN：Italian 外部来源审计
+
+- `ITALIAN_SOURCES_AUDIT.md` 是四个指定 Italian 上游仓库的一次性事实与许可基线。
+- 后续直接使用其中记录的固定提交、路径、统计和接入结论；不得为了继续开发重复克隆或全量扫描上游。
+- 当前只批准采用 MIT 许可的 `Open-Apps-Studio/lingo-lessons` Italian pack 作为 early A1 主线。
+- `LingoFlow` 的 Italian 内容由英语模板机器翻译，语法提示存在错位；只有经人工逐项复核的补充内容才可接入。
+- Dimenticato 与 Murmura 没有明确项目许可证，禁止复制代码或课程正文。

@@ -2,6 +2,15 @@
 
 更新时间：2026-09-06
 
+## 25. Italiano 外部来源一次性审计
+
+- 新增 `ITALIAN_SOURCES_AUDIT.md`，以后直接复用，不重复扫描四个指定上游。
+- 采用 MIT 许可的 `Open-Apps-Studio/lingo-lessons` 固定提交 `aa65f4e...`：实际为 1 Section / 5 Units / 20 Lessons / 220 Exercises，适合作为 early A1 零基础主线。
+- `CuplexUser/LingoFlow` 虽为 MIT，但 Italian 内容从 English 模板经 LibreTranslate 产生；50 条 grammar 中存在英语语法提示与 Italian 答案错位，不能直接作为语法教材。3 篇 story 仅可在逐篇人工复核后考虑。
+- `Kendrick-Stein/Dimenticato` 与 `rennerdo30/murmura` 均无明确项目 LICENSE，禁止复制；Murmura 还缺少 README 声称的 listening 数据。
+- Grammar 第一版只可使用 lingo-lessons 自带 guidebook/练习；更完整变位数据仍是明确缺口，需要以后另找许可清楚的结构化来源。
+- 本阶段只增加审计文档，没有运行时、数据结构、Service Worker 或用户数据变化。
+
 ## 24. 冻结边界（Italiano 学习系统起点）
 
 - 新增 `CODEX_FREEZE.md`，以 `20eb779242b20cad4f8849bf27d4617b16b9e5a4` 为冻结基线。
