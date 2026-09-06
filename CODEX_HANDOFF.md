@@ -2,6 +2,18 @@
 
 更新时间：2026-09-06
 
+## 30. 快速筛词、词形详情与中文背诵导入
+
+- Vocabulary 新增“快速筛词”：只显示单词、已有 IPA/POS、朗读和原词库序号；认识/模糊/不认识分别写入 `quickStatus`，不修改 `level/mastered/seen`。
+- 快速筛词位置使用最小兼容字段 `state.vocab.quickResume[deckId]`；内置词的 `state.vocab.progress[deckId|word]` 数组只在索引 9 追加可选 `quickStatus`。旧数据无需迁移，Core / Full 和不同语言 deck 继续完全隔离。
+- 词条详情增加默认折叠的“词族 / 词形”和“易混词”。只显示词库已有 `wordFamily/confusables`，Italiano 可按现有 `infinitive/plural` 及同 deck 的 source-provided 反向关系展示；没有可靠数据时显示“暂无”，未生成或下载补充数据。
+- 用户侧训练入口统一为“背诵训练”，相关测试入口称“复述测试”；旧 `state.docs/state.study`、存储 key 和训练逻辑不变。
+- 新增 `memorization-text.js` 与 `app-20.js` 小型适配层：TXT/MD 支持 BOM、严格 UTF-8、GB18030/GBK 自动回退和手动编码选择；乱码或替换字符不会继续导入。中文按换行分段，使用 `Intl.Segmenter` 与本地 fallback 拆句、提取非虚词关键词，并按完整关键词挖空。
+- DOCX/PDF 继续使用原 Mammoth/PDF.js；无文本层 PDF 显示“该 PDF 未检测到可提取文本”，未加入 OCR。TXT/MD、DOCX、PDF 分别设 8/30/50 MB 上限，PDF 80 页上限；长文记忆骨架每批只渲染 40 段，用户文件不进入 precache。
+- 导入后显示文件名、字符/段落/句子数、语言、编码和关键词数；关键词为 0 时禁用坏掉的挖空并提示继续全文阅读。
+- 专项检查通过：Italiano Core 4000 / Full 16327、English TOEIC Core、quick resume/status 契约、UTF-8 中文、GB18030 中文、中文 Markdown、1500 段较大文本、中文拆句/关键词/挖空、词形折叠。仓库没有现成 DOCX/PDF 样本，因此没有声称完成样本解析验证；浏览器控制连接在本环境不可用，未声称真机/浏览器交互验证。
+- Service Worker 更新为 `english-memory-lab-v5-ui-20260906-27`，只新增两个小型 JS 文件；未预缓存用户文件或大型数据分片。
+
 ## 29. Vocabulary Engine 进度、断点续学与完整浏览
 
 - 在冻结 Vocabulary Engine 外增加 `app-19.js` 小型增强层，没有替换四选一、拼写、错词强化、复习算法、词库加载或 IndexedDB。

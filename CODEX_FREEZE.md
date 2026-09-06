@@ -20,6 +20,7 @@
 - 词库 IndexedDB：`englishMemoryLab_vocab_cache_v1` / `decks`
 - 内置词学习进度：`state.vocab.progress`，键为 `deckId|word`
 - Vocabulary 断点：`state.vocab.resume[deckId]` 仅保存下一新词位置；progress 数组索引 8 可选保存 `firstSeen`，旧记录缺失时按 0 处理
+- 快速筛词断点：`state.vocab.quickResume[deckId]`；progress 数组索引 9 可选保存 `quickStatus`（known/fuzzy/unknown），它不等于 mastered，旧记录无需迁移
 - 私人题库与大文件：保持现有 profile 隔离、SHA-256 去重、Blob 单份保存和 PDF 原件默认不保留策略
 - 禁止清空、改名或无迁移改变以上数据结构
 
@@ -31,6 +32,7 @@
 - Italiano Core 4,000 / Full 16,327
 - 四选一、拼写、100 / 300 / 500 / 全部、错词强化、快捷键、IndexedDB 缓存、Day 0 / 1 / 3 / 7 / 14 / 30 复习
 - 每词库进度摘要、按原顺序继续下一未学词、50 条分页的完整词库浏览、搜索/状态筛选、已有例句与词条详情
+- 快速筛词与独立断点；词条详情中 source-provided 词族/词形/易混词折叠展示。不得用 AI、字符串猜测或外部大型词典补造关系
 - Italiano 后续功能只能查询或调用现有 Italian 静态词库；禁止重建、复制或改写词库正文
 
 对应检查：`check:data`、`check:italian`、`check:storage`、`check:site`。
@@ -38,7 +40,7 @@
 ## FROZEN：学习与考试模块
 
 - IELTS Atlas Reading：234 套索引、3,143 个答案字段、227 条现有解析；按需加载上游题目数据
-- 串题 / 故事训练：TXT、Markdown、DOCX、PDF、拆句、阅读、挖空、复述、错句复习
+- 背诵训练（旧存储仍沿用 Story/docs key）：TXT、Markdown、DOCX、PDF、中文/英文拆句、阅读、关键词挖空、复述、错句复习；TXT/MD 本地编码检测与大文件安全上限已纳入冻结行为
 - 写作挖空：逐空输入、Enter 导航、自动检查、红绿反馈、百分比
 - 汉语言 / 先秦文学：20 道资料来源题，8 名词解释、8 简答、4 论述
 - 通用 Exam Engine、计划、私人题库、IELTS / TOEIC 机考、本地老师、英语听说读写入口

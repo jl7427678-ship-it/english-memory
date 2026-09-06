@@ -1,0 +1,58 @@
+import fs from 'node:fs/promises';
+import assert from 'node:assert/strict';
+
+await import('../memorization-text.js');
+const text=globalThis.MemorizationText;
+const utf8='工业革命推动了现代城市的发展。\n这是第二段！';
+const utf8Result=text.decodeTextBuffer(new TextEncoder().encode(utf8));
+assert.equal(utf8Result.text,utf8);
+assert.equal(utf8Result.encoding,'UTF-8');
+const gbkBytes=Uint8Array.from([0xd6,0xd0,0xce,0xc4,0xa1,0xa3]);
+const gbkResult=text.decodeTextBuffer(gbkBytes);
+assert.equal(gbkResult.text,'中文。');
+assert.equal(gbkResult.encoding,'GB18030/GBK');
+const md='# 标题\n\n工业革命推动了现代城市的发展。\n中文拆句不能按单个汉字失败！';
+assert.equal(text.paragraphs(md).length,3);
+assert.equal(text.splitSentences(md).length,3);
+const terms=text.keywords('工业革命推动了现代城市的发展。',8);
+assert(terms.length>0&&terms.every(term=>term.length>=2));
+const cloze=text.clozeChinese('工业革命推动了现代城市的发展。',.3,0);
+assert.match(cloze,/class="cloze-input"/);
+assert.doesNotMatch(cloze,/data-answer="[的了是]"/);
+assert.equal(text.normalizeAnswer('  城市发展  '),'城市发展');
+const large=Array.from({length:1500},(_,i)=>`第${i+1}段介绍工业革命与城市发展。`).join('\n');
+const largeAnalysis=text.analyze(large,'UTF-8');
+assert.equal(largeAnalysis.paragraphs,1500);
+assert.equal(largeAnalysis.sentences,1500);
+
+const italianManifest=JSON.parse(await fs.readFile(new URL('../data/italian-manifest.json',import.meta.url)));
+assert.equal(italianManifest.core.count,4000);
+assert.equal(italianManifest.full.count,16327);
+const italianWords=[];
+for(const chunk of italianManifest.full.chunks){const data=JSON.parse(await fs.readFile(new URL('../'+chunk.file,import.meta.url)));italianWords.push(...data.words)}
+const inflected=italianWords.find(word=>word.infinitive&&word.infinitive!==word.word);
+assert(inflected,'Italiano Full 应至少有一个可靠词形');
+assert(italianWords.slice(0,italianManifest.core.count).some(word=>word.word&&word.meaning),'Italiano Core 可用于快速筛词');
+const toeic=JSON.parse(await fs.readFile(new URL('../data/toeic-core.json',import.meta.url)));
+assert(toeic.words.some(word=>word.word&&word.meaning),'English 词库可用于快速筛词');
+
+const app1=await fs.readFile(new URL('../app-1.js',import.meta.url),'utf8');
+const app2=await fs.readFile(new URL('../app-2.js',import.meta.url),'utf8');
+const app3=await fs.readFile(new URL('../app-3.js',import.meta.url),'utf8');
+const app19=await fs.readFile(new URL('../app-19.js',import.meta.url),'utf8');
+const app20=await fs.readFile(new URL('../app-20.js',import.meta.url),'utf8');
+const ui=await fs.readFile(new URL('../ui.html',import.meta.url),'utf8');
+assert.match(app1,/quickResume/);
+assert.match(app2,/quickStatus:p\[9\]/);
+assert.match(app3,/w\.quickStatus/);
+assert.match(app19,/data-vquick/);
+assert.match(app19,/<details class="vocab-relations"/);
+assert.match(app20,/state\.vocab\.quickResume\[quickDeck\.id\]/);
+assert.match(ui,/data-vquick-status="known"/);
+assert.match(ui,/data-vquick-status="fuzzy"/);
+assert.match(ui,/data-vquick-status="unknown"/);
+assert.match(ui,/>背诵训练</);
+assert.match(app20,/该 PDF 未检测到可提取文本/);
+console.log(`PASS vocabulary + memorization: UTF-8, GB18030, MD, large text, Chinese sentence/keywords/cloze, Italiano Core/Full, English deck, quick resume/status, folded relations.`);
+console.log(`Italian form sample: ${inflected.word} → ${inflected.infinitive}`);
+console.log('SKIP DOCX/PDF sample parsing: repository has no existing sample files; no external files were fetched.');

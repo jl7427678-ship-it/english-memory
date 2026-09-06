@@ -1,6 +1,6 @@
 const TODAY_PROJECTS=[
   {id:'toeic-vocab',projectId:'toeic',name:'TOEIC 背词',meta:'四选一 · 拼写 · 复习',minutes:25,color:'violet',page:'vocab',glyph:'Aa'},
-  {id:'toeic-story',projectId:'toeic',name:'TOEIC 串题',meta:'背诵 · 挖空 · 模拟题',minutes:20,color:'blue',page:'training',glyph:'◫'},
+  {id:'toeic-story',projectId:'toeic',name:'TOEIC 背诵训练',meta:'背诵 · 挖空 · 模拟题',minutes:20,color:'blue',page:'training',glyph:'◫'},
   {id:'ielts-vocab',projectId:'ielts',name:'IELTS 词汇',meta:'核心词汇 · 拼写 · 复习',minutes:25,color:'blue',page:'vocab',glyph:'I'},
   {id:'italiano',projectId:'italiano',name:'Italiano',meta:'从第 1 课开始 · 本地进度',minutes:20,color:'green',page:'italiano',glyph:'It'},
   {id:'politics',projectId:'politics',name:'考研政治',meta:'资料与题型待接入',minutes:20,color:'red',glyph:'政'},
