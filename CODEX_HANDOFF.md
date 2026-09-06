@@ -2,6 +2,13 @@
 
 更新时间：2026-09-06
 
+## 24. 冻结边界（Italiano 学习系统起点）
+
+- 新增 `CODEX_FREEZE.md`，以 `20eb779242b20cad4f8849bf27d4617b16b9e5a4` 为冻结基线。
+- 已验证的词库、IELTS Atlas Reading、串题、写作、先秦文学、计划/机考/私人题库、App Shell、旺旺、PWA 与 TTS 均为 FROZEN。
+- 后续 Italiano 开发采用独立数据和最小 adapter；除明确缺陷或必要接口接入外，不重扫、不重构冻结模块。
+- Italian Core 4,000 / Full 16,327 只作为现有本地词典和 Vocabulary Engine 使用，禁止重复构建或复制。
+
 ## 23. Italiano 静态词库（本轮）
 
 本轮只新增 Italiano 词库；IELTS Listening、AI、政治题库和全站 UI 重构均未开展。
