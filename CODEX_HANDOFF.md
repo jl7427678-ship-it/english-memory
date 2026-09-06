@@ -11,6 +11,16 @@
 - Grammar 第一版只可使用 lingo-lessons 自带 guidebook/练习；更完整变位数据仍是明确缺口，需要以后另找许可清楚的结构化来源。
 - 本阶段只增加审计文档，没有运行时、数据结构、Service Worker 或用户数据变化。
 
+## 26. Italiano early A1 零基础主线
+
+- `data/italian-course.json`：固定适配自 `Open-Apps-Studio/lingo-lessons` 的 MIT Italian pack，实际 1 Section、5 Units、20 Lessons、220 Exercises。
+- 五类练习已统一进入现有 Italiano 页面：选择 120、词块排序 40、填空 20、配对 20、输入 20；其中 listen 模式调用现有 `it-IT` TTS，不复制音频。
+- 完成上一课才解锁下一课；保存当前课、当前 exercise、已完成课程和每课最佳结果；完成后可直接进入下一课或重练。
+- Today 与每周计划的 Italiano 入口现在进入课程页，并显示“继续第 X 课”；Vocabulary 仍直接复用已有 Core 4000 / Full 16327。
+- 新增 profile 隔离的兼容字段 `state.italianCourse`；没有数据迁移，没有改变 `englishMemoryLab_v1`、IndexedDB 或 `deckId|word`。
+- Service Worker 更新为 `english-memory-lab-v5-ui-20260906-22` 并加入 `app-16.js`；176 KB 课程正文按需读取，不进入 precache，第一次成功读取后由现有 runtime cache 保存。
+- 新增 `npm run check:italian-course`。全套语法与静态契约回归通过；云端 Chrome 无法访问本地工作区地址，公开站点交互验证须在发布后完成。
+
 ## 24. 冻结边界（Italiano 学习系统起点）
 
 - 新增 `CODEX_FREEZE.md`，以 `20eb779242b20cad4f8849bf27d4617b16b9e5a4` 为冻结基线。

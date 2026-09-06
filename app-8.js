@@ -1,6 +1,6 @@
 const REVIEW_DAYS=[0,1,3,7,14,30],WEEKDAY_LABELS=['日','一','二','三','四','五','六'];
 function projectById(id){return state.projects.find(project=>project.id===id)||null}
-function projectPage(id){return id==='chinese'?'preqin-literature':['toeic','ielts','kaoyan-english'].includes(id)?'vocab':'library'}
+function projectPage(id){return id==='chinese'?'preqin-literature':id==='italiano'?'italiano':['toeic','ielts','kaoyan-english'].includes(id)?'vocab':'library'}
 function projectCountdown(project){if(!project?.examDate)return null;const today=new Date();today.setHours(0,0,0,0);const exam=new Date(project.examDate+'T00:00:00');return Math.max(0,Math.ceil((exam-today)/86400000))}
 function generatedTodayTasks(){
   const projects=new Map(visibleProjects().map(project=>[project.id,project])),weekday=new Date().getDay(),tasks=[],due=Math.min(state.planner.maxDailyReviews,dueCards().length+vocabDueCount());

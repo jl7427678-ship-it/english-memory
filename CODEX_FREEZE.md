@@ -72,3 +72,10 @@
 - 当前只批准采用 MIT 许可的 `Open-Apps-Studio/lingo-lessons` Italian pack 作为 early A1 主线。
 - `LingoFlow` 的 Italian 内容由英语模板机器翻译，语法提示存在错位；只有经人工逐项复核的补充内容才可接入。
 - Dimenticato 与 Murmura 没有明确项目许可证，禁止复制代码或课程正文。
+
+## FROZEN：Italiano early A1 主线
+
+- `data/italian-course.json` 固定适配自 MIT 许可的 lingo-lessons Italian pack：1 Section / 5 Units / 20 Lessons / 220 Exercises。
+- `app-16.js` 提供顺序解锁、继续上次课程、五类练习、本地进度和 `it-IT` 听辨；后续中文辅助只能增量扩展，不替换课程引擎。
+- 课程进度位于当前 profile 的 `state.italianCourse`；没有修改旧 localStorage key、IndexedDB schema 或词库进度。
+- 176 KB 课程正文不进入 Service Worker precache；首次进入 Italiano 时按需读取，成功后由现有 runtime cache 保存。
