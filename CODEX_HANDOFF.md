@@ -38,6 +38,7 @@
 - 没有采用 Dimenticato/Murmura（无明确许可证），也没有采用 LingoFlow grammar（英语语法提示错位）。没有人工或 AI 伪造完整变位数据。
 - Reading / Listening 审计后的决定：LingoFlow 仅 3 篇机器翻译 story，需逐篇人工复核；Murmura 无许可证且不存在 listening 数据。因此本轮不接入独立分级 Reading。主课程已有 20 个 `mode: listen` 的 `it-IT` TTS 听辨练习；独立分级阅读 0、独立音频听力 0。
 - 公开 Chrome 验证 Grammar 5 张来源卡、按主线解锁和返回课程练习正常。验证时发现词库缺少独立 `essere` 词条，已在 `app-17.js` 增加从 source-provided infinitive/形态说明到现有变位词的反向索引，不新增或伪造词条。
+- 修复发布后再次用公开 Chrome 验证：点击 `essere` 会返回已有 `sono` 词条并显示 `lemma: essere`；应用自身 console 无 error。Safari / iPhone 语音仍需真机验证。
 - Service Worker 更新为 `english-memory-lab-v5-ui-20260906-25`；课程正文和 Italian 词库分片继续按需缓存。
 
 ## 24. 冻结边界（Italiano 学习系统起点）
