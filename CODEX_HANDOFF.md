@@ -1,6 +1,6 @@
 # 串题记忆室 · English Memory Lab — Codex 接手文档
 
-更新时间：2026-09-05
+更新时间：2026-09-06
 
 ## 1. 项目与优先级
 
@@ -365,3 +365,21 @@ Phase 0 静态回归已通过全部语法、词库、题库、站点、UI 与存
 ## 21. 下一位 Codex 的起始要求
 
 先读取 GitHub `main` 最新提交和真实代码，再读本文档。保留全部现有功能与数据契约；每次只完成一个清晰阶段。若文档与代码或线上行为冲突，以代码和线上行为为准。不要重新实现已经完成的 TOEIC 静态词库，不要恢复 `vocab-patch.js`，不要进行全量重写。
+
+## 22. IELTS Atlas Reading 题库（本轮）
+
+在现有 Exam Engine 外围新增了最小 Atlas adapter，没有替换 Vocabulary Engine、机考 runner 或既有 19 道内置模拟题：
+
+- 上游：`sallowayma-git/IELTS-practice`（IELTS Atlas），固定到提交 `1e2e47ed18f1a9005af8ae0e5592f80ee8d412b3`，避免远端数据格式无提示变化。
+- 实际目录统计：234 篇 Reading 单篇试卷 / passage、645 个题组、3143 个可判分答案字段。
+- 解析覆盖：227 篇有解析文件，7 篇暂无解析；解析文件内共有 2170 条逐题解析 item。没有解析的题目会诚实显示“暂无现成解析”。
+- `data/ielts-atlas-manifest.json` 只保存约 100KB 的元数据目录，不复制 8MB 以上的题文与解析资产。
+- 用户进入 `IELTS → Reading` 后才显示 Atlas 目录；选择试卷后只读取该卷的 exam shard 与 explanation shard。来源固定到 commit raw URL，Service Worker 沿用现有远程按需缓存策略，不把 234 卷加入 precache。
+- `app-15.js` 负责安全提取 Atlas 注册数据、清理上游 HTML、把拖放题降级为移动端可用的 select、兼容单选/填空/配对/多选，并在一次交卷时集中本地判分。
+- 答题过程只更新内存，不逐键写盘；交卷时一次性写入当前 profile 的 `state.examEngine.atlasHistory`、既有 `attempts` 与 `wrong`。历史最多 200 卷，attempts 继续沿用 500 条上限。
+- 题文、答案、解析不写入 localStorage / IndexedDB，不跨 profile 复制；Atlas 历史与错题继续按 Local Profile 隔离。
+- 上游 GPL-3.0 授权针对代码；上游 README 明确提醒题源、文章、图片和解析可能涉及第三方权利。本仓库只发布独立 adapter 与元数据，题文按需从上游读取，并在 UI 与 `THIRD_PARTY_NOTICES.md` 保留版权提示，不宣称为官方 IELTS 真题。
+- 新增 `scripts/build-ielts-atlas.mjs` 用于从指定上游 checkout 重建目录，新增 `npm run check:atlas` 验证固定版本、实际数量、按需加载与不预缓存题目分片。
+- PWA cache 已更新为 `english-memory-lab-v5-ui-20260906-19`，仅新增 `app-15.js` 和 Atlas manifest 到核心离线缓存。
+
+本轮完整静态回归通过，包括 15 个运行时脚本语法、TOEIC 1250/11154、先秦文学 20 题、存储保护、计划、Exam Engine、原练习、私人题库、机考、本地老师、听说读写、PWA 入口与 UI contract。当前执行环境的云浏览器无法连接本地 `terminal.local:4173`（`ERR_CONNECTION_REFUSED`），Vite 仍因 `uv_interface_addresses` 环境错误无法启动，因此不能把静态检查描述为浏览器或 Safari 真机验证；部署后必须补做线上 Chrome 交互与 Console 检查。

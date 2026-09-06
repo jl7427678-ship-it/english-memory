@@ -1,7 +1,7 @@
 import { readFile } from 'node:fs/promises';
 
 const ROOT = new URL('../', import.meta.url);
-const runtimeFiles = ['app-1.js', 'app-2.js', 'app-3.js', 'app-4.js', 'app-5.js', 'app-6.js', 'app-7.js', 'app-8.js', 'app-9.js', 'app-10.js', 'app-11.js', 'app-12.js', 'app-13.js', 'app-14.js'];
+const runtimeFiles = ['app-1.js', 'app-2.js', 'app-3.js', 'app-4.js', 'app-5.js', 'app-6.js', 'app-7.js', 'app-8.js', 'app-9.js', 'app-10.js', 'app-11.js', 'app-12.js', 'app-13.js', 'app-14.js', 'app-15.js'];
 const ui = await readFile(new URL('ui.html', ROOT), 'utf8');
 const runtime = (await Promise.all(runtimeFiles.map(file => readFile(new URL(file, ROOT), 'utf8')))).join('\n');
 
@@ -30,7 +30,7 @@ const pageTargets = new Set([
 const missingPages = [...pageTargets].filter(page => !pages.has(page));
 assert(!missingPages.length, `Navigation targets without pages: ${missingPages.join(', ')}`);
 
-for (const page of ['today', 'library', 'training', 'plan', 'me', 'study', 'vocab', 'exam', 'exam-engine', 'computer-exam', 'language-skills', 'review', 'stats', 'settings', 'preqin-literature', 'private-library']) {
+for (const page of ['today', 'library', 'training', 'plan', 'me', 'study', 'vocab', 'exam', 'exam-engine', 'computer-exam', 'atlas-reading', 'language-skills', 'review', 'stats', 'settings', 'preqin-literature', 'private-library']) {
   assert(pages.has(page), `Required page is missing: ${page}`);
 }
 for (const label of ['TOEIC 背词', 'TOEIC 串题', 'Italiano', '考研政治', '汉语言', '土地资源管理']) {
@@ -50,6 +50,7 @@ for (const id of ['examProjectSelect','examTypeTabs','examEngineTitle','examEngi
 assert(staticIds.includes('practiceWorkspace'), 'Built-in practice workspace is missing');
 for (const id of ['privateProject','privatePdfInput','retainPrivatePdf','privateAudioInput','privateAnswerKey','privatePaperPreview','privatePaperList']) assert(staticIds.includes(id), `Private Library UI is missing: ${id}`);
 for (const id of ['examRunMode','examRunFormat','computerExamNav','computerExamClock','computerSourceContent','highlightExamSelection','toggleComputerReview','computerAnswerArea','submitComputerExam']) assert(staticIds.includes(id), `Computer exam UI is missing: ${id}`);
+for (const id of ['atlasReadingLibrary','atlasReadingTitle','atlasPassageContent','atlasQuestionGroups','atlasQuestionNav','submitAtlasReading','atlasResult']) assert(staticIds.includes(id), `IELTS Atlas UI is missing: ${id}`);
 for (const id of ['listeningWrongReplay','skillsDictationPlay','skillsDictationInput','skillsRecognition','skillsRecord','skillsRecordingPlayback']) assert(staticIds.includes(id), `English skills UI is missing: ${id}`);
 
 console.log(`Validated ${staticIds.length} unique UI ids, ${pages.size} pages, and all navigation targets.`);
