@@ -2,6 +2,36 @@
 
 更新时间：2026-09-06
 
+## 23. Italiano 静态词库（本轮）
+
+本轮只新增 Italiano 词库；IELTS Listening、AI、政治题库和全站 UI 重构均未开展。
+
+- `data/italian-core.json`：Italiano Core 4,000 词。
+- `data/italian-full-01.json` 至 `data/italian-full-09.json`：Italiano Full 16,327 词。
+- `data/italian-manifest.json`：版本、来源、许可证、数量、分片与 SHA-256。
+- `scripts/build-italian.mjs`：构建时下载并流式读取公开源，大型原始文件只放临时目录，构建完成即删除。
+- `scripts/check-italian-data.mjs` / `npm run check:italian`：校验数量、中文释义、重复项、排名、分片校验和、TTS、进度隔离和缓存策略。
+
+数据来源：
+
+- 中文释义与原有语法元数据：中文维基词典，经 Kaikki / Wiktextract 结构化提取；CC BY-SA 4.0 + GFDL。
+- 频率与 rank：`hermitdave/FrequencyWords` 的 Italian OpenSubtitles2018 50k；内容 CC BY-SA 4.0，生成器 MIT。
+- 构建阶段完成繁体转简体与无效项过滤。没有使用 AI 生成中文释义、词性、性别、复数、不定式或级别。
+- Full 当前可用字段统计：POS 10,405、gender 3,947、plural 2,908、infinitive 5,864、IPA 4,810、双语例句 280；数据源没有的字段保持空值，未伪造 CEFR level。
+
+运行时使用现有 Vocabulary Engine 的最小 adapter：
+
+- `italian_core` 和 `italian_full` 是独立 deck ID，进度继续使用 `deckId|word`，与 TOEIC / IELTS / 考研英语完全隔离。
+- 四选一、拼写、100 / 300 / 500 / 全部、错词回流、Day 0 / 1 / 3 / 7 / 14 / 30 和 IndexedDB 缓存全部复用现有逻辑。
+- 每个 runtime deck 携带 `speechLang`；Italiano 自动与手动朗读使用 `it-IT`，原英语串题和词库仍使用原设置。
+- Learning Library 在当前 profile 显示 Italiano 时展示课程入口；Today 的 Italiano 任务也可以进入现有词库页。
+- Core 和 Full 都是用户点击后按需读取；Full 每次最多并行读取 2 个分片。Service Worker 只预缓存小型 `italian-manifest.json`，不预缓存任何 Italian Core / Full 正文。
+- IndexedDB schema 与 localStorage key 均未变更，也没有数据迁移。
+
+Service Worker cache：`english-memory-lab-v5-ui-20260906-20`。
+
+静态回归已通过全部 JS syntax、Italiano、TOEIC、Exam Engine、先秦文学、计划、练习、私人题库、机考、本地老师、听说读写、IELTS Atlas、存储、站点与 UI contract 检查。云浏览器不能访问工作区本地端口（`ERR_BLOCKED_BY_CLIENT` / 502），因此提交前未声称完成真实页面交互；部署后应在公开 GitHub Pages 补测 Chrome，Safari / iPhone 仍需真机验证。
+
 ## 1. 项目与优先级
 
 - GitHub：`jl7427678-ship-it/english-memory`

@@ -27,3 +27,9 @@ The built-in exam practice packs are simulations. They are not official TOEIC or
 - Source code license: GNU GPL v3.0.
 - Integration: this repository contains an independently written adapter and a metadata-only catalog. Reading passages, questions, answers, and explanations are not copied into this repository; each selected exam shard is fetched on demand from the pinned upstream revision.
 - Content notice: the upstream project states that question sources, passages, PDFs, images, and explanation material may be subject to third-party rights. Those rights are not granted by its code license. Use is limited here to personal study; the material is not represented as official IELTS content.
+
+## Italiano vocabulary
+
+- Meanings and grammatical metadata: [Chinese Wiktionary](https://zh.wiktionary.org/) extracted by [Kaikki / Wiktextract](https://kaikki.org/zhwiktionary/). License: Creative Commons Attribution-ShareAlike 4.0 and GNU Free Documentation License.
+- Frequency ranking: [hermitdave/FrequencyWords](https://github.com/hermitdave/FrequencyWords), Italian OpenSubtitles2018 frequency list. Content license: CC BY-SA 4.0; generator code license: MIT.
+- Integration: build-time normalization converts Traditional Chinese to Simplified Chinese, removes unusable entries, keeps source-provided part of speech, gender, plural, infinitive, IPA, example and frequency fields where present, and writes one Core deck plus static Full-deck shards. No AI-generated translations or grammatical fields are added.

@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 4173",
     "build:toeic": "node scripts/build-toeic.mjs",
+    "build:italian": "node scripts/build-italian.mjs",
     "check:data": "node scripts/check-vocab-data.mjs",
+    "check:italian": "node scripts/check-italian-data.mjs",
     "check:exam": "node scripts/check-exam-engine.mjs",
     "check:questions": "node scripts/check-question-data.mjs",
     "check:planner": "node scripts/check-planner-contract.mjs",
