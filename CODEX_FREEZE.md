@@ -86,3 +86,9 @@
 - 课程中的 Italian 单词可点击查看中文释义、词性、性别、复数、不定式、IPA、频率排名和 source-provided lemma；缺字段保持不显示，不用 AI 补造。
 - “查看这句的中文辅助”只展示逐词结果；整句翻译接口明确未启用，不得偷偷接 API 或伪装成整句翻译。
 - 生词保存到当前 profile 的 `state.italianCourse.savedWords`，使用 Day 0 / 1 / 3 / 7 / 14 / 30；Today 到期数与计划的复习优先级已包含 Italian 生词。
+
+## FROZEN：Italiano source-based Grammar
+
+- `app-18.js` 只呈现 lingo-lessons 5 个已采用 Unit 的原始 guidebook、来源内动词标签和对应课程练习入口。
+- 当前覆盖：冠词与 gender、plural、形容词一致、基本语序、`essere`、`stare` 问候形式、`volere`、`mangiare`、`bere`、`andare`、`arrivare`、`partire`、`trovare`。
+- `avere` 完整变位、规则动词完整范式与更广的不规则动词表是明确缺口；不得从无许可证的 Dimenticato/Murmura 复制，也不得用模型编造后冒充来源课程。

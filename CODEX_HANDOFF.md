@@ -31,6 +31,14 @@
 - Service Worker 更新为 `english-memory-lab-v5-ui-20260906-23`，只预缓存小型 `app-17.js`，不预缓存 Italian 正文分片。
 - 公开 Chrome 已验证 `ragazza` 显示中文、noun/feminine/复数/IPA/rank；`sono` 能从词库来源说明回到 `essere`。加入生词后侧栏显示 1 条到期，Today 待复习与优先任务均变为 1；逐词句子辅助明确不提供整句翻译；页面自身无 console error。
 
+## 28. Italiano Grammar / Conjugation 与 Reading / Listening 决定
+
+- 新增 `app-18.js` 与 Italiano 内部“Grammar / 动词”视图，统一显示 lingo-lessons 5 个 Unit 的原始 guidebook、来源内动词标签和对应已解锁课程练习，不暴露外部 App。
+- 来源实际覆盖：冠词、gender/plural、形容词一致、基本语序、`essere`、`stare` 问候、`volere`、`mangiare/bere`、`andare/arrivare/partire/trovare`。当前没有来源支持 `avere` 完整变位、规则动词完整范式或更广不规则动词表，UI 明确显示缺口。
+- 没有采用 Dimenticato/Murmura（无明确许可证），也没有采用 LingoFlow grammar（英语语法提示错位）。没有人工或 AI 伪造完整变位数据。
+- Reading / Listening 审计后的决定：LingoFlow 仅 3 篇机器翻译 story，需逐篇人工复核；Murmura 无许可证且不存在 listening 数据。因此本轮不接入独立分级 Reading。主课程已有 20 个 `mode: listen` 的 `it-IT` TTS 听辨练习；独立分级阅读 0、独立音频听力 0。
+- Service Worker 更新为 `english-memory-lab-v5-ui-20260906-24`，仅增加小型 `app-18.js`；课程正文和 Italian 词库分片继续按需缓存。
+
 ## 24. 冻结边界（Italiano 学习系统起点）
 
 - 新增 `CODEX_FREEZE.md`，以 `20eb779242b20cad4f8849bf27d4617b16b9e5a4` 为冻结基线。

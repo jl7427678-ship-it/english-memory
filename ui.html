@@ -78,10 +78,12 @@
           <div><div class="eyebrow">ITALIANO · 从零开始</div><h2 id="italianCourseTitle">从第 1 课开始学</h2><p>按顺序完成 20 课 early A1 入门训练。课程正文与进度保存在本机，不调用 AI。</p></div>
           <div class="italian-course-summary"><b id="italianCourseProgress">0 / 20</b><span>已完成课程</span><div class="progress"><i id="italianCourseBar"></i></div></div>
         </div>
-        <div class="italian-course-layout">
+        <div class="italian-hub-tabs"><button class="mode active" data-italian-view="course">课程主线</button><button class="mode" data-italian-view="grammar">Grammar / 动词</button></div>
+        <div class="italian-course-layout" id="italianCoursePanel">
           <aside class="card italian-course-map"><div class="row between"><div><h3>课程路线</h3><p class="sub">完成当前课后解锁下一课</p></div><span class="tag">Early A1</span></div><div id="italianCourseMap"></div><div class="italian-vocab-link"><b>Vocabulary</b><p>继续使用现有 Core 4000 / Full 16327。</p><button class="btn" data-go-page="vocab">打开词库</button></div><div class="italian-saved-words" id="italianSavedWords"></div></aside>
           <article class="card italian-lesson-stage" id="italianLessonStage"><div class="italian-loading">正在读取本地课程…</div></article>
         </div>
+        <div class="italian-grammar-panel" id="italianGrammarPanel" hidden></div>
       </section>
 
       <section class="page" id="page-private-library">
