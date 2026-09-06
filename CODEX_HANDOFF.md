@@ -21,6 +21,15 @@
 - Service Worker 更新为 `english-memory-lab-v5-ui-20260906-22` 并加入 `app-16.js`；176 KB 课程正文按需读取，不进入 precache，第一次成功读取后由现有 runtime cache 保存。
 - 新增 `npm run check:italian-course`。全套语法与静态契约回归通过。公开 GitHub Pages 已用 Chrome 完整走完第 1 课的选择、听辨、词块、填空、配对和输入流程；完成后第 2 课解锁，刷新后仍保持 `1 / 20`，页面自身无 console error。Safari / iPhone 的实际声音仍未真机验证。
 
+## 27. Italiano 本地中文辅助
+
+- 新增独立 `app-17.js`，不重建词库：优先查询 IndexedDB 已安装的 Italian Core / Full；否则先按需读取现有 Core 第 1 分片，查不到才读第 2 分片，只保存在内存与现有 HTTP runtime cache。
+- 课程提示和单元词汇支持点击查询中文；展示词库实际存在的 meaning、POS、gender、plural、infinitive、IPA、rank。复数通过词库 plural 反查，动词原形优先使用 infinitive，再读取 source-provided 中文形态说明，不使用 AI 猜测。
+- 句子提供“查看这句的中文辅助”，结果是逐词释义并明确整句翻译接口未启用；默认不做整页或全文翻译。
+- 可加入/移出生词，当前 profile 内保存 `state.italianCourse.savedWords`；复习沿用 Day 0 / 1 / 3 / 7 / 14 / 30，Today 待复习数与优先复习任务包含 Italian 生词。
+- `it-IT` 手动朗读沿用现有 TTS。没有 API、AI、词库复制、IndexedDB schema 变化或数据迁移。
+- Service Worker 更新为 `english-memory-lab-v5-ui-20260906-23`，只预缓存小型 `app-17.js`，不预缓存 Italian 正文分片。
+
 ## 24. 冻结边界（Italiano 学习系统起点）
 
 - 新增 `CODEX_FREEZE.md`，以 `20eb779242b20cad4f8849bf27d4617b16b9e5a4` 为冻结基线。

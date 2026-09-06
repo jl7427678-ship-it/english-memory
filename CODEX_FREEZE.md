@@ -79,3 +79,10 @@
 - `app-16.js` 提供顺序解锁、继续上次课程、五类练习、本地进度和 `it-IT` 听辨；后续中文辅助只能增量扩展，不替换课程引擎。
 - 课程进度位于当前 profile 的 `state.italianCourse`；没有修改旧 localStorage key、IndexedDB schema 或词库进度。
 - 176 KB 课程正文不进入 Service Worker precache；首次进入 Italiano 时按需读取，成功后由现有 runtime cache 保存。
+
+## FROZEN：Italiano 本地中文辅助
+
+- `app-17.js` 只查询已安装 Italian deck；未安装时按需读取现有 Core 的第 1 个分片，查不到才读第 2 个分片。禁止建立新词库副本或重复写 IndexedDB。
+- 课程中的 Italian 单词可点击查看中文释义、词性、性别、复数、不定式、IPA、频率排名和 source-provided lemma；缺字段保持不显示，不用 AI 补造。
+- “查看这句的中文辅助”只展示逐词结果；整句翻译接口明确未启用，不得偷偷接 API 或伪装成整句翻译。
+- 生词保存到当前 profile 的 `state.italianCourse.savedWords`，使用 Day 0 / 1 / 3 / 7 / 14 / 30；Today 到期数与计划的复习优先级已包含 Italian 生词。
