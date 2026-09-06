@@ -29,6 +29,7 @@
 - 可加入/移出生词，当前 profile 内保存 `state.italianCourse.savedWords`；复习沿用 Day 0 / 1 / 3 / 7 / 14 / 30，Today 待复习数与优先复习任务包含 Italian 生词。
 - `it-IT` 手动朗读沿用现有 TTS。没有 API、AI、词库复制、IndexedDB schema 变化或数据迁移。
 - Service Worker 更新为 `english-memory-lab-v5-ui-20260906-23`，只预缓存小型 `app-17.js`，不预缓存 Italian 正文分片。
+- 公开 Chrome 已验证 `ragazza` 显示中文、noun/feminine/复数/IPA/rank；`sono` 能从词库来源说明回到 `essere`。加入生词后侧栏显示 1 条到期，Today 待复习与优先任务均变为 1；逐词句子辅助明确不提供整句翻译；页面自身无 console error。
 
 ## 24. 冻结边界（Italiano 学习系统起点）
 
