@@ -123,12 +123,14 @@ async function main() {
     const words = buildWords(frequencyText, dictionary);
     if (words.length < CORE_COUNT) throw new Error(`Only ${words.length} usable Italian words; need at least ${CORE_COUNT}`);
     await mkdir(OUTPUT_DIR, { recursive: true });
-    const core = await writeDeck('italian-core.json', deck('italian_core', 'Italiano Core 4000', words.slice(0, CORE_COUNT)));
     const chunks = [];
     for (let index = 0; index < words.length; index += CHUNK_SIZE) {
       const filename = `italian-full-${String(chunks.length + 1).padStart(2, '0')}.json`;
       chunks.push(await writeDeck(filename, deck('italian_full', 'Italiano Full', words.slice(index, index + CHUNK_SIZE))));
     }
+    await rm(new URL('italian-core.json', OUTPUT_DIR), { force: true });
+    const coreChunks = chunks.slice(0, Math.ceil(CORE_COUNT / CHUNK_SIZE));
+    const core = { count: CORE_COUNT, chunks: coreChunks };
     const manifest = {
       version: VERSION,
       generatedAt: new Date().toISOString(),

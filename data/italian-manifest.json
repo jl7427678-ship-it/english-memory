@@ -1,1 +1,30 @@
-{"version":"2026.09.06-static.1","generatedAt":"2026-09-06T04:00:06.959Z","schemaVersion":1,"sources":[{"name":"Chinese Wiktionary via Kaikki/Wiktextract","url":"https://kaikki.org/zhwiktionary/%E6%84%8F%E5%A4%A7%E5%88%A9%E8%AA%9E/kaikki.org-dictionary-%E6%84%8F%E5%A4%A7%E5%88%A9%E8%AA%9E.jsonl","license":"CC BY-SA 4.0 and GFDL"},{"name":"hermitdave/FrequencyWords Italian 50k","url":"https://raw.githubusercontent.com/hermitdave/FrequencyWords/master/content/2018/it/it_50k.txt","license":"CC BY-SA 4.0"}],"core":{"file":"data/italian-core.json","count":4000,"sha256":"7f546ba0ea0122cc6f06d8125bbcfe3c26ef7ef7c7711986bff14bfc9fc8125c"},"full":{"count":16327,"chunks":[{"file":"data/italian-full-01.json","count":2000,"sha256":"32abe9ba29b1b057eaf26fefc5dc3ab4ff1dd8d986248b3e8f0c14b166a94e88"},{"file":"data/italian-full-02.json","count":2000,"sha256":"946506a617bd99e30f860980e0245bd941e7296c46b287c9c0f4524e406cb5f0"},{"file":"data/italian-full-03.json","count":2000,"sha256":"198f4d9be040c633af2497302f051ed7d798d204d3a0e0337edf1b48cc76685d"},{"file":"data/italian-full-04.json","count":2000,"sha256":"f98a5812f1c7222cf4247e85ef4975810ddf05534f3a4f086850989f80d304dd"},{"file":"data/italian-full-05.json","count":2000,"sha256":"06ed17d8cc6a0b1225dcd30c294d15e9c35ce4b046c2daa95698aa02a07c1ce4"},{"file":"data/italian-full-06.json","count":2000,"sha256":"3de756c74ee2fc28803f77d9ee45323296a651efe01c34ff339476c63af1b2bc"},{"file":"data/italian-full-07.json","count":2000,"sha256":"16317001605492f891545abeb887f838f2ed214b75cad39c003683a9c2d10351"},{"file":"data/italian-full-08.json","count":2000,"sha256":"2833a000aa31f629eba3f3ecd006dfa9825c32cc186e9bab6e117941a276cb4b"},{"file":"data/italian-full-09.json","count":327,"sha256":"4d9b388bc24a961b9eac4be896255a60b5cc570745ec54f7272943195eac6a1a"}]}}
+{
+  "version": "2026.09.06-static.1",
+  "generatedAt": "2026-09-06T04:00:06.959Z",
+  "schemaVersion": 1,
+  "sources": [
+    {"name":"Chinese Wiktionary via Kaikki/Wiktextract","url":"https://kaikki.org/zhwiktionary/%E6%84%8F%E5%A4%A7%E5%88%A9%E8%AA%9E/kaikki.org-dictionary-%E6%84%8F%E5%A4%A7%E5%88%A9%E8%AA%9E.jsonl","license":"CC BY-SA 4.0 and GFDL"},
+    {"name":"hermitdave/FrequencyWords Italian 50k","url":"https://raw.githubusercontent.com/hermitdave/FrequencyWords/master/content/2018/it/it_50k.txt","license":"CC BY-SA 4.0"}
+  ],
+  "core": {
+    "count": 4000,
+    "chunks": [
+      {"file":"data/italian-full-01.json","count":2000,"sha256":"32abe9ba29b1b057eaf26fefc5dc3ab4ff1dd8d986248b3e8f0c14b166a94e88"},
+      {"file":"data/italian-full-02.json","count":2000,"sha256":"946506a617bd99e30f860980e0245bd941e7296c46b287c9c0f4524e406cb5f0"}
+    ]
+  },
+  "full": {
+    "count": 16327,
+    "chunks": [
+      {"file":"data/italian-full-01.json","count":2000,"sha256":"32abe9ba29b1b057eaf26fefc5dc3ab4ff1dd8d986248b3e8f0c14b166a94e88"},
+      {"file":"data/italian-full-02.json","count":2000,"sha256":"946506a617bd99e30f860980e0245bd941e7296c46b287c9c0f4524e406cb5f0"},
+      {"file":"data/italian-full-03.json","count":2000,"sha256":"198f4d9be040c633af2497302f051ed7d798d204d3a0e0337edf1b48cc76685d"},
+      {"file":"data/italian-full-04.json","count":2000,"sha256":"f98a5812f1c7222cf4247e85ef4975810ddf05534f3a4f086850989f80d304dd"},
+      {"file":"data/italian-full-05.json","count":2000,"sha256":"06ed17d8cc6a0b1225dcd30c294d15e9c35ce4b046c2daa95698aa02a07c1ce4"},
+      {"file":"data/italian-full-06.json","count":2000,"sha256":"3de756c74ee2fc28803f77d9ee45323296a651efe01c34ff339476c63af1b2bc"},
+      {"file":"data/italian-full-07.json","count":2000,"sha256":"16317001605492f891545abeb887f838f2ed214b75cad39c003683a9c2d10351"},
+      {"file":"data/italian-full-08.json","count":2000,"sha256":"2833a000aa31f629eba3f3ecd006dfa9825c32cc186e9bab6e117941a276cb4b"},
+      {"file":"data/italian-full-09.json","count":327,"sha256":"4d9b388bc24a961b9eac4be896255a60b5cc570745ec54f7272943195eac6a1a"}
+    ]
+  }
+}
