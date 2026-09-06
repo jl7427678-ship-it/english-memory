@@ -18,6 +18,7 @@ assert(data.sections.length === 1 && units.length === 5 && lessons.length === 20
 for (const [type, count] of Object.entries({ select: 120, wordBank: 40, fillBlank: 20, match: 20, typeAnswer: 20 })) assert(counts[type] === count, `${type} count changed`);
 assert(app.includes("fetch('data/italian-course.json')") && app.includes('completedLessons') && app.includes("lang:'it-IT'"), 'Course runtime contract missing');
 assert(helper.includes('italianClickableText') && helper.includes('idbGetDeck') && helper.includes('ITALIAN_REVIEW_DAYS=[0,1,3,7,14,30]'), 'Local Chinese helper/review contract missing');
+assert(helper.includes('italianDictionaryLemmaIndex') && helper.includes('sourceInfinitive(word)'), 'Inflected-form/lemma reverse index missing');
 assert(helper.includes("italianDictionaryManifest.core.chunks[index]") && !helper.includes('idbPutDeck'), 'Dictionary lookup must reuse on-demand source data without duplicate writes');
 assert(grammar.includes('ITALIAN_GRAMMAR_LABELS') && grammar.includes('unit.guidebook') && grammar.includes('当前真实缺口'), 'Source-based grammar guide is missing');
 assert(ui.includes('id="page-italiano"') && ui.includes('id="italianLessonStage"'), 'Italian course UI missing');
