@@ -2,6 +2,17 @@
 
 更新时间：2026-09-06
 
+## 29. Vocabulary Engine 进度、断点续学与完整浏览
+
+- 在冻结 Vocabulary Engine 外增加 `app-19.js` 小型增强层，没有替换四选一、拼写、错词强化、复习算法、词库加载或 IndexedDB。
+- 每个 Core / Full / 自定义词库现在分别显示总词数、已学、未学、已掌握、待复习、错词/强化中、今日新学、掌握百分比和当前新词位置。
+- “学习到第几个词”与“掌握多少词”独立计算。“继续学习”按原词库顺序从下一未学词开始；现有未完成 session 继续恢复原题目和队列。
+- `state.vocab.resume[deckId]` 只保存一个整数位置；内置词原有 `state.vocab.progress[deckId|word]` 数组向后兼容追加索引 8 的 `firstSeen` 时间，用于准确统计今日新学。旧记录无需 migration，缺失值按 0 处理。
+- “查看完整词库”按原顺序展示，支持中英文搜索和全部/未学/学习中/已掌握/待复习/错词筛选；每页只渲染 50 项，不创建上万 DOM 节点。
+- 单词详情只显示现有中文、词性、IPA、Italian gender/plural/infinitive、学习状态、TTS 与例句。例句在 UI 统一为 `sentence/translation/source/generated` 兼容视图；旧 `example/exampleZh` 直接映射，缺失时显示“暂无例句”，没有生成或补充数据。
+- 没有复制词库、改变 IndexedDB schema、预缓存大词库分片、调用 AI 或迁移数据。Service Worker 为 `english-memory-lab-v5-ui-20260906-26`，只增加小型 `app-19.js`。
+- 新增 `check:vocab-experience` 专项检查。只验证 Italiano Core 4000、Italiano Full 16327、英文 TOEIC Core 1250、继续位置序列化、浏览筛选/分页契约和已有双语例句；未运行全量测试。
+
 ## 25. Italiano 外部来源一次性审计
 
 - 新增 `ITALIAN_SOURCES_AUDIT.md`，以后直接复用，不重复扫描四个指定上游。

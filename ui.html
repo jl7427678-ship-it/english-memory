@@ -227,6 +227,16 @@ deadline | 截止日期
           <div class="builtin-grid" id="builtinVocabList"></div>
         </div>
 
+        <div class="card vocab-browser" id="vocabBrowser" hidden>
+          <div class="row between"><div><h2 id="vocabBrowserTitle">完整词库</h2><div class="sub" id="vocabBrowserSummary"></div></div><button class="btn" id="closeVocabBrowser">关闭</button></div>
+          <div class="vocab-browser-controls">
+            <input class="field" id="vocabBrowserSearch" type="search" placeholder="搜索单词或中文释义" autocomplete="off">
+            <select class="field" id="vocabBrowserFilter" aria-label="筛选学习状态"><option value="all">全部</option><option value="unlearned">未学</option><option value="learning">学习中</option><option value="mastered">已掌握</option><option value="due">待复习</option><option value="wrong">错词</option></select>
+          </div>
+          <div class="vocab-browser-list" id="vocabBrowserList"></div>
+          <div class="row between vocab-browser-pagination"><button class="btn" id="vocabBrowserPrev">上一页</button><span class="sub" id="vocabBrowserPage"></span><button class="btn" id="vocabBrowserNext">下一页</button></div>
+        </div>
+
         <div class="card vocab-trainer" id="vocabTrainer" style="display:none">
           <div class="vocab-topline">
             <div><div class="sub" id="vocabDeckName">未选择词库</div><h2 style="margin-top:4px" id="vocabPhaseTitle">极速四选一</h2></div>
@@ -236,7 +246,7 @@ deadline | 截止日期
           <div class="vocab-stage" style="margin-top:14px">
             <div class="cue" id="vocabCue">看英文，快速选出中文释义</div>
             <div id="vocabQuestionArea">
-              <div class="vocab-word" id="vocabWord">word</div><div class="vocab-phonetic" id="vocabPhonetic"></div>
+              <div class="vocab-word" id="vocabWord">word</div><div class="vocab-phonetic" id="vocabPhonetic"></div><div class="vocab-example" id="vocabExample"></div>
               <div class="row" style="justify-content:center"><button class="btn" id="vocabSpeak">🔊 发音</button><span class="sub" id="vocabTimerHint">电脑可按 1 / 2 / 3 / 4 快速作答</span></div>
               <div class="vocab-options" id="vocabOptions"></div>
               <div class="vocab-spell" id="vocabSpellBox" style="display:none"><div class="vocab-meaning" id="vocabSpellMeaning"></div><input id="vocabSpellInput" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="输入英文单词"><div class="row" style="justify-content:center;margin-top:14px"><button class="btn primary" id="checkVocabSpell">检查拼写</button><button class="btn" id="showVocabSpell">显示答案</button></div></div>
@@ -287,3 +297,4 @@ deadline | 截止日期
 <div class="toast" id="toast"></div>
 <div class="modal" id="loadingModal"><div class="modal-card"><h3 id="loadingTitle">正在处理资料</h3><p class="sub" id="loadingText">请稍候……</p></div></div>
 <div class="modal" id="italianLookupModal"><div class="modal-card italian-lookup-card"><div class="row between"><div><div class="eyebrow">本地中文词典</div><h3 id="italianLookupTitle">Italiano</h3></div><button class="btn" id="closeItalianLookup">关闭</button></div><div id="italianLookupBody"></div><div class="row italian-lookup-actions"><button class="btn" id="italianLookupSpeak">🔊 it-IT 朗读</button><button class="btn primary" id="italianSaveWord">加入生词 / 复习</button></div></div></div>
+<div class="modal" id="vocabDetailModal"><div class="modal-card vocab-detail-card"><div class="row between"><div><div class="eyebrow">词汇详情</div><h3 id="vocabDetailTitle">Word</h3></div><button class="btn" id="closeVocabDetail">关闭</button></div><div id="vocabDetailBody"></div><div class="row"><button class="btn primary" id="vocabDetailSpeak">🔊 朗读</button></div></div></div>

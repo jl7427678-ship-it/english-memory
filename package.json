@@ -8,6 +8,7 @@
     "build:italian": "node scripts/build-italian.mjs",
     "check:data": "node scripts/check-vocab-data.mjs",
     "check:italian": "node scripts/check-italian-data.mjs",
+    "check:vocab-experience": "node scripts/check-vocab-experience.mjs",
     "check:italian-course": "node scripts/check-italian-course.mjs",
     "check:exam": "node scripts/check-exam-engine.mjs",
     "check:questions": "node scripts/check-question-data.mjs",

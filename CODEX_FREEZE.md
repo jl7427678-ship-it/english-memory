@@ -19,6 +19,7 @@
 - localStorage：`englishMemoryLab_v1`
 - 词库 IndexedDB：`englishMemoryLab_vocab_cache_v1` / `decks`
 - 内置词学习进度：`state.vocab.progress`，键为 `deckId|word`
+- Vocabulary 断点：`state.vocab.resume[deckId]` 仅保存下一新词位置；progress 数组索引 8 可选保存 `firstSeen`，旧记录缺失时按 0 处理
 - 私人题库与大文件：保持现有 profile 隔离、SHA-256 去重、Blob 单份保存和 PDF 原件默认不保留策略
 - 禁止清空、改名或无迁移改变以上数据结构
 
@@ -29,6 +30,7 @@
 - 考研英语 4,787
 - Italiano Core 4,000 / Full 16,327
 - 四选一、拼写、100 / 300 / 500 / 全部、错词强化、快捷键、IndexedDB 缓存、Day 0 / 1 / 3 / 7 / 14 / 30 复习
+- 每词库进度摘要、按原顺序继续下一未学词、50 条分页的完整词库浏览、搜索/状态筛选、已有例句与词条详情
 - Italiano 后续功能只能查询或调用现有 Italian 静态词库；禁止重建、复制或改写词库正文
 
 对应检查：`check:data`、`check:italian`、`check:storage`、`check:site`。
