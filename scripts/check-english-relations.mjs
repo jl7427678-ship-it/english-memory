@@ -1,0 +1,32 @@
+import fs from 'node:fs/promises';
+import assert from 'node:assert/strict';
+
+const relations=JSON.parse(await fs.readFile(new URL('../data/english-word-relations.json',import.meta.url)));
+const toeic=JSON.parse(await fs.readFile(new URL('../data/toeic-core.json',import.meta.url)));
+const adapter=await fs.readFile(new URL('../app-21.js',import.meta.url),'utf8');
+const vocabConfig=await fs.readFile(new URL('../app-2.js',import.meta.url),'utf8');
+const ui=await fs.readFile(new URL('../ui.html',import.meta.url),'utf8');
+
+assert.equal(relations.schemaVersion,1);
+assert.match(relations.license,/CC BY-SA 4\.0/);
+assert.equal(Object.keys(relations.entries).filter(word=>word==='decision').length,1,'decision 只存一份，不按 deck 复制');
+for(const deck of ['toeic_core','toeic_full','ielts_core','kaoyan_core'])assert(relations.coverage.verifiedWords.decision.includes(deck));
+for(const word of ['decision','affect'])assert(toeic.words.some(item=>item.word===word),`TOEIC 应包含 ${word}`);
+assert.match(vocabConfig,/ielts_core:\{id:'ielts_core'/);
+assert.match(vocabConfig,/kaoyan_core:\{id:'kaoyan_core'/);
+const decision=relations.entries.decision.relations,affect=relations.entries.affect.relations;
+assert(decision.family.length,'family');
+assert(decision.synonyms.length,'synonyms');
+assert(decision.collocations.length,'collocations');
+assert(affect.confusables.length,'confusables');
+assert.equal(relations.entries['no-relation-word'],undefined,'无关联数据的词保持空');
+assert.match(adapter,/\['family','词族 \/ 词形'\]/);
+assert.match(adapter,/\['synonyms','近义词'\]/);
+assert.match(adapter,/\['collocations','常用搭配'\]/);
+assert.match(adapter,/\['confusables','易混词'\]/);
+assert.match(adapter,/if\(!groups\.length\)return''/);
+assert.match(adapter,/ENGLISH_RELATION_DECKS/);
+assert.doesNotMatch(adapter,/italian/i);
+assert.match(ui,/data-vquick-status="known"/);
+assert.match(vocabConfig,/quickStatus:p\[9\]/);
+console.log('PASS English relations: TOEIC/IELTS/考研共享 word lookup，family/synonyms/collocations/confusables 折叠契约，无数据安全隐藏，快速筛词与进度契约保留。');

@@ -1,0 +1,61 @@
+{
+  "version": "2026.09.06-seed.1",
+  "schemaVersion": 1,
+  "license": "CC BY-SA 4.0 and GFDL",
+  "attribution": "English Wiktionary contributors",
+  "source": "https://en.wiktionary.org/",
+  "coverage": {
+    "verifiedDecks": ["toeic_core", "toeic_full", "ielts_core", "kaoyan_core"],
+    "verifiedWords": {
+      "decision": ["toeic_core", "toeic_full", "ielts_core", "kaoyan_core"],
+      "affect": ["toeic_core", "toeic_full", "ielts_core", "kaoyan_core"]
+    },
+    "note": "Small source-verified seed only; missing relations remain hidden."
+  },
+  "entries": {
+    "decision": {
+      "source": "https://en.wiktionary.org/wiki/decision",
+      "relations": {
+        "family": [
+          {"word": "decide", "pos": "v.", "relation": "related term"},
+          {"word": "decisive", "pos": "adj.", "relation": "related term"}
+        ],
+        "synonyms": [
+          {"word": "idea"},
+          {"word": "opinion"},
+          {"word": "view"}
+        ],
+        "collocations": [
+          {"text": "make a decision"},
+          {"text": "reach a decision"},
+          {"text": "come to a decision"},
+          {"text": "arrive at a decision"},
+          {"text": "take a decision", "note": "preferred in some varieties of English"}
+        ],
+        "confusables": []
+      }
+    },
+    "affect": {
+      "source": "https://en.wiktionary.org/wiki/affect",
+      "relations": {
+        "family": [
+          {"word": "affects", "pos": "v.", "relation": "third-person singular"},
+          {"word": "affecting", "pos": "v.", "relation": "present participle"},
+          {"word": "affected", "pos": "v.", "relation": "past / past participle"},
+          {"word": "affection", "pos": "n.", "relation": "related term"},
+          {"word": "affectionate", "pos": "adj.", "relation": "related term"},
+          {"word": "affective", "pos": "adj.", "relation": "related term"}
+        ],
+        "synonyms": [
+          {"word": "alter"},
+          {"word": "change"},
+          {"word": "influence"}
+        ],
+        "collocations": [],
+        "confusables": [
+          {"word": "effect", "note": "Affect conveys influence over something that already exists; effect indicates the manifestation of new ideas or entities."}
+        ]
+      }
+    }
+  }
+}

@@ -2,6 +2,17 @@
 
 更新时间：2026-09-06
 
+## 31. English Vocabulary 关联词
+
+- 新增独立小型 `data/english-word-relations.json`，按规范化 `word` 查询，不写入 TOEIC / IELTS / 考研英语各自词库，不复制完整词条，也不改变 IndexedDB 或 `deckId|word` 进度。
+- `app-21.js` 仅对 TOEIC Core/Full、IELTS Core、考研英语和自定义 English Vocabulary 生效；Italiano 不读取该数据、不进入此适配层。
+- English 词条详情在确有数据时显示默认折叠的“关联词”，内部再按有数据的类别显示“词族 / 词形、近义词、常用搭配、易混词”；没有数据的词不显示空面板且不报错。快速筛词完全不显示关联词。
+- 当前数据是 source-verified seed，不是批量覆盖：`decision` 与 `affect` 两个词均已确认存在于 TOEIC、IELTS、考研英语；同一个全局记录跨 deck 共用。`decision` 提供 family/synonyms/collocations，`affect` 提供 family/synonyms/confusable。
+- 来源为 English Wiktionary 对应词条，许可为 CC BY-SA 4.0 + GFDL，允许商业使用但必须遵守署名与相同方式共享要求；UI 保留来源链接与许可。Princeton WordNet 许可允许商业使用和再分发，但完整 npm 数据约 35 MB 且不覆盖搭配/易混说明，本轮未接入。
+- 没有使用 AI、字符串规则或低质量词表补齐缺口。当前生产数据仅 2 个词；更广覆盖需以后通过可审计构建流程从许可明确的词汇来源提取。
+- 新增 `scripts/check-english-relations.mjs`，只验证一个 TOEIC 词、IELTS/考研覆盖声明、跨 deck 单份引用、四类折叠契约、无数据安全隐藏及现有快速筛词/进度契约。未运行其他模块或全量测试。
+- Service Worker 更新为 `english-memory-lab-v5-ui-20260906-28`，只新增小型 adapter 与关系 JSON 到 precache。
+
 ## 30. 快速筛词、词形详情与中文背诵导入
 
 - Vocabulary 新增“快速筛词”：只显示单词、已有 IPA/POS、朗读和原词库序号；认识/模糊/不认识分别写入 `quickStatus`，不修改 `level/mastered/seen`。

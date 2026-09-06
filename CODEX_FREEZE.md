@@ -33,6 +33,7 @@
 - 四选一、拼写、100 / 300 / 500 / 全部、错词强化、快捷键、IndexedDB 缓存、Day 0 / 1 / 3 / 7 / 14 / 30 复习
 - 每词库进度摘要、按原顺序继续下一未学词、50 条分页的完整词库浏览、搜索/状态筛选、已有例句与词条详情
 - 快速筛词与独立断点；词条详情中 source-provided 词族/词形/易混词折叠展示。不得用 AI、字符串猜测或外部大型词典补造关系
+- English 关联词使用独立 `data/english-word-relations.json` 按规范化 word 共享查询，不写回各 deck；当前仅有 Wiktionary 可核查 seed（decision、affect）。详情只显示存在的 family/synonyms/collocations/confusables，快速筛词不显示；禁止把缺口当成自动生成任务
 - Italiano 后续功能只能查询或调用现有 Italian 静态词库；禁止重建、复制或改写词库正文
 
 对应检查：`check:data`、`check:italian`、`check:storage`、`check:site`。
