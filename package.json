@@ -4,11 +4,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 4173",
+    "build:english-relations": "node scripts/build-english-relations.mjs",
     "build:toeic": "node scripts/build-toeic.mjs",
     "build:italian": "node scripts/build-italian.mjs",
     "check:data": "node scripts/check-vocab-data.mjs",
     "check:italian": "node scripts/check-italian-data.mjs",
     "check:vocab-experience": "node scripts/check-vocab-experience.mjs",
+    "check:english-relations": "node scripts/check-english-relations.mjs",
     "check:italian-course": "node scripts/check-italian-course.mjs",
     "check:exam": "node scripts/check-exam-engine.mjs",
     "check:questions": "node scripts/check-question-data.mjs",
@@ -24,7 +26,9 @@
     "check:ui": "node scripts/check-ui-contract.mjs"
   },
   "devDependencies": {
+    "node-wordnet": "0.1.12",
     "opencc-js": "1.0.5",
-    "vite": "7.1.4"
+    "vite": "7.1.4",
+    "wordnet-db": "3.1.14"
   }
 }

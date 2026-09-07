@@ -1,17 +1,18 @@
 # 串题记忆室 · English Memory Lab — Codex 接手文档
 
-更新时间：2026-09-06
+更新时间：2026-09-07
 
 ## 31. English Vocabulary 关联词
 
-- 新增独立小型 `data/english-word-relations.json`，按规范化 `word` 查询，不写入 TOEIC / IELTS / 考研英语各自词库，不复制完整词条，也不改变 IndexedDB 或 `deckId|word` 进度。
+- `data/english-word-relations.json` 已从 2 词 seed 升级为静态 manifest；`scripts/build-english-relations.mjs` 对 TOEIC Full、IELTS Core、考研英语的 13,143 个去重词构建共享数据，共命中 9,531 词。统计：6,117 词有 9,894 条词族/派生关系，8,948 词有 40,862 条分义项近义关系，125 词有 159 条易混关系；3,612 词暂无任何可靠关系。
+- 数据按首字母拆为 26 个 `data/english-relations-*.json`，总计约 5 MB、最大单片约 583 KB。`app-21.js` 打开详情时只读取 manifest 和当前词首字母分片；分片不进入 Service Worker precache，成功读取后沿用现有 runtime cache。不写入 TOEIC / IELTS / 考研英语各自词库，不复制完整词条，也不改变 IndexedDB 或 `deckId|word` 进度。
 - `app-21.js` 仅对 TOEIC Core/Full、IELTS Core、考研英语和自定义 English Vocabulary 生效；Italiano 不读取该数据、不进入此适配层。
-- English 词条详情在确有数据时显示默认折叠的“关联词”，内部再按有数据的类别显示“词族 / 词形、近义词、常用搭配、易混词”；没有数据的词不显示空面板且不报错。快速筛词完全不显示关联词。
-- 当前数据是 source-verified seed，不是批量覆盖：`decision` 与 `affect` 两个词均已确认存在于 TOEIC、IELTS、考研英语；同一个全局记录跨 deck 共用。`decision` 提供 family/synonyms/collocations，`affect` 提供 family/synonyms/confusable。
-- 来源为 English Wiktionary 对应词条，许可为 CC BY-SA 4.0 + GFDL，允许商业使用但必须遵守署名与相同方式共享要求；UI 保留来源链接与许可。Princeton WordNet 许可允许商业使用和再分发，但完整 npm 数据约 35 MB 且不覆盖搭配/易混说明，本轮未接入。
-- 没有使用 AI、字符串规则或低质量词表补齐缺口。当前生产数据仅 2 个词；更广覆盖需以后通过可审计构建流程从许可明确的词汇来源提取。
-- 新增 `scripts/check-english-relations.mjs`，只验证一个 TOEIC 词、IELTS/考研覆盖声明、跨 deck 单份引用、四类折叠契约、无数据安全隐藏及现有快速筛词/进度契约。未运行其他模块或全量测试。
-- Service Worker 更新为 `english-memory-lab-v5-ui-20260906-28`，只新增小型 adapter 与关系 JSON 到 precache。
+- English 词条详情在确有数据时显示默认折叠的“关联词”，内部标题显示“词族 N、近义词 N、常用搭配 N、易混词 N”；不同义项的近义词显示简短 sense，易混词显示简短区别。没有数据的词不显示空面板且不报错，快速筛词完全不显示关联词。
+- 主要来源为 Princeton WordNet 3.0（许可全文保存在 `data/english-relations-LICENSE.txt`），提供同 synset 近义词和显式 `+` pointer 的派生词族；Wikipedia “List of commonly misused English words”（CC BY-SA 4.0）仅提供其明确分组的易混词及区别；English Wiktionary 核验 seed 保留少量搭配/易混补充。完整来源、许可、署名和 redistribution 审计见 `ENGLISH_RELATIONS_SOURCES.md`，manifest 记录 Wikipedia revision。
+- 来源贡献：WordNet 命中 9,521 词并提供 9,888 条 family、40,856 条 synonym；Wiktionary seed 2 词/18 条；Wikipedia 易混词 125 词/158 条（去重后 `affect/effect` 优先保留已有 seed，因此总易混关系为 159）。
+- WordNet 原始约 35 MB npm 数据只用于构建，不提交、不在浏览器下载。没有 AI、词缀猜测或编造；没有可靠数据的 3,612 个词和缺少的类别保持隐藏。
+- `scripts/check-english-relations.mjs` 验证 26 分片的 count/bytes/SHA-256、9,531 个单份 word key、完整词族/近义/易混样本、四类折叠、无数据安全隐藏、按需加载及现有快速筛词/进度契约。未运行无关模块或全量测试。
+- Service Worker 更新为 `english-memory-lab-v5-ui-20260906-29`；只预缓存小型 manifest，26 个关系分片全部按需读取。
 
 ## 30. 快速筛词、词形详情与中文背诵导入
 
