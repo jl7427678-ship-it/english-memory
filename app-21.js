@@ -27,6 +27,8 @@ showVocabDetail=async function(id){const deck=vocabBrowserState.deck,word=wordBy
 const relationModeToggle=$('#vocabShowRelationsAfterAnswer');
 relationModeToggle.checked=state.settings.vocabShowRelationsAfterAnswer===true;
 relationModeToggle.onchange=()=>{state.settings.vocabShowRelationsAfterAnswer=relationModeToggle.checked;save()};
+async function startPrimaryEnglishQuick(button){button.disabled=true;try{nav('vocab');const meta=visibleBuiltinMetas().find(item=>ENGLISH_RELATION_DECKS.has(item.id));const deck=meta?(builtinDeckCache.get(meta.id)||await installBuiltin(meta.id,false)):state.vocab.decks.find(isEnglishRelationDeck);if(deck)startVocabQuick(deck);else toast('请先在“我的”中显示 TOEIC、IELTS 或考研英语')}finally{button.disabled=false}}
+$$('[data-vocab-quick-entry]').forEach(button=>button.onclick=()=>startPrimaryEnglishQuick(button));
 let relationAdvanceCapture=null,activeAnswerRelation=null;
 const baseAdvanceVocab21=advanceVocab;
 advanceVocab=function(delay=300){if(relationAdvanceCapture){relationAdvanceCapture.delay=delay;return}baseAdvanceVocab21(delay)};

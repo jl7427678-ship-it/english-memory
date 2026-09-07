@@ -2,6 +2,13 @@
 
 更新时间：2026-09-07
 
+## 33. English Vocabulary 入口显著化
+
+- 训练中心新增首位紫色高亮“快速筛词”卡片，点击后直接选取当前 profile 第一个可见 English 内置词库并进入既有快速筛词；无需先进入密集的词库管理区。
+- English Vocabulary 页面顶部新增“新功能 / 快速筛词”横幅与“立即开始快速筛词”主按钮。没有新增状态或第二套训练逻辑，仍调用原 `startVocabQuick()`、`quickResume[deckId]` 与 progress 索引 9。
+- “答题后显示关联词”从一行小复选框提升为整行说明卡，明确开启后的流程与默认关闭状态；保存字段和四选一逻辑不变。
+- 新入口找不到可见 English 词库时只提示用户先显示 TOEIC、IELTS 或考研英语，不进入 Italiano。Service Worker 与静态资源版本更新为 `20260907-31`。
+
 ## 32. English Vocabulary 中文知识卡与快速筛词滑动
 
 - `app-21.js` 增加不落盘的 English Master Lexicon 兼容层：按规范化 lemma 合并当前已加载的 TOEIC / IELTS / 考研英语 / 通用自定义 English 词条，只保留一份运行时 `meaning/POS/IPA/example`，考试归属收敛为 `examTags`；已预留 `TEM8` deck/tag 映射。没有复制或重建 13,143 词静态库，没有迁移现有 deck 或 IndexedDB。

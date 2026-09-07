@@ -36,6 +36,10 @@ assert.match(confusableHtml,/economic：与经济有关的；economical：节省
 assert.equal(vm.runInContext(`englishAnswerRelationHTML(null,'plain',englishMasterLexicon(primaryDeck))`,sandbox),'','无 relations 不应生成关联卡');
 
 assert.match(ui,/id="vocabShowRelationsAfterAnswer" type="checkbox"/,'四选一应提供关联词开关');
+assert.match(ui,/training-card-featured[^>]+data-vocab-quick-entry/,'训练中心应提供醒目的快速筛词独立入口');
+assert.match(ui,/vocab-feature-banner[\s\S]+立即开始快速筛词/,'单词页顶部应提供醒目的快速筛词入口');
+assert.match(ui,/vocab-feature-toggle[\s\S]+答题后显示关联词[\s\S]+默认关闭/,'关联词模式应使用说明清楚的设置卡');
+assert.match(adapter,/startPrimaryEnglishQuick/,'醒目入口应直接打开当前可见英语词库的快速筛词');
 assert.match(adapter,/vocabShowRelationsAfterAnswer===true/,'开关默认关闭，只有显式 true 才拦截下一题');
 assert.match(adapter,/presentAnswerRelationCard/,'开启后应进入独立关联词卡');
 assert.match(adapter,/\['family','词族',3\].*\['synonyms','近义词',3\].*\['confusables','易混词',1\]/s,'关联词卡应限制为 3/3/1');

@@ -138,6 +138,7 @@
       <section class="page" id="page-training">
         <div class="page-intro"><div class="eyebrow">TRAINING</div><h2>训练中心</h2><p>选择一种练习方式，直接进入训练，不用重新设置资料。</p></div>
         <div class="training-grid">
+          <button class="training-card training-card-featured" data-vocab-quick-entry><span class="training-icon">✓</span><div><b>快速筛词</b><p>直接开始：认识 / 模糊 / 不认识，支持左右滑动。</p></div><span class="arrow">→</span></button>
           <button class="training-card" data-go-page="language-skills"><span class="training-icon">EN</span><div><b>英语听说读写</b><p>听力、录音回放、阅读机考、拼写与默写集中入口。</p></div><span class="arrow">→</span></button>
           <button class="training-card" data-go-page="exam-engine"><span class="training-icon">EX</span><div><b>考试训练</b><p>按项目进入 TOEIC、IELTS、先秦文学或自定义考试题型。</p></div><span class="arrow">→</span></button>
           <button class="training-card" data-go-page="vocab"><span class="training-icon">Aa</span><div><b>单词四选一</b><p>快速筛词，错词和慢词自动强化。</p></div><span class="arrow">→</span></button>
@@ -198,6 +199,10 @@
       </section>
 
       <section class="page" id="page-vocab">
+        <div class="card vocab-feature-banner">
+          <div class="vocab-feature-copy"><span class="vocab-new-badge">新功能</span><div><h2>快速筛词</h2><p>先看英文，再选择“认识 / 模糊 / 不认识”。不会改成已掌握，也不会影响原复习进度。</p></div></div>
+          <button class="btn vocab-feature-start" data-vocab-quick-entry>立即开始快速筛词 →</button>
+        </div>
         <div class="vocab-hero">
           <div class="card">
             <div class="row between"><div><h2>我的自定义词库</h2><div class="sub">你自己的背诵生词、真题生词继续从这里添加；系统内置考试词库在下方。</div></div><span class="tag">本地保存</span></div>
@@ -214,7 +219,8 @@ deadline | 截止日期
           </div>
           <div class="card">
             <div class="row between"><div><h2>单词训练</h2><div class="sub">第一轮四选一快速筛；再按答错和反应速度自动重复。</div></div><div class="row"><span class="vocab-badge" id="vocabDueBadge">待复习 0</span><button class="btn" id="reviewDueVocab">复习到期</button></div></div>
-            <div class="vocab-controls" style="margin-top:12px"><span class="sub">每轮词数</span><select id="vocabBatchSize" aria-label="每轮单词数量"><option value="100">100 词</option><option value="300">300 词</option><option value="500">500 词</option><option value="all">全库过一遍</option></select><label class="vocab-relation-toggle"><input id="vocabShowRelationsAfterAnswer" type="checkbox">答题后显示关联词</label><span class="sub">想按你说的“所有词先过一遍”，选「全库过一遍」。</span></div>
+            <div class="vocab-controls" style="margin-top:12px"><span class="sub">每轮词数</span><select id="vocabBatchSize" aria-label="每轮单词数量"><option value="100">100 词</option><option value="300">300 词</option><option value="500">500 词</option><option value="all">全库过一遍</option></select><span class="sub">想按你说的“所有词先过一遍”，选「全库过一遍」。</span></div>
+            <label class="vocab-relation-toggle vocab-feature-toggle"><input id="vocabShowRelationsAfterAnswer" type="checkbox"><span><strong>答题后显示关联词</strong><small>开启后，答完四选一会单独显示词族、近义词和易混词；默认关闭。</small></span></label>
             <div class="grid3" style="margin-top:16px"><div class="metric"><b id="vocabDeckCount">0</b><span>词库</span></div><div class="metric"><b id="vocabWordCount">0</b><span>单词</span></div><div class="metric"><b id="vocabMasteredCount">0</b><span>已熟练</span></div></div>
             <div class="divider"></div>
             <div class="sub"><b style="color:var(--text)">强化规则</b><br>首轮答错 → 最多再见 5 次；答对但慢 → 3 次；有点犹豫 → 2 次；秒选正确 → 1 次。强化轮答错还会自动回流。</div>

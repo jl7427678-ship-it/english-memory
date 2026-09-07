@@ -37,6 +37,7 @@
 - English 关联词使用独立 manifest + 26 个首字母分片按规范化 word 共享查询，不写回各 deck；当前 WordNet 3.0 + Wikipedia 易混词 + Wiktionary 核验 seed 覆盖 9,531 / 13,143 个现有去重英语词。详情只显示存在的 family/synonyms/collocations/confusables 及数量，快速筛词不显示；原始 WordNet 不进仓库，分片不 precache，禁止用 AI/字符串猜测补缺口
 - English Master Lexicon 仅为运行时 lemma 合并视图，反查已加载 English deck 的现有中文/POS/IPA 并合并 examTags；不得为此复制完整英语词库或改写 deck。关联词中文缺失显示“暂无中文释义”，不得用 AI 补造；WordNet sense 与来源 difference 保留在数据中但不优先面向中文学习者展示
 - English 快速筛词保留认识/模糊/不认识按钮，并允许右滑认识、左滑不认识；内部状态继续使用兼容值 known/fuzzy/unknown，不得把“认识”直接写成 mastered
+- 快速筛词在训练中心与 English Vocabulary 页顶部都有醒目的直接入口；四选一“答题后显示关联词”使用独立说明卡。入口只能调用现有状态与训练函数，不得产生第二套进度
 - Italiano 后续功能只能查询或调用现有 Italian 静态词库；禁止重建、复制或改写词库正文
 
 对应检查：`check:data`、`check:italian`、`check:storage`、`check:site`。
