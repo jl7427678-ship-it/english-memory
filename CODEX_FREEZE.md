@@ -21,6 +21,7 @@
 - 内置词学习进度：`state.vocab.progress`，键为 `deckId|word`
 - Vocabulary 断点：`state.vocab.resume[deckId]` 仅保存下一新词位置；progress 数组索引 8 可选保存 `firstSeen`，旧记录缺失时按 0 处理
 - 快速筛词断点：`state.vocab.quickResume[deckId]`；progress 数组索引 9 可选保存 `quickStatus`（known/fuzzy/unknown），它不等于 mastered，旧记录无需迁移
+- 四选一“答题后显示关联词”只保存布尔设置 `state.settings.vocabShowRelationsAfterAnswer`，默认关闭；开关关闭必须保持原 advance，开启只在原判题完成后插入独立知识卡，不改变队列、强化次数或复习算法
 - 私人题库与大文件：保持现有 profile 隔离、SHA-256 去重、Blob 单份保存和 PDF 原件默认不保留策略
 - 禁止清空、改名或无迁移改变以上数据结构
 
@@ -34,6 +35,8 @@
 - 每词库进度摘要、按原顺序继续下一未学词、50 条分页的完整词库浏览、搜索/状态筛选、已有例句与词条详情
 - 快速筛词与独立断点；词条详情中 source-provided 词族/词形/易混词折叠展示。不得用 AI、字符串猜测或外部大型词典补造关系
 - English 关联词使用独立 manifest + 26 个首字母分片按规范化 word 共享查询，不写回各 deck；当前 WordNet 3.0 + Wikipedia 易混词 + Wiktionary 核验 seed 覆盖 9,531 / 13,143 个现有去重英语词。详情只显示存在的 family/synonyms/collocations/confusables 及数量，快速筛词不显示；原始 WordNet 不进仓库，分片不 precache，禁止用 AI/字符串猜测补缺口
+- English Master Lexicon 仅为运行时 lemma 合并视图，反查已加载 English deck 的现有中文/POS/IPA 并合并 examTags；不得为此复制完整英语词库或改写 deck。关联词中文缺失显示“暂无中文释义”，不得用 AI 补造；WordNet sense 与来源 difference 保留在数据中但不优先面向中文学习者展示
+- English 快速筛词保留认识/模糊/不认识按钮，并允许右滑认识、左滑不认识；内部状态继续使用兼容值 known/fuzzy/unknown，不得把“认识”直接写成 mastered
 - Italiano 后续功能只能查询或调用现有 Italian 静态词库；禁止重建、复制或改写词库正文
 
 对应检查：`check:data`、`check:italian`、`check:storage`、`check:site`。

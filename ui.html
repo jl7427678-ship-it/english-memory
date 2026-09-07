@@ -214,7 +214,7 @@ deadline | 截止日期
           </div>
           <div class="card">
             <div class="row between"><div><h2>单词训练</h2><div class="sub">第一轮四选一快速筛；再按答错和反应速度自动重复。</div></div><div class="row"><span class="vocab-badge" id="vocabDueBadge">待复习 0</span><button class="btn" id="reviewDueVocab">复习到期</button></div></div>
-            <div class="vocab-controls" style="margin-top:12px"><span class="sub">每轮词数</span><select id="vocabBatchSize" aria-label="每轮单词数量"><option value="100">100 词</option><option value="300">300 词</option><option value="500">500 词</option><option value="all">全库过一遍</option></select><span class="sub">想按你说的“所有词先过一遍”，选「全库过一遍」。</span></div>
+            <div class="vocab-controls" style="margin-top:12px"><span class="sub">每轮词数</span><select id="vocabBatchSize" aria-label="每轮单词数量"><option value="100">100 词</option><option value="300">300 词</option><option value="500">500 词</option><option value="all">全库过一遍</option></select><label class="vocab-relation-toggle"><input id="vocabShowRelationsAfterAnswer" type="checkbox">答题后显示关联词</label><span class="sub">想按你说的“所有词先过一遍”，选「全库过一遍」。</span></div>
             <div class="grid3" style="margin-top:16px"><div class="metric"><b id="vocabDeckCount">0</b><span>词库</span></div><div class="metric"><b id="vocabWordCount">0</b><span>单词</span></div><div class="metric"><b id="vocabMasteredCount">0</b><span>已熟练</span></div></div>
             <div class="divider"></div>
             <div class="sub"><b style="color:var(--text)">强化规则</b><br>首轮答错 → 最多再见 5 次；答对但慢 → 3 次；有点犹豫 → 2 次；秒选正确 → 1 次。强化轮答错还会自动回流。</div>
@@ -241,7 +241,7 @@ deadline | 截止日期
 
         <div class="card vocab-quick" id="vocabQuickTrainer" hidden>
           <div class="row between"><div><div class="sub" id="vocabQuickDeck">未选择词库</div><h2>快速筛词</h2></div><div class="row"><span class="vocab-badge" id="vocabQuickIndex">0 / 0</span><button class="btn" id="exitVocabQuick">退出</button></div></div>
-          <div class="vocab-quick-stage"><div class="vocab-word" id="vocabQuickWord">word</div><div class="vocab-phonetic" id="vocabQuickMeta"></div><button class="btn" id="vocabQuickSpeak">🔊 朗读</button></div>
+          <div class="vocab-quick-stage vocab-swipe-card" id="vocabQuickStage"><div class="vocab-word" id="vocabQuickWord">word</div><div class="vocab-phonetic" id="vocabQuickMeta"></div><div class="sub vocab-swipe-help">右滑认识 · 左滑不认识</div><button class="btn" id="vocabQuickSpeak">🔊 朗读</button></div>
           <div class="vocab-quick-actions"><button class="btn good" data-vquick-status="known">认识</button><button class="btn hard" data-vquick-status="fuzzy">模糊</button><button class="btn again" data-vquick-status="unknown">不认识</button></div>
         </div>
 
@@ -259,6 +259,14 @@ deadline | 截止日期
               <div class="vocab-options" id="vocabOptions"></div>
               <div class="vocab-spell" id="vocabSpellBox" style="display:none"><div class="vocab-meaning" id="vocabSpellMeaning"></div><input id="vocabSpellInput" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="输入英文单词"><div class="row" style="justify-content:center;margin-top:14px"><button class="btn primary" id="checkVocabSpell">检查拼写</button><button class="btn" id="showVocabSpell">显示答案</button></div></div>
               <div class="vocab-feedback" id="vocabFeedback" aria-live="polite"></div>
+            </div>
+            <div class="vocab-answer-relations" id="vocabRelationCard" hidden>
+              <div class="vocab-relation-outcome" id="vocabRelationOutcome"></div>
+              <div class="eyebrow">答题关联词</div>
+              <h2 id="vocabRelationWord">word</h2>
+              <div class="vocab-relation-meaning" id="vocabRelationMeaning"></div>
+              <div class="vocab-answer-relation-groups" id="vocabRelationGroups"></div>
+              <div class="row vocab-relation-actions"><button class="btn" id="vocabRelationMore">查看更多</button><button class="btn primary" id="vocabRelationNext">下一个</button></div>
             </div>
             <div id="vocabSessionResult" style="display:none;text-align:center;width:100%"></div>
           </div>

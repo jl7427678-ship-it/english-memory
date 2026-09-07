@@ -2,6 +2,18 @@
 
 更新时间：2026-09-07
 
+## 32. English Vocabulary 中文知识卡与快速筛词滑动
+
+- `app-21.js` 增加不落盘的 English Master Lexicon 兼容层：按规范化 lemma 合并当前已加载的 TOEIC / IELTS / 考研英语 / 通用自定义 English 词条，只保留一份运行时 `meaning/POS/IPA/example`，考试归属收敛为 `examTags`；已预留 `TEM8` deck/tag 映射。没有复制或重建 13,143 词静态库，没有迁移现有 deck 或 IndexedDB。
+- 词族、近义词和易混词展示不再优先直出 WordNet 英文 `sense` 或 Wikipedia 英文 `difference`。relation 继续只保存 related lemma 和原可靠来源；UI 用 related lemma 反查当前 Master Lexicon 的已有中文与 POS，查不到明确显示“暂无中文释义”。易混词优先使用既有 `differenceZh`（若未来来源提供），否则只并列展示两个已存在的中文释义；原英文 `sense/difference` 数据未删除或改写。
+- 完整词条详情仍为信息最全入口，`word/中文/IPA/POS/例句` 保持原样；English 关联词默认折叠并显示词族、近义词、常用搭配、易混词数量，同时显示合并后的 TOEIC / IELTS / 考研英语 / 通用英语标签。Italiano 不进入该适配层。
+- 四选一开始前新增“答题后显示关联词”开关，保存在现有 `state.settings.vocabShowRelationsAfterAnswer`，缺失时严格按关闭处理。关闭时直接调用原四选一判题和 advance；开启时先完成原判题、错词回流、次数与进度写入，再暂停 advance，显示独立知识卡：基础释义、词族最多 3 项、近义词最多 3 项、易混词最多 1 项；“查看更多”进入原完整详情，“下一个”恢复原队列。当前词没有这三类关系时按原延时直接下一题，不显示空卡。
+- 快速筛词继续只显示 word、已有 IPA/POS 和朗读；按钮仍为认识 / 模糊 / 不认识。English 卡新增 Pointer Events 横滑：右滑（60px 阈值）=认识，左滑=不认识，纵向滚动保持可用；按钮始终保留，卡片有轻量退出过渡。没有改动 Italiano 快速筛词逻辑。
+- 快速筛词继续使用冻结的 `state.vocab.quickResume[deckId]` 与 `state.vocab.progress[deckId|word][9]`。为兼容既有数据，“模糊”内部值仍为 `fuzzy`，不迁移成 `unsure`；三种预筛状态都不修改 `level/mastered/seen/correct/wrong/due`，Day 0/1/3/7/14/30 与原强化逻辑不变。
+- GitHub 交互参考仅审计 `Webisso/english-flashcards` 固定提交 `b725ff53752e756dc655bf54a156c4fd8d4c3a14` 的 `WordTest.jsx`、`ProgressContext.jsx`、README 与 package：采用“按钮保留 + 约 60px 左右滑阈值 + 卡片位移反馈 + 按词保存三状态”的成熟思路。上游没有根目录 LICENSE 文件，README 仅写 `MIT`，因此没有复制任何 React/Vite 源码，也没有加入第三方代码或许可证文本。
+- 新增 `npm run check:english-vocab-knowledge`，验证 family/synonyms/confusables/no-data、Master Lexicon 中文反查、英文说明不优先展示、四选一开关关闭/开启/无数据直过/下一题、3/3/1 限量、三按钮、左右滑、移动端布局、刷新持久化与原进度隔离。`check:english-relations` 和相关 JS syntax 同时通过；本机无浏览器可执行文件，未声称完成真实手机滑动或未发布版本的浏览器回归。
+- Service Worker 更新为 `english-memory-lab-v5-ui-20260907-30`；只更新现有小型 HTML/CSS/JS，26 个关系分片继续按需加载且不进入 precache。
+
 ## 31. English Vocabulary 关联词
 
 - `data/english-word-relations.json` 已从 2 词 seed 升级为静态 manifest；`scripts/build-english-relations.mjs` 对 TOEIC Full、IELTS Core、考研英语的 13,143 个去重词构建共享数据，共命中 9,531 词。统计：6,117 词有 9,894 条词族/派生关系，8,948 词有 40,862 条分义项近义关系，125 词有 159 条易混关系；3,612 词暂无任何可靠关系。
