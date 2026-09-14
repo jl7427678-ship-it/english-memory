@@ -24,7 +24,8 @@
     "check:atlas": "node scripts/check-ielts-atlas.mjs",
     "check:storage": "node scripts/check-storage-safety.mjs",
     "check:site": "node scripts/check-static-site.mjs",
-    "check:ui": "node scripts/check-ui-contract.mjs"
+    "check:ui": "node scripts/check-ui-contract.mjs",
+    "check:vocab-sync": "node scripts/check-vocab-cloud-sync.mjs"
   },
   "devDependencies": {
     "node-wordnet": "0.1.12",
