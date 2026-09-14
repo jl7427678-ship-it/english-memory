@@ -2,6 +2,16 @@
 
 更新时间：2026-09-07
 
+
+## 34. Vocabulary Cloud Sync 真实接入（2026-09-14）
+
+- 原本地提交 `e9d7b2079fe2853695a28d15c42137dbabd4e9a5` 未进入 GitHub 且旧执行环境不可用；依据保留的数据契约在远端恢复等价实现。
+- Supabase 项目 `english-memory`：`zbxzmokjeukloiftfajd`，区域 `ap-southeast-1`。前端只提交 Project URL 与 publishable key，禁止 service_role/secret。
+- 新增 `vocabulary_progress`、`vocabulary_resume`、`vocabulary_settings`，三表启用 RLS；authenticated 仅 SELECT/INSERT/UPDATE，anon 无表权限；三个 merge RPC 均为 security invoker，并由 `auth.uid()` 写入 user_id。
+- 前端为 Local-first：15 秒 debounce、每批 200、pull → local merge → push dirty → pull confirm；离线与失败不阻断学习。
+- 网站登录只使用 Email OTP：邮箱、发送验证码、验证码验证、退出登录；没有邮箱密码登录/注册，也没有 Google/Apple。
+- 已通过专项 JS 语法与纯 merge 检查，并在真实 Supabase 事务内通过 A/B 三词并集、旧写入拒绝、resume/quick cursor、recognition/mistake/settings；测试事务已回滚。禁止将本项扩展到其他模块。
+
 ## 33. English Vocabulary 入口显著化
 
 - 训练中心新增首位紫色高亮“快速筛词”卡片，点击后直接选取当前 profile 第一个可见 English 内置词库并进入既有快速筛词；无需先进入密集的词库管理区。
