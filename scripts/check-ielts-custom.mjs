@@ -46,7 +46,7 @@ for(const item of bank.listening.slice(0,7))for(const q of item.parts.flatMap(pa
 // Exercise the isolated exam renderer with an answer and explanation that must never reach its DOM.
 const dom=new Map(),element=key=>{if(!dom.has(key))dom.set(key,{dataset:{},innerHTML:'',textContent:'',querySelector:()=>null});return dom.get(key)};
 const mock={id:'mock_01',listeningId:'L001',readingId:'R001'};
-const examContext={window:{addEventListener(){}},state:{examEngine:{}},$:key=>key.includes(' audio')?null:element(key),$$:()=>[],esc:value=>String(value).replaceAll('&','&amp;').replaceAll('<','&lt;'),customReadingLayout:()=>'<svg>MEDIA</svg>',customMock:()=>mock,customMockReady:()=>true,customListening:()=>({id:'L001',parts:[{number:1,title:'Test',lines:[{text:'Audio'}]}]}),customReading:()=>({id:'R001',parts:[{number:1,title:'Passage'}]}),buildCustomExamQuestions:()=>[{id:'q1',section:'Test · Part 1',stem:'Question text',answer:['ANSWERSECRET'],explanation:'EXPLANATIONSECRET',content:{passage:'PASSAGE TEXT'}}],nav(){},save(){},confirm:()=>true};
+const examContext={window:{addEventListener(){}},sessionStorage:{getItem:()=>null,setItem(){},removeItem(){}},state:{examEngine:{}},$:key=>key.includes(' audio')?null:element(key),$$:()=>[],esc:value=>String(value).replaceAll('&','&amp;').replaceAll('<','&lt;'),customReadingLayout:()=>'<svg>MEDIA</svg>',customMock:()=>mock,customMockReady:()=>true,customListening:()=>({id:'L001',parts:[{number:1,title:'Test',lines:[{text:'Audio'}]}]}),customReading:()=>({id:'R001',parts:[{number:1,title:'Passage'}]}),buildCustomExamQuestions:()=>[{id:'q1',section:'Test · Part 1',stem:'Question text',answer:['ANSWERSECRET'],explanation:'EXPLANATIONSECRET',content:{passage:'PASSAGE TEXT'}}],nav(){},save(){},confirm:()=>true};
 runInNewContext(`${fullSource}\nstartIeltsFullMock('mock_01');renderIeltsFullQuestions(ieltsFullSession(),customMock('mock_01'))`,examContext);
 assert.equal(examContext.state.examEngine.ieltsFullSession.section,'listening');
 assert.equal(examContext.state.examEngine.ieltsFullSession.deadline-examContext.state.examEngine.ieltsFullSession.startedAt,30*60000);
@@ -96,7 +96,7 @@ assert(readFileSync(new URL('../service-worker.js',import.meta.url),'utf8').incl
 for(const path of ['app-23.js','app-24.js','data/ielts-custom-open.json','data/ielts-custom-manifest.json','data/ielts-speaking-2026-09.json'])assert(existsSync(new URL('../'+path,import.meta.url)));
 assert(readFileSync(new URL('../app.js',import.meta.url),'utf8').includes("'app-24.js'"));
 assert(readFileSync(new URL('../ui.html',import.meta.url),'utf8').includes('id="page-ielts-full-exam"'));
-for(const file of ['boot.js','app.js','index.html','service-worker.js'])assert(readFileSync(new URL('../'+file,import.meta.url),'utf8').includes('20260920-35'));
+for(const file of ['boot.js','app.js','index.html','service-worker.js'])assert(readFileSync(new URL('../'+file,import.meta.url),'utf8').includes('20260920-36'));
 assert(!readFileSync(new URL('../service-worker.js',import.meta.url),'utf8').includes('data/ielts-custom-open.json'));
 for(const file of ['app-1.js','app-12.js','app-13.js','app-23.js','app-24.js','speaking-bank-parser.mjs'])
   execFileSync('node',['--check',new URL('../'+file,import.meta.url).pathname]);
