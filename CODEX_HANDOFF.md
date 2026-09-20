@@ -2,6 +2,15 @@
 
 更新时间：2026-09-20
 
+## 36. IELTS 完整机考 Mock（2026-09-20）
+
+- 09–12 月当季口语原题从用户提供的 47 页 0903 PDF 经已核验的 `speaking-bank-parser.mjs` 生成 `data/ielts-speaking-2026-09.json`；严格保留 43/247、46、46/233 与 S001–S030 固定引用。口语题库可直接浏览/练习，无需每台设备导入；题文来源标明为用户提供的新航道资料，其再发布许可未在原件中明确。
+- Mock 01–08 分别使用 L001–L007 与 L018、不同的 R001–R008、不同的 Writing 题及 S001–S008。所有 30 套继续留在 manifest；09–30 标记 `incomplete`/`pending`、列出 `missingSections`，普通完整模拟入口只显示已加载可用的 8 套。R009 与剩余 Writing/Speaking 仍可独立专项练习。
+- `app-24.js` 独立 Exam Mode：Listening 30 分钟 → Reading 60 分钟 → Writing 两任务共用 60 分钟 → L/R/W 结果 → 独立 Speaking Set。客观题在提交后才进入统一结果，考试中不渲染 transcript/answers/explanations/学习提示。Reading 为桌面双栏；题号导航、Flag、回答与写作草稿存入现有当前 profile 状态，绝对 deadline 刷新后不重置。退出会确认但不暂停。
+- 原先 L001–L007 选择与匹配题曾漏传选项；固定上游数据重建后保留 `instruction` 和 `options`，机考与专项题干均显示原来源选项。现有 Computer Exam、Atlas 与词汇引擎不重构。
+- Reading 的 note / table / flow / diagram `layout` 同步补全；唯一需图文件由固定的 CC0 上游原始 SVG 提取到 `data/ielts-custom-media/`。独立机考在文章栏显示布局，既有 Computer Exam 仅加一处读取此布局的最小 hook，避免 R003 标图题缺媒体。
+- Service Worker cache `english-memory-lab-v5-ui-20260920-35` 预缓存入口与约 51KB 的口语 canonical JSON；大题库 JSON 与音频继续按需加载，不预缓存大型音频。专项命令 `npm run check:ielts-custom`、`npm run check:computer-exam`、`npm run check:atlas` 及相关语法与 diff 检查；浏览器/真机体验应单独验证，不以静态检查代替。
+
 ## 35. IELTS Question Bank 与自组训练 Mock（2026-09-20）
 
 - 新入口位于训练中心 IELTS Question Bank / Custom Mock；`app-23.js`、`data/ielts-custom-open.json` 和 `data/ielts-custom-manifest.json` 在现有 Computer Exam 外实现 40 题听力/阅读、写作编辑与本地存档、当季口语原题本机导入。原有 Atlas、词库和其他考试数据未替换。

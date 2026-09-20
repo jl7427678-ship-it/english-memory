@@ -36,6 +36,8 @@ for index, test in enumerate(rows('listening_tests.jsonl'), 1):
                       'lines': [{'speaker': line.get('speaker', ''), 'text': line['text'],
                                  'pauseAfterMs': line.get('pause_after_ms', 0)} for line in source['lines']],
                       'questions': [{'number': q['n'], 'type': q['type'],
+                                     'instruction': q.get('instruction', ''),
+                                     'options': q.get('options'),
                                      'prompt': q['prompt'], 'answer': q['answers'],
                                      'explanation': q.get('explanation', '')} for q in source['questions']]})
     nums = [q['number'] for part in parts for q in part['questions']]
@@ -56,6 +58,8 @@ for test in rows('reading_tests.jsonl'):
         source = passages[test[f'p{number}_id']]['passage_json']
         groups = [{'type': group['type'], 'instruction': group.get('instructions_extra') or '',
                    'options': group.get('options'),
+                   'layout': ({**group['layout'], 'image': 'data/ielts-custom-media/dg_front_pack_panel.svg'}
+                              if (group.get('layout') or {}).get('kind') == 'diagram' else group.get('layout')),
                    'questions': [{'number': question['number'], 'prompt': question['prompt'],
                                   'answers': question['answers'],
                                   'explanation': question.get('explanation', '')}
@@ -212,20 +216,25 @@ def interleave(items):
 w1, w2 = interleave(task1), interleave(task2)
 mock_tests = []
 for index in range(1, 31):
-    listening_id = f'L{index:03d}' if index <= 20 else None
+    listening_id = ('L018' if index == 8 else f'L{index:03d}' if index <= 20 else None)
     reading_id = f'R{index:03d}'
+    missing = (["listening"] if listening_id not in {item['id'] for item in listening} else []) + (
+        ["reading"] if reading_id not in {item['id'] for item in reading} else [])
     mock_tests.append({'id': f'mock_{index:02d}', 'label': f'Mock Test {index:02d}',
                        'kind': 'custom-training-mock', 'listeningId': listening_id,
-                       'listeningStatus': ('requires-tts' if index <= 7 else 'ready' if index == 18 else
+                       'listeningStatus': ('requires-tts' if index <= 7 else 'prerecorded-tts' if index == 8 else 'ready' if index == 18 else
                                            'not-loaded' if index <= 20 else 'pending'),
                        'readingId': reading_id, 'writingTask1Id': w1[index-1],
                        'writingTask2Id': w2[index-1], 'speakingSetId': f'S{index:03d}',
-                       'availability': 'public-compatible' if index <= 7 else 'local-only',
-                       'fullReady': False})
+                       'availability': 'public-compatible' if not missing else 'local-only',
+                       'missingSections': missing,
+                       'status': 'ready' if not missing else 'pending' if index > 20 else 'incomplete',
+                       'fullReady': not missing})
 
 manifest = {'schemaVersion': 1, 'season': '2026-09/12', 'kind': 'custom-training-mock',
             'speakingSource': {'name': '新航道 2026 年 9–12 月口语抢鲜版 0903',
-                               'availability': 'local-only', 'loaded': False,
+                               'availability': 'bundled', 'loaded': True,
+                               'path': 'data/ielts-speaking-2026-09.json',
                                'expectedCounts': {'part1Topics': 43, 'part1Questions': 247,
                                                   'part2Cards': 46, 'part3Groups': 46,
                                                   'part3Questions': 233}},

@@ -1,5 +1,4 @@
-// Parses only the user's locally supplied New Channel 0903 PDF/text.
-// No copyrighted question text is bundled with the public site.
+// Parses only the user-supplied New Channel 0903 PDF/text to preserve the original IDs and wording.
 const PREFIX = {PLACE:'PL', PEOPLE:'PE', OBJECT:'OB', OBJECTS:'OB', EVENT:'EV', EVENTS:'EV', ABSTRACT:'AB'};
 const clean = line => String(line).trim().replace(/\s+/g,' ');
 const isNoise = line => !line || line === '35' || /^Institute\s*of\s*Teaching/.test(line) ||

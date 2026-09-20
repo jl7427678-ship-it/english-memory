@@ -2,6 +2,12 @@
 
 更新时间：2026-09-20
 
+## IELTS 机考 Mock 现行边界（2026-09-20）
+
+- 用户明确要求将已提供的当季口语资料内置；`data/ielts-speaking-2026-09.json` 为当前 canonical Part 1/2/3，题文保持原样，S001–S030 不重新分配。原件的内容再发布许可未明确，后续维护不得据此推断其他商业口语资料也可自动并入。
+- 仅 Mock 01–08 已有各科完整内容；完整模拟目录只显示 ready。09–30 仍在 manifest，通过 `missingSections` 保留缺项；已有 Listening、Reading、Writing 与全部 Speaking Set 仍分别可专项练习。
+- 独立完整 Exam Mode 为 Listening → Reading → Writing → L/R/W 结果 → Speaking。考试期间不得显示客观题答案、听力 transcript、解析或提前分数；Writing Task 1/2 共用计时和本地草稿。保持绝对 deadline，刷新不重置。此现行内置口语边界覆盖下方 2026-09-20 较早阶段的“本机 PDF 导入”说明。
+
 ## IELTS Custom Mock 增量边界（2026-09-20）
 
 - `data/ielts-custom-manifest.json` 中 S001–S030、Mock 01–30 的引用已经固定；不得随机重排、覆盖原题库文本或把 mock 21–30 的 pending Listening 宣称可用。
