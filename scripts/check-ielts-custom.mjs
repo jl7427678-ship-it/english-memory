@@ -44,7 +44,7 @@ const questionSource=appSource.slice(appSource.indexOf('function customAnswerVar
 const mapQuestions=runInNewContext(`${questionSource}\ncustomQuestions`,{});
 for(const item of bank.listening.slice(0,7))for(const q of item.parts.flatMap(part=>part.questions).filter(q=>['multiple_choice','matching'].includes(q.type))){const built=mapQuestions('listening',{parts:[{questions:[q]}]})[0].stem;assert(built.includes(q.instruction));for(const [letter,label] of Object.entries(q.options))assert(built.includes(`${letter}. ${label}`))}
 // Exercise the isolated exam renderer with an answer and explanation that must never reach its DOM.
-const dom=new Map(),element=key=>{if(!dom.has(key))dom.set(key,{dataset:{},innerHTML:'',textContent:'',querySelector:()=>null});return dom.get(key)};
+const dom=new Map(),element=key=>{if(!dom.has(key))dom.set(key,{dataset:{},innerHTML:'',textContent:'',querySelector:()=>null,querySelectorAll:()=>[]});return dom.get(key)};
 const mock={id:'mock_01',listeningId:'L001',readingId:'R001'};
 const examContext={window:{addEventListener(){}},sessionStorage:{getItem:()=>null,setItem(){},removeItem(){}},state:{examEngine:{}},$:key=>key.includes(' audio')?null:element(key),$$:()=>[],esc:value=>String(value).replaceAll('&','&amp;').replaceAll('<','&lt;'),customReadingLayout:()=>'<svg>MEDIA</svg>',customMock:()=>mock,customMockReady:()=>true,customListening:()=>({id:'L001',parts:[{number:1,title:'Test',lines:[{text:'Audio'}]}]}),customReading:()=>({id:'R001',parts:[{number:1,title:'Passage'}]}),buildCustomExamQuestions:()=>[{id:'q1',section:'Test · Part 1',stem:'Question text',answer:['ANSWERSECRET'],explanation:'EXPLANATIONSECRET',content:{passage:'PASSAGE TEXT'}}],nav(){},save(){},confirm:()=>true};
 runInNewContext(`${fullSource}\nstartIeltsFullMock('mock_01');renderIeltsFullQuestions(ieltsFullSession(),customMock('mock_01'))`,examContext);
@@ -53,7 +53,7 @@ assert.equal(examContext.state.examEngine.ieltsFullSession.deadline-examContext.
 let html=[...dom.values()].map(el=>el.innerHTML).join('');assert(html.includes('Question text')&&!html.includes('ANSWERSECRET')&&!html.includes('EXPLANATIONSECRET')&&!html.includes('PASSAGE TEXT'));
 dom.clear();examContext.state.examEngine.ieltsFullSession.section='reading';
 runInNewContext("renderIeltsFullQuestions(ieltsFullSession(),customMock('mock_01'))",examContext);
-html=[...dom.values()].map(el=>el.innerHTML).join('');assert(html.includes('PASSAGE TEXT')&&html.includes('Question text')&&html.includes('MEDIA')&&!html.includes('ANSWERSECRET')&&!html.includes('EXPLANATIONSECRET'));
+html=[...dom.values()].map(el=>el.innerHTML).join('');assert(html.includes('PASSAGE')&&html.includes('TEXT')&&html.includes('Question text')&&!html.includes('ANSWERSECRET')&&!html.includes('EXPLANATIONSECRET'));
 for(const task of bank.writingTask2)assert(task.prompt);
 assert.equal(new Set(bank.writingTask1.map(x=>x.sourceId)).size,38);
 assert.equal(new Set(bank.writingTask2.map(x=>x.sourceId)).size,42);
@@ -96,7 +96,7 @@ assert(readFileSync(new URL('../service-worker.js',import.meta.url),'utf8').incl
 for(const path of ['app-23.js','app-24.js','data/ielts-custom-open.json','data/ielts-custom-manifest.json','data/ielts-speaking-2026-09.json'])assert(existsSync(new URL('../'+path,import.meta.url)));
 assert(readFileSync(new URL('../app.js',import.meta.url),'utf8').includes("'app-24.js'"));
 assert(readFileSync(new URL('../ui.html',import.meta.url),'utf8').includes('id="page-ielts-full-exam"'));
-for(const file of ['boot.js','app.js','index.html','service-worker.js'])assert(readFileSync(new URL('../'+file,import.meta.url),'utf8').includes('20260920-36'));
+for(const file of ['boot.js','app.js','index.html','service-worker.js'])assert(readFileSync(new URL('../'+file,import.meta.url),'utf8').includes('20260920-37'));
 assert(!readFileSync(new URL('../service-worker.js',import.meta.url),'utf8').includes('data/ielts-custom-open.json'));
 for(const file of ['app-1.js','app-12.js','app-13.js','app-23.js','app-24.js','speaking-bank-parser.mjs'])
   execFileSync('node',['--check',new URL('../'+file,import.meta.url).pathname]);

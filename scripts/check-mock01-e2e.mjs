@@ -10,7 +10,7 @@ const speaking=JSON.parse(read('data/ielts-speaking-2026-09.json'));
 const mock=manifest.mocks[0],nodes=new Map(),storage=new Map(),events=[];
 const node=selector=>{
   if(!nodes.has(selector)){
-    const el={dataset:{},value:'',textContent:'',hidden:false,disabled:false,onclick:null,oninput:null,querySelector(){return null},classes:new Set()};
+    const el={dataset:{},value:'',textContent:'',hidden:false,disabled:false,onclick:null,oninput:null,querySelector(){return null},querySelectorAll(){return []},setAttribute(){},focus(){},style:{setProperty(){}},classes:new Set()};
     el.classList={add:name=>el.classes.add(name),remove:name=>el.classes.delete(name),toggle:(name,on)=>on?el.classes.add(name):el.classes.delete(name)};
     Object.defineProperty(el,'innerHTML',{get(){return this.html||''},set(html){this.html=html;for(const [,id] of html.matchAll(/\bid="([^"]+)"/g))node('#'+id);if(selector==='#ieltsFullNavigator'){
       for(const [,index] of html.matchAll(/data-ielts-full-index="(\d+)"/g)){const btn=node('[data-ielts-full-index="'+index+'"]');btn.dataset.ieltsFullIndex=index}
@@ -50,7 +50,7 @@ for(let i=0;i<40;i++){
   node('#ieltsFullAnswer').oninput({target:{value:'candidate-'+(i+1)}});
   assert.equal(session().answers.listening[q.id],'candidate-'+(i+1));
   assert(node('[data-ielts-full-index="'+i+'"]').classes.has('answered'));
-  if(i===0){node('#ieltsFullPlay').onclick();assert(events.includes('audio:play'));node('#ieltsFullStop').onclick()}
+  if(i===0){node('#ieltsFullPlay').onclick();assert(events.includes('audio:play'))}
 }
 assert.equal(parts.size,4);assert(!/ANSWERSECRET|EXPLANATIONSECRET|Transcript:/i.test(html()));
 session().indices.listening=21;const saved=JSON.parse(JSON.stringify(session()));
@@ -62,9 +62,9 @@ assert.equal(reloaded.state.examEngine.ieltsFullSession.deadline,start);
 context.state.examEngine.ieltsFullSession=saved;nodes.clear();await render();
 assert.equal(session().indices.listening,21);assert.equal(session().deadline,start);assert.equal(Object.keys(session().answers.listening).length,40);
 assert(html().includes('Question 22 / 40'));assert.equal(storage.get('ieltsFullActive'),'mock_01');
-node('#ieltsFullExit').onclick();assert(events.includes('confirm'));assert(events.includes('nav:ielts-custom'));assert(!storage.has('ieltsFullActive'));
+node('#ieltsFullExit').onclick();assert.equal(node('#ieltsFullModal').hidden,false);node('#ieltsFullConfirm').onclick();assert(events.includes('nav:ielts-custom'));assert(!storage.has('ieltsFullActive'));
 call("startIeltsFullMock('mock_01')");await render();assert.equal(session().deadline,start);
-node('#ieltsFullSubmit').onclick();await render();
+node('#ieltsFullSubmit').onclick();node('#ieltsFullConfirm').onclick();await render();
 assert.equal(session().section,'reading');assert.equal(session().deadline-session().startedAt>60*60000,true);
 assert(!html().includes('Listening 0 / 40'));
 const readingParts=new Set();
@@ -79,7 +79,7 @@ for(let i=0;i<40;i++){
 }
 assert.equal(readingParts.size,3);assert.equal(Object.keys(session().answers.reading).length,40);
 assert(!html().includes('Reading 0 / 40'));
-node('#ieltsFullSubmit').onclick();await render();assert.equal(session().section,'writing');
+node('#ieltsFullSubmit').onclick();node('#ieltsFullConfirm').onclick();await render();assert.equal(session().section,'writing');
 const deadline=session().deadline;
 assert(node('#ieltsFullSource').innerHTML.includes(esc(bank.writingTask1.find(x=>x.id===mock.writingTask1Id).prompt).replaceAll('\n','<br>')));
 assert(/<svg|<table|custom-process/.test(node('#ieltsFullSource').innerHTML));
@@ -91,7 +91,7 @@ node('#ieltsFullDraft').oninput({target:{value:'I believe education matters.'}})
 node('[data-ielts-writing="writing1"]').onclick();assert(node('#ieltsFullQuestion').innerHTML.includes('These figures change over time.'));
 node('[data-ielts-writing="writing2"]').onclick();assert(node('#ieltsFullQuestion').innerHTML.includes('I believe education matters.'));
 assert(!/AI score|Band Score|范文|语法纠错/.test(node('#ieltsFullQuestion').innerHTML));
-node('#ieltsFullSubmit').onclick();await render();
+node('#ieltsFullSubmit').onclick();node('#ieltsFullConfirm').onclick();await render();
 assert.equal(session().section,'finished');assert(!storage.has('ieltsFullActive'));
 assert.match(node('#ieltsFullWorkspace').innerHTML,/Listening \d+ \/ 40/);
 assert.match(node('#ieltsFullWorkspace').innerHTML,/Reading \d+ \/ 40/);
