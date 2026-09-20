@@ -1,6 +1,13 @@
 # English Memory Lab — Frozen Modules
 
-更新时间：2026-09-07
+更新时间：2026-09-20
+
+## IELTS Custom Mock 增量边界（2026-09-20）
+
+- `data/ielts-custom-manifest.json` 中 S001–S030、Mock 01–30 的引用已经固定；不得随机重排、覆盖原题库文本或把 mock 21–30 的 pending Listening 宣称可用。
+- 公开题库只允许有明确可再发布许可的题文和图表数据。当前 7 套设备实时 TTS + 1 套预录 TTS Listening、9 套 Reading、38 道带绘制媒体的 Task 1、42 道 Task 2；未经确认授权的其他来源只留元数据。`fullReady` 必须根据真实科目内容及本地导入的当季 Speaking 判断。
+- 新航道当季 Speaking PDF 属用户私人本地导入资料：原题文仅放本机当前 profile 的 IndexedDB；不得写入 GitHub、Service Worker precache 或云同步。7 套实时合成语音不得标成真人原始录音。
+- IELTS Custom 用独立 `app-23.js` 接入已有 Computer Exam；对 `app-1.js`、`app-12.js`、`app-13.js`、壳和 PWA 只留最小接口改动。专项检查 `check:ielts-custom`、`check:computer-exam`、`check:atlas`；不得借此重构冻结模块。
 
 冻结基线：`20eb779242b20cad4f8849bf27d4617b16b9e5a4`
 

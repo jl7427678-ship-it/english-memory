@@ -1,0 +1,78 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {execFileSync} from 'node:child_process';
+import {runInNewContext} from 'node:vm';
+import {parseSpeakingBank} from '../speaking-bank-parser.mjs';
+
+const read=name=>JSON.parse(readFileSync(new URL(`../data/${name}`,import.meta.url),'utf8'));
+const bank=read('ielts-custom-open.json'),manifest=read('ielts-custom-manifest.json');
+assert.equal(bank.listening.length,8);
+assert.equal(bank.reading.length,9);
+assert.equal(bank.writingTask1.length,38);
+assert.equal(bank.writingTask2.length,42);
+const present=(list,id)=>list.some(item=>item.id===id);
+for(const item of bank.listening){
+  assert.equal(item.parts.length,4);assert.deepEqual(item.parts.flatMap(part=>part.questions.map(q=>q.number)),Array.from({length:40},(_,i)=>i+1));
+  assert(item.parts.every(part=>part.questions.length===10&&part.questions.every(q=>q.answer?.length)));
+  if(item.id==='L018'){
+    assert.equal(item.audioType,'prerecorded-TTS');assert.equal(item.contentLicense,'CC BY 4.0');
+    assert(item.parts.every(part=>part.audioUrl?.startsWith('https://raw.githubusercontent.com/LuchoBazz/ielts-ai-dataset/78f7ebf2b430114998aae6806cb92c1a4a475594/')&&part.transcript));
+  }else {assert(item.parts.every(part=>part.lines.length));assert.equal(item.audioType,'TTS');assert.equal(item.audioStatus,'runtime-generation-required')}
+  assert.equal(item.availability,'public-compatible');
+}
+for(const item of bank.reading){
+  assert.equal(item.parts.length,3);
+  assert.deepEqual(item.parts.flatMap(part=>part.groups.flatMap(g=>g.questions.map(q=>q.number))).sort((a,b)=>a-b),Array.from({length:40},(_,i)=>i+1));
+  assert(item.parts.every(part=>part.texts.length&&part.groups.length));
+  assert(item.parts.flatMap(part=>part.groups.flatMap(g=>g.questions)).every(q=>q.answers.length));
+}
+for(const task of bank.writingTask1)assert(task.prompt&&task.chartSpec?.kind&&task.mediaType==='chart-spec');
+const appSource=readFileSync(new URL('../app-23.js',import.meta.url),'utf8');
+const chartSource=appSource.slice(appSource.indexOf('const customColors='),appSource.indexOf('function openCustomWork('));
+const drawChart=runInNewContext(`${chartSource}\ncustomChart`,{esc:value=>String(value).replaceAll('&','&amp;').replaceAll('<','&lt;')});
+for(const task of bank.writingTask1){const media=drawChart(task.chartSpec);assert(media.includes('<svg')||media.includes('<table')||media.includes('custom-process'));assert(!media.includes('缺少图表媒体'));assert(!media.includes('NaN'))}
+for(const task of bank.writingTask2)assert(task.prompt);
+assert.equal(new Set(bank.writingTask1.map(x=>x.sourceId)).size,38);
+assert.equal(new Set(bank.writingTask2.map(x=>x.sourceId)).size,42);
+assert.equal(manifest.listeningReferences.length,12);
+assert.equal(new Set([...bank.listening,...manifest.listeningReferences].map(x=>x.id)).size,20);
+assert(manifest.listeningReferences.every(x=>x.loaded===false&&x.audioType!=='real'));
+assert.equal(manifest.readingReferences.length,21);
+assert(manifest.readingReferences.every(x=>x.availability==='local-only'&&x.loaded===false&&!('parts'in x)));
+assert.equal(manifest.speakingSets.length,30);
+assert.equal(new Set(manifest.speakingSets.map(x=>x.part2CueCardId)).size,30);
+for(const set of manifest.speakingSets){assert.equal(set.part1TopicIds.length,3);assert.equal(set.part3GroupId,set.part2CueCardId.replace('P2-','P3-'))}
+assert.deepEqual(manifest.speakingSets[0],{id:'S001',part1TopicIds:['P1-M01','P1-PL01','P1-OB09'],part2CueCardId:'P2-PL01',part3GroupId:'P3-PL01'});
+assert.deepEqual(manifest.speakingSets.at(-1),{id:'S030',part1TopicIds:['P1-M05','P1-AB08','P1-OB06'],part2CueCardId:'P2-EV14',part3GroupId:'P3-EV14'});
+assert.equal(manifest.mocks.length,30);
+for(let i=0;i<30;i++){
+  const m=manifest.mocks[i];assert.equal(m.id,`mock_${String(i+1).padStart(2,'0')}`);
+  assert.equal(m.speakingSetId,manifest.speakingSets[i].id);
+  assert(present(bank.writingTask1,m.writingTask1Id)&&present(bank.writingTask2,m.writingTask2Id));
+  if(i<20)assert.equal(m.listeningId,`L${String(i+1).padStart(3,'0')}`);
+  else assert.equal(m.listeningId,null);
+  assert.equal(m.fullReady,false);
+}
+assert.equal(manifest.mocks.filter(m=>present(bank.listening,m.listeningId)&&present(bank.reading,m.readingId)).length,7);
+assert.equal(manifest.mocks.slice(20).every(m=>m.listeningStatus==='pending'&&!m.listeningId),true);
+assert.equal(bank.listening.filter(x=>x.audioType==='TTS').length,7);
+assert.equal(bank.listening.filter(x=>x.audioType==='prerecorded-TTS').length,1);
+assert.equal(bank.listening.filter(x=>x.audioType==='REAL_AUDIO').length,0);
+assert.equal(new Set(manifest.mocks.map(x=>x.writingTask1Id)).size,30);
+assert.equal(new Set(manifest.mocks.map(x=>x.writingTask2Id)).size,30);
+assert(readFileSync(new URL('../service-worker.js',import.meta.url),'utf8').includes('app-23.js'));
+assert(!readFileSync(new URL('../service-worker.js',import.meta.url),'utf8').includes('data/ielts-custom-open.json'));
+for(const file of ['app-1.js','app-12.js','app-13.js','app-23.js','speaking-bank-parser.mjs'])
+  execFileSync('node',['--check',new URL('../'+file,import.meta.url).pathname]);
+
+// Optional private fixture, read only from the user's explicit PDF, never saved to public Git.
+if(process.env.IELTS_SPEAKING_PDF){
+  const code=`import pdfplumber,json,sys\nwith pdfplumber.open(sys.argv[1]) as p: print(json.dumps([page.extract_text() for page in p.pages],ensure_ascii=False))`;
+  const pages=JSON.parse(execFileSync('python3',['-c',code,process.env.IELTS_SPEAKING_PDF],{encoding:'utf8'}));
+  const speaking=parseSpeakingBank(pages);
+  assert.deepEqual(speaking.counts,manifest.speakingSource.expectedCounts);
+  const byId=(part,id)=>speaking[part].find(x=>x.id===id);
+  for(const set of manifest.speakingSets){assert(set.part1TopicIds.every(id=>byId('part1',id)));assert(byId('part2',set.part2CueCardId));assert.equal(byId('part3',set.part3GroupId)?.linkedPart2Id,set.part2CueCardId)}
+  console.log('Private PDF count and all S001–S030 references: PASS');
+}
+console.log('Custom IELTS public bank, rights, mock references, syntax: PASS');

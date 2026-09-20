@@ -141,6 +141,7 @@
           <button class="training-card training-card-featured" data-vocab-quick-entry><span class="training-icon">✓</span><div><b>快速筛词</b><p>直接开始：认识 / 模糊 / 不认识，支持左右滑动。</p></div><span class="arrow">→</span></button>
           <button class="training-card" data-go-page="language-skills"><span class="training-icon">EN</span><div><b>英语听说读写</b><p>听力、录音回放、阅读机考、拼写与默写集中入口。</p></div><span class="arrow">→</span></button>
           <button class="training-card" data-go-page="exam-engine"><span class="training-icon">EX</span><div><b>考试训练</b><p>按项目进入 TOEIC、IELTS、先秦文学或自定义考试题型。</p></div><span class="arrow">→</span></button>
+          <button class="training-card" data-go-page="ielts-custom"><span class="training-icon">IE</span><div><b>IELTS 自组训练 Mock</b><p>30 套固定组合；可用科目单独练，缺资料的入口会注明状态。</p></div><span class="arrow">→</span></button>
           <button class="training-card" data-go-page="vocab"><span class="training-icon">Aa</span><div><b>单词四选一</b><p>快速筛词，错词和慢词自动强化。</p></div><span class="arrow">→</span></button>
           <button class="training-card" data-go-page="vocab"><span class="training-icon">⌨</span><div><b>单词拼写</b><p>在词库页选择词库后进入中文到英文拼写。</p></div><span class="arrow">→</span></button>
           <button class="training-card" data-go-page="study"><span class="training-icon">◫</span><div><b>背诵训练</b><p>全文、挖空、首字母、关键词和完整复述。</p></div><span class="arrow">→</span></button>
@@ -165,6 +166,14 @@
         <div class="card practice-workspace" id="practiceWorkspace" hidden></div>
         <div class="card atlas-library" id="atlasReadingLibrary" hidden></div>
       </section>
+
+      <section class="page" id="page-ielts-custom">
+        <div class="page-intro"><div class="eyebrow">CUSTOM TRAINING MOCK · 自组训练 Mock</div><h2>IELTS 题库与模拟训练</h2><p>各科自组，非官方 IELTS / Cambridge 试卷。题目按来源和授权状态分开显示。</p></div>
+        <article class="card custom-import"><div><h3>当季口语题库 · 仅本机</h3><p id="customSpeakingStatus">正在读取本地状态…</p></div><label class="btn">从本机导入 0903 原版 PDF / 文本<input id="customSpeakingInput" type="file" accept=".pdf,.txt,application/pdf,text/plain" hidden></label></article>
+        <div class="row custom-bank-tabs"><button class="btn" data-custom-tab="mocks">Mock Tests</button><button class="btn" data-custom-tab="listening">Listening</button><button class="btn" data-custom-tab="reading">Reading</button><button class="btn" data-custom-tab="writing">Writing</button><button class="btn" data-custom-tab="speaking">Speaking</button></div>
+        <div id="customCatalog" class="custom-catalog" aria-live="polite"></div>
+      </section>
+      <section class="page" id="page-ielts-custom-work"><div id="customWorkspace" class="card custom-workspace"></div></section>
 
       <section class="page" id="page-atlas-reading">
         <div class="computer-exam-top"><div><span class="practice-label">IELTS Atlas · Reading Practice</span><h2 id="atlasReadingTitle">Reading</h2><p id="atlasReadingMeta"></p></div><div class="computer-exam-actions"><span class="exam-save-state" id="atlasAnswerState">已答 0</span><button class="btn" id="exitAtlasReading">返回题库</button><button class="btn primary" id="submitAtlasReading">交卷</button></div></div>

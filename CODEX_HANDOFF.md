@@ -1,6 +1,16 @@
 # 串题记忆室 · English Memory Lab — Codex 接手文档
 
-更新时间：2026-09-07
+更新时间：2026-09-20
+
+## 35. IELTS Question Bank 与自组训练 Mock（2026-09-20）
+
+- 新入口位于训练中心 IELTS Question Bank / Custom Mock；`app-23.js`、`data/ielts-custom-open.json` 和 `data/ielts-custom-manifest.json` 在现有 Computer Exam 外实现 40 题听力/阅读、写作编辑与本地存档、当季口语原题本机导入。原有 Atlas、词库和其他考试数据未替换。
+- 固定 30 套自组引用 `mock_01`–`mock_30` 与 S001–S030；前 20 套填入 Listening ID，后 10 套的 Listening 为 `null` 并标为 pending。Speaking 原始题文不进入 Git：用户需在每台设备以 `抢鲜版-2026年9-12月雅思口语新题库0903.pdf` 导入，浏览器解析后按当前 profile 存于本机 IndexedDB。已从原件核对 Part 1 43 topics / 247 questions、Part 2 46 cards、Part 3 46 groups / 233 questions，30 个 P2 不重复，P3 保持原题组对应关系。
+- 公开内容当前只有 7 套 CC0 来源的完整 40Q Listening（设备实时 TTS）、1 套 CC BY 4.0 的完整 40Q Listening（来源预录 TTS，四段音频从固定上游提交按需播放）、9 套 40Q/40A Academic Reading、38 道带 `chartSpec` 可绘制媒体的 Task 1 与 42 道 Task 2。源固定提交由 `scripts/build-ielts-custom-data.py` 校验；后续仅在确需更新时重建，不能无故重跑覆盖目录或 S001–S030。
+- **实际就绪状态**：未在本机导入当季 PDF 时，完整 Mock 为 0；导入且设备支持语音合成、网络可读取开放题库时，至多 Mock 01–07 可全科启动。Mock 08–20 仍有 12 个未加载 Listening 引用和 11 个以上未加载 Reading 引用；Mock 18 的音频虽已开放加载，但 Reading 18 缺正文。Mock 21–30 除 Listening pending 外也有 Reading 仅引用；不能称 01–20 full-ready。`fullReady:false` 和禁用按钮是刻意的真实性保护，不能用拼接不同 Test、虚构音频或占位原题解除。
+- Eduko、Serial24 等仅保存来源与试卷编号；没有将无明确内容许可或 Cambridge 衍生题文、音频、商业 PDF 放进公开 Git。用户私人自学场景仍不能据代码许可证推断题目转载许可。
+- 原有 Exam Engine 通过 40 题 adapter 记录答卷、错题、计时与 Review；写作按 profile 本地保存草稿。预录音频在同一 Part 的翻题中保留播放组件；语音合成只作为设备端模拟，不属于真实 IELTS 录音。
+- Service Worker 为 `english-memory-lab-v5-ui-20260919-34`，预缓存入口 JS、Speaking parser 与小 manifest；大题库 JSON、PDF、MP3 均不预缓存。专项检查：`IELTS_SPEAKING_PDF=/path/to/original.pdf npm run check:ielts-custom`、`npm run check:computer-exam`、`npm run check:atlas`、相关 `node --check`、`git diff --check`。无 Safari 真机或 Chrome 全流程验证结论。
 
 
 ## 34. Vocabulary Cloud Sync 真实接入（2026-09-14）
