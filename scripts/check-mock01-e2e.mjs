@@ -50,7 +50,7 @@ for(let i=0;i<40;i++){
   node('#ieltsFullAnswer').oninput({target:{value:'candidate-'+(i+1)}});
   assert.equal(session().answers.listening[q.id],'candidate-'+(i+1));
   assert(node('[data-ielts-full-index="'+i+'"]').classes.has('answered'));
-  if(i===0){node('#ieltsFullPlay').onclick();assert(events.includes('audio:play'))}
+  if(i===0){node('#ieltsFullPlay').onclick();assert(events.includes('audio:play'));assert.equal(session().audioProgress[`${mock.listeningId}:1`].started,true)}
 }
 assert.equal(parts.size,4);assert(!/ANSWERSECRET|EXPLANATIONSECRET|Transcript:/i.test(html()));
 session().indices.listening=21;const saved=JSON.parse(JSON.stringify(session()));
