@@ -2,6 +2,22 @@
 
 The built-in exam practice packs are simulations. They are not official TOEIC or IELTS examination papers and are not endorsed by the owners of those examinations.
 
+## IELTS computer-test interaction reference
+
+- Source: [aknahin/ielts-on-computer](https://github.com/aknahin/ielts-on-computer)
+- License: MIT
+- Use here: the Full Mock shell independently adapts the upstream interaction model for its split reading pane, stable word-range highlights, anchored notes, question navigator, display preferences, one-pass listening controls, wall-clock timer, and submission flow. No official IELTS branding or upstream question paper is included.
+
+MIT License
+
+Copyright (c) 2026 Asrafuzzaman Khan Nahin
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 ## TOEIC Part 5 starter pack
 
 - Source: [kdeppaei/toeic-question-ocean](https://github.com/kdeppaei/toeic-question-ocean)

@@ -37,6 +37,12 @@ assert(fullSource.includes("deadline:now+30*60000")&&fullSource.includes("next==
 assert(fullSource.includes('ielts-full-panes')&&fullSource.includes('ielts-full-source')&&fullSource.includes('ielts-full-question'));
 assert(!fullSource.includes('q.explanation')&&!fullSource.includes('q.answer}')&&!fullSource.includes('transcript:'));
 assert(fullSource.includes("$('#ieltsFullCopy').onclick")&&fullSource.indexOf("$('#ieltsFullCopy').onclick")>fullSource.indexOf('function ieltsFullRenderResult'));
+const annotationSource=fullSource.slice(fullSource.indexOf('function ieltsFullAnnotationRanges'),fullSource.indexOf('function ieltsFullControl'));
+const annotationFns=runInNewContext(`${annotationSource}\n({ieltsFullAnnotationRanges,ieltsFullAddHighlight,ieltsFullPassageHTML})`,{esc:value=>String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;')});
+assert.equal(JSON.stringify(annotationFns.ieltsFullAnnotationRanges({'2':true,'3':true,'6':true}).map(x=>[x.start,x.end])),'[[2,3],[6,6]]');
+assert.equal(JSON.stringify(annotationFns.ieltsFullAddHighlight([{id:'a',start:2,end:4}],4,7).map(x=>[x.start,x.end])),'[[2,7]]');
+const annotationHtml=annotationFns.ieltsFullPassageHTML('one two three',[{id:'h',start:0,end:1}],[{id:'n',start:1,end:2,text:''}]);
+assert.equal((annotationHtml.match(/ielts-full-mark/g)||[]).length,3);assert.equal((annotationHtml.match(/ielts-full-note-mark/g)||[]).length,3);
 const chartSource=appSource.slice(appSource.indexOf('const customColors='),appSource.indexOf('function openCustomWork('));
 const drawChart=runInNewContext(`${chartSource}\ncustomChart`,{esc:value=>String(value).replaceAll('&','&amp;').replaceAll('<','&lt;')});
 for(const task of bank.writingTask1){const media=drawChart(task.chartSpec);assert(media.includes('<svg')||media.includes('<table')||media.includes('custom-process'));assert(!media.includes('缺少图表媒体'));assert(!media.includes('NaN'))}
@@ -96,7 +102,7 @@ assert(readFileSync(new URL('../service-worker.js',import.meta.url),'utf8').incl
 for(const path of ['app-23.js','app-24.js','data/ielts-custom-open.json','data/ielts-custom-manifest.json','data/ielts-speaking-2026-09.json'])assert(existsSync(new URL('../'+path,import.meta.url)));
 assert(readFileSync(new URL('../app.js',import.meta.url),'utf8').includes("'app-24.js'"));
 assert(readFileSync(new URL('../ui.html',import.meta.url),'utf8').includes('id="page-ielts-full-exam"'));
-for(const file of ['boot.js','app.js','index.html','service-worker.js'])assert(readFileSync(new URL('../'+file,import.meta.url),'utf8').includes('20260920-37'));
+for(const file of ['boot.js','app.js','index.html','service-worker.js'])assert(readFileSync(new URL('../'+file,import.meta.url),'utf8').includes('20260927-38'));
 assert(!readFileSync(new URL('../service-worker.js',import.meta.url),'utf8').includes('data/ielts-custom-open.json'));
 for(const file of ['app-1.js','app-12.js','app-13.js','app-23.js','app-24.js','speaking-bank-parser.mjs'])
   execFileSync('node',['--check',new URL('../'+file,import.meta.url).pathname]);

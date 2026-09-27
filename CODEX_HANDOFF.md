@@ -541,3 +541,12 @@ Phase 0 静态回归已通过全部语法、词库、题库、站点、UI 与存
 - PWA cache 已更新为 `english-memory-lab-v5-ui-20260906-19`，仅新增 `app-15.js` 和 Atlas manifest 到核心离线缓存。
 
 本轮完整静态回归通过，包括 15 个运行时脚本语法、TOEIC 1250/11154、先秦文学 20 题、存储保护、计划、Exam Engine、原练习、私人题库、机考、本地老师、听说读写、PWA 入口与 UI contract。本地 Vite 仍因 `uv_interface_addresses` 环境错误无法启动，但部署后已在云端 Chrome 对线上 GitHub Pages 完成真实交互：启用 IELTS 项目、进入 Reading、加载 234 篇 Atlas 目录；“茶叶简史”13 个答案全部正确得到 13/13 并显示 13 条现有解析；“组织设计”复选题限制、配对下拉和错误提交结果正常。过滤浏览器扩展自身日志后，页面 Console 无 error。Safari / iPhone / PWA 真机仍未验证，不得声称已验证。
+
+## 23. IELTS Full Mock 成熟机考交互移植
+
+- 参考 `aknahin/ielts-on-computer` 的 MIT 实现，保留现有题库、Mock manifest 和无框架静态架构。
+- Reading 高亮与 Note 改为稳定词位范围：跨词选择、相邻高亮合并、点击已有高亮删除、Note 锚定范围、自动保存、切换及二次确认删除。
+- Full Mock 统一为紧凑考试栏、wall-clock timer、最后一分钟警告、三种对比度、三档字号、可拖动 Reading 分栏、独立滚动、按 Part/Passage 分组的 1–40 导航、answered underline 与 Review 状态。
+- Listening 继续使用既有一次播放与恢复逻辑；Writing 继续共用 60 分钟并沿用同一 Exam Shell。
+- 未复制上游题目或官方品牌；MIT 版权与许可全文已加入 `THIRD_PARTY_NOTICES.md`。
+- Service Worker 与静态资源版本更新为 `20260927-38`；`check:ielts-custom`、Mock 01 integration、JS syntax、`git diff --check` 通过。

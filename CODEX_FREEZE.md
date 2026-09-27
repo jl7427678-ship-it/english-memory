@@ -115,3 +115,11 @@
 - `app-18.js` 只呈现 lingo-lessons 5 个已采用 Unit 的原始 guidebook、来源内动词标签和对应课程练习入口。
 - 当前覆盖：冠词与 gender、plural、形容词一致、基本语序、`essere`、`stare` 问候形式、`volere`、`mangiare`、`bere`、`andare`、`arrivare`、`partire`、`trovare`。
 - `avere` 完整变位、规则动词完整范式与更广的不规则动词表是明确缺口；不得从无许可证的 Dimenticato/Murmura 复制，也不得用模型编造后冒充来源课程。
+
+## FROZEN：IELTS Full Mock Exam UI
+
+- Full Mock 保留现有 8 套 ready Mock、题库和 S001–S030 分配；不得因界面更新重写题库或 Mock manifest。
+- Reading 的稳定词位 Highlight、锚定 Notes、左右独立滚动、20–80% 可拖动分栏和 1–40 导航属于冻结交互。
+- Notes 必须继续自动保存并支持二次确认删除；刷新后不得丢失答案、flags、标注、笔记或 wall-clock deadline。
+- Listening 考试中不得显示 transcript、答案或解析，也不得暴露暂停、拖动或重播控件。
+- UI 来源与 MIT notice 保留在 `THIRD_PARTY_NOTICES.md`；不得加入官方 IELTS、Cambridge、IDP 或 British Council 品牌素材。
