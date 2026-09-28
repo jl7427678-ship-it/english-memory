@@ -22,6 +22,7 @@ assert(app4.includes("if(!s.screenWrongIds.includes(w.id))s.screenWrongIds.push(
 assert(app4.includes('ok?`✓ 第一遍通过'),'第一遍答对没有直接通过');
 assert(!app4.includes('强化轮还会出现 ${repeats} 次'),'第一遍答对仍提示会重复');
 assert(app4.includes("if(!q.length){finishVocabSession();return}"),'第一遍全对时没有直接完成');
+assert(app4.includes("if(typeof renderVocabCardEnhancements==='function')renderVocabCardEnhancements()"),'完成一轮后词库统计没有立即刷新');
 assert(ui.includes('第一遍答对 → 直接通过，不再重复'),'页面没有说明新的两遍规则');
 assert(ui.includes('第一遍答错 → 第二遍重复强化 5 次'),'页面没有说明错词强化规则');
 
