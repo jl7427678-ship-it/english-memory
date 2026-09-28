@@ -6,7 +6,17 @@ const assert=(condition,message)=>{if(!condition)throw new Error(message)};
 const app3=read('app-3.js'),app4=read('app-4.js'),app19=read('app-19.js'),ui=read('ui.html');
 
 assert(app3.includes('screenWrongIds:[]'),'普通四选一没有初始化第一遍错词队列');
-assert(app3.includes("const unseen=shuffle(d.words.filter(w=>!(w.seen||0))),seen=shuffle(d.words.filter(w=>w.seen||0));pool=[...unseen,...seen]"),'普通四选一没有优先选择未学词');
+assert(app3.includes('function vocabWordAttempted(w){return Number(w?.correct||0)+Number(w?.wrong||0)>0}'),'已学状态没有按真实作答记录判断');
+assert(app3.includes('const unseen=shuffle(d.words.filter(w=>!vocabWordAttempted(w))),seen=shuffle(d.words.filter(vocabWordAttempted));pool=[...unseen,...seen]'),'普通四选一没有优先选择真正未作答词');
+assert(app19.includes('if(vocabWordAttempted(word))learned++'),'已学统计仍可能把仅进入未作答的词计为已学');
+assert(app19.includes('.filter(word=>!vocabWordAttempted(word))'),'继续学习没有排除仅进入未作答的假进度');
+const attemptedMatch=app3.match(/function vocabWordAttempted\(w\)\{[^\n]+\}/);
+assert(attemptedMatch,'找不到真实作答判断函数');
+const attemptedContext={};
+vm.runInNewContext(`${attemptedMatch[0]};this.vocabWordAttempted=vocabWordAttempted`,attemptedContext);
+assert(!attemptedContext.vocabWordAttempted({seen:1,correct:0,wrong:0}),'只进入后退出的词不应计入已学');
+assert(attemptedContext.vocabWordAttempted({seen:1,correct:1,wrong:0}),'答对词应计入已学');
+assert(attemptedContext.vocabWordAttempted({seen:1,correct:0,wrong:1}),'答错词也应计入已学');
 assert(app19.includes('screenWrongIds:[]'),'继续学习没有初始化第一遍错词队列');
 assert(app4.includes("if(!s.screenWrongIds.includes(w.id))s.screenWrongIds.push(w.id)"),'第一遍答错没有进入第二遍强化队列');
 assert(app4.includes('ok?`✓ 第一遍通过'),'第一遍答对没有直接通过');
