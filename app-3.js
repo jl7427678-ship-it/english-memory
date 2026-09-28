@@ -1,4 +1,4 @@
-function vocabWordAttempted(w){return Number(w?.correct||0)+Number(w?.wrong||0)>0}
+function vocabWordAttempted(w){const attempts=Number(w?.correct||0)+Number(w?.wrong||0);return attempts>0&&!!(Number(w?.firstSeen||0)||Number(w?.level||0)||Number(w?.due||0))}
 function saveBuiltinProgress(deck,w){if(!deck?.builtin)return;const k=progressKey(deck.id,w.word);if(!(w.level||w.due||w.seen||w.correct||w.wrong||w.last||w.firstSeen||w.quickStatus)){delete state.vocab.progress[k];return}state.vocab.progress[k]=[w.level||0,w.due||0,w.seen||0,w.correct||0,w.wrong||0,w.last||0,w.screenRepeats||1,w.screenClass||'new',w.firstSeen||0,w.quickStatus||'']}
 function makeRuntimeBuiltin(meta,data){return {id:meta.id,title:meta.title,created:data.cachedAt||now(),builtin:true,source:meta.source,speechLang:meta.speechLang||data.speechLang||'en-US',words:(data.words||[]).map((x,i)=>runtimeBuiltinWord(meta.id,x,i))}}
 const BAD_VOCAB_MEANING=/^(?:n\/?a|na|none|null|undefined|暂无释义|暂无|无|-)$/i;
