@@ -6,6 +6,7 @@ const assert=(condition,message)=>{if(!condition)throw new Error(message)};
 const app3=read('app-3.js'),app4=read('app-4.js'),app19=read('app-19.js'),ui=read('ui.html');
 
 assert(app3.includes('screenWrongIds:[]'),'普通四选一没有初始化第一遍错词队列');
+assert(app3.includes("const unseen=shuffle(d.words.filter(w=>!(w.seen||0))),seen=shuffle(d.words.filter(w=>w.seen||0));pool=[...unseen,...seen]"),'普通四选一没有优先选择未学词');
 assert(app19.includes('screenWrongIds:[]'),'继续学习没有初始化第一遍错词队列');
 assert(app4.includes("if(!s.screenWrongIds.includes(w.id))s.screenWrongIds.push(w.id)"),'第一遍答错没有进入第二遍强化队列');
 assert(app4.includes('ok?`✓ 第一遍通过'),'第一遍答对没有直接通过');
