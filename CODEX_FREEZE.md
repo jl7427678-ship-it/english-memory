@@ -1,6 +1,6 @@
 # English Memory Lab — Frozen Modules
 
-更新时间：2026-09-20
+更新时间：2026-09-29
 
 ## IELTS 机考 Mock 现行边界（2026-09-20）
 
@@ -45,6 +45,7 @@
 - 考研英语 4,787
 - Italiano Core 4,000 / Full 16,327
 - 四选一、拼写、100 / 300 / 500 / 全部、错词强化、快捷键、IndexedDB 缓存、Day 0 / 1 / 3 / 7 / 14 / 30 复习
+- 四选一现行两遍规则：第一遍每词一次，答对直接通过；第二遍只收第一遍答错词并强化 5 次，强化轮答错继续自动回流。`screenWrongIds` 只属于当前 session；不得把慢速但答对的词重新加入第二遍
 - 每词库进度摘要、按原顺序继续下一未学词、50 条分页的完整词库浏览、搜索/状态筛选、已有例句与词条详情
 - 快速筛词与独立断点；词条详情中 source-provided 词族/词形/易混词折叠展示。不得用 AI、字符串猜测或外部大型词典补造关系
 - English 关联词使用独立 manifest + 26 个首字母分片按规范化 word 共享查询，不写回各 deck；当前 WordNet 3.0 + Wikipedia 易混词 + Wiktionary 核验 seed 覆盖 9,531 / 13,143 个现有去重英语词。详情只显示存在的 family/synonyms/collocations/confusables 及数量，快速筛词不显示；原始 WordNet 不进仓库，分片不 precache，禁止用 AI/字符串猜测补缺口

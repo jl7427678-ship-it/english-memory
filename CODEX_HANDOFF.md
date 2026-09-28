@@ -1,6 +1,13 @@
 # 串题记忆室 · English Memory Lab — Codex 接手文档
 
-更新时间：2026-09-20
+更新时间：2026-09-29
+
+## 37. Vocabulary 四选一两遍制（2026-09-29）
+
+- 用户明确将四选一改为两遍制：第一遍仍为四选一，但每个词只出现一次；答对（无论反应快慢）直接通过，不进入第二遍。
+- 第一遍答错的唯一词 ID 写入当前 session 的 `screenWrongIds`；第二遍只为这些错词生成 5 次强化队列，强化轮再次答错仍沿用原自动回流。第一遍全对时直接完成，不显示空强化轮。
+- 旧 session 若没有 `screenWrongIds`，仅按 `screenClass === 'wrong'` 恢复错词，不会把旧的慢速正确词误放回第二遍。现有 progress、IndexedDB、Cloud Sync、Day 0/1/3/7/14/30、拼写与关联词知识卡接口不变。
+- 新增 `npm run check:vocab-two-pass`；Service Worker 与静态资源版本更新为 `20260929-39`。
 
 ## 36. IELTS 完整机考 Mock（2026-09-20）
 

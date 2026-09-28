@@ -10,6 +10,7 @@
     "check:data": "node scripts/check-vocab-data.mjs",
     "check:italian": "node scripts/check-italian-data.mjs",
     "check:vocab-experience": "node scripts/check-vocab-experience.mjs",
+    "check:vocab-two-pass": "node scripts/check-vocab-two-pass.mjs",
     "check:english-relations": "node scripts/check-english-relations.mjs",
     "check:english-vocab-knowledge": "node scripts/check-english-vocab-knowledge.mjs",
     "check:italian-course": "node scripts/check-italian-course.mjs",

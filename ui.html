@@ -28,7 +28,7 @@
             <div class="today-task-list" id="todayTaskList"></div>
           </article>
           <aside class="today-side">
-            <article class="card focus-card"><div class="eyebrow">现在开始</div><h3 id="todayFocusTitle">先做一轮 TOEIC</h3><p id="todayFocusText">四选一快速筛词，系统会把慢词和错词自动放回强化轮。</p><button class="btn primary wide" id="todayFocusStart">开始学习</button></article>
+            <article class="card focus-card"><div class="eyebrow">现在开始</div><h3 id="todayFocusTitle">先做一轮 TOEIC</h3><p id="todayFocusText">第一遍每词只做一次；第二遍只重复强化答错的词。</p><button class="btn primary wide" id="todayFocusStart">开始学习</button></article>
             <article class="card mini-summary"><div><span>待复习</span><b id="todayDueTotal">0</b></div><div><span>今日作答</span><b id="todayAnswerTotal">0</b></div><div><span>连续记录</span><b id="todayActiveDays">0 天</b></div></article>
           </aside>
         </div>
@@ -228,12 +228,12 @@ deadline | 截止日期
             <div class="sub" style="margin-top:10px">四选一至少需要 4 个带释义的单词。不会联网查词，保证核心功能离线可用。</div>
           </div>
           <div class="card">
-            <div class="row between"><div><h2>单词训练</h2><div class="sub">第一轮四选一快速筛；再按答错和反应速度自动重复。</div></div><div class="row"><span class="vocab-badge" id="vocabDueBadge">待复习 0</span><button class="btn" id="reviewDueVocab">复习到期</button></div></div>
+            <div class="row between"><div><h2>单词训练</h2><div class="sub">第一遍四选一每词一次；第二遍只重复强化答错的词。</div></div><div class="row"><span class="vocab-badge" id="vocabDueBadge">待复习 0</span><button class="btn" id="reviewDueVocab">复习到期</button></div></div>
             <div class="vocab-controls" style="margin-top:12px"><span class="sub">每轮词数</span><select id="vocabBatchSize" aria-label="每轮单词数量"><option value="100">100 词</option><option value="300">300 词</option><option value="500">500 词</option><option value="all">全库过一遍</option></select><span class="sub">想按你说的“所有词先过一遍”，选「全库过一遍」。</span></div>
             <label class="vocab-relation-toggle vocab-feature-toggle"><input id="vocabShowRelationsAfterAnswer" type="checkbox"><span><strong>答题后显示关联词</strong><small>开启后，答完四选一会单独显示词族、近义词和易混词；默认关闭。</small></span></label>
             <div class="grid3" style="margin-top:16px"><div class="metric"><b id="vocabDeckCount">0</b><span>词库</span></div><div class="metric"><b id="vocabWordCount">0</b><span>单词</span></div><div class="metric"><b id="vocabMasteredCount">0</b><span>已熟练</span></div></div>
             <div class="divider"></div>
-            <div class="sub"><b style="color:var(--text)">强化规则</b><br>首轮答错 → 最多再见 5 次；答对但慢 → 3 次；有点犹豫 → 2 次；秒选正确 → 1 次。强化轮答错还会自动回流。</div>
+            <div class="sub"><b style="color:var(--text)">强化规则</b><br>第一遍答对 → 直接通过，不再重复；第一遍答错 → 第二遍重复强化 5 次。强化轮再次答错还会自动回流。</div>
             <div class="sub mobile-note" style="margin-top:10px">📱 手机端按钮已按触控尺寸优化，建议竖屏使用。</div>
             <div class="vocab-decks" id="vocabDeckList"></div>
           </div>
