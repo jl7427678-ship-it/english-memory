@@ -22,17 +22,17 @@ for (const file of ['ui.html', 'app.js', 'app-1.js', 'kokoro-speech.js', 'kokoro
   await exists(file);
 }
 
-assert(index.includes('boot.js?v=20260930-41'), 'index.html does not load the current boot.js version');
-assert(index.includes('styles.css?v=20260930-41') && index.includes('theme.css?v=20260930-41') && index.includes('ielts-full-exam.css?v=20260930-41'), 'stylesheet versions are inconsistent');
-assert(boot.includes("ui.html?v=20260930-41") && boot.includes("app.js?v=20260930-41"), 'boot.js resource versions are inconsistent');
-assert(app.includes("src+'?v=20260930-41'") && app.includes("'kokoro-speech.js'") && app.includes("'app-24.js'"), 'split application scripts are not on the current version');
+assert(index.includes('boot.js?v=20260930-42'), 'index.html does not load the current boot.js version');
+assert(index.includes('styles.css?v=20260930-42') && index.includes('theme.css?v=20260930-42') && index.includes('ielts-full-exam.css?v=20260930-42'), 'stylesheet versions are inconsistent');
+assert(boot.includes("ui.html?v=20260930-42") && boot.includes("app.js?v=20260930-42"), 'boot.js resource versions are inconsistent');
+assert(app.includes("src+'?v=20260930-42'") && app.includes("'kokoro-speech.js'") && app.includes("'app-24.js'"), 'split application scripts are not on the current version');
 assert(!app.includes('vocab-patch.js'), 'The retired vocabulary patch is still loaded');
 assert(app2.includes('/vocabularies/ielts_core.json'), 'IELTS does not use the verified ielts_core.json URL');
 assert(app2.includes("manifest:'data/toeic-manifest.json'"), 'TOEIC does not use the same-origin manifest');
 assert(!app3.includes('huggingface.co') && !app3.includes('datasets-server'), 'Runtime code still downloads TOEIC from Hugging Face');
 assert(app3.includes("progressKey(deck.id,w.word)"), 'Built-in progress key contract changed');
 assert(worker.includes("{ignoreSearch:true}"), 'Offline cache does not ignore version query strings');
-assert(worker.includes("CACHE='english-memory-lab-v5-ui-20260930-46'") && worker.includes('kokoro-speech.js') && worker.includes('kokoro-worker.js') && worker.includes('app-24.js') && worker.includes('ielts-full-exam.css') && worker.includes('data/ielts-atlas-manifest.json') && worker.includes('data/ielts-speaking-2026-09.json') && worker.includes('data/italian-manifest.json'), 'Service Worker cache version was not bumped');
+assert(worker.includes("CACHE='english-memory-lab-v5-ui-20260930-47'") && worker.includes('kokoro-speech.js') && worker.includes('kokoro-worker.js') && worker.includes('app-24.js') && worker.includes('ielts-full-exam.css') && worker.includes('data/ielts-atlas-manifest.json') && worker.includes('data/ielts-speaking-2026-09.json') && worker.includes('data/italian-manifest.json'), 'Service Worker cache version was not bumped');
 assert(kokoroWorker.includes("dtype:'q8'") && kokoroWorker.includes("device:'wasm'") && kokoroWorker.includes('splitText'), 'Kokoro worker is missing tablet-safe inference or long-text chunking');
 assert(kokoroSpeech.includes('AudioContext') && kokoroSpeech.includes('voiceOptions'), 'Kokoro playback or voice selection is missing');
 assert(kokoroSpeech.includes('unlockAudio') && app2.includes('speechChunks') && app2.includes('systemVoice'), 'Tablet audio unlock or lightweight long-form speech is missing');
