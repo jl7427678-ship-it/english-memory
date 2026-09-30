@@ -45,7 +45,7 @@
   function resetWorker(error){const friendly=friendlyError(error);try{worker?.terminate()}catch{}worker=null;ready=false;rejectPending(friendly);emit({state:'error',message:friendly.message});return friendly}
   function ensureWorker(){
     if(worker)return worker;
-    worker=new Worker('./kokoro-worker.js?v=20260930-4',{type:'module'});
+    worker=new Worker('./kokoro-worker.js?v=20260930-5',{type:'module'});
     worker.onmessage=event=>{
       const data=event.data||{};
       if(data.type==='status')emit({state:data.state||'loading',message:data.message||'正在准备高质量语音…'});
