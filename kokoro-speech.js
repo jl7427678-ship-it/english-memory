@@ -8,12 +8,13 @@
     {id:'am_michael',label:'Michael · 美式男声'}
   ];
   let worker=null,ready=false,loadingPromise=null,resolveLoading=null,rejectLoading=null,requestId=0;
-  let audioContext=null,scheduledAt=0,audioChain=Promise.resolve(),activeSources=new Set(),status={state:'idle',message:'尚未下载高质量语音模型'};
+  let audioContext=null,scheduledAt=0,audioChain=Promise.resolve(),activeSources=new Set(),pendingAudio=null,status={state:'idle',message:'尚未下载高质量语音模型'};
 
   function emit(next){status={...status,...next};window.dispatchEvent(new CustomEvent('kokoro-status',{detail:status}))}
   function ensureAudio(){
     const Context=window.AudioContext||window.webkitAudioContext;
     if(!Context)return null;
+    if(audioContext?.state==='closed')audioContext=null;
     if(!audioContext)audioContext=new Context();
     if(audioContext.state==='suspended')audioContext.resume().catch(()=>{});
     return audioContext;
@@ -24,14 +25,15 @@
       const buffer=context.createBuffer(1,1,22050),source=context.createBufferSource();
       source.buffer=buffer;source.connect(context.destination);source.start(0);
     }catch{}
+    if(pendingAudio&&pendingAudio.id===requestId){const saved=pendingAudio;pendingAudio=null;audioChain=audioChain.then(()=>playBlob(saved.blob,saved.id)).catch(error=>emit({state:'error',message:error.message}))}
     return true;
   }
-  function stopAudio(){for(const source of activeSources){try{source.stop()}catch{}}activeSources.clear();scheduledAt=0}
+  function stopAudio(){for(const source of activeSources){try{source.stop()}catch{}}activeSources.clear();scheduledAt=0;pendingAudio=null}
   async function playBlob(blob,id){
     if(id!==requestId)return;
     const context=ensureAudio();if(!context)throw new Error('设备不支持 Web Audio');
     if(context.state==='suspended')await context.resume();
-    if(context.state!=='running')throw new Error('浏览器阻止了声音，请再点一次朗读');
+    if(context.state!=='running'){pendingAudio={blob,id};throw new Error('声音已经生成；浏览器暂时拦截播放，请再点一次页面')}
     const buffer=await context.decodeAudioData(await blob.arrayBuffer());
     if(id!==requestId)return;
     const source=context.createBufferSource();source.buffer=buffer;source.connect(context.destination);
@@ -76,6 +78,6 @@
   }
   function prime(){unlockAudio()}
   window.KokoroSpeech={prepare,speak,stop,prime,getStatus:()=>({...status}),voiceOptions};
-  document.addEventListener('pointerdown',prime,{once:true,capture:true});
-  document.addEventListener('keydown',prime,{once:true,capture:true});
+  document.addEventListener('pointerdown',prime,{capture:true});
+  document.addEventListener('keydown',prime,{capture:true});
 })();
