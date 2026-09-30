@@ -18,10 +18,20 @@
     if(audioContext.state==='suspended')audioContext.resume().catch(()=>{});
     return audioContext;
   }
+  function unlockAudio(){
+    const context=ensureAudio();if(!context)return false;
+    try{
+      const buffer=context.createBuffer(1,1,22050),source=context.createBufferSource();
+      source.buffer=buffer;source.connect(context.destination);source.start(0);
+    }catch{}
+    return true;
+  }
   function stopAudio(){for(const source of activeSources){try{source.stop()}catch{}}activeSources.clear();scheduledAt=0}
   async function playBlob(blob,id){
     if(id!==requestId)return;
     const context=ensureAudio();if(!context)throw new Error('设备不支持 Web Audio');
+    if(context.state==='suspended')await context.resume();
+    if(context.state!=='running')throw new Error('浏览器阻止了声音，请再点一次朗读');
     const buffer=await context.decodeAudioData(await blob.arrayBuffer());
     if(id!==requestId)return;
     const source=context.createBufferSource();source.buffer=buffer;source.connect(context.destination);
@@ -30,7 +40,7 @@
   }
   function ensureWorker(){
     if(worker)return worker;
-    worker=new Worker('./kokoro-worker.js?v=20260930-1',{type:'module'});
+    worker=new Worker('./kokoro-worker.js?v=20260930-2',{type:'module'});
     worker.onmessage=event=>{
       const data=event.data||{};
       if(data.type==='status')emit({state:data.state||'loading',message:data.message||'正在准备高质量语音…'});
@@ -67,7 +77,7 @@
     await prepare();if(id!==requestId)return false;
     scheduledAt=0;ensureWorker().postMessage({type:'speak',id,text:clean,voice,speed});return true;
   }
-  function prime(){ensureAudio()}
+  function prime(){unlockAudio()}
   window.KokoroSpeech={prepare,speak,stop,prime,getStatus:()=>({...status}),voiceOptions};
   document.addEventListener('pointerdown',prime,{once:true,capture:true});
   document.addEventListener('keydown',prime,{once:true,capture:true});

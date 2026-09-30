@@ -22,28 +22,29 @@ for (const file of ['ui.html', 'app.js', 'app-1.js', 'kokoro-speech.js', 'kokoro
   await exists(file);
 }
 
-assert(index.includes('boot.js?v=20260930-40'), 'index.html does not load the current boot.js version');
-assert(index.includes('styles.css?v=20260930-40') && index.includes('theme.css?v=20260930-40') && index.includes('ielts-full-exam.css?v=20260930-40'), 'stylesheet versions are inconsistent');
-assert(boot.includes("ui.html?v=20260930-40") && boot.includes("app.js?v=20260930-40"), 'boot.js resource versions are inconsistent');
-assert(app.includes("src+'?v=20260930-40'") && app.includes("'kokoro-speech.js'") && app.includes("'app-24.js'"), 'split application scripts are not on the current version');
+assert(index.includes('boot.js?v=20260930-41'), 'index.html does not load the current boot.js version');
+assert(index.includes('styles.css?v=20260930-41') && index.includes('theme.css?v=20260930-41') && index.includes('ielts-full-exam.css?v=20260930-41'), 'stylesheet versions are inconsistent');
+assert(boot.includes("ui.html?v=20260930-41") && boot.includes("app.js?v=20260930-41"), 'boot.js resource versions are inconsistent');
+assert(app.includes("src+'?v=20260930-41'") && app.includes("'kokoro-speech.js'") && app.includes("'app-24.js'"), 'split application scripts are not on the current version');
 assert(!app.includes('vocab-patch.js'), 'The retired vocabulary patch is still loaded');
 assert(app2.includes('/vocabularies/ielts_core.json'), 'IELTS does not use the verified ielts_core.json URL');
 assert(app2.includes("manifest:'data/toeic-manifest.json'"), 'TOEIC does not use the same-origin manifest');
 assert(!app3.includes('huggingface.co') && !app3.includes('datasets-server'), 'Runtime code still downloads TOEIC from Hugging Face');
 assert(app3.includes("progressKey(deck.id,w.word)"), 'Built-in progress key contract changed');
 assert(worker.includes("{ignoreSearch:true}"), 'Offline cache does not ignore version query strings');
-assert(worker.includes("CACHE='english-memory-lab-v5-ui-20260930-45'") && worker.includes('kokoro-speech.js') && worker.includes('kokoro-worker.js') && worker.includes('app-24.js') && worker.includes('ielts-full-exam.css') && worker.includes('data/ielts-atlas-manifest.json') && worker.includes('data/ielts-speaking-2026-09.json') && worker.includes('data/italian-manifest.json'), 'Service Worker cache version was not bumped');
+assert(worker.includes("CACHE='english-memory-lab-v5-ui-20260930-46'") && worker.includes('kokoro-speech.js') && worker.includes('kokoro-worker.js') && worker.includes('app-24.js') && worker.includes('ielts-full-exam.css') && worker.includes('data/ielts-atlas-manifest.json') && worker.includes('data/ielts-speaking-2026-09.json') && worker.includes('data/italian-manifest.json'), 'Service Worker cache version was not bumped');
 assert(kokoroWorker.includes("dtype:'q8'") && kokoroWorker.includes("device:'wasm'") && kokoroWorker.includes('splitText'), 'Kokoro worker is missing tablet-safe inference or long-text chunking');
 assert(kokoroSpeech.includes('AudioContext') && kokoroSpeech.includes('voiceOptions'), 'Kokoro playback or voice selection is missing');
+assert(kokoroSpeech.includes('unlockAudio') && app2.includes('speechChunks') && app2.includes('systemVoice'), 'Tablet audio unlock or lightweight long-form speech is missing');
 assert(app2.includes("$('#speakDocument')") && ui.includes('id="speakDocument"') && ui.includes('id="stopSpeech"'), 'Whole-document speech controls are missing');
-assert(app5.includes('id="speechEngine"') && app5.includes('id="kokoroVoice"') && app5.includes('试听整句'), 'High-quality speech settings are incomplete');
+assert(app5.includes('id="speechEngine"') && app5.includes('id="systemVoice"') && app5.includes('id="kokoroVoice"') && app5.includes('试听整句'), 'Speech engine or voice settings are incomplete');
 assert(!worker.includes('Kokoro-82M-v1.0-ONNX'), 'Large Kokoro model must not be precached by the site Service Worker');
 assert(!worker.includes('data/italian-core.json') && !worker.includes('data/italian-full-01.json'), 'Italian word data must remain on-demand, not precached');
 for (const mascot of ['hello', 'thinking', 'celebrate', 'active', 'reading', 'rest']) await exists(`assets/mascot/wanwang-${mascot}.webp`);
 assert(worker.includes('wanwang-hello.webp') && worker.includes('wanwang-celebrate.webp'), 'Active mascot states are not cached for offline use');
 assert(worker.includes('data/preqin-literature.json') && worker.includes('app-6.js'), 'Question Engine assets are not cached for offline use');
 assert(app6.includes('course.allowedTypes'), 'Question Engine does not read project-specific allowed question types');
-assert(app2.includes("addEventListener('voiceschanged',refreshSpeechVoices)"), 'TTS voice loading compatibility is missing');
+assert(app2.includes("addEventListener('voiceschanged',voicesChanged)"), 'TTS voice loading compatibility is missing');
 assert(app2.includes("{userInitiated:true}"), 'Manual TTS actions are not marked as user initiated');
 assert(!app4.includes('setTimeout(()=>speak('), 'Vocabulary auto-read still loses the user gesture through setTimeout');
 
