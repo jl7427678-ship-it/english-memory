@@ -38,9 +38,12 @@
     const start=Math.max(context.currentTime+.04,scheduledAt||0);source.start(start);scheduledAt=start+buffer.duration;
     activeSources.add(source);source.onended=()=>activeSources.delete(source);
   }
+  function rejectPending(error){if(rejectLoading)rejectLoading(error);resolveLoading=rejectLoading=null;loadingPromise=null}
+  function friendlyError(error){const raw=String(error?.message||error||'Kokoro 加载失败');if(/memory|allocate|out of bounds|abort\(|worker.*terminated/i.test(raw))return new Error('Kokoro 模型已下载，但当前平板内存不足以初始化；关闭其他标签页后可重试');if(/fetch|network|download|下载|load failed/i.test(raw))return new Error('Kokoro 下载被网络中断，请保持页面打开后重试');return new Error(raw)}
+  function resetWorker(error){const friendly=friendlyError(error);try{worker?.terminate()}catch{}worker=null;ready=false;rejectPending(friendly);emit({state:'error',message:friendly.message});return friendly}
   function ensureWorker(){
     if(worker)return worker;
-    worker=new Worker('./kokoro-worker.js?v=20260930-2',{type:'module'});
+    worker=new Worker('./kokoro-worker.js?v=20260930-3',{type:'module'});
     worker.onmessage=event=>{
       const data=event.data||{};
       if(data.type==='status')emit({state:data.state||'loading',message:data.message||'正在准备高质量语音…'});
@@ -51,15 +54,9 @@
       if(data.type==='audio')audioChain=audioChain.then(()=>playBlob(data.blob,data.id)).catch(error=>emit({state:'error',message:error.message}));
       if(data.type==='speech-start'&&data.id===requestId)emit({state:'speaking',message:`正在生成并朗读 ${data.total} 段`});
       if(data.type==='speech-done'&&data.id===requestId)emit({state:'ready',message:'朗读完成'});
-      if(data.type==='error'||data.type==='speech-error'){
-        const error=new Error(data.message||'高质量语音加载失败');emit({state:'error',message:error.message});
-        if(rejectLoading)rejectLoading(error);resolveLoading=rejectLoading=null;loadingPromise=null;
-      }
+      if(data.type==='error'||data.type==='speech-error')resetWorker(new Error(data.message||'高质量语音加载失败'));
     };
-    worker.onerror=event=>{
-      const error=new Error(event.message||'高质量语音组件加载失败');emit({state:'error',message:error.message});
-      if(rejectLoading)rejectLoading(error);resolveLoading=rejectLoading=null;loadingPromise=null;
-    };
+    worker.onerror=event=>resetWorker(new Error(event.message||'Kokoro Worker 已终止，通常是平板内存不足'));
     return worker;
   }
   function prepare(){

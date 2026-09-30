@@ -1,6 +1,43 @@
 const KOKORO_MODULE='https://cdn.jsdelivr.net/npm/kokoro-js@1.2.1/dist/kokoro.web.js';
 const MODEL_ID='onnx-community/Kokoro-82M-v1.0-ONNX';
+const MODEL_URL='https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/main/onnx/model_quantized.onnx';
+const MODEL_CACHE='transformers-cache';
 let tts=null,loading=null,activeJob=0,pendingJob=null,running=false;
+
+function wait(ms){return new Promise(resolve=>setTimeout(resolve,ms))}
+async function streamIntoCache(response,cache,attempt){
+  const total=Number(response.headers.get('content-length'))||0;
+  if(!response.body){await cache.put(MODEL_URL,response);return}
+  const reader=response.body.getReader();let received=0,lastProgress=-1;
+  const stream=new ReadableStream({async pull(controller){
+    try{
+      const {done,value}=await reader.read();
+      if(done){controller.close();return}
+      received+=value.byteLength;controller.enqueue(value);
+      const progress=total?Math.floor(received/total*100):0;
+      if(progress>=lastProgress+2){lastProgress=progress;postMessage({type:'status',state:'loading',message:total?`正在稳健下载 Kokoro ${progress}%（第 ${attempt}/3 次）`:`正在稳健下载 Kokoro（第 ${attempt}/3 次）`})}
+    }catch(error){controller.error(error)}
+  },cancel:reason=>reader.cancel(reason)});
+  await cache.put(MODEL_URL,new Response(stream,{status:response.status,statusText:response.statusText,headers:response.headers}));
+}
+async function ensureModelCached(){
+  if(typeof caches==='undefined')return false;
+  const cache=await caches.open(MODEL_CACHE),cached=await cache.match(MODEL_URL);
+  if(cached){postMessage({type:'status',state:'loading',message:'已找到本机 Kokoro 模型，正在初始化…'});return true}
+  let lastError=null;
+  for(let attempt=1;attempt<=3;attempt++){
+    try{
+      postMessage({type:'status',state:'loading',message:`正在连接 Kokoro 模型（第 ${attempt}/3 次）`});
+      const response=await fetch(MODEL_URL,{cache:'no-store'});
+      if(!response.ok)throw new Error(`模型下载返回 ${response.status}`);
+      await streamIntoCache(response,cache,attempt);
+      postMessage({type:'status',state:'loading',message:'Kokoro 下载完成，正在释放下载内存…'});
+      await wait(500);
+      return true;
+    }catch(error){lastError=error;await wait(attempt*800)}
+  }
+  throw new Error(`Kokoro 模型下载中断：${lastError?.message||'网络错误'}`);
+}
 
 function progressText(event){
   if(!event||typeof event!=='object')return '正在准备高质量语音…';
@@ -14,7 +51,8 @@ async function loadModel(){
   if(tts)return tts;
   if(loading)return loading;
   loading=(async()=>{
-    postMessage({type:'status',state:'loading',message:'首次使用需下载约 100 MB 语音模型'});
+    postMessage({type:'status',state:'loading',message:'首次使用需下载约 92 MB；平板将分阶段缓存并初始化'});
+    await ensureModelCached();
     const {KokoroTTS}=await import(KOKORO_MODULE);
     tts=await KokoroTTS.from_pretrained(MODEL_ID,{
       dtype:'q8',
@@ -40,7 +78,7 @@ function splitLongPiece(piece,maxLength){
   return out;
 }
 
-function splitText(text,maxLength=420){
+function splitText(text,maxLength=220){
   const clean=String(text||'').replace(/\s+/g,' ').trim();
   if(!clean)return[];
   const sentences=clean.match(/[^.!?。！？]+[.!?。！？]*/g)||[clean],chunks=[];let chunk='';
