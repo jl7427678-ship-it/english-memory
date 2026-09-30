@@ -9,6 +9,13 @@ The built-in exam practice packs are simulations. They are not official TOEIC or
 - License: Apache License 2.0.
 - Use here: English words, full sentences, and imported study text can be synthesized locally in the browser. The quantized model is downloaded on demand and is not bundled with or precached by this site.
 
+## Lightweight local neural speech
+
+- Runtime library: [Mintplex Labs Piper TTS Web](https://github.com/Mintplex-Labs/piper-tts-web), pinned to version 1.0.3.
+- Voice model: `en_US-hfc_female-medium` from [Piper voices](https://huggingface.co/rhasspy/piper-voices).
+- License: MIT.
+- Use here: Piper is the default English speech engine for lower-memory devices. Runtime assets and the selected voice are downloaded only on first use, inference stays on the device, and the model is not bundled with or precached by this site.
+
 ## IELTS computer-test interaction reference
 
 - Source: [aknahin/ielts-on-computer](https://github.com/aknahin/ielts-on-computer)
