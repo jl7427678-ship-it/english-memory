@@ -2,7 +2,7 @@
   for(const src of ['sync-config.js','vocab-sync-core.js','app-1.js','piper-speech.js','kokoro-speech.js','app-2.js','app-3.js','app-4.js','app-5.js','app-6.js','app-7.js','app-8.js','app-9.js','app-10.js','app-11.js','app-12.js','app-13.js','app-14.js','app-15.js','app-16.js','app-17.js','app-18.js','app-19.js','memorization-text.js','app-20.js','app-21.js','app-22.js','app-23.js','app-24.js']){
     await new Promise((resolve,reject)=>{
       const s=document.createElement('script');
-      s.src=src+'?v=20260930-45';
+      s.src=src+'?v=20260930-46';
       s.onload=resolve;
       s.onerror=()=>reject(new Error('加载失败：'+src));
       document.body.appendChild(s);

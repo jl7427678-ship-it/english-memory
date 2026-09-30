@@ -2,6 +2,7 @@ const KOKORO_MODULE='https://cdn.jsdelivr.net/npm/kokoro-js@1.2.1/dist/kokoro.we
 const MODEL_ID='onnx-community/Kokoro-82M-v1.0-ONNX';
 const MODEL_URL='https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/main/onnx/model_quantized.onnx';
 const MODEL_CACHE='transformers-cache';
+const CHUNK_SIZE=4*1024*1024;
 let tts=null,loading=null,activeJob=0,pendingJob=null,running=false;
 
 function wait(ms){return new Promise(resolve=>setTimeout(resolve,ms))}
@@ -20,6 +21,43 @@ async function streamIntoCache(response,cache,attempt){
   },cancel:reason=>reader.cancel(reason)});
   await cache.put(MODEL_URL,new Response(stream,{status:response.status,statusText:response.statusText,headers:response.headers}));
 }
+function chunkUrl(index){return new URL(`/__kokoro_cache__/model_quantized.part-${index}`,self.location.origin).href}
+async function cacheModelInChunks(cache){
+  const probe=await fetch(MODEL_URL,{headers:{Range:'bytes=0-0'},cache:'no-store'});
+  const match=/\/(\d+)$/.exec(probe.headers.get('content-range')||'');
+  if(probe.status!==206||!match){
+    if(!probe.ok)throw new Error(`模型下载返回 ${probe.status}`);
+    if(probe.status===206){try{await probe.body?.cancel()}catch{};const response=await fetch(MODEL_URL,{cache:'no-store'});if(!response.ok)throw new Error(`模型下载返回 ${response.status}`);await streamIntoCache(response,cache,1)}
+    else await streamIntoCache(probe,cache,1);
+    return;
+  }
+  try{await probe.body?.cancel()}catch{}
+  const total=Number(match[1]),count=Math.ceil(total/CHUNK_SIZE);
+  for(let index=0;index<count;index++){
+    const start=index*CHUNK_SIZE,end=Math.min(total-1,start+CHUNK_SIZE-1),url=chunkUrl(index),expected=end-start+1;
+    const existing=await cache.match(url);
+    if(existing&&Number(existing.headers.get('content-length'))===expected){
+      postMessage({type:'status',state:'loading',message:`继续 Kokoro 下载 ${Math.round((index+1)/count*100)}%（已缓存）`});continue;
+    }
+    const response=await fetch(MODEL_URL,{headers:{Range:`bytes=${start}-${end}`},cache:'no-store'});
+    if(response.status!==206)throw new Error(`分块下载返回 ${response.status}`);
+    const data=await response.arrayBuffer();
+    if(data.byteLength!==expected)throw new Error(`分块 ${index+1} 长度不完整`);
+    await cache.put(url,new Response(data,{headers:{'content-length':String(expected),'content-type':'application/octet-stream'}}));
+    postMessage({type:'status',state:'loading',message:`正在断点下载 Kokoro ${Math.round((index+1)/count*100)}%（${index+1}/${count}）`});
+    await wait(40);
+  }
+  postMessage({type:'status',state:'loading',message:'分块下载完成，正在合并本机缓存…'});
+  let index=0;
+  const body=new ReadableStream({async pull(controller){
+    if(index>=count){controller.close();return}
+    const response=await cache.match(chunkUrl(index++));
+    if(!response){controller.error(new Error('Kokoro 缓存分块缺失'));return}
+    controller.enqueue(new Uint8Array(await response.arrayBuffer()));
+  }});
+  await cache.put(MODEL_URL,new Response(body,{headers:{'content-length':String(total),'content-type':'application/octet-stream'}}));
+  for(let i=0;i<count;i++)await cache.delete(chunkUrl(i));
+}
 async function ensureModelCached(){
   if(typeof caches==='undefined')return false;
   const cache=await caches.open(MODEL_CACHE),cached=await cache.match(MODEL_URL);
@@ -27,11 +65,9 @@ async function ensureModelCached(){
   let lastError=null;
   for(let attempt=1;attempt<=3;attempt++){
     try{
-      postMessage({type:'status',state:'loading',message:`正在连接 Kokoro 模型（第 ${attempt}/3 次）`});
-      const response=await fetch(MODEL_URL,{cache:'no-store'});
-      if(!response.ok)throw new Error(`模型下载返回 ${response.status}`);
-      await streamIntoCache(response,cache,attempt);
-      postMessage({type:'status',state:'loading',message:'Kokoro 下载完成，正在释放下载内存…'});
+      postMessage({type:'status',state:'loading',message:`正在连接 Kokoro 分块下载（第 ${attempt}/3 次）`});
+      await cacheModelInChunks(cache);
+      postMessage({type:'status',state:'downloaded',message:'Kokoro 已完整下载；请点第二步初始化'});
       await wait(500);
       return true;
     }catch(error){lastError=error;await wait(attempt*800)}
@@ -118,6 +154,7 @@ async function runJobs(){
 
 self.onmessage=event=>{
   const data=event.data||{};
+  if(data.type==='download')ensureModelCached().then(()=>postMessage({type:'downloaded'})).catch(error=>postMessage({type:'error',message:error?.message||String(error)}));
   if(data.type==='prepare')loadModel().catch(()=>{});
   if(data.type==='cancel'){activeJob=Number(data.id)||0;pendingJob=null}
   if(data.type==='speak'){activeJob=data.id;pendingJob=data;runJobs()}

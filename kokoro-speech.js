@@ -7,7 +7,7 @@
     {id:'bm_george',label:'George · 英式男声'},
     {id:'am_michael',label:'Michael · 美式男声'}
   ];
-  let worker=null,ready=false,loadingPromise=null,resolveLoading=null,rejectLoading=null,requestId=0;
+  let worker=null,ready=false,loadingPromise=null,resolveLoading=null,rejectLoading=null,downloadPromise=null,resolveDownload=null,rejectDownload=null,requestId=0;
   let audioContext=null,scheduledAt=0,audioChain=Promise.resolve(),activeSources=new Set(),pendingAudio=null,status={state:'idle',message:'尚未下载高质量语音模型'};
 
   function emit(next){status={...status,...next};window.dispatchEvent(new CustomEvent('kokoro-status',{detail:status}))}
@@ -40,18 +40,22 @@
     const start=Math.max(context.currentTime+.04,scheduledAt||0);source.start(start);scheduledAt=start+buffer.duration;
     activeSources.add(source);source.onended=()=>activeSources.delete(source);
   }
-  function rejectPending(error){if(rejectLoading)rejectLoading(error);resolveLoading=rejectLoading=null;loadingPromise=null}
+  function rejectPending(error){if(rejectLoading)rejectLoading(error);if(rejectDownload)rejectDownload(error);resolveLoading=rejectLoading=null;resolveDownload=rejectDownload=null;loadingPromise=null;downloadPromise=null}
   function friendlyError(error){const raw=String(error?.message||error||'Kokoro 加载失败');if(/memory|allocate|out of bounds|abort\(|worker.*terminated/i.test(raw))return new Error('Kokoro 模型已下载，但当前平板内存不足以初始化；关闭其他标签页后可重试');if(/fetch|network|download|下载|load failed/i.test(raw))return new Error('Kokoro 下载被网络中断，请保持页面打开后重试');return new Error(raw)}
   function resetWorker(error){const friendly=friendlyError(error);try{worker?.terminate()}catch{}worker=null;ready=false;rejectPending(friendly);emit({state:'error',message:friendly.message});return friendly}
   function ensureWorker(){
     if(worker)return worker;
-    worker=new Worker('./kokoro-worker.js?v=20260930-3',{type:'module'});
+    worker=new Worker('./kokoro-worker.js?v=20260930-4',{type:'module'});
     worker.onmessage=event=>{
       const data=event.data||{};
       if(data.type==='status')emit({state:data.state||'loading',message:data.message||'正在准备高质量语音…'});
       if(data.type==='ready'){
         ready=true;emit({state:'ready',message:'高质量语音已就绪'});
         if(resolveLoading)resolveLoading(true);resolveLoading=rejectLoading=null;
+      }
+      if(data.type==='downloaded'){
+        emit({state:'downloaded',message:'Kokoro 已完整下载；请点第二步初始化'});
+        if(resolveDownload)resolveDownload(true);resolveDownload=rejectDownload=null;downloadPromise=null;
       }
       if(data.type==='audio')audioChain=audioChain.then(()=>playBlob(data.blob,data.id)).catch(error=>emit({state:'error',message:error.message}));
       if(data.type==='speech-start'&&data.id===requestId)emit({state:'speaking',message:`正在生成并朗读 ${data.total} 段`});
@@ -61,14 +65,22 @@
     worker.onerror=event=>resetWorker(new Error(event.message||'Kokoro Worker 已终止，通常是平板内存不足'));
     return worker;
   }
-  function prepare(){
+  async function prepare(){
     ensureAudio();
-    if(ready)return Promise.resolve(true);
+    if(ready)return true;
     if(loadingPromise)return loadingPromise;
+    const cache=await caches.open('transformers-cache'),cached=await cache.match('https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/main/onnx/model_quantized.onnx');
+    if(!cached)throw new Error('请先完成第一步 Kokoro 断点下载');
     loadingPromise=new Promise((resolve,reject)=>{resolveLoading=resolve;rejectLoading=reject});
     ensureWorker().postMessage({type:'prepare'});
     return loadingPromise;
   }
+  function download(){
+    ensureAudio();if(ready)return Promise.resolve(true);if(downloadPromise)return downloadPromise;
+    downloadPromise=new Promise((resolve,reject)=>{resolveDownload=resolve;rejectDownload=reject});
+    ensureWorker().postMessage({type:'download'});return downloadPromise;
+  }
+  async function detectCached(){try{const cache=await caches.open('transformers-cache');if(await cache.match('https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/main/onnx/model_quantized.onnx'))emit({state:'downloaded',message:'已找到完整 Kokoro 模型；请点第二步初始化'})}catch{}}
   function stop(){requestId++;stopAudio();audioChain=Promise.resolve();if(worker)worker.postMessage({type:'cancel',id:requestId});emit({state:ready?'ready':'idle',message:ready?'已停止 · 高质量语音已就绪':'已停止'})}
   async function speak(text,{voice='af_heart',speed=1}={}){
     const clean=String(text||'').trim();if(!clean)return false;
@@ -77,7 +89,8 @@
     scheduledAt=0;ensureWorker().postMessage({type:'speak',id,text:clean,voice,speed});return true;
   }
   function prime(){unlockAudio()}
-  window.KokoroSpeech={prepare,speak,stop,prime,getStatus:()=>({...status}),voiceOptions};
+  window.KokoroSpeech={download,prepare,speak,stop,prime,getStatus:()=>({...status}),voiceOptions};
+  detectCached();
   document.addEventListener('pointerdown',prime,{capture:true});
   document.addEventListener('keydown',prime,{capture:true});
 })();
