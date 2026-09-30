@@ -2,6 +2,13 @@
 
 The built-in exam practice packs are simulations. They are not official TOEIC or IELTS examination papers and are not endorsed by the owners of those examinations.
 
+## High-quality local speech
+
+- Runtime library: [kokoro-js](https://github.com/hexgrad/kokoro), pinned to version 1.2.1.
+- Model: [Kokoro-82M v1.0 ONNX](https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX).
+- License: Apache License 2.0.
+- Use here: English words, full sentences, and imported study text can be synthesized locally in the browser. The quantized model is downloaded on demand and is not bundled with or precached by this site.
+
 ## IELTS computer-test interaction reference
 
 - Source: [aknahin/ielts-on-computer](https://github.com/aknahin/ielts-on-computer)
