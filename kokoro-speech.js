@@ -85,6 +85,8 @@
   function stop(){requestId++;stopAudio();audioChain=Promise.resolve();if(worker)worker.postMessage({type:'cancel',id:requestId});emit({state:ready?'ready':'idle',message:ready?'已停止 · 高质量语音已就绪':'已停止'})}
   async function speak(text,{voice='af_heart',speed=1}={}){
     const clean=String(text||'').trim();if(!clean)return false;
+    if(/[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]/.test(clean))throw new Error('Kokoro 只支持英文；含中文的内容请使用设备中文人声');
+    if(!/[A-Za-z]/.test(clean))throw new Error('Kokoro 没有识别到可朗读的英文文本');
     stop();const id=requestId;ensureAudio();
     await prepare();if(id!==requestId)return false;
     scheduledAt=0;ensureWorker().postMessage({type:'speak',id,text:clean,voice,speed});return true;

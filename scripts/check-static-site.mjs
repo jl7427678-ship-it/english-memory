@@ -22,17 +22,17 @@ for (const file of ['ui.html', 'app.js', 'app-1.js', 'piper-speech.js', 'piper-w
   await exists(file);
 }
 
-assert(index.includes('boot.js?v=20261001-55'), 'index.html does not load the current boot.js version');
-assert(index.includes('styles.css?v=20261001-55') && index.includes('theme.css?v=20261001-55') && index.includes('ielts-full-exam.css?v=20261001-55'), 'stylesheet versions are inconsistent');
-assert(boot.includes("ui.html?v=20261001-55") && boot.includes("app.js?v=20261001-55"), 'boot.js resource versions are inconsistent');
-assert(app.includes("src+'?v=20261001-55'") && app.includes("'piper-speech.js'") && app.includes("'kokoro-speech.js'") && app.includes("'app-24.js'"), 'split application scripts are not on the current version');
+assert(index.includes('boot.js?v=20261001-56'), 'index.html does not load the current boot.js version');
+assert(index.includes('styles.css?v=20261001-56') && index.includes('theme.css?v=20261001-56') && index.includes('ielts-full-exam.css?v=20261001-56'), 'stylesheet versions are inconsistent');
+assert(boot.includes("ui.html?v=20261001-56") && boot.includes("app.js?v=20261001-56"), 'boot.js resource versions are inconsistent');
+assert(app.includes("src+'?v=20261001-56'") && app.includes("'piper-speech.js'") && app.includes("'kokoro-speech.js'") && app.includes("'app-24.js'"), 'split application scripts are not on the current version');
 assert(!app.includes('vocab-patch.js'), 'The retired vocabulary patch is still loaded');
 assert(app2.includes('/vocabularies/ielts_core.json'), 'IELTS does not use the verified ielts_core.json URL');
 assert(app2.includes("manifest:'data/toeic-manifest.json'"), 'TOEIC does not use the same-origin manifest');
 assert(!app3.includes('huggingface.co') && !app3.includes('datasets-server'), 'Runtime code still downloads TOEIC from Hugging Face');
 assert(app3.includes("progressKey(deck.id,w.word)"), 'Built-in progress key contract changed');
 assert(worker.includes("{ignoreSearch:true}"), 'Offline cache does not ignore version query strings');
-assert(worker.includes("CACHE='english-memory-lab-v5-ui-20261001-55'") && worker.includes('piper-speech.js') && worker.includes('piper-worker.js') && worker.includes('kokoro-speech.js') && worker.includes('kokoro-worker.js') && worker.includes('app-24.js') && worker.includes('ielts-full-exam.css') && worker.includes('data/ielts-atlas-manifest.json') && worker.includes('data/ielts-speaking-2026-09.json') && worker.includes('data/italian-manifest.json'), 'Service Worker cache version was not bumped');
+assert(worker.includes("CACHE='english-memory-lab-v5-ui-20261001-56'") && worker.includes('piper-speech.js') && worker.includes('piper-worker.js') && worker.includes('kokoro-speech.js') && worker.includes('kokoro-worker.js') && worker.includes('app-24.js') && worker.includes('ielts-full-exam.css') && worker.includes('data/ielts-atlas-manifest.json') && worker.includes('data/ielts-speaking-2026-09.json') && worker.includes('data/italian-manifest.json'), 'Service Worker cache version was not bumped');
 assert(worker.includes("k.startsWith('english-memory-lab-')&&k!==CACHE"), 'Service Worker must preserve downloaded speech-model caches');
 assert(app1.includes("speechEngine:'piper'") && app1.includes("piperVoice:'en_US-hfc_female-medium'") && app1.includes('speechEngineVersion:2'), 'Piper is not the migrated default speech engine');
 assert(piperWorker.includes('@mintplex-labs/piper-tts-web@1.0.3/+esm') && piperWorker.includes('TtsSession') && piperWorker.includes('splitText'), 'Piper worker is missing pinned local inference or long-text chunking');
@@ -49,6 +49,8 @@ assert(kokoroSpeech.includes('unlockAudio') && app2.includes('speechChunks') && 
 assert(app2.includes("$('#speakDocument')") && ui.includes('id="speakDocument"') && ui.includes('id="stopSpeech"'), 'Whole-document speech controls are missing');
 assert(app2.includes("engine==='piper'") && app2.includes('window.PiperSpeech.speak'), 'Piper is not connected to the shared speech path');
 assert(app2.includes('piperThenSystem') && app2.includes('已改用 Piper 本地人声'), 'Kokoro does not fall back through Piper before device speech');
+assert(app2.includes('speechTextProfile') && app2.includes("profile.hasHan?'zh-CN'") && app2.includes("已自动使用设备中文人声"), 'Mixed-language text is not routed away from English-only neural voices');
+assert(kokoroSpeech.includes('Kokoro 只支持英文') && kokoroSpeech.includes('Kokoro 没有识别到可朗读的英文文本'), 'Kokoro text-language guard is missing');
 assert(app5.includes('id="speechEngine"') && app5.includes('id="piperVoice"') && app5.includes('id="preparePiper"') && app5.includes('id="systemVoice"') && app5.includes('id="kokoroVoice"') && app5.includes('试听整句'), 'Speech engine or voice settings are incomplete');
 assert(app5.includes('persistSpeechSelection') && app5.includes("['speechEngine','piperVoice','kokoroVoice','speechLang']"), 'Speech engine selection is not persisted automatically');
 assert(app5.includes("sessionStorage.setItem('kokoroSetupActive','1')") && app5.includes('第二步：初始化 Kokoro'), 'Kokoro crash recovery does not return to setup');
