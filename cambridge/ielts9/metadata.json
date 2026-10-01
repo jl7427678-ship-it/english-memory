@@ -1,0 +1,12 @@
+{
+  "id": "cambridge-ielts9",
+  "title": "IELTS 9",
+  "series": "Cambridge IELTS",
+  "edition": 9,
+  "source": "Cambridge IELTS 9",
+  "type": "cambridge-practice",
+  "availability": "local-only",
+  "licenseClass": "copyright-risk",
+  "notice": "Private study metadata only. The book PDF, official audio, question text and answer pack are imported locally and are never published with the app.",
+  "tests": ["cam9-test1", "cam9-test2", "cam9-test3", "cam9-test4"]
+}

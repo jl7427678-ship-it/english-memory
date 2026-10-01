@@ -1,0 +1,13 @@
+{
+  "id": "cam9-test3",
+  "label": "Test 3",
+  "source": "Cambridge IELTS 9",
+  "type": "cambridge-practice",
+  "availability": "local-only",
+  "licenseClass": "copyright-risk",
+  "sections": {
+    "listening": {"questionCount": 40, "parts": [{"number": 1, "questions": [1, 10], "pages": [58, 59], "audio": "9-3-1.mp3"}, {"number": 2, "questions": [11, 20], "pages": [60, 61], "audio": "9-3-2.mp3"}, {"number": 3, "questions": [21, 30], "pages": [62], "audio": "9-3-3.mp3"}, {"number": 4, "questions": [31, 40], "pages": [63, 64], "audio": "9-3-4.mp3"}], "transcriptPages": [143, 144, 145, 146, 147, 148]},
+    "reading": {"questionCount": 40, "passages": [{"number": 1, "questions": [1, 13], "pages": [65, 66, 67, 68]}, {"number": 2, "questions": [14, 26], "pages": [69, 70, 71, 72]}, {"number": 3, "questions": [27, 40], "pages": [73, 74, 75, 76, 77]}]},
+    "writing": {"tasks": [{"number": 1, "pages": [78], "visual": true}, {"number": 2, "pages": [79], "visual": false}]}
+  }
+}

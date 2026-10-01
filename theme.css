@@ -231,3 +231,5 @@ html{background:var(--bg)}body{min-width:320px;background:var(--bg);-webkit-font
   .today-task{grid-template-columns:28px 34px minmax(0,1fr)}
   .today-task .task-start,.today-task .coming{grid-column:3;justify-self:start;margin-top:-2px}
 }
+.cambridge-local-card{display:flex;align-items:center;gap:20px;justify-content:space-between;margin-bottom:18px}.cambridge-local-card #cambridgeLocalState{display:flex;min-width:0;flex-direction:column;gap:4px}.cambridge-local-card small{max-width:440px;color:var(--muted)}.cambridge-catalog{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.cambridge-test-card{display:flex;min-height:190px;flex-direction:column;justify-content:space-between;gap:18px}.cambridge-test-card h3{margin:8px 0 4px;font-size:1.45rem}.cambridge-test-card p{margin:0;color:var(--muted)}.cambridge-test-actions{display:flex;flex-wrap:wrap;gap:8px}.cambridge-test-actions button:disabled{opacity:.45;cursor:not-allowed}
+@media(max-width:760px){.cambridge-local-card{align-items:stretch;flex-direction:column}.cambridge-catalog{grid-template-columns:1fr}}

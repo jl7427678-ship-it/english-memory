@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import {readFileSync,existsSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
 import {runInNewContext} from 'node:vm';
+import {fileURLToPath} from 'node:url';
 import {parseSpeakingBank} from '../speaking-bank-parser.mjs';
 
 const read=name=>JSON.parse(readFileSync(new URL(`../data/${name}`,import.meta.url),'utf8'));
@@ -102,10 +103,10 @@ assert(readFileSync(new URL('../service-worker.js',import.meta.url),'utf8').incl
 for(const path of ['app-23.js','app-24.js','data/ielts-custom-open.json','data/ielts-custom-manifest.json','data/ielts-speaking-2026-09.json'])assert(existsSync(new URL('../'+path,import.meta.url)));
 assert(readFileSync(new URL('../app.js',import.meta.url),'utf8').includes("'app-24.js'"));
 assert(readFileSync(new URL('../ui.html',import.meta.url),'utf8').includes('id="page-ielts-full-exam"'));
-for(const file of ['boot.js','app.js','index.html','service-worker.js'])assert(readFileSync(new URL('../'+file,import.meta.url),'utf8').includes('20260929-39'));
+for(const file of ['boot.js','app.js','index.html','service-worker.js'])assert(readFileSync(new URL('../'+file,import.meta.url),'utf8').includes('20261002-59'));
 assert(!readFileSync(new URL('../service-worker.js',import.meta.url),'utf8').includes('data/ielts-custom-open.json'));
-for(const file of ['app-1.js','app-12.js','app-13.js','app-23.js','app-24.js','speaking-bank-parser.mjs'])
-  execFileSync('node',['--check',new URL('../'+file,import.meta.url).pathname]);
+for(const file of ['app-1.js','app-12.js','app-13.js','app-23.js','app-24.js','app-25.js','speaking-bank-parser.mjs'])
+  execFileSync('node',['--check',fileURLToPath(new URL('../'+file,import.meta.url))]);
 
 // Optional private fixture, read only from the user's explicit PDF, never saved to public Git.
 if(process.env.IELTS_SPEAKING_PDF){

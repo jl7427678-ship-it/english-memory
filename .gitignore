@@ -1,2 +1,6 @@
 node_modules/
+cambridge/ielts9/private/
+cambridge/ielts9/*.pdf
+cambridge/ielts9/*.mp3
+cambridge/ielts9/*private*.json
 

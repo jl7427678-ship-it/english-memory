@@ -146,6 +146,7 @@
           <button class="training-card" data-go-page="language-skills"><span class="training-icon">EN</span><div><b>英语听说读写</b><p>听力、录音回放、阅读机考、拼写与默写集中入口。</p></div><span class="arrow">→</span></button>
           <button class="training-card" data-go-page="exam-engine"><span class="training-icon">EX</span><div><b>考试训练</b><p>按项目进入 TOEIC、IELTS、先秦文学或自定义考试题型。</p></div><span class="arrow">→</span></button>
           <button class="training-card" data-go-page="ielts-custom"><span class="training-icon">IE</span><div><b>IELTS 自组训练 Mock</b><p>30 套固定组合；可用科目单独练，缺资料的入口会注明状态。</p></div><span class="arrow">→</span></button>
+          <button class="training-card" data-go-page="cambridge-ielts"><span class="training-icon">C9</span><div><b>Cambridge IELTS</b><p>IELTS 9 私人练习；PDF、音频和答案只保存在本机。</p></div><span class="arrow">→</span></button>
           <button class="training-card" data-go-page="vocab"><span class="training-icon">Aa</span><div><b>单词四选一</b><p>快速筛词，错词和慢词自动强化。</p></div><span class="arrow">→</span></button>
           <button class="training-card" data-go-page="vocab"><span class="training-icon">⌨</span><div><b>单词拼写</b><p>在词库页选择词库后进入中文到英文拼写。</p></div><span class="arrow">→</span></button>
           <button class="training-card" data-go-page="study"><span class="training-icon">◫</span><div><b>背诵训练</b><p>全文、挖空、首字母、关键词和完整复述。</p></div><span class="arrow">→</span></button>
@@ -178,6 +179,11 @@
         <div id="customCatalog" class="custom-catalog" aria-live="polite"></div>
       </section>
       <section class="page" id="page-ielts-custom-work"><div id="customWorkspace" class="card custom-workspace"></div></section>
+      <section class="page" id="page-cambridge-ielts">
+        <div class="page-intro"><div class="eyebrow">CAMBRIDGE IELTS</div><h2>IELTS 9</h2><p>PRIVATE PRACTICE · 本模块与 Custom Mock、Question Bank 分开；官方资料仅保存在当前浏览器。</p></div>
+        <article class="card cambridge-local-card"><div id="cambridgeLocalState"><b>正在检查本机资料…</b></div><div class="row"><button class="btn primary" id="pickCambridgeFiles">导入本地资料</button><button class="btn danger" id="removeCambridgeLocal" hidden>移除本地资料</button></div><input id="cambridgeFileInput" type="file" accept=".pdf,.mp3,.json,audio/mpeg,application/pdf,application/json" multiple hidden><small>先解压剑雅9.zip；选择剑9.pdf、16 个 MP3，以及随本次构建提供的本地答案包。文件不会上传。</small></article>
+        <div id="cambridgeIeltsCatalog" class="cambridge-catalog" aria-live="polite"></div>
+      </section>
       <section class="page" id="page-ielts-full-exam"><div id="ieltsFullWorkspace" class="ielts-full-workspace"></div></section>
 
       <section class="page" id="page-atlas-reading">
