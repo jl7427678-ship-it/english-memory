@@ -8,7 +8,8 @@
     {id:'am_michael',label:'Michael · 美式男声'}
   ];
   let worker=null,ready=false,loadingPromise=null,resolveLoading=null,rejectLoading=null,downloadPromise=null,resolveDownload=null,rejectDownload=null,requestId=0;
-  let audioContext=null,scheduledAt=0,audioChain=Promise.resolve(),activeSources=new Set(),pendingAudio=null,status={state:'idle',message:'尚未下载高质量语音模型'};
+  const MODEL_URL='https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/main/onnx/model_quantized.onnx';
+  let audioContext=null,scheduledAt=0,audioChain=Promise.resolve(),activeSources=new Set(),pendingAudio=null,status={state:'idle',message:'正在检查 Kokoro 模型…'};
 
   function emit(next){status={...status,...next};window.dispatchEvent(new CustomEvent('kokoro-status',{detail:status}))}
   function ensureAudio(){
@@ -45,7 +46,7 @@
   function resetWorker(error){const friendly=friendlyError(error);try{worker?.terminate()}catch{}worker=null;ready=false;rejectPending(friendly);emit({state:'error',message:friendly.message});return friendly}
   function ensureWorker(){
     if(worker)return worker;
-    worker=new Worker('./kokoro-worker.js?v=20260930-5',{type:'module'});
+    worker=new Worker('./kokoro-worker.js?v=20261001-6',{type:'module'});
     worker.onmessage=event=>{
       const data=event.data||{};
       if(data.type==='status')emit({state:data.state||'loading',message:data.message||'正在准备高质量语音…'});
@@ -69,7 +70,7 @@
     ensureAudio();
     if(ready)return true;
     if(loadingPromise)return loadingPromise;
-    const cache=await caches.open('transformers-cache'),cached=await cache.match('https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/main/onnx/model_quantized.onnx');
+    const cache=await caches.open('transformers-cache'),cached=await cache.match(MODEL_URL);
     if(!cached)throw new Error('请先完成第一步 Kokoro 断点下载');
     loadingPromise=new Promise((resolve,reject)=>{resolveLoading=resolve;rejectLoading=reject});
     ensureWorker().postMessage({type:'prepare'});
@@ -80,7 +81,7 @@
     downloadPromise=new Promise((resolve,reject)=>{resolveDownload=resolve;rejectDownload=reject});
     ensureWorker().postMessage({type:'download'});return downloadPromise;
   }
-  async function detectCached(){try{const cache=await caches.open('transformers-cache');if(await cache.match('https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/main/onnx/model_quantized.onnx'))emit({state:'downloaded',message:'已找到完整 Kokoro 模型；请点第二步初始化'})}catch{}}
+  async function detectCached(){try{const cache=await caches.open('transformers-cache');if(await cache.match(MODEL_URL))emit({state:'downloaded',message:'已找到完整 Kokoro 模型；请点第二步初始化'});else emit({state:'missing',message:'当前设备没有 Kokoro 模型，请重新下载一次；今后网站更新不会再清除模型'})}catch{emit({state:'missing',message:'无法读取本机 Kokoro 模型，请重新下载一次'})}}
   function stop(){requestId++;stopAudio();audioChain=Promise.resolve();if(worker)worker.postMessage({type:'cancel',id:requestId});emit({state:ready?'ready':'idle',message:ready?'已停止 · 高质量语音已就绪':'已停止'})}
   async function speak(text,{voice='af_heart',speed=1}={}){
     const clean=String(text||'').trim();if(!clean)return false;
