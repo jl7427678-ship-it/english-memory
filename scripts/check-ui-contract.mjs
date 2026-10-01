@@ -33,7 +33,7 @@ assert(!missingPages.length, `Navigation targets without pages: ${missingPages.j
 for (const page of ['today', 'library', 'training', 'plan', 'me', 'study', 'vocab', 'exam', 'exam-engine', 'computer-exam', 'atlas-reading', 'language-skills', 'review', 'stats', 'settings', 'preqin-literature', 'private-library']) {
   assert(pages.has(page), `Required page is missing: ${page}`);
 }
-for (const label of ['TOEIC 背词', 'TOEIC 串题', 'Italiano', '考研政治', '汉语言', '土地资源管理']) {
+for (const label of ['TOEIC 背词', 'TOEIC 背诵训练', 'Italiano', '考研政治', '汉语言', '土地资源管理']) {
   assert(runtime.includes(label), `Today project is missing: ${label}`);
 }
 assert(ui.includes('🔊 朗读') && ui.includes('🎙️ 语音识别'), 'TTS and speech recognition are not clearly distinguished');
