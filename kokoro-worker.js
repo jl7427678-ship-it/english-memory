@@ -84,10 +84,14 @@ function progressText(event){
 }
 function tabletLike(){const ua=self.navigator?.userAgent||'';return /Android|iPad|iPhone|Mobile/i.test(ua)||(/Macintosh/i.test(ua)&&(self.navigator?.maxTouchPoints||0)>1)}
 async function chooseBackend(){
-  if(self.navigator?.gpu){
-    try{const adapter=await self.navigator.gpu.requestAdapter({powerPreference:'high-performance'});if(adapter)return'webgpu'}catch{}
+  if(tabletLike()){
+    if(self.navigator?.gpu){
+      try{const adapter=await self.navigator.gpu.requestAdapter({powerPreference:'high-performance'});if(adapter)return'webgpu'}catch{}
+    }
+    throw new Error('这台平板没有可用的 WebGPU；Kokoro 的 WASM 初始化会导致页面重载，已安全停止。请使用 Piper 本地人声');
   }
-  if(tabletLike())throw new Error('这台平板没有可用的 WebGPU；Kokoro 的 WASM 初始化会导致页面重载，已安全停止。请使用 Piper 本地人声');
+  // Desktop WebGPU drivers can complete inference yet return corrupted audio.
+  // WASM is slower, but deterministic and is the safe default for Kokoro speech.
   return'wasm';
 }
 
@@ -98,7 +102,7 @@ async function loadModel(){
     postMessage({type:'status',state:'loading',message:'首次使用需下载约 92 MB；平板将分阶段缓存并初始化'});
     await ensureModelCached();
     const device=await chooseBackend();
-    postMessage({type:'status',state:'loading',message:device==='webgpu'?'正在用平板 GPU 初始化 Kokoro…':'正在用电脑 WASM 初始化 Kokoro…'});
+    postMessage({type:'status',state:'loading',message:device==='webgpu'?'正在用平板 GPU 初始化 Kokoro…':'正在用电脑稳定模式初始化 Kokoro…'});
     const {KokoroTTS}=await import(KOKORO_MODULE);
     tts=await KokoroTTS.from_pretrained(MODEL_ID,{
       dtype:'q8',
