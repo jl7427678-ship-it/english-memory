@@ -37,8 +37,8 @@ for (const label of ['TOEIC 背词', 'TOEIC 背诵训练', 'Italiano', '考研�
   assert(runtime.includes(label), `Today project is missing: ${label}`);
 }
 assert(ui.includes('🔊 朗读') && ui.includes('🎙️ 语音识别'), 'TTS and speech recognition are not clearly distinguished');
-assert(ui.includes('assets/mascot/wanwang-hello.webp'), 'Today welcome mascot is missing');
-assert(runtime.includes('assets/mascot/wanwang-celebrate.webp'), 'Today completion mascot state is missing');
+assert(ui.includes('assets/mascot/wanwang-flat-sage-512.webp'), 'Today flat mascot is missing');
+assert(runtime.includes("todayMascotMessage').textContent=allDone"), 'Today completion mascot state is missing');
 assert(ui.includes('名词解释、简答题、论述题'), 'Pre-Qin literature course entry is missing its real question types');
 assert(!ui.match(/先秦文学[^<]{0,80}选择题/), 'Pre-Qin literature is incorrectly presented as choice-first');
 for (const id of ['profileSelect','addProfile','renameProfile','deleteProfile','projectManagerList','addCustomProject']) assert(staticIds.includes(id), `Local Profile UI is missing: ${id}`);
