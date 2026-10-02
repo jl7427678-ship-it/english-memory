@@ -24,11 +24,14 @@ for(let number=1;number<=4;number++){
 }
 assert(expectedAudio.size===0,`missing audio references: ${[...expectedAudio].join(', ')}`);
 for(const forbidden of fs.readdirSync(base))assert(!/\.(pdf|mp3|zip)$/i.test(forbidden)&&!(/private/i.test(forbidden)&&/\.json$/i.test(forbidden)),`private source file committed: ${forbidden}`);
-const ui=fs.readFileSync(path.join(root,'ui.html'),'utf8'),app=fs.readFileSync(path.join(root,'app-25.js'),'utf8'),privateLibrary=fs.readFileSync(path.join(root,'app-11.js'),'utf8'),loader=fs.readFileSync(path.join(root,'app.js'),'utf8'),shell=fs.readFileSync(path.join(root,'app-24.js'),'utf8');
+const ui=fs.readFileSync(path.join(root,'ui.html'),'utf8'),app=fs.readFileSync(path.join(root,'app-25.js'),'utf8'),examCss=fs.readFileSync(path.join(root,'ielts-full-exam.css'),'utf8'),privateLibrary=fs.readFileSync(path.join(root,'app-11.js'),'utf8'),loader=fs.readFileSync(path.join(root,'app.js'),'utf8'),shell=fs.readFileSync(path.join(root,'app-24.js'),'utf8');
 assert(ui.includes('CAMBRIDGE IELTS')&&ui.includes('PRIVATE PRACTICE'),'Cambridge landing labels missing');
 assert(loader.includes("'app-25.js'")&&shell.includes('renderCambridgeIeltsExam'),'exam adapter is not wired');
 assert(privateLibrary.includes("paper.sourceType!=='cambridge_local'"),'Cambridge records must stay out of the generic private-paper list');
 assert(app.includes('IndexedDB')&&app.includes('Not provided by the source material.'),'local storage or source-grounded explanation contract missing');
 assert(app.includes('cambridgeListeningOcr')&&app.includes('data-cambridge-source-view="text"')&&app.includes('显示文字原文'),'Listening OCR text/scan views are not wired');
 assert(app.includes('if(!pdf&&audios.length===0)')&&app.includes('Listening 文字版和答案包已更新'),'JSON-only private-pack update is not wired');
+assert(app.includes('cambridgeOcrBlocks')&&app.includes('cambridge-ocr-question')&&app.includes('文字版（易读）'),'readable OCR structure is not wired');
+assert(examCss.includes('.cambridge-ocr-question')&&examCss.includes('.cambridge-ocr-option')&&examCss.includes('.cambridge-ocr-speaker'),'readable OCR styles are missing');
+assert(app.includes('CAMBRIDGE_VISUAL_PAGES')&&app.includes('data-cambridge-inline-page')&&app.includes('cambridgeRenderInlinePages'),'visual Listening pages must preserve the local source layout');
 console.log('Cambridge IELTS 9: PASS');
