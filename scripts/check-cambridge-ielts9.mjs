@@ -29,4 +29,6 @@ assert(ui.includes('CAMBRIDGE IELTS')&&ui.includes('PRIVATE PRACTICE'),'Cambridg
 assert(loader.includes("'app-25.js'")&&shell.includes('renderCambridgeIeltsExam'),'exam adapter is not wired');
 assert(privateLibrary.includes("paper.sourceType!=='cambridge_local'"),'Cambridge records must stay out of the generic private-paper list');
 assert(app.includes('IndexedDB')&&app.includes('Not provided by the source material.'),'local storage or source-grounded explanation contract missing');
+assert(app.includes('cambridgeListeningOcr')&&app.includes('data-cambridge-source-view="text"')&&app.includes('显示文字原文'),'Listening OCR text/scan views are not wired');
+assert(app.includes('if(!pdf&&audios.length===0)')&&app.includes('Listening 文字版和答案包已更新'),'JSON-only private-pack update is not wired');
 console.log('Cambridge IELTS 9: PASS');
