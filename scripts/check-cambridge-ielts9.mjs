@@ -31,10 +31,11 @@ assert(privateLibrary.includes("paper.sourceType!=='cambridge_local'"),'Cambridg
 assert(app.includes('IndexedDB')&&app.includes('Not provided by the source material.'),'local storage or source-grounded explanation contract missing');
 assert(app.includes('cambridgeListeningOcr')&&app.includes('data-cambridge-source-view="text"')&&app.includes('显示文字原文'),'Listening OCR text/scan views are not wired');
 assert(app.includes('if(!pdf&&audios.length===0)')&&app.includes('Listening 文字版和答案包已更新'),'JSON-only private-pack update is not wired');
-assert(app.includes('cambridgeOcrBlocks')&&app.includes('cambridge-ocr-question')&&app.includes('文字版（可答题）'),'readable OCR structure is not wired');
+assert(app.includes('cambridgeOcrBlocks')&&app.includes('cambridge-ocr-question')&&app.includes('文字版（可高亮）'),'readable OCR structure is not wired');
 assert(examCss.includes('.cambridge-ocr-question')&&examCss.includes('.cambridge-ocr-option')&&examCss.includes('.cambridge-ocr-speaker'),'readable OCR styles are missing');
-assert(app.includes('cambridgeInlineAnswerSheet')&&app.includes('data-cambridge-answer')&&app.includes('自动同步到右侧答题卡'),'inline Listening answer fields are not wired');
+assert(app.includes('data-cambridge-answer')&&app.includes('答题区')&&examCss.includes('[data-section=listening] .ielts-full-part-questions'),'usable Listening answer pane is not wired');
 assert(app.includes('cambridgeOcrHighlightTools')&&app.includes('cambridgeMarkedText')&&app.includes('删除高亮'),'Listening text highlighting is not wired');
 assert(app.includes('CAMBRIDGE_VISUAL_PAGES')&&app.includes('data-cambridge-scan-details')&&app.includes('cambridgeWireInlineScans'),'visual Listening references must be expandable without replacing text');
-assert(examCss.includes('.cambridge-inline-answer-sheet')&&examCss.includes('.cambridge-source-reference'),'Listening answer/reference styles are missing');
+assert(examCss.includes('.cambridge-text-pages[hidden]')&&examCss.includes('.cambridge-source-reference'),'Listening text/scan visibility or reference styles are missing');
+assert(examCss.includes('grid-template-columns:minmax(0,3fr) 8px minmax(360px,2fr)')&&examCss.includes('[data-section=listening] .ielts-full-divider{display:block'),'Cambridge Listening split layout is not protected from the generic Listening layout');
 console.log('Cambridge IELTS 9: PASS');
