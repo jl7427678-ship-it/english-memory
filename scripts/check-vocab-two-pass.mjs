@@ -26,6 +26,8 @@ assert(app4.includes("if(!q.length){finishVocabSession();return}"),'第一遍全
 assert(app4.includes("if(typeof renderVocabCardEnhancements==='function')renderVocabCardEnhancements()"),'完成一轮后词库统计没有立即刷新');
 assert(ui.includes('第一遍答对 → 直接通过，不再重复'),'页面没有说明新的两遍规则');
 assert(ui.includes('第一遍答错 → 第二遍重复强化 5 次'),'页面没有说明错词强化规则');
+assert(ui.includes('id="vocabSpeak"')&&ui.includes('空格 / 0')&&ui.includes('1–4 选择答案'),'单词发音按钮或快捷键提示缺失');
+assert(app4.includes('function playCurrentVocabPronunciation()')&&app4.includes("e.code==='Space'||e.key==='0'||e.code==='Numpad0'"),'空格/数字 0 发音快捷键未接入');
 
 const match=app4.match(/function buildVocabReinforceQueue\(ids\)\{[^\n]+\}/);
 assert(match,'找不到可验证的错词强化队列函数');
