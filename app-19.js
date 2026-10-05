@@ -33,4 +33,4 @@ $('#vocabBrowserPrev').onclick=()=>{vocabBrowserState.page--;renderVocabBrowser(
 $('#vocabBrowserNext').onclick=()=>{vocabBrowserState.page++;renderVocabBrowser()};
 $('#closeVocabBrowser').onclick=()=>{$('#vocabBrowser').hidden=true};
 $('#closeVocabDetail').onclick=()=>{$('#vocabDetailModal').classList.remove('show')};
-$('#vocabDetailSpeak').onclick=()=>{if(vocabBrowserState.detail)speak(vocabBrowserState.detail.word,{lang:vocabBrowserState.deck?.speechLang,userInitiated:true})};
+$('#vocabDetailSpeak').onclick=()=>{if(vocabBrowserState.detail)speakVocabWord(vocabBrowserState.detail.word,{lang:vocabBrowserState.deck?.speechLang,userInitiated:true})};

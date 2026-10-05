@@ -3,7 +3,7 @@ import vm from 'node:vm';
 
 const read=file=>fs.readFileSync(new URL('../'+file,import.meta.url),'utf8');
 const assert=(condition,message)=>{if(!condition)throw new Error(message)};
-const app3=read('app-3.js'),app4=read('app-4.js'),app19=read('app-19.js'),ui=read('ui.html');
+const app2=read('app-2.js'),app3=read('app-3.js'),app4=read('app-4.js'),app19=read('app-19.js'),app20=read('app-20.js'),ui=read('ui.html');
 
 assert(app3.includes('screenWrongIds:[]'),'普通四选一没有初始化第一遍错词队列');
 assert(app3.includes("return deck?.id!=='ielts_core'||!!(Number(w?.firstSeen||0)||Number(w?.level||0)||Number(w?.due||0))"),'IELTS 异常记录修复没有限制在 IELTS 核心词库');
@@ -28,6 +28,8 @@ assert(ui.includes('第一遍答对 → 直接通过，不再重复'),'页面没
 assert(ui.includes('第一遍答错 → 第二遍重复强化 5 次'),'页面没有说明错词强化规则');
 assert(ui.includes('id="vocabSpeak"')&&ui.includes('空格 / 0')&&ui.includes('1–4 选择答案'),'单词发音按钮或快捷键提示缺失');
 assert(app4.includes('function playCurrentVocabPronunciation()')&&app4.includes("e.code==='Space'||e.key==='0'||e.code==='Numpad0'"),'空格/数字 0 发音快捷键未接入');
+assert(app2.includes('function speakVocabWord')&&app2.includes('startDelay:15'),'单词没有接入低延迟设备发音');
+assert(app4.includes('speakVocabWord(w.word')&&app19.includes('speakVocabWord(vocabBrowserState.detail.word')&&app20.includes('speakVocabWord(word.word'),'词汇训练、词库详情或快速筛词仍在使用慢速神经语音');
 
 const match=app4.match(/function buildVocabReinforceQueue\(ids\)\{[^\n]+\}/);
 assert(match,'找不到可验证的错词强化队列函数');

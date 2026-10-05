@@ -22,17 +22,17 @@ for (const file of ['ui.html', 'app.js', 'app-1.js', 'piper-speech.js', 'piper-w
   await exists(file);
 }
 
-assert(index.includes('boot.js?v=20261005-64'), 'index.html does not load the current boot.js version');
-assert(index.includes('styles.css?v=20261005-64') && index.includes('theme.css?v=20261005-64') && index.includes('ielts-full-exam.css?v=20261005-64'), 'stylesheet versions are inconsistent');
-assert(boot.includes("ui.html?v=20261005-64") && boot.includes("app.js?v=20261005-64"), 'boot.js resource versions are inconsistent');
-assert(app.includes("src+'?v=20261005-64'") && app.includes("'piper-speech.js'") && app.includes("'kokoro-speech.js'") && app.includes("'app-24.js'") && app.includes("'app-25.js'"), 'split application scripts are not on the current version');
+assert(index.includes('boot.js?v=20261005-65'), 'index.html does not load the current boot.js version');
+assert(index.includes('styles.css?v=20261005-65') && index.includes('theme.css?v=20261005-65') && index.includes('ielts-full-exam.css?v=20261005-65'), 'stylesheet versions are inconsistent');
+assert(boot.includes("ui.html?v=20261005-65") && boot.includes("app.js?v=20261005-65"), 'boot.js resource versions are inconsistent');
+assert(app.includes("src+'?v=20261005-65'") && app.includes("'piper-speech.js'") && app.includes("'kokoro-speech.js'") && app.includes("'app-24.js'") && app.includes("'app-25.js'"), 'split application scripts are not on the current version');
 assert(!app.includes('vocab-patch.js'), 'The retired vocabulary patch is still loaded');
 assert(app2.includes('/vocabularies/ielts_core.json'), 'IELTS does not use the verified ielts_core.json URL');
 assert(app2.includes("manifest:'data/toeic-manifest.json'"), 'TOEIC does not use the same-origin manifest');
 assert(!app3.includes('huggingface.co') && !app3.includes('datasets-server'), 'Runtime code still downloads TOEIC from Hugging Face');
 assert(app3.includes("progressKey(deck.id,w.word)"), 'Built-in progress key contract changed');
 assert(worker.includes("{ignoreSearch:true}"), 'Offline cache does not ignore version query strings');
-assert(worker.includes("CACHE='english-memory-lab-v5-ui-20261005-64'") && worker.includes('piper-speech.js') && worker.includes('piper-worker.js') && worker.includes('kokoro-speech.js') && worker.includes('kokoro-worker.js') && worker.includes('app-24.js') && worker.includes('app-25.js') && worker.includes('cambridge/ielts9/metadata.json') && worker.includes('ielts-full-exam.css') && worker.includes('data/ielts-atlas-manifest.json') && worker.includes('data/ielts-speaking-2026-09.json') && worker.includes('data/italian-manifest.json'), 'Service Worker cache version was not bumped');
+assert(worker.includes("CACHE='english-memory-lab-v5-ui-20261005-65'") && worker.includes('piper-speech.js') && worker.includes('piper-worker.js') && worker.includes('kokoro-speech.js') && worker.includes('kokoro-worker.js') && worker.includes('app-24.js') && worker.includes('app-25.js') && worker.includes('cambridge/ielts9/metadata.json') && worker.includes('ielts-full-exam.css') && worker.includes('data/ielts-atlas-manifest.json') && worker.includes('data/ielts-speaking-2026-09.json') && worker.includes('data/italian-manifest.json'), 'Service Worker cache version was not bumped');
 assert(worker.includes("k.startsWith('english-memory-lab-')&&k!==CACHE"), 'Service Worker must preserve downloaded speech-model caches');
 assert(app1.includes("speechEngine:'piper'") && app1.includes("piperVoice:'en_US-hfc_female-medium'") && app1.includes('speechEngineVersion:2'), 'Piper is not the migrated default speech engine');
 assert(piperWorker.includes('@mintplex-labs/piper-tts-web@1.0.3/+esm') && piperWorker.includes('TtsSession') && piperWorker.includes('splitText'), 'Piper worker is missing pinned local inference or long-text chunking');
