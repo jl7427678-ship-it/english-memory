@@ -249,6 +249,20 @@ deadline | 截止日期
           </div>
         </div>
 
+        <div class="card" id="ieltsListeningWords" tabindex="-1">
+          <h2>雅思听力常用词 300</h2>
+          <p class="sub">20 个场景 · 每组 15 词 · 中文释义与快速发音。基础生活、校园、讲座主题和易拼错词一起练。</p>
+          <div class="row" style="margin-top:14px">
+            <button class="btn primary" type="button" data-listening-words="learn">开始 / 继续背词</button>
+            <button class="btn" type="button" data-listening-words="browse">查看全部 300 词</button>
+            <button class="btn" type="button" data-listening-words="spell">拼写练习</button>
+          </div>
+          <p class="sub" id="ieltsListeningWordsStatus" role="status">点击即可使用，无需上传或复制词表。训练中按空格或 0 发音，1–4 选择答案。</p>
+          <details class="sub"><summary>词表来源与学习说明</summary>
+            <p>本表按场景自主选编，中文释义自主编写，不是逐词真题频次排名。场景与学习方法参考 <a href="https://ielts.idp.com/prepare/article-common-vocabulary-ielts-listening" target="_blank" rel="noopener noreferrer">IDP 听力词汇指导</a>和<a href="https://ielts.idp.com/prepare/article-ielts-listening-difficult-words" target="_blank" rel="noopener noreferrer">拼写指导</a>。拼写练习使用现有“看中文写英文”模式，可点发音辅助听辨。</p>
+          </details>
+        </div>
+
         <div class="card builtin-wrap">
           <div class="row between"><div><h2>预装考试词库</h2><div class="sub">首次联网会自动安装并缓存；之后直接训练，手机和电脑使用同一套逻辑。</div></div><button class="btn" id="installAllBuiltin">重新检查词库</button></div>
           <div class="builtin-note" style="margin-top:10px">📦 词库数据与学习进度分开保存。大词库放在浏览器 IndexedDB 中，避免几千个单词塞进 localStorage 导致手机不稳定。首次安装需要联网；安装成功后核心背词可离线。</div>

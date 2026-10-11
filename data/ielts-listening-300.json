@@ -1,0 +1,2223 @@
+{
+  "id": "ielts_listening_300",
+  "version": "2026.10.11.1",
+  "title": "雅思听力常用词 300",
+  "speechLang": "en-GB",
+  "selectionMethod": "按听力场景自主选编，非真题词频排名；中文释义自主编写。",
+  "sources": [
+    {
+      "title": "IDP 听力场景与学习指导",
+      "url": "https://ielts.idp.com/prepare/article-common-vocabulary-ielts-listening",
+      "usage": "场景及学习方法参考，非逐词出处"
+    },
+    {
+      "title": "IDP 听力拼写指导",
+      "url": "https://ielts.idp.com/prepare/article-ielts-listening-difficult-words",
+      "usage": "拼写练习方法参考"
+    }
+  ],
+  "groups": [
+    {
+      "title": "预订与住宿",
+      "count": 15,
+      "start": 1
+    },
+    {
+      "title": "费用与付款",
+      "count": 15,
+      "start": 16
+    },
+    {
+      "title": "交通与出行",
+      "count": 15,
+      "start": 31
+    },
+    {
+      "title": "校园与课程",
+      "count": 15,
+      "start": 46
+    },
+    {
+      "title": "研究与调查",
+      "count": 15,
+      "start": 61
+    },
+    {
+      "title": "地图与建筑方位",
+      "count": 15,
+      "start": 76
+    },
+    {
+      "title": "工作与招聘",
+      "count": 15,
+      "start": 91
+    },
+    {
+      "title": "医疗与健康",
+      "count": 15,
+      "start": 106
+    },
+    {
+      "title": "饮食与营养",
+      "count": 15,
+      "start": 121
+    },
+    {
+      "title": "休闲与活动",
+      "count": 15,
+      "start": 136
+    },
+    {
+      "title": "动物与生态",
+      "count": 15,
+      "start": 151
+    },
+    {
+      "title": "环境与气候",
+      "count": 15,
+      "start": 166
+    },
+    {
+      "title": "能源与材料",
+      "count": 15,
+      "start": 181
+    },
+    {
+      "title": "农业与种植",
+      "count": 15,
+      "start": 196
+    },
+    {
+      "title": "历史与建筑",
+      "count": 15,
+      "start": 211
+    },
+    {
+      "title": "日期与时间",
+      "count": 15,
+      "start": 226
+    },
+    {
+      "title": "条件与描述",
+      "count": 15,
+      "start": 241
+    },
+    {
+      "title": "日常任务动词",
+      "count": 15,
+      "start": 256
+    },
+    {
+      "title": "变化与观点",
+      "count": 15,
+      "start": 271
+    },
+    {
+      "title": "易拼错与易混淆词",
+      "count": 15,
+      "start": 286
+    }
+  ],
+  "words": [
+    {
+      "word": "booking",
+      "meaning": "n. 预订",
+      "tags": [
+        "预订与住宿"
+      ]
+    },
+    {
+      "word": "reservation",
+      "meaning": "n. 预订；预约",
+      "tags": [
+        "预订与住宿"
+      ]
+    },
+    {
+      "word": "accommodation",
+      "meaning": "n. 住宿；住处",
+      "tags": [
+        "预订与住宿"
+      ]
+    },
+    {
+      "word": "landlord",
+      "meaning": "n. 房东",
+      "tags": [
+        "预订与住宿"
+      ]
+    },
+    {
+      "word": "tenant",
+      "meaning": "n. 租客",
+      "tags": [
+        "预订与住宿"
+      ]
+    },
+    {
+      "word": "rent",
+      "meaning": "n. 租金；v. 租用",
+      "tags": [
+        "预订与住宿"
+      ]
+    },
+    {
+      "word": "deposit",
+      "meaning": "n. 押金；定金；存款",
+      "tags": [
+        "预订与住宿"
+      ]
+    },
+    {
+      "word": "lease",
+      "meaning": "n. 租约；v. 租赁",
+      "tags": [
+        "预订与住宿"
+      ]
+    },
+    {
+      "word": "furnished",
+      "meaning": "adj. 配有家具的",
+      "tags": [
+        "预订与住宿"
+      ]
+    },
+    {
+      "word": "apartment",
+      "meaning": "n. 公寓",
+      "tags": [
+        "预订与住宿"
+      ]
+    },
+    {
+      "word": "dormitory",
+      "meaning": "n. 学生宿舍",
+      "tags": [
+        "预订与住宿"
+      ]
+    },
+    {
+      "word": "vacancy",
+      "meaning": "n. 空房；职位空缺",
+      "tags": [
+        "预订与住宿"
+      ]
+    },
+    {
+      "word": "reception",
+      "meaning": "n. 接待处",
+      "tags": [
+        "预订与住宿"
+      ]
+    },
+    {
+      "word": "available",
+      "meaning": "adj. 可获得的；有空的",
+      "tags": [
+        "预订与住宿"
+      ]
+    },
+    {
+      "word": "maintenance",
+      "meaning": "n. 维护；维修保养",
+      "tags": [
+        "预订与住宿"
+      ]
+    },
+    {
+      "word": "fee",
+      "meaning": "n. 费用",
+      "tags": [
+        "费用与付款"
+      ]
+    },
+    {
+      "word": "fare",
+      "meaning": "n. 车费；船费；机票费",
+      "tags": [
+        "费用与付款"
+      ]
+    },
+    {
+      "word": "charge",
+      "meaning": "n. 收费；v. 收费",
+      "tags": [
+        "费用与付款"
+      ]
+    },
+    {
+      "word": "discount",
+      "meaning": "n. 折扣",
+      "tags": [
+        "费用与付款"
+      ]
+    },
+    {
+      "word": "refund",
+      "meaning": "n. 退款；v. 退还款项",
+      "tags": [
+        "费用与付款"
+      ]
+    },
+    {
+      "word": "receipt",
+      "meaning": "n. 收据",
+      "tags": [
+        "费用与付款"
+      ]
+    },
+    {
+      "word": "invoice",
+      "meaning": "n. 发票；账单",
+      "tags": [
+        "费用与付款"
+      ]
+    },
+    {
+      "word": "budget",
+      "meaning": "n. 预算",
+      "tags": [
+        "费用与付款"
+      ]
+    },
+    {
+      "word": "instalment",
+      "meaning": "n. 分期付款的一期款项",
+      "tags": [
+        "费用与付款"
+      ]
+    },
+    {
+      "word": "cash",
+      "meaning": "n. 现金",
+      "tags": [
+        "费用与付款"
+      ]
+    },
+    {
+      "word": "cheque",
+      "meaning": "n. 支票",
+      "tags": [
+        "费用与付款"
+      ]
+    },
+    {
+      "word": "currency",
+      "meaning": "n. 货币",
+      "tags": [
+        "费用与付款"
+      ]
+    },
+    {
+      "word": "insurance",
+      "meaning": "n. 保险",
+      "tags": [
+        "费用与付款"
+      ]
+    },
+    {
+      "word": "purchase",
+      "meaning": "v. 购买；n. 购买的物品",
+      "tags": [
+        "费用与付款"
+      ]
+    },
+    {
+      "word": "subscription",
+      "meaning": "n. 订阅；定期缴纳的费用",
+      "tags": [
+        "费用与付款"
+      ]
+    },
+    {
+      "word": "departure",
+      "meaning": "n. 出发",
+      "tags": [
+        "交通与出行"
+      ]
+    },
+    {
+      "word": "arrival",
+      "meaning": "n. 到达",
+      "tags": [
+        "交通与出行"
+      ]
+    },
+    {
+      "word": "destination",
+      "meaning": "n. 目的地",
+      "tags": [
+        "交通与出行"
+      ]
+    },
+    {
+      "word": "platform",
+      "meaning": "n. 站台",
+      "tags": [
+        "交通与出行"
+      ]
+    },
+    {
+      "word": "terminal",
+      "meaning": "n. 航站楼；交通终点站",
+      "tags": [
+        "交通与出行"
+      ]
+    },
+    {
+      "word": "transfer",
+      "meaning": "v. 换乘；转移",
+      "tags": [
+        "交通与出行"
+      ]
+    },
+    {
+      "word": "route",
+      "meaning": "n. 路线",
+      "tags": [
+        "交通与出行"
+      ]
+    },
+    {
+      "word": "timetable",
+      "meaning": "n. 时刻表",
+      "tags": [
+        "交通与出行"
+      ]
+    },
+    {
+      "word": "delay",
+      "meaning": "n. 延误；v. 推迟",
+      "tags": [
+        "交通与出行"
+      ]
+    },
+    {
+      "word": "cancellation",
+      "meaning": "n. 取消",
+      "tags": [
+        "交通与出行"
+      ]
+    },
+    {
+      "word": "passenger",
+      "meaning": "n. 乘客",
+      "tags": [
+        "交通与出行"
+      ]
+    },
+    {
+      "word": "luggage",
+      "meaning": "n. 行李",
+      "tags": [
+        "交通与出行"
+      ]
+    },
+    {
+      "word": "shuttle",
+      "meaning": "n. 往返接送车",
+      "tags": [
+        "交通与出行"
+      ]
+    },
+    {
+      "word": "ferry",
+      "meaning": "n. 渡轮",
+      "tags": [
+        "交通与出行"
+      ]
+    },
+    {
+      "word": "pedestrian",
+      "meaning": "n. 行人",
+      "tags": [
+        "交通与出行"
+      ]
+    },
+    {
+      "word": "lecture",
+      "meaning": "n. 讲座；大学课程中的授课",
+      "tags": [
+        "校园与课程"
+      ]
+    },
+    {
+      "word": "seminar",
+      "meaning": "n. 研讨课",
+      "tags": [
+        "校园与课程"
+      ]
+    },
+    {
+      "word": "tutorial",
+      "meaning": "n. 辅导课",
+      "tags": [
+        "校园与课程"
+      ]
+    },
+    {
+      "word": "assignment",
+      "meaning": "n. 作业；任务",
+      "tags": [
+        "校园与课程"
+      ]
+    },
+    {
+      "word": "deadline",
+      "meaning": "n. 截止时间",
+      "tags": [
+        "校园与课程"
+      ]
+    },
+    {
+      "word": "semester",
+      "meaning": "n. 学期",
+      "tags": [
+        "校园与课程"
+      ]
+    },
+    {
+      "word": "enrolment",
+      "meaning": "n. 入学登记；注册",
+      "tags": [
+        "校园与课程"
+      ]
+    },
+    {
+      "word": "scholarship",
+      "meaning": "n. 奖学金",
+      "tags": [
+        "校园与课程"
+      ]
+    },
+    {
+      "word": "tuition",
+      "meaning": "n. 教学；学费（常用于 tuition fees）",
+      "tags": [
+        "校园与课程"
+      ]
+    },
+    {
+      "word": "supervisor",
+      "meaning": "n. 导师；主管",
+      "tags": [
+        "校园与课程"
+      ]
+    },
+    {
+      "word": "dissertation",
+      "meaning": "n. 学位论文",
+      "tags": [
+        "校园与课程"
+      ]
+    },
+    {
+      "word": "assessment",
+      "meaning": "n. 评估；考核",
+      "tags": [
+        "校园与课程"
+      ]
+    },
+    {
+      "word": "curriculum",
+      "meaning": "n. 课程体系",
+      "tags": [
+        "校园与课程"
+      ]
+    },
+    {
+      "word": "qualification",
+      "meaning": "n. 资格；学历",
+      "tags": [
+        "校园与课程"
+      ]
+    },
+    {
+      "word": "attendance",
+      "meaning": "n. 出勤；出席",
+      "tags": [
+        "校园与课程"
+      ]
+    },
+    {
+      "word": "questionnaire",
+      "meaning": "n. 调查问卷",
+      "tags": [
+        "研究与调查"
+      ]
+    },
+    {
+      "word": "respondent",
+      "meaning": "n. 调查应答者",
+      "tags": [
+        "研究与调查"
+      ]
+    },
+    {
+      "word": "survey",
+      "meaning": "n. 调查；v. 调查",
+      "tags": [
+        "研究与调查"
+      ]
+    },
+    {
+      "word": "sample",
+      "meaning": "n. 样本；样品",
+      "tags": [
+        "研究与调查"
+      ]
+    },
+    {
+      "word": "experiment",
+      "meaning": "n. 实验",
+      "tags": [
+        "研究与调查"
+      ]
+    },
+    {
+      "word": "hypothesis",
+      "meaning": "n. 假设",
+      "tags": [
+        "研究与调查"
+      ]
+    },
+    {
+      "word": "evidence",
+      "meaning": "n. 证据",
+      "tags": [
+        "研究与调查"
+      ]
+    },
+    {
+      "word": "observation",
+      "meaning": "n. 观察；观察结果",
+      "tags": [
+        "研究与调查"
+      ]
+    },
+    {
+      "word": "analysis",
+      "meaning": "n. 分析",
+      "tags": [
+        "研究与调查"
+      ]
+    },
+    {
+      "word": "statistics",
+      "meaning": "n. 统计数据；统计学",
+      "tags": [
+        "研究与调查"
+      ]
+    },
+    {
+      "word": "percentage",
+      "meaning": "n. 百分比",
+      "tags": [
+        "研究与调查"
+      ]
+    },
+    {
+      "word": "participant",
+      "meaning": "n. 参与者",
+      "tags": [
+        "研究与调查"
+      ]
+    },
+    {
+      "word": "finding",
+      "meaning": "n. 调查或研究的发现",
+      "tags": [
+        "研究与调查"
+      ]
+    },
+    {
+      "word": "reliable",
+      "meaning": "adj. 可靠的",
+      "tags": [
+        "研究与调查"
+      ]
+    },
+    {
+      "word": "conclusion",
+      "meaning": "n. 结论",
+      "tags": [
+        "研究与调查"
+      ]
+    },
+    {
+      "word": "entrance",
+      "meaning": "n. 入口",
+      "tags": [
+        "地图与建筑方位"
+      ]
+    },
+    {
+      "word": "exit",
+      "meaning": "n. 出口",
+      "tags": [
+        "地图与建筑方位"
+      ]
+    },
+    {
+      "word": "intersection",
+      "meaning": "n. 十字路口；交叉点",
+      "tags": [
+        "地图与建筑方位"
+      ]
+    },
+    {
+      "word": "roundabout",
+      "meaning": "n. 环形交叉路口",
+      "tags": [
+        "地图与建筑方位"
+      ]
+    },
+    {
+      "word": "junction",
+      "meaning": "n. 道路交汇处",
+      "tags": [
+        "地图与建筑方位"
+      ]
+    },
+    {
+      "word": "opposite",
+      "meaning": "prep. 在……对面；adj. 对面的",
+      "tags": [
+        "地图与建筑方位"
+      ]
+    },
+    {
+      "word": "adjacent",
+      "meaning": "adj. 紧邻的（常与 to 连用）",
+      "tags": [
+        "地图与建筑方位"
+      ]
+    },
+    {
+      "word": "beyond",
+      "meaning": "prep. 在……更远处；超出",
+      "tags": [
+        "地图与建筑方位"
+      ]
+    },
+    {
+      "word": "alongside",
+      "meaning": "prep. 在……旁边",
+      "tags": [
+        "地图与建筑方位"
+      ]
+    },
+    {
+      "word": "diagonal",
+      "meaning": "adj. 对角线的；斜向的",
+      "tags": [
+        "地图与建筑方位"
+      ]
+    },
+    {
+      "word": "clockwise",
+      "meaning": "adv. 顺时针方向地",
+      "tags": [
+        "地图与建筑方位"
+      ]
+    },
+    {
+      "word": "corridor",
+      "meaning": "n. 走廊",
+      "tags": [
+        "地图与建筑方位"
+      ]
+    },
+    {
+      "word": "staircase",
+      "meaning": "n. 楼梯",
+      "tags": [
+        "地图与建筑方位"
+      ]
+    },
+    {
+      "word": "basement",
+      "meaning": "n. 地下室",
+      "tags": [
+        "地图与建筑方位"
+      ]
+    },
+    {
+      "word": "courtyard",
+      "meaning": "n. 庭院",
+      "tags": [
+        "地图与建筑方位"
+      ]
+    },
+    {
+      "word": "occupation",
+      "meaning": "n. 职业",
+      "tags": [
+        "工作与招聘"
+      ]
+    },
+    {
+      "word": "recruitment",
+      "meaning": "n. 招聘",
+      "tags": [
+        "工作与招聘"
+      ]
+    },
+    {
+      "word": "applicant",
+      "meaning": "n. 申请人",
+      "tags": [
+        "工作与招聘"
+      ]
+    },
+    {
+      "word": "interview",
+      "meaning": "n. 面试；访谈",
+      "tags": [
+        "工作与招聘"
+      ]
+    },
+    {
+      "word": "reference",
+      "meaning": "n. 推荐信；参考资料",
+      "tags": [
+        "工作与招聘"
+      ]
+    },
+    {
+      "word": "shift",
+      "meaning": "n. 轮班；班次",
+      "tags": [
+        "工作与招聘"
+      ]
+    },
+    {
+      "word": "salary",
+      "meaning": "n. 薪水（通常按月或年计算）",
+      "tags": [
+        "工作与招聘"
+      ]
+    },
+    {
+      "word": "wage",
+      "meaning": "n. 工资（常按小时或周计算）",
+      "tags": [
+        "工作与招聘"
+      ]
+    },
+    {
+      "word": "overtime",
+      "meaning": "n. 加班；加班时间",
+      "tags": [
+        "工作与招聘"
+      ]
+    },
+    {
+      "word": "colleague",
+      "meaning": "n. 同事",
+      "tags": [
+        "工作与招聘"
+      ]
+    },
+    {
+      "word": "employer",
+      "meaning": "n. 雇主",
+      "tags": [
+        "工作与招聘"
+      ]
+    },
+    {
+      "word": "employee",
+      "meaning": "n. 雇员",
+      "tags": [
+        "工作与招聘"
+      ]
+    },
+    {
+      "word": "promotion",
+      "meaning": "n. 晋升；促销",
+      "tags": [
+        "工作与招聘"
+      ]
+    },
+    {
+      "word": "contract",
+      "meaning": "n. 合同",
+      "tags": [
+        "工作与招聘"
+      ]
+    },
+    {
+      "word": "volunteer",
+      "meaning": "n. 志愿者；v. 自愿做",
+      "tags": [
+        "工作与招聘"
+      ]
+    },
+    {
+      "word": "appointment",
+      "meaning": "n. 预约",
+      "tags": [
+        "医疗与健康"
+      ]
+    },
+    {
+      "word": "symptom",
+      "meaning": "n. 症状",
+      "tags": [
+        "医疗与健康"
+      ]
+    },
+    {
+      "word": "prescription",
+      "meaning": "n. 处方",
+      "tags": [
+        "医疗与健康"
+      ]
+    },
+    {
+      "word": "allergy",
+      "meaning": "n. 过敏",
+      "tags": [
+        "医疗与健康"
+      ]
+    },
+    {
+      "word": "treatment",
+      "meaning": "n. 治疗",
+      "tags": [
+        "医疗与健康"
+      ]
+    },
+    {
+      "word": "diagnosis",
+      "meaning": "n. 诊断",
+      "tags": [
+        "医疗与健康"
+      ]
+    },
+    {
+      "word": "infection",
+      "meaning": "n. 感染",
+      "tags": [
+        "医疗与健康"
+      ]
+    },
+    {
+      "word": "injury",
+      "meaning": "n. 伤；损伤",
+      "tags": [
+        "医疗与健康"
+      ]
+    },
+    {
+      "word": "surgeon",
+      "meaning": "n. 外科医生",
+      "tags": [
+        "医疗与健康"
+      ]
+    },
+    {
+      "word": "dentist",
+      "meaning": "n. 牙医",
+      "tags": [
+        "医疗与健康"
+      ]
+    },
+    {
+      "word": "pharmacy",
+      "meaning": "n. 药房",
+      "tags": [
+        "医疗与健康"
+      ]
+    },
+    {
+      "word": "vaccination",
+      "meaning": "n. 疫苗接种",
+      "tags": [
+        "医疗与健康"
+      ]
+    },
+    {
+      "word": "fatigue",
+      "meaning": "n. 疲劳",
+      "tags": [
+        "医疗与健康"
+      ]
+    },
+    {
+      "word": "recovery",
+      "meaning": "n. 康复；恢复",
+      "tags": [
+        "医疗与健康"
+      ]
+    },
+    {
+      "word": "emergency",
+      "meaning": "n. 紧急情况",
+      "tags": [
+        "医疗与健康"
+      ]
+    },
+    {
+      "word": "vegetarian",
+      "meaning": "n. 素食者；adj. 素食的",
+      "tags": [
+        "饮食与营养"
+      ]
+    },
+    {
+      "word": "vegan",
+      "meaning": "n. 严格素食者；adj. 不使用动物产品的",
+      "tags": [
+        "饮食与营养"
+      ]
+    },
+    {
+      "word": "protein",
+      "meaning": "n. 蛋白质",
+      "tags": [
+        "饮食与营养"
+      ]
+    },
+    {
+      "word": "carbohydrate",
+      "meaning": "n. 碳水化合物",
+      "tags": [
+        "饮食与营养"
+      ]
+    },
+    {
+      "word": "fibre",
+      "meaning": "n. 膳食纤维；纤维",
+      "tags": [
+        "饮食与营养"
+      ]
+    },
+    {
+      "word": "vitamin",
+      "meaning": "n. 维生素",
+      "tags": [
+        "饮食与营养"
+      ]
+    },
+    {
+      "word": "mineral",
+      "meaning": "n. 矿物质；矿物",
+      "tags": [
+        "饮食与营养"
+      ]
+    },
+    {
+      "word": "ingredient",
+      "meaning": "n. 食材；成分",
+      "tags": [
+        "饮食与营养"
+      ]
+    },
+    {
+      "word": "portion",
+      "meaning": "n. 一份食物；部分",
+      "tags": [
+        "饮食与营养"
+      ]
+    },
+    {
+      "word": "nutrition",
+      "meaning": "n. 营养",
+      "tags": [
+        "饮食与营养"
+      ]
+    },
+    {
+      "word": "cereal",
+      "meaning": "n. 谷物；早餐麦片",
+      "tags": [
+        "饮食与营养"
+      ]
+    },
+    {
+      "word": "dairy",
+      "meaning": "adj. 奶制品的；n. 奶制品行业",
+      "tags": [
+        "饮食与营养"
+      ]
+    },
+    {
+      "word": "seafood",
+      "meaning": "n. 海鲜",
+      "tags": [
+        "饮食与营养"
+      ]
+    },
+    {
+      "word": "beverage",
+      "meaning": "n. 饮料",
+      "tags": [
+        "饮食与营养"
+      ]
+    },
+    {
+      "word": "catering",
+      "meaning": "n. 餐饮服务",
+      "tags": [
+        "饮食与营养"
+      ]
+    },
+    {
+      "word": "membership",
+      "meaning": "n. 会员资格",
+      "tags": [
+        "休闲与活动"
+      ]
+    },
+    {
+      "word": "equipment",
+      "meaning": "n. 设备；器材",
+      "tags": [
+        "休闲与活动"
+      ]
+    },
+    {
+      "word": "instructor",
+      "meaning": "n. 教练；指导员",
+      "tags": [
+        "休闲与活动"
+      ]
+    },
+    {
+      "word": "rehearsal",
+      "meaning": "n. 排练",
+      "tags": [
+        "休闲与活动"
+      ]
+    },
+    {
+      "word": "exhibition",
+      "meaning": "n. 展览",
+      "tags": [
+        "休闲与活动"
+      ]
+    },
+    {
+      "word": "gallery",
+      "meaning": "n. 美术馆；画廊",
+      "tags": [
+        "休闲与活动"
+      ]
+    },
+    {
+      "word": "audience",
+      "meaning": "n. 观众；听众",
+      "tags": [
+        "休闲与活动"
+      ]
+    },
+    {
+      "word": "performance",
+      "meaning": "n. 表演；表现",
+      "tags": [
+        "休闲与活动"
+      ]
+    },
+    {
+      "word": "leisure",
+      "meaning": "n. 闲暇；休闲",
+      "tags": [
+        "休闲与活动"
+      ]
+    },
+    {
+      "word": "excursion",
+      "meaning": "n. 短途游览",
+      "tags": [
+        "休闲与活动"
+      ]
+    },
+    {
+      "word": "itinerary",
+      "meaning": "n. 行程安排",
+      "tags": [
+        "休闲与活动"
+      ]
+    },
+    {
+      "word": "souvenir",
+      "meaning": "n. 纪念品",
+      "tags": [
+        "休闲与活动"
+      ]
+    },
+    {
+      "word": "admission",
+      "meaning": "n. 入场；入场费；准许加入",
+      "tags": [
+        "休闲与活动"
+      ]
+    },
+    {
+      "word": "spectator",
+      "meaning": "n. 现场观众",
+      "tags": [
+        "休闲与活动"
+      ]
+    },
+    {
+      "word": "competition",
+      "meaning": "n. 比赛；竞争",
+      "tags": [
+        "休闲与活动"
+      ]
+    },
+    {
+      "word": "habitat",
+      "meaning": "n. 栖息地",
+      "tags": [
+        "动物与生态"
+      ]
+    },
+    {
+      "word": "species",
+      "meaning": "n. 物种（单复数同形）",
+      "tags": [
+        "动物与生态"
+      ]
+    },
+    {
+      "word": "predator",
+      "meaning": "n. 捕食者",
+      "tags": [
+        "动物与生态"
+      ]
+    },
+    {
+      "word": "prey",
+      "meaning": "n. 猎物",
+      "tags": [
+        "动物与生态"
+      ]
+    },
+    {
+      "word": "mammal",
+      "meaning": "n. 哺乳动物",
+      "tags": [
+        "动物与生态"
+      ]
+    },
+    {
+      "word": "reptile",
+      "meaning": "n. 爬行动物",
+      "tags": [
+        "动物与生态"
+      ]
+    },
+    {
+      "word": "migration",
+      "meaning": "n. 迁徙；迁移",
+      "tags": [
+        "动物与生态"
+      ]
+    },
+    {
+      "word": "breeding",
+      "meaning": "n. 繁殖",
+      "tags": [
+        "动物与生态"
+      ]
+    },
+    {
+      "word": "extinction",
+      "meaning": "n. 灭绝",
+      "tags": [
+        "动物与生态"
+      ]
+    },
+    {
+      "word": "biodiversity",
+      "meaning": "n. 生物多样性",
+      "tags": [
+        "动物与生态"
+      ]
+    },
+    {
+      "word": "vegetation",
+      "meaning": "n. 植被",
+      "tags": [
+        "动物与生态"
+      ]
+    },
+    {
+      "word": "ecosystem",
+      "meaning": "n. 生态系统",
+      "tags": [
+        "动物与生态"
+      ]
+    },
+    {
+      "word": "conservation",
+      "meaning": "n. 自然保护；资源节约",
+      "tags": [
+        "动物与生态"
+      ]
+    },
+    {
+      "word": "endangered",
+      "meaning": "adj. 濒危的",
+      "tags": [
+        "动物与生态"
+      ]
+    },
+    {
+      "word": "nocturnal",
+      "meaning": "adj. 夜间活动的",
+      "tags": [
+        "动物与生态"
+      ]
+    },
+    {
+      "word": "pollution",
+      "meaning": "n. 污染",
+      "tags": [
+        "环境与气候"
+      ]
+    },
+    {
+      "word": "emission",
+      "meaning": "n. 排放；排放物",
+      "tags": [
+        "环境与气候"
+      ]
+    },
+    {
+      "word": "drought",
+      "meaning": "n. 干旱",
+      "tags": [
+        "环境与气候"
+      ]
+    },
+    {
+      "word": "flood",
+      "meaning": "n. 洪水；v. 淹没",
+      "tags": [
+        "环境与气候"
+      ]
+    },
+    {
+      "word": "erosion",
+      "meaning": "n. 侵蚀",
+      "tags": [
+        "环境与气候"
+      ]
+    },
+    {
+      "word": "deforestation",
+      "meaning": "n. 森林砍伐",
+      "tags": [
+        "环境与气候"
+      ]
+    },
+    {
+      "word": "recycling",
+      "meaning": "n. 回收利用",
+      "tags": [
+        "环境与气候"
+      ]
+    },
+    {
+      "word": "landfill",
+      "meaning": "n. 垃圾填埋场；垃圾填埋",
+      "tags": [
+        "环境与气候"
+      ]
+    },
+    {
+      "word": "sewage",
+      "meaning": "n. 污水",
+      "tags": [
+        "环境与气候"
+      ]
+    },
+    {
+      "word": "waste",
+      "meaning": "n. 废弃物；浪费",
+      "tags": [
+        "环境与气候"
+      ]
+    },
+    {
+      "word": "contamination",
+      "meaning": "n. 污染；受到有害物质污染",
+      "tags": [
+        "环境与气候"
+      ]
+    },
+    {
+      "word": "sustainable",
+      "meaning": "adj. 可持续的",
+      "tags": [
+        "环境与气候"
+      ]
+    },
+    {
+      "word": "climate",
+      "meaning": "n. 气候",
+      "tags": [
+        "环境与气候"
+      ]
+    },
+    {
+      "word": "temperature",
+      "meaning": "n. 温度",
+      "tags": [
+        "环境与气候"
+      ]
+    },
+    {
+      "word": "humidity",
+      "meaning": "n. 湿度",
+      "tags": [
+        "环境与气候"
+      ]
+    },
+    {
+      "word": "renewable",
+      "meaning": "adj. 可再生的",
+      "tags": [
+        "能源与材料"
+      ]
+    },
+    {
+      "word": "solar",
+      "meaning": "adj. 太阳的；太阳能的",
+      "tags": [
+        "能源与材料"
+      ]
+    },
+    {
+      "word": "turbine",
+      "meaning": "n. 涡轮机",
+      "tags": [
+        "能源与材料"
+      ]
+    },
+    {
+      "word": "electricity",
+      "meaning": "n. 电；电力",
+      "tags": [
+        "能源与材料"
+      ]
+    },
+    {
+      "word": "fuel",
+      "meaning": "n. 燃料",
+      "tags": [
+        "能源与材料"
+      ]
+    },
+    {
+      "word": "insulation",
+      "meaning": "n. 隔热；绝缘材料",
+      "tags": [
+        "能源与材料"
+      ]
+    },
+    {
+      "word": "concrete",
+      "meaning": "n. 混凝土；adj. 具体的",
+      "tags": [
+        "能源与材料"
+      ]
+    },
+    {
+      "word": "steel",
+      "meaning": "n. 钢",
+      "tags": [
+        "能源与材料"
+      ]
+    },
+    {
+      "word": "timber",
+      "meaning": "n. 木材",
+      "tags": [
+        "能源与材料"
+      ]
+    },
+    {
+      "word": "aluminium",
+      "meaning": "n. 铝",
+      "tags": [
+        "能源与材料"
+      ]
+    },
+    {
+      "word": "copper",
+      "meaning": "n. 铜",
+      "tags": [
+        "能源与材料"
+      ]
+    },
+    {
+      "word": "plastic",
+      "meaning": "n. 塑料；adj. 塑料制的",
+      "tags": [
+        "能源与材料"
+      ]
+    },
+    {
+      "word": "manufacture",
+      "meaning": "v. 制造；n. 制造",
+      "tags": [
+        "能源与材料"
+      ]
+    },
+    {
+      "word": "efficiency",
+      "meaning": "n. 效率",
+      "tags": [
+        "能源与材料"
+      ]
+    },
+    {
+      "word": "capacity",
+      "meaning": "n. 容量；生产能力",
+      "tags": [
+        "能源与材料"
+      ]
+    },
+    {
+      "word": "agriculture",
+      "meaning": "n. 农业",
+      "tags": [
+        "农业与种植"
+      ]
+    },
+    {
+      "word": "irrigation",
+      "meaning": "n. 灌溉",
+      "tags": [
+        "农业与种植"
+      ]
+    },
+    {
+      "word": "fertiliser",
+      "meaning": "n. 肥料",
+      "tags": [
+        "农业与种植"
+      ]
+    },
+    {
+      "word": "pesticide",
+      "meaning": "n. 杀虫剂；农药",
+      "tags": [
+        "农业与种植"
+      ]
+    },
+    {
+      "word": "harvest",
+      "meaning": "n. 收获；v. 收割",
+      "tags": [
+        "农业与种植"
+      ]
+    },
+    {
+      "word": "crop",
+      "meaning": "n. 农作物",
+      "tags": [
+        "农业与种植"
+      ]
+    },
+    {
+      "word": "livestock",
+      "meaning": "n. 家畜；牲畜",
+      "tags": [
+        "农业与种植"
+      ]
+    },
+    {
+      "word": "soil",
+      "meaning": "n. 土壤",
+      "tags": [
+        "农业与种植"
+      ]
+    },
+    {
+      "word": "seed",
+      "meaning": "n. 种子",
+      "tags": [
+        "农业与种植"
+      ]
+    },
+    {
+      "word": "orchard",
+      "meaning": "n. 果园",
+      "tags": [
+        "农业与种植"
+      ]
+    },
+    {
+      "word": "greenhouse",
+      "meaning": "n. 温室",
+      "tags": [
+        "农业与种植"
+      ]
+    },
+    {
+      "word": "cultivation",
+      "meaning": "n. 耕作；栽培",
+      "tags": [
+        "农业与种植"
+      ]
+    },
+    {
+      "word": "yield",
+      "meaning": "n. 产量；v. 产生",
+      "tags": [
+        "农业与种植"
+      ]
+    },
+    {
+      "word": "organic",
+      "meaning": "adj. 有机的",
+      "tags": [
+        "农业与种植"
+      ]
+    },
+    {
+      "word": "pasture",
+      "meaning": "n. 牧场；牧草地",
+      "tags": [
+        "农业与种植"
+      ]
+    },
+    {
+      "word": "archaeology",
+      "meaning": "n. 考古学",
+      "tags": [
+        "历史与建筑"
+      ]
+    },
+    {
+      "word": "artefact",
+      "meaning": "n. 人工制品；文物",
+      "tags": [
+        "历史与建筑"
+      ]
+    },
+    {
+      "word": "excavation",
+      "meaning": "n. 发掘；挖掘",
+      "tags": [
+        "历史与建筑"
+      ]
+    },
+    {
+      "word": "settlement",
+      "meaning": "n. 定居点；定居",
+      "tags": [
+        "历史与建筑"
+      ]
+    },
+    {
+      "word": "civilisation",
+      "meaning": "n. 文明",
+      "tags": [
+        "历史与建筑"
+      ]
+    },
+    {
+      "word": "heritage",
+      "meaning": "n. 遗产；传统",
+      "tags": [
+        "历史与建筑"
+      ]
+    },
+    {
+      "word": "preservation",
+      "meaning": "n. 保存；保护",
+      "tags": [
+        "历史与建筑"
+      ]
+    },
+    {
+      "word": "restoration",
+      "meaning": "n. 修复；恢复",
+      "tags": [
+        "历史与建筑"
+      ]
+    },
+    {
+      "word": "monument",
+      "meaning": "n. 纪念碑；历史遗迹",
+      "tags": [
+        "历史与建筑"
+      ]
+    },
+    {
+      "word": "pottery",
+      "meaning": "n. 陶器；制陶工艺",
+      "tags": [
+        "历史与建筑"
+      ]
+    },
+    {
+      "word": "architecture",
+      "meaning": "n. 建筑学；建筑风格",
+      "tags": [
+        "历史与建筑"
+      ]
+    },
+    {
+      "word": "structure",
+      "meaning": "n. 结构；建筑物",
+      "tags": [
+        "历史与建筑"
+      ]
+    },
+    {
+      "word": "foundation",
+      "meaning": "n. 地基；基础",
+      "tags": [
+        "历史与建筑"
+      ]
+    },
+    {
+      "word": "medieval",
+      "meaning": "adj. 中世纪的",
+      "tags": [
+        "历史与建筑"
+      ]
+    },
+    {
+      "word": "ancient",
+      "meaning": "adj. 古代的",
+      "tags": [
+        "历史与建筑"
+      ]
+    },
+    {
+      "word": "January",
+      "meaning": "n. 一月",
+      "tags": [
+        "日期与时间"
+      ]
+    },
+    {
+      "word": "February",
+      "meaning": "n. 二月",
+      "tags": [
+        "日期与时间"
+      ]
+    },
+    {
+      "word": "Wednesday",
+      "meaning": "n. 星期三",
+      "tags": [
+        "日期与时间"
+      ]
+    },
+    {
+      "word": "Thursday",
+      "meaning": "n. 星期四",
+      "tags": [
+        "日期与时间"
+      ]
+    },
+    {
+      "word": "September",
+      "meaning": "n. 九月",
+      "tags": [
+        "日期与时间"
+      ]
+    },
+    {
+      "word": "December",
+      "meaning": "n. 十二月",
+      "tags": [
+        "日期与时间"
+      ]
+    },
+    {
+      "word": "noon",
+      "meaning": "n. 中午",
+      "tags": [
+        "日期与时间"
+      ]
+    },
+    {
+      "word": "midnight",
+      "meaning": "n. 午夜",
+      "tags": [
+        "日期与时间"
+      ]
+    },
+    {
+      "word": "fortnight",
+      "meaning": "n. 两周",
+      "tags": [
+        "日期与时间"
+      ]
+    },
+    {
+      "word": "annual",
+      "meaning": "adj. 每年的",
+      "tags": [
+        "日期与时间"
+      ]
+    },
+    {
+      "word": "weekly",
+      "meaning": "adj. 每周的；adv. 每周一次",
+      "tags": [
+        "日期与时间"
+      ]
+    },
+    {
+      "word": "monthly",
+      "meaning": "adj. 每月的；adv. 每月一次",
+      "tags": [
+        "日期与时间"
+      ]
+    },
+    {
+      "word": "weekday",
+      "meaning": "n. 工作日（通常指周一至周五）",
+      "tags": [
+        "日期与时间"
+      ]
+    },
+    {
+      "word": "weekend",
+      "meaning": "n. 周末",
+      "tags": [
+        "日期与时间"
+      ]
+    },
+    {
+      "word": "century",
+      "meaning": "n. 世纪；一百年",
+      "tags": [
+        "日期与时间"
+      ]
+    },
+    {
+      "word": "compulsory",
+      "meaning": "adj. 必修的；强制的",
+      "tags": [
+        "条件与描述"
+      ]
+    },
+    {
+      "word": "optional",
+      "meaning": "adj. 选修的；可选择的",
+      "tags": [
+        "条件与描述"
+      ]
+    },
+    {
+      "word": "temporary",
+      "meaning": "adj. 临时的",
+      "tags": [
+        "条件与描述"
+      ]
+    },
+    {
+      "word": "permanent",
+      "meaning": "adj. 永久的；长期的",
+      "tags": [
+        "条件与描述"
+      ]
+    },
+    {
+      "word": "convenient",
+      "meaning": "adj. 方便的",
+      "tags": [
+        "条件与描述"
+      ]
+    },
+    {
+      "word": "accessible",
+      "meaning": "adj. 容易到达的；便于使用的",
+      "tags": [
+        "条件与描述"
+      ]
+    },
+    {
+      "word": "flexible",
+      "meaning": "adj. 灵活的",
+      "tags": [
+        "条件与描述"
+      ]
+    },
+    {
+      "word": "eligible",
+      "meaning": "adj. 符合资格的",
+      "tags": [
+        "条件与描述"
+      ]
+    },
+    {
+      "word": "adequate",
+      "meaning": "adj. 足够的；适当的",
+      "tags": [
+        "条件与描述"
+      ]
+    },
+    {
+      "word": "accurate",
+      "meaning": "adj. 准确的",
+      "tags": [
+        "条件与描述"
+      ]
+    },
+    {
+      "word": "essential",
+      "meaning": "adj. 必不可少的",
+      "tags": [
+        "条件与描述"
+      ]
+    },
+    {
+      "word": "approximately",
+      "meaning": "adv. 大约",
+      "tags": [
+        "条件与描述"
+      ]
+    },
+    {
+      "word": "initially",
+      "meaning": "adv. 最初",
+      "tags": [
+        "条件与描述"
+      ]
+    },
+    {
+      "word": "currently",
+      "meaning": "adv. 目前",
+      "tags": [
+        "条件与描述"
+      ]
+    },
+    {
+      "word": "previously",
+      "meaning": "adv. 以前",
+      "tags": [
+        "条件与描述"
+      ]
+    },
+    {
+      "word": "provide",
+      "meaning": "v. 提供",
+      "tags": [
+        "日常任务动词"
+      ]
+    },
+    {
+      "word": "require",
+      "meaning": "v. 要求；需要",
+      "tags": [
+        "日常任务动词"
+      ]
+    },
+    {
+      "word": "recommend",
+      "meaning": "v. 推荐；建议",
+      "tags": [
+        "日常任务动词"
+      ]
+    },
+    {
+      "word": "arrange",
+      "meaning": "v. 安排",
+      "tags": [
+        "日常任务动词"
+      ]
+    },
+    {
+      "word": "confirm",
+      "meaning": "v. 确认",
+      "tags": [
+        "日常任务动词"
+      ]
+    },
+    {
+      "word": "postpone",
+      "meaning": "v. 推迟",
+      "tags": [
+        "日常任务动词"
+      ]
+    },
+    {
+      "word": "cancel",
+      "meaning": "v. 取消",
+      "tags": [
+        "日常任务动词"
+      ]
+    },
+    {
+      "word": "register",
+      "meaning": "v. 登记；注册",
+      "tags": [
+        "日常任务动词"
+      ]
+    },
+    {
+      "word": "submit",
+      "meaning": "v. 提交",
+      "tags": [
+        "日常任务动词"
+      ]
+    },
+    {
+      "word": "collect",
+      "meaning": "v. 收集；领取",
+      "tags": [
+        "日常任务动词"
+      ]
+    },
+    {
+      "word": "borrow",
+      "meaning": "v. 借入",
+      "tags": [
+        "日常任务动词"
+      ]
+    },
+    {
+      "word": "lend",
+      "meaning": "v. 借出",
+      "tags": [
+        "日常任务动词"
+      ]
+    },
+    {
+      "word": "replace",
+      "meaning": "v. 替换",
+      "tags": [
+        "日常任务动词"
+      ]
+    },
+    {
+      "word": "repair",
+      "meaning": "v. 修理",
+      "tags": [
+        "日常任务动词"
+      ]
+    },
+    {
+      "word": "deliver",
+      "meaning": "v. 递送；发表演讲",
+      "tags": [
+        "日常任务动词"
+      ]
+    },
+    {
+      "word": "increase",
+      "meaning": "v. 增加；n. 增长",
+      "tags": [
+        "变化与观点"
+      ]
+    },
+    {
+      "word": "decrease",
+      "meaning": "v. 减少；n. 减少",
+      "tags": [
+        "变化与观点"
+      ]
+    },
+    {
+      "word": "reduce",
+      "meaning": "v. 降低；减少",
+      "tags": [
+        "变化与观点"
+      ]
+    },
+    {
+      "word": "expand",
+      "meaning": "v. 扩大",
+      "tags": [
+        "变化与观点"
+      ]
+    },
+    {
+      "word": "improve",
+      "meaning": "v. 改善；提高",
+      "tags": [
+        "变化与观点"
+      ]
+    },
+    {
+      "word": "benefit",
+      "meaning": "n. 益处；v. 使受益",
+      "tags": [
+        "变化与观点"
+      ]
+    },
+    {
+      "word": "drawback",
+      "meaning": "n. 缺点；不利之处",
+      "tags": [
+        "变化与观点"
+      ]
+    },
+    {
+      "word": "purpose",
+      "meaning": "n. 目的",
+      "tags": [
+        "变化与观点"
+      ]
+    },
+    {
+      "word": "method",
+      "meaning": "n. 方法",
+      "tags": [
+        "变化与观点"
+      ]
+    },
+    {
+      "word": "alternative",
+      "meaning": "n. 可选方案；adj. 供选择的",
+      "tags": [
+        "变化与观点"
+      ]
+    },
+    {
+      "word": "priority",
+      "meaning": "n. 优先事项",
+      "tags": [
+        "变化与观点"
+      ]
+    },
+    {
+      "word": "restriction",
+      "meaning": "n. 限制",
+      "tags": [
+        "变化与观点"
+      ]
+    },
+    {
+      "word": "prohibition",
+      "meaning": "n. 禁令；禁止",
+      "tags": [
+        "变化与观点"
+      ]
+    },
+    {
+      "word": "permission",
+      "meaning": "n. 许可",
+      "tags": [
+        "变化与观点"
+      ]
+    },
+    {
+      "word": "obligation",
+      "meaning": "n. 义务；责任",
+      "tags": [
+        "变化与观点"
+      ]
+    },
+    {
+      "word": "psychology",
+      "meaning": "n. 心理学",
+      "tags": [
+        "易拼错与易混淆词"
+      ]
+    },
+    {
+      "word": "physiology",
+      "meaning": "n. 生理学",
+      "tags": [
+        "易拼错与易混淆词"
+      ]
+    },
+    {
+      "word": "laboratory",
+      "meaning": "n. 实验室",
+      "tags": [
+        "易拼错与易混淆词"
+      ]
+    },
+    {
+      "word": "pronunciation",
+      "meaning": "n. 发音",
+      "tags": [
+        "易拼错与易混淆词"
+      ]
+    },
+    {
+      "word": "conscience",
+      "meaning": "n. 良心",
+      "tags": [
+        "易拼错与易混淆词"
+      ]
+    },
+    {
+      "word": "conscious",
+      "meaning": "adj. 有意识的；清醒的",
+      "tags": [
+        "易拼错与易混淆词"
+      ]
+    },
+    {
+      "word": "stationery",
+      "meaning": "n. 文具",
+      "tags": [
+        "易拼错与易混淆词"
+      ]
+    },
+    {
+      "word": "stationary",
+      "meaning": "adj. 静止的",
+      "tags": [
+        "易拼错与易混淆词"
+      ]
+    },
+    {
+      "word": "principal",
+      "meaning": "n. 校长；adj. 主要的",
+      "tags": [
+        "易拼错与易混淆词"
+      ]
+    },
+    {
+      "word": "principle",
+      "meaning": "n. 原则",
+      "tags": [
+        "易拼错与易混淆词"
+      ]
+    },
+    {
+      "word": "compliment",
+      "meaning": "n. 赞美；v. 赞美",
+      "tags": [
+        "易拼错与易混淆词"
+      ]
+    },
+    {
+      "word": "complement",
+      "meaning": "v. 补充；使完善；n. 补充物",
+      "tags": [
+        "易拼错与易混淆词"
+      ]
+    },
+    {
+      "word": "guarantee",
+      "meaning": "n. 保证；保修承诺；v. 保证",
+      "tags": [
+        "易拼错与易混淆词"
+      ]
+    },
+    {
+      "word": "necessary",
+      "meaning": "adj. 必要的",
+      "tags": [
+        "易拼错与易混淆词"
+      ]
+    },
+    {
+      "word": "separate",
+      "meaning": "adj. 分开的；v. 分开",
+      "tags": [
+        "易拼错与易混淆词"
+      ]
+    }
+  ]
+}
