@@ -17,7 +17,8 @@
     return value;
   }
   function storeKey(){return 'englishMemoryLab_vocabSync_v1:'+profileId()}
-  function freshStore(){return {version:1,deviceId:deviceId(),lastSyncAt:null,dirty:{progress:{},resume:{},settings:{}},meta:{progress:{},resume:{},settings:{}}}}
+  // lastSyncAt remains the server cursor; lastSuccessAt is this device's completion time.
+  function freshStore(){return {version:1,deviceId:deviceId(),lastSyncAt:null,lastSuccessAt:null,dirty:{progress:{},resume:{},settings:{}},meta:{progress:{},resume:{},settings:{}}}}
   function loadStore(){
     try{
       const saved=JSON.parse(localStorage.getItem(storeKey())||'null');
@@ -179,7 +180,12 @@
   function dirtyCount(){return Object.values(syncStore.dirty).reduce((sum,items)=>sum+Object.keys(items).length,0)}
   async function syncNow({quiet=false}={}){
     clearTimeout(syncTimer);syncTimer=null;
-    if(!client||!currentUser||syncing||!navigator.onLine)return false;
+    if(!client||!currentUser||syncing||!navigator.onLine){
+      const message=!navigator.onLine?'当前离线，联网后才能同步':!client?'云服务尚未就绪，请稍后重试':!currentUser?'请先登录再同步':'正在同步，请稍候…';
+      renderSync(message);
+      if(!quiet)toast(message);
+      return false;
+    }
     syncing=true;renderSync('同步中…');
     try{
       seedLocalData();
@@ -188,7 +194,9 @@
       await pushDirty();
       newest=await pull(since)||newest;
       if(newest)syncStore.lastSyncAt=newest;
-      persistStore();
+      const previousSuccess=syncStore.lastSuccessAt;
+      syncStore.lastSuccessAt=new Date().toISOString();
+      try{persistStore()}catch(error){syncStore.lastSuccessAt=previousSuccess;throw error}
       renderSync('已同步');
       if(!quiet)toast('词汇进度已同步');
       return true;
@@ -204,10 +212,13 @@
     if(!currentUser||!navigator.onLine)return;
     syncTimer=setTimeout(()=>syncNow({quiet:true}),delay);
   }
+  function formatSyncTime(value,empty){
+    if(!value)return empty;
+    const date=new Date(value);
+    return Number.isNaN(date.getTime())?empty:date.toLocaleString();
+  }
   function formatLastSync(){
-    if(!syncStore.lastSyncAt)return '从未同步';
-    const date=new Date(syncStore.lastSyncAt);
-    return Number.isNaN(date.getTime())?'从未同步':date.toLocaleString();
+    return formatSyncTime(syncStore.lastSuccessAt,'待完成首次同步');
   }
   function renderSync(message){
     const status=$('#vocabSyncStatus'),last=$('#vocabSyncLast'),identity=$('#vocabSyncIdentity');
@@ -215,6 +226,8 @@
     if(!config.supabaseUrl||!config.supabasePublishableKey){status.textContent='尚未配置 Supabase';return}
     status.textContent=message||(currentUser?(navigator.onLine?'已登录 · 待同步 '+dirtyCount()+' 条':'已登录 · 当前离线'):'未登录');
     if(last)last.textContent=formatLastSync();
+    const updated=$('#vocabSyncDataUpdated');
+    if(updated)updated.textContent=formatSyncTime(syncStore.lastSyncAt,'暂无云端数据');
     if(identity)identity.textContent=currentUser?.email||'';
     $('#vocabSyncSignedOut').hidden=!!currentUser;
     $('#vocabSyncSignedIn').hidden=!currentUser;

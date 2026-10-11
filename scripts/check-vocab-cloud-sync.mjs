@@ -38,4 +38,5 @@ assert.match(config,/supabasePublishableKey:'sb_publishable_/);
 
 new Function(fs.readFileSync(new URL('../vocab-sync-core.js',import.meta.url),'utf8'));
 new Function(app);
+await import('./check-sync-timestamps.mjs');
 console.log('Vocabulary Cloud Sync checks passed');
