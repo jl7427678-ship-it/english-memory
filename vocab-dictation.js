@@ -57,11 +57,11 @@ function dictationStop(){dictationSpeechRun++;window.PiperSpeech?.stop();window.
 function renderDictationVoice(detail=window.KokoroSpeech?.getStatus()){
   const button=$('#dictationPrepareVoice'),status=$('#dictationVoiceStatus');
   if(!button||!status)return;
-  const ready=['ready','speaking'].includes(detail?.state);
+  const ready=['ready','speaking','generating'].includes(detail?.state);
   button.disabled=dictationVoiceBusy||ready;
   button.textContent=ready?'Kokoro 已就绪':dictationVoiceBusy?'正在准备 Kokoro…':detail?.state==='downloaded'?'初始化 Kokoro':'准备 Kokoro（首次下载约 92 MB）';
   const voice=window.KokoroSpeech?.voiceOptions?.find(item=>item.id===(state.settings.kokoroVoice||'af_heart'));
-  status.textContent=`Kokoro · ${voice?.label||state.settings.kokoroVoice||'Heart'} · ${detail?.message||'请先准备声音'}。下载并初始化后可离线朗读；不会切换为设备默认声音。`;
+  status.textContent=`Kokoro · ${voice?.label||state.settings.kokoroVoice||'Heart'} · ${detail?.message||'请先准备声音'}。首次生成需稍等；本次打开页面期间重听用缓存，下一题提前生成。不会切换为设备默认声音。`;
 }
 async function prepareDictationVoice(){
   if(dictationVoiceBusy)return false;
@@ -79,11 +79,12 @@ async function prepareDictationVoice(){
 }
 async function playDictationSentence(){
   const question=dictationQuestion();if(!question)return false;
-  dictationStop();const run=dictationSpeechRun,engine=window.KokoroSpeech;
+  window.PiperSpeech?.stop();stopSystemSpeech();const run=++dictationSpeechRun,engine=window.KokoroSpeech;
   try{
     if(!engine)throw Error('Kokoro 未载入，请刷新页面重试');
     engine.prime();
-    const played=await engine.speak(question.sentence,{voice:state.settings.kokoroVoice||'af_heart',speed:Math.max(.75,Math.min(1.25,Number(state.settings.speechRate)||.9))});
+    const session=dictationSession(),nextText=session.queue[session.index+1]?.sentence||null;
+    const played=await engine.speak(question.sentence,{voice:state.settings.kokoroVoice||'af_heart',speed:Math.max(.75,Math.min(1.25,Number(state.settings.speechRate)||.9)),nextText});
     return run===dictationSpeechRun&&played!==false;
   }catch(error){
     if(run===dictationSpeechRun){renderDictationVoice();$('#dictationVoiceStatus').textContent='Kokoro 暂未能播放：'+(error?.message||'请重试')+'。请点上方准备按钮；不会切换为设备默认声音。'}

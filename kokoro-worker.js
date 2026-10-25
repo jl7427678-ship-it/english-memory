@@ -3,7 +3,18 @@ const MODEL_ID='onnx-community/Kokoro-82M-v1.0-ONNX';
 const MODEL_URL='https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/main/onnx/model_quantized.onnx';
 const MODEL_CACHE='transformers-cache';
 const CHUNK_SIZE=4*1024*1024;
-let tts=null,loading=null,activeJob=0,pendingJob=null,running=false;
+let tts=null,loading=null,activeJob=0,pendingJob=null,prefetchJob=null,running=false;
+// Bounded in-memory audio, not model data: replay should not run inference again.
+const audioCache=new Map(),AUDIO_CACHE_BYTES=12*1024*1024,AUDIO_CACHE_ENTRIES=24;
+let audioCacheBytes=0;
+function audioKey(text,voice='af_heart',speed=1){return JSON.stringify([voice,speed,text])}
+function cachedAudio(text,voice,speed){const key=audioKey(text,voice,speed),blob=audioCache.get(key);if(blob){audioCache.delete(key);audioCache.set(key,blob)}return blob}
+function rememberAudio(text,voice,speed,blob){
+  if(!blob||blob.size>AUDIO_CACHE_BYTES)return;
+  const key=audioKey(text,voice,speed),old=audioCache.get(key);if(old)audioCacheBytes-=old.size;
+  audioCache.delete(key);audioCache.set(key,blob);audioCacheBytes+=blob.size;
+  while(audioCacheBytes>AUDIO_CACHE_BYTES||audioCache.size>AUDIO_CACHE_ENTRIES){const oldest=audioCache.keys().next().value;audioCacheBytes-=audioCache.get(oldest).size;audioCache.delete(oldest)}
+}
 
 function wait(ms){return new Promise(resolve=>setTimeout(resolve,ms))}
 async function streamIntoCache(response,cache,attempt){
@@ -148,28 +159,40 @@ async function runJobs(){
   if(running)return;
   running=true;
   try{
-    while(pendingJob){
-      const job=pendingJob;pendingJob=null;activeJob=job.id;
+    while(pendingJob||prefetchJob){
+      const foreground=!!pendingJob,job=pendingJob||prefetchJob;
+      if(foreground){pendingJob=null;activeJob=job.id}else prefetchJob=null;
       const model=await loadModel();
       if(activeJob!==job.id)continue;
       const chunks=splitText(job.text);
-      postMessage({type:'speech-start',id:job.id,total:chunks.length});
+      if(foreground)postMessage({type:'speech-start',id:job.id,total:chunks.length});
       for(let index=0;index<chunks.length;index++){
+        if(activeJob!==job.id||(!foreground&&pendingJob))break;
+        const voice=job.voice||'af_heart',speed=job.speed||1,text=chunks[index];
+        let blob=cachedAudio(text,voice,speed);
+        if(!blob){try{const audio=await model.generate(text,{voice,speed});blob=audio.toBlob();rememberAudio(text,voice,speed,blob)}catch(error){if(!foreground)break;throw error}}
         if(activeJob!==job.id)break;
-        const audio=await model.generate(chunks[index],{voice:job.voice||'af_heart',speed:job.speed||1});
-        if(activeJob!==job.id)break;
-        postMessage({type:'audio',id:job.id,index,total:chunks.length,blob:audio.toBlob()});
+        if(foreground)postMessage({type:'audio',id:job.id,index,total:chunks.length,blob});
       }
-      if(activeJob===job.id)postMessage({type:'speech-done',id:job.id});
+      if(foreground&&activeJob===job.id){postMessage({type:'speech-done',id:job.id});queuePrefetch(job)}
     }
   }catch(error){postMessage({type:'speech-error',id:activeJob,message:error?.message||String(error)})}
-  finally{running=false;if(pendingJob)runJobs()}
+  finally{running=false;if(pendingJob||prefetchJob)runJobs()}
+}
+
+function queuePrefetch(job){if(job.nextText&&job.nextText!==job.text)prefetchJob={...job,text:job.nextText,nextText:null}}
+function replayCached(job){
+  const chunks=splitText(job.text),blobs=chunks.map(text=>cachedAudio(text,job.voice||'af_heart',job.speed||1));
+  if(!chunks.length||blobs.some(blob=>!blob))return false;
+  pendingJob=null;postMessage({type:'speech-start',id:job.id,total:chunks.length,cached:true});
+  blobs.forEach((blob,index)=>postMessage({type:'audio',id:job.id,index,total:chunks.length,blob}));
+  postMessage({type:'speech-done',id:job.id});queuePrefetch(job);return true;
 }
 
 self.onmessage=event=>{
   const data=event.data||{};
   if(data.type==='download')ensureModelCached().then(()=>postMessage({type:'downloaded'})).catch(error=>postMessage({type:'error',message:error?.message||String(error)}));
   if(data.type==='prepare')loadModel().catch(()=>{});
-  if(data.type==='cancel'){activeJob=Number(data.id)||0;pendingJob=null}
-  if(data.type==='speak'){activeJob=data.id;pendingJob=data;runJobs()}
+  if(data.type==='cancel'){activeJob=Number(data.id)||0;pendingJob=null;prefetchJob=null}
+  if(data.type==='speak'){activeJob=data.id;if(!replayCached(data))pendingJob=data;runJobs()}
 };
