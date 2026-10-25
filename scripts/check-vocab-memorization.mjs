@@ -56,3 +56,4 @@ assert.match(app20,/该 PDF 未检测到可提取文本/);
 console.log(`PASS vocabulary + memorization: UTF-8, GB18030, MD, large text, Chinese sentence/keywords/cloze, Italiano Core/Full, English deck, quick resume/status, folded relations.`);
 console.log(`Italian form sample: ${inflected.word} → ${inflected.infinitive}`);
 console.log('SKIP DOCX/PDF sample parsing: repository has no existing sample files; no external files were fetched.');
+await import('./check-study-speech.mjs');

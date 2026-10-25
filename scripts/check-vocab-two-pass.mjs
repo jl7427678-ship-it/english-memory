@@ -41,4 +41,5 @@ assert(queue.filter(id=>id==='wrong-a').length===5&&queue.filter(id=>id==='wrong
 assert(!queue.includes('correct-c'),'答对词不应进入第二遍');
 assert(context.buildVocabReinforceQueue([]).length===0,'全对时强化队列应为空');
 
+await import('./check-vocab-session-lifecycle.mjs');
 console.log('Vocabulary two-pass choice flow: first-pass once, correct words pass, wrong words reinforce 5x, reflow preserved: PASS');
