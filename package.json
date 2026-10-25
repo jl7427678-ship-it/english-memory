@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 4173",
     "build:english-relations": "node scripts/build-english-relations.mjs",
+    "build:dictation": "node scripts/build-dictation-examples.mjs",
+    "check:dictation": "node scripts/check-vocab-dictation.mjs",
     "build:toeic": "node scripts/build-toeic.mjs",
     "build:italian": "node scripts/build-italian.mjs",
     "check:data": "node scripts/check-vocab-data.mjs",

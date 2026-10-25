@@ -1,5 +1,12 @@
 # Third-party practice content
 
+## Sentence dictation practice
+
+- Reused bilingual examples: [kknono668/toeic-vocab-tw](https://huggingface.co/datasets/kknono668/toeic-vocab-tw), CC BY-SA 4.0; examples are already included in the existing TOEIC vocabulary data. The sentence-completion adapter blanks exact target-word occurrences and preserves the original English sentence and Chinese translation.
+- Supplementary sentences and translations in `data/dictation-supplement.tsv` are independently authored practice material, made available under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+- `data/vocab-dictation-examples.json` retains the source of each example. The pack is supplementary study material, not official IELTS/TOEIC examination questions or original examination recordings. Audio is synthesized by the learner's device.
+- Rebuild the example index with `node scripts/build-dictation-examples.mjs`.
+
 The built-in exam practice packs are simulations. They are not official TOEIC or IELTS examination papers and are not endorsed by the owners of those examinations.
 
 ## High-quality local speech

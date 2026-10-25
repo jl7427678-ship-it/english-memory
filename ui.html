@@ -263,6 +263,32 @@ deadline | 截止日期
           </details>
         </div>
 
+        <div class="card vocab-dictation" id="vocabDictation" tabindex="-1">
+          <div class="row between"><div><div class="eyebrow">LISTEN &amp; COMPLETE</div><h2>例句听写</h2><p class="sub">听完整句子，在句中补出正在学的单词。优先练你筛出的不会词。</p></div></div>
+          <div class="dictation-controls">
+            <label><span class="label">词库</span><select class="field" id="dictationDeck" aria-label="听写词库"></select></label>
+            <label><span class="label">练习范围</span><select class="field" id="dictationScope"><option value="weak-first">薄弱词优先，其余词补充</option><option value="weak">只练不会／模糊／错词</option><option value="all">全部有例句的词</option></select></label>
+            <label><span class="label">每组</span><select class="field" id="dictationSize"><option value="20">20 词</option><option value="10">10 词</option><option value="50">50 词</option></select></label>
+          </div>
+          <div class="row" style="margin-top:12px"><button class="btn primary" id="dictationStart" type="button">开始 / 继续例句听写</button><button class="btn" id="dictationNew" type="button">重新选一组</button></div>
+          <p class="sub" id="dictationStatus" role="status">例句首次联网载入后缓存在本机。听写进度保存在当前设备，不计入四选一成绩，也不会通过现有云同步传到另一设备。</p>
+          <div id="dictationTrainer" hidden>
+            <div class="row between"><h3 id="dictationTitle">听整句，补单词</h3><div class="row"><span class="vocab-badge" id="dictationPosition"></span><button class="btn" id="dictationExit" type="button">保存并收起</button></div></div>
+            <div class="progress"><i id="dictationProgress"></i></div>
+            <div class="row dictation-audio"><button class="btn primary" id="dictationPlay" type="button">🔊 播放整句 / 重听</button><button class="btn" id="dictationStop" type="button">停止</button><span class="sub">听写使用设备人声；离线前请确认设备声线可离线使用。</span></div>
+            <div id="dictationQuestion">
+              <form id="dictationForm" novalidate>
+                <p class="dictation-sentence" id="dictationSentence"></p>
+                <div class="row"><button class="btn primary" id="dictationCheck" type="submit">检查答案</button><button class="btn" id="dictationReveal" type="button">不会，查看答案</button></div>
+              </form>
+              <div id="dictationFeedback" class="dictation-feedback" role="status" hidden></div>
+              <button class="btn primary" id="dictationNext" type="button" hidden>下一题</button>
+            </div>
+            <div id="dictationResult" class="dictation-result" hidden></div>
+          </div>
+          <details class="sub"><summary>练习说明与例句来源</summary><p>这是学习例句的句中填词练习。提交前不显示目标词和中文提示，提交后显示完整句子、翻译及词义。错词会在本组稍后回来；同一词最多额外出现两次。</p><p>例句复用现有 TOEIC 双语词库（CC BY-SA 4.0），并补充自主编写的场景例句；不是官方雅思真题或真人考试录音。没有匹配例句的词会跳过并显示数量。听写进度随“导出学习数据”备份，原有单词筛选记录保持独立。</p></details>
+        </div>
+
         <div class="card builtin-wrap">
           <div class="row between"><div><h2>预装考试词库</h2><div class="sub">首次联网会自动安装并缓存；之后直接训练，手机和电脑使用同一套逻辑。</div></div><button class="btn" id="installAllBuiltin">重新检查词库</button></div>
           <div class="builtin-note" style="margin-top:10px">📦 词库数据与学习进度分开保存。大词库放在浏览器 IndexedDB 中，避免几千个单词塞进 localStorage 导致手机不稳定。首次安装需要联网；安装成功后核心背词可离线。</div>
