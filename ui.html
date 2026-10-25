@@ -271,6 +271,8 @@ deadline | 截止日期
             <label><span class="label">每组</span><select class="field" id="dictationSize"><option value="20">20 词</option><option value="10">10 词</option><option value="50">50 词</option></select></label>
           </div>
           <div class="row" style="margin-top:12px"><button class="btn primary" id="dictationStart" type="button">开始 / 继续例句听写</button><button class="btn" id="dictationNew" type="button">重新选一组</button></div>
+          <div class="row dictation-audio-options" style="margin-top:12px"><select class="field" id="dictationAudioMode" aria-label="听写声音播放方式"><option value="recorded">快速播放 · Kokoro Heart 预制音频</option><option value="local">本机生成 · 使用设置中的其他声线</option></select><button class="btn" id="dictationDownloadAudio" type="button">下载 300 条离线音频</button><button class="btn" id="dictationCancelDownload" type="button" hidden>暂停下载</button></div>
+          <p class="sub" id="dictationPackStatus" role="status" aria-live="polite">雅思听力 300 支持预制整句音频。出发前请下载音频，再用飞行模式试播；其他词库暂仍使用本机生成。</p>
           <p class="sub" id="dictationStatus" role="status">例句首次联网载入后缓存在本机。听写进度保存在当前设备，不计入四选一成绩，也不会通过现有云同步传到另一设备。</p>
           <div id="dictationTrainer" hidden>
             <div class="row between"><h3 id="dictationTitle">听整句，补单词</h3><div class="row"><span class="vocab-badge" id="dictationPosition"></span><button class="btn" id="dictationExit" type="button">保存并收起</button></div></div>

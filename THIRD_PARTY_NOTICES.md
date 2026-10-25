@@ -4,7 +4,7 @@
 
 - Reused bilingual examples: [kknono668/toeic-vocab-tw](https://huggingface.co/datasets/kknono668/toeic-vocab-tw), CC BY-SA 4.0; examples are already included in the existing TOEIC vocabulary data. The sentence-completion adapter blanks exact target-word occurrences and preserves the original English sentence and Chinese translation.
 - Supplementary sentences and translations in `data/dictation-supplement.tsv` are independently authored practice material, made available under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
-- `data/vocab-dictation-examples.json` retains the source of each example. The pack is supplementary study material, not official IELTS/TOEIC examination questions or original examination recordings. Audio is synthesized by the learner's device.
+- `data/vocab-dictation-examples.json` retains the source of each example. The pack is supplementary study material, not official IELTS/TOEIC examination questions or original examination recordings. Audio is synthesized by Kokoro, either at build time (the Listening 300 audio pack) or locally on the learner's device.
 - Rebuild the example index with `node scripts/build-dictation-examples.mjs`.
 
 The built-in exam practice packs are simulations. They are not official TOEIC or IELTS examination papers and are not endorsed by the owners of those examinations.
@@ -76,3 +76,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 - Pinned revision: `aa65f4eafcf8c6c777249767a9ec681a68c2bed3`
 - License: MIT
 - Use: the Italian course pack is adapted into the local Section / Unit / Lesson format in `data/italian-course.json`; the upstream application itself is not copied.
+
+## Pre-generated vocabulary dictation audio
+
+- Files: `assets/dictation/ielts-listening-300/heart-v1/`, indexed by `data/ielts-listening-300-audio.json`.
+- Generated locally using [hexgrad/Kokoro](https://github.com/hexgrad/kokoro), kokoro-js 1.2.1 and [onnx-community/Kokoro-82M-v1.0-ONNX](https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX), Apache-2.0 model and inference package; voice `af_heart`, speed 0.9. These are synthesized learning examples, not human recordings or Cambridge/IELTS examination audio.
+- Sentence sources are recorded per entry in `data/vocab-dictation-examples.json` and the audio manifest. TOEIC example sentences are adapted from [kknono668/toeic-vocab-tw](https://huggingface.co/datasets/kknono668/toeic-vocab-tw), CC BY-SA 4.0; supplementary sentences were independently written for this application.
+- The generated audio collection is distributed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) with attribution to the sentence authors and this application. No original Cambridge PDFs, exam questions or official recordings are included.
+- MP3 encoding uses lamejs 1.2.1 (LGPL-3.0), at build time only; neither the encoder nor the model weights are bundled into the web application.

@@ -8,6 +8,8 @@
     "build:dictation": "node scripts/build-dictation-examples.mjs",
     "check:dictation": "node scripts/check-vocab-dictation.mjs",
     "check:kokoro": "node scripts/check-kokoro-latency.mjs",
+    "build:dictation-audio": "node --use-env-proxy scripts/build-dictation-audio.mjs",
+    "check:dictation-audio": "node scripts/check-dictation-audio.mjs",
     "build:toeic": "node scripts/build-toeic.mjs",
     "build:italian": "node scripts/build-italian.mjs",
     "check:data": "node scripts/check-vocab-data.mjs",

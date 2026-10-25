@@ -68,6 +68,13 @@ ctx.checkVocabDictation();assert.equal(ctx.dictationSession().attempts,1,'submis
 const restored=harness(JSON.parse(JSON.stringify(ctx.state)),h.savedExamples);
 await restored.ctx.startVocabDictation();assert.equal(restored.requests,0,'resume can work without network');
 assert.equal(restored.ctx.dictationSession().answer.correct,false);assert.equal(restored.ctx.dictationSession().attempts,1);
+let preparedQueue,staticPlayed=0,staticStopped=0;
+const originalNeural=restored.ctx.window.KokoroSpeech.speak;
+restored.ctx.window.KokoroSpeech.speak=()=>assert.fail('pre-generated playback must not initialize Kokoro');
+restored.ctx.window.DictationAudio={play:async(question)=>{staticPlayed++;assert.equal(question.sentence,restored.ctx.dictationQuestion().sentence);return true},stop:()=>staticStopped++,preload:(queue,index)=>preparedQueue={queue,index},getStatus:()=>({cached:0,total:300,message:'ready',downloading:false})};
+assert.equal(await restored.ctx.playDictationSentence(),true);assert.equal(staticPlayed,1);assert.equal(preparedQueue.index,restored.ctx.dictationSession().index+1);
+restored.ctx.dictationStop();assert.equal(staticStopped,1);
+restored.$('#dictationAudioMode').value='local';restored.ctx.window.KokoroSpeech.speak=originalNeural;
 restored.ctx.nextVocabDictation();
 assert.equal(restored.ctx.dictationSession().index,1);assert.equal(restored.played.at(-1).text,restored.ctx.dictationQuestion().sentence);
 while(restored.ctx.dictationQuestion()){

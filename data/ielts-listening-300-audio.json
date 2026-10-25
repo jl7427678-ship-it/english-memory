@@ -1,0 +1,2415 @@
+{
+  "id": "ielts-listening-300-audio",
+  "version": "heart-v1",
+  "deckId": "ielts_listening_300",
+  "engine": "Kokoro-82M-v1.0",
+  "voice": "af_heart",
+  "speed": 0.9,
+  "sampleRate": 24000,
+  "format": "mp3",
+  "license": "CC-BY-SA-4.0",
+  "entries": {
+    "booking": {
+      "sentence": "Please confirm your booking at least two days before arrival.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/001-c958957eeb97.mp3",
+      "bytes": 33984,
+      "duration": 4.2,
+      "sha256": "4ef60cdd3fe97e53daa66e31940b037c0d288511c5b04d3293076724cc23f85f",
+      "source": "original-practice"
+    },
+    "reservation": {
+      "sentence": "I'd like to make a reservation for two at 7:00 PM.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/002-36e28e794a67.mp3",
+      "bytes": 37248,
+      "duration": 4.6,
+      "sha256": "de9fff32a96b42a305dadba8c8b6a6dee14862da53ffcf45fd89a2d828a5752f",
+      "source": "toeic-vocab-tw"
+    },
+    "accommodation": {
+      "sentence": "The company provides accommodation and meals for all overseas employees.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/003-65d7f3a93650.mp3",
+      "bytes": 44736,
+      "duration": 5.525,
+      "sha256": "6a25681bf0720ab4e29691e7b57f80ecfee1ae009339c968d37b6a2b2a4e3e00",
+      "source": "toeic-vocab-tw"
+    },
+    "landlord": {
+      "sentence": "The landlord is responsible for maintaining the building's structural integrity.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/004-8aae227d9c1d.mp3",
+      "bytes": 45888,
+      "duration": 5.675,
+      "sha256": "982a1798d4f98be5eb8485b512aad4f94675a5d84f828c8de440df6827f43b4e",
+      "source": "toeic-vocab-tw"
+    },
+    "tenant": {
+      "sentence": "The tenant must report any damage to the landlord.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/005-98c1f5b329bb.mp3",
+      "bytes": 29952,
+      "duration": 3.675,
+      "sha256": "42d8d51d8819d78e20ed686bfc325e16d40953506e2209214d0b34c16325d4a6",
+      "source": "original-practice"
+    },
+    "rent": {
+      "sentence": "The company needs to rent a larger office space to accommodate the growing team.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/006-e26d0425fad1.mp3",
+      "bytes": 44736,
+      "duration": 5.525,
+      "sha256": "7adaf2cd31b4d71b4194702d7703814c7ed171a72cda30c13f9613534cd5ccb4",
+      "source": "toeic-vocab-tw"
+    },
+    "deposit": {
+      "sentence": "Please deposit the invoice amount into our corporate account by the end of the week.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/007-b74bcaca2f07.mp3",
+      "bytes": 44544,
+      "duration": 5.5,
+      "sha256": "a157621335c67e3ea6b539f376d816fe6d39beda94ec775417b82d880c3da47f",
+      "source": "toeic-vocab-tw"
+    },
+    "lease": {
+      "sentence": "The company is negotiating a five-year lease for the new office space.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/008-24bbe46cc464.mp3",
+      "bytes": 39360,
+      "duration": 4.85,
+      "sha256": "7f0a6d3f40162c57686bb7d0965a128a2e23f23437496ffac3c5a31010f41703",
+      "source": "toeic-vocab-tw"
+    },
+    "furnished": {
+      "sentence": "The apartment is fully furnished, so you don't need to buy any furniture.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/009-dd04c32c4e50.mp3",
+      "bytes": 37056,
+      "duration": 4.575,
+      "sha256": "7d7ca7127cbc17792161b0354f1bec110723ae43401f749ce9f6d3866b6286b6",
+      "source": "toeic-vocab-tw"
+    },
+    "apartment": {
+      "sentence": "The apartment has a small kitchen and two bedrooms.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/010-44644017cab2.mp3",
+      "bytes": 30912,
+      "duration": 3.8,
+      "sha256": "fcc271b926cff7ecac965964190a10fea08778b8773653943f1f5d1336b84914",
+      "source": "original-practice"
+    },
+    "dormitory": {
+      "sentence": "The university dormitory is a short walk from the library.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/011-0816c4b04c9c.mp3",
+      "bytes": 36864,
+      "duration": 4.55,
+      "sha256": "6706a411c84f35090706203731440b21950aee09c20078a93658dabab46b8697",
+      "source": "original-practice"
+    },
+    "vacancy": {
+      "sentence": "We currently have a vacancy for a marketing manager in our London office.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/012-3ce77afe4dd4.mp3",
+      "bytes": 41280,
+      "duration": 5.1,
+      "sha256": "a80e9be76e18a9aa0fd414a3503d50ee87ece676ea71c9d48db0f103fc38a619",
+      "source": "toeic-vocab-tw"
+    },
+    "reception": {
+      "sentence": "The receptionist greeted us warmly at the reception.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/013-72b0b6f35187.mp3",
+      "bytes": 32256,
+      "duration": 3.975,
+      "sha256": "982ccf9adaecd2f16cd5f2b55b60ae2a3ca9ab3cbfb7dfbb71c758b170a708bf",
+      "source": "toeic-vocab-tw"
+    },
+    "available": {
+      "sentence": "The project manager confirmed that the conference room is available for the meeting next Tuesday.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/014-6fb9dc8b1742.mp3",
+      "bytes": 52416,
+      "duration": 6.5,
+      "sha256": "1ead522c4b74126b38d60f3627146c0fd26a3cfe8cd641c420eeb37f91ee6755",
+      "source": "toeic-vocab-tw"
+    },
+    "maintenance": {
+      "sentence": "Regular maintenance of the equipment is crucial for preventing breakdowns and ensuring optimal performance.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/015-e996f28805f9.mp3",
+      "bytes": 61824,
+      "duration": 7.675,
+      "sha256": "75d2de95b4a7dcc17365be55469c53264038b8710f8c72e242c130a8791b4375",
+      "source": "toeic-vocab-tw"
+    },
+    "fee": {
+      "sentence": "The conference registration fee includes access to all sessions and materials.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/016-0aa2bf64625b.mp3",
+      "bytes": 46080,
+      "duration": 5.7,
+      "sha256": "3be4a59f30b7edc73c42d92f75580f83c9a15a6197f119098bcfe134cfe814e1",
+      "source": "toeic-vocab-tw"
+    },
+    "fare": {
+      "sentence": "The taxi fare to the airport is approximately $30.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/017-1a5c0149c3e8.mp3",
+      "bytes": 36288,
+      "duration": 4.475,
+      "sha256": "6d2f554d7c25510929402e178950108d6cfb0133f3959aa16f0c1882cbf0cfd7",
+      "source": "toeic-vocab-tw"
+    },
+    "charge": {
+      "sentence": "There is no extra charge for using the swimming pool.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/018-534d7d8bf1a2.mp3",
+      "bytes": 30528,
+      "duration": 3.75,
+      "sha256": "f9da22c9da3047d57174712f9c80b4bcd6e492d2299d15c5846b649d85b445c2",
+      "source": "original-practice"
+    },
+    "discount": {
+      "sentence": "We are offering a 10% discount on all products during the holiday season.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/019-ee630f98c5cb.mp3",
+      "bytes": 44160,
+      "duration": 5.45,
+      "sha256": "c9769be74138769d1bd19362b13f9f876635669e6b50428c96415e5782200234",
+      "source": "toeic-vocab-tw"
+    },
+    "refund": {
+      "sentence": "The company offers a full refund for defective products returned within 14 days.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/020-48a413d51101.mp3",
+      "bytes": 49536,
+      "duration": 6.125,
+      "sha256": "5922f642eb54e21e6422915efcd93752353a714cc937302e6bdb62047b152ced",
+      "source": "toeic-vocab-tw"
+    },
+    "receipt": {
+      "sentence": "Please keep your receipt in case you need to return the item.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/021-dc6e4ae925c2.mp3",
+      "bytes": 33024,
+      "duration": 4.075,
+      "sha256": "dece279d3f5f412edc5713c0855872373978c96c03ed762e02165c5f096f7c98",
+      "source": "toeic-vocab-tw"
+    },
+    "invoice": {
+      "sentence": "Please review the invoice and let me know if the amount is correct.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/022-1bca808da02b.mp3",
+      "bytes": 36672,
+      "duration": 4.525,
+      "sha256": "5e1250b1d2acecc0eb8516b36085170071db502b827a3786fead8a55b61edaa0",
+      "source": "toeic-vocab-tw"
+    },
+    "budget": {
+      "sentence": "The marketing department needs to submit its budget proposal by the end of the week.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/023-ca634cee5a02.mp3",
+      "bytes": 48000,
+      "duration": 5.95,
+      "sha256": "f705febbacae1482444878b447010f289e564d391805696acbb98435ad4e7d73",
+      "source": "toeic-vocab-tw"
+    },
+    "instalment": {
+      "sentence": "You can pay the course fee in a monthly instalment.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/024-3669a0740c14.mp3",
+      "bytes": 29568,
+      "duration": 3.625,
+      "sha256": "1536e9c365ec7c3c8d40f465543ca019fb5feed8fc9817ec2897474c87d9b902",
+      "source": "original-practice"
+    },
+    "cash": {
+      "sentence": "We prefer to receive payment in cash for large orders.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/025-91819ec1ec3c.mp3",
+      "bytes": 34368,
+      "duration": 4.225,
+      "sha256": "437c2b2f5e1de7c1381bb596cfef11a56b61ec1341591789667f016d1d3e585e",
+      "source": "toeic-vocab-tw"
+    },
+    "cheque": {
+      "sentence": "She wrote a cheque for the outstanding amount.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/026-821987de6c5a.mp3",
+      "bytes": 23424,
+      "duration": 2.875,
+      "sha256": "85bf414fc2c1293dcb8cd3e5ecf2ab7d01a4caaf0793960f09c935acb1a32afe",
+      "source": "toeic-vocab-tw"
+    },
+    "currency": {
+      "sentence": "You can exchange foreign currency at the airport.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/027-292a1de2bca3.mp3",
+      "bytes": 29184,
+      "duration": 3.6,
+      "sha256": "69d98e14ddc2e7a021a756fd8aa69518328959a0310f4af0866f175416187f2e",
+      "source": "original-practice"
+    },
+    "insurance": {
+      "sentence": "The company offers comprehensive insurance coverage for its employees.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/028-24e6258ed586.mp3",
+      "bytes": 40320,
+      "duration": 4.975,
+      "sha256": "54bfc4a318a042dd3e0fd13f9a9377bc40486b245ce442b156fec9c6e8b90402",
+      "source": "toeic-vocab-tw"
+    },
+    "purchase": {
+      "sentence": "The company plans to purchase new equipment to improve production efficiency.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/029-69db7d46009b.mp3",
+      "bytes": 43584,
+      "duration": 5.4,
+      "sha256": "485aa75c27bacc3d7fa06d006727cebc4fccd9ed89e67952dc789090c9454662",
+      "source": "toeic-vocab-tw"
+    },
+    "subscription": {
+      "sentence": "The company offers a monthly subscription for access to its premium software features.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/030-5d9276bdd628.mp3",
+      "bytes": 49920,
+      "duration": 6.175,
+      "sha256": "31ce0d2b54bb1969084f7a316197a2c8ad2aa53161aea2e9db4c6b2525ee087c",
+      "source": "toeic-vocab-tw"
+    },
+    "departure": {
+      "sentence": "The departure gate for flight BA249 to London is now open.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/031-0ec6006a27c2.mp3",
+      "bytes": 48960,
+      "duration": 6.05,
+      "sha256": "617fbd0f72995c5ac6e7ea860e19fff299c912c84768244d7f12955b113e1a5c",
+      "source": "toeic-vocab-tw"
+    },
+    "arrival": {
+      "sentence": "The scheduled arrival of the shipment is next Monday.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/032-fc8501445c3a.mp3",
+      "bytes": 31680,
+      "duration": 3.9,
+      "sha256": "88d420ec977e7c27d8f10976c6999b903816b200375061ae7866bfc0e6d34cf3",
+      "source": "toeic-vocab-tw"
+    },
+    "destination": {
+      "sentence": "The driver announced our final destination before we left.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/033-af037f9f9947.mp3",
+      "bytes": 35712,
+      "duration": 4.4,
+      "sha256": "c8749ca7e4462ab04269cdc6ff7bafd875634dc5c13ba7be74cfed3cb5401baa",
+      "source": "original-practice"
+    },
+    "platform": {
+      "sentence": "Our company is launching a new e-commerce platform to expand its market reach.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/034-e8c88c2389e5.mp3",
+      "bytes": 46848,
+      "duration": 5.8,
+      "sha256": "aef0a4cbab19c598277d669a959d3668504f1dc7e78c8be638daa932bddf7e35",
+      "source": "toeic-vocab-tw"
+    },
+    "terminal": {
+      "sentence": "Passengers should proceed to Terminal 2 for their departure.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/035-d54ed14559da.mp3",
+      "bytes": 36096,
+      "duration": 4.45,
+      "sha256": "f08a30633e94e9668f17fc55cfdb099335070fd27ddbfe9557cfa4d8c06900f3",
+      "source": "toeic-vocab-tw"
+    },
+    "transfer": {
+      "sentence": "Passengers must transfer to another train at Central Station.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/036-a39a1b0e70e7.mp3",
+      "bytes": 35712,
+      "duration": 4.4,
+      "sha256": "ba7b5556edb0e42dc44688e702035b3b66d03dfaeff19cd922672d0d2a0a05b6",
+      "source": "original-practice"
+    },
+    "route": {
+      "sentence": "This route follows the river before entering the city.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/037-ea1876a8cea1.mp3",
+      "bytes": 32064,
+      "duration": 3.95,
+      "sha256": "47525fc2832d87b6ab799c0ca9e9c3c3d9f01f0e182273cbfd09f726b9572f1e",
+      "source": "original-practice"
+    },
+    "timetable": {
+      "sentence": "Please check the timetable for the upcoming conference to confirm your session's time.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/038-94f5e5d02556.mp3",
+      "bytes": 45696,
+      "duration": 5.65,
+      "sha256": "afd553bd575c8de43fbed3e810fea0fc236d80c391f91dc7ef7936c5d9dd8d17",
+      "source": "toeic-vocab-tw"
+    },
+    "delay": {
+      "sentence": "We apologize for the delay in processing your order.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/039-7c0b42938730.mp3",
+      "bytes": 31488,
+      "duration": 3.875,
+      "sha256": "7450e0328ddb67df28a10ff045385e0b11f65d4cd557c2cf158c1d033b3526f1",
+      "source": "toeic-vocab-tw"
+    },
+    "cancellation": {
+      "sentence": "Due to unforeseen circumstances, we regret to inform you of the flight cancellation.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/040-bb7621791cdc.mp3",
+      "bytes": 49344,
+      "duration": 6.1,
+      "sha256": "653c15a0ac63e2f69dbea154fc80aceb7efd4a3e2e3d5f300c697289aeef939d",
+      "source": "toeic-vocab-tw"
+    },
+    "passenger": {
+      "sentence": "Each passenger may bring one small bag onto the bus.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/041-e9877b720e6b.mp3",
+      "bytes": 33024,
+      "duration": 4.075,
+      "sha256": "cca7457b110a2bfaa4dc35e88b1a9f5b8e7b0dc1114ed98ec7d818ef5f7a41ff",
+      "source": "original-practice"
+    },
+    "luggage": {
+      "sentence": "Please ensure your luggage is properly tagged before checking in.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/042-3420f9eb4d01.mp3",
+      "bytes": 38784,
+      "duration": 4.8,
+      "sha256": "6dfa81c5f03c8e5dc49348ed75a40c0958ba1e10853ade69b721a4e1caeaa276",
+      "source": "toeic-vocab-tw"
+    },
+    "shuttle": {
+      "sentence": "The hotel offers a complimentary shuttle service to and from the airport.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/043-f0227a661dc0.mp3",
+      "bytes": 42816,
+      "duration": 5.3,
+      "sha256": "169fac70a5d4cbc036b4e7bf69e436eaa4bd9c60597ccb96a3941b4723301494",
+      "source": "toeic-vocab-tw"
+    },
+    "ferry": {
+      "sentence": "The company is considering using a ferry service to transport goods between the islands.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/044-b726609dee38.mp3",
+      "bytes": 49536,
+      "duration": 6.125,
+      "sha256": "855f7327bb990a4a3152a905add6dd7046dc8b5f0827fed3fa07fa62994e0f84",
+      "source": "toeic-vocab-tw"
+    },
+    "pedestrian": {
+      "sentence": "Use the pedestrian crossing opposite the main entrance.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/045-bb860317051f.mp3",
+      "bytes": 33600,
+      "duration": 4.15,
+      "sha256": "9a49353e224317529b659fe08abb8d4b10d2f32da74ff63e88c97715da1987bd",
+      "source": "original-practice"
+    },
+    "lecture": {
+      "sentence": "The professor will deliver a lecture on the impact of AI on the job market.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/046-bd563b8c70ff.mp3",
+      "bytes": 46848,
+      "duration": 5.8,
+      "sha256": "3981c9824fc1f7a7b580ef4dd2782138f4da80be0e3bc23770d6bbf5f226a168",
+      "source": "toeic-vocab-tw"
+    },
+    "seminar": {
+      "sentence": "The company will host a seminar on new marketing strategies next month.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/047-5bc40711d896.mp3",
+      "bytes": 43008,
+      "duration": 5.325,
+      "sha256": "f8468406932a5d5a5de41486edf63e87c9ccdb328e240f25bd232e7f9c7a4c43",
+      "source": "toeic-vocab-tw"
+    },
+    "tutorial": {
+      "sentence": "Please bring your notes to the tutorial on Friday.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/048-3e2b8c4f4db7.mp3",
+      "bytes": 28608,
+      "duration": 3.525,
+      "sha256": "d3bac570bfe73ea92353543e4575dd1333cad766c08ae7f83b499ba2a6821bb8",
+      "source": "original-practice"
+    },
+    "assignment": {
+      "sentence": "The manager assigned each team member a specific assignment to ensure project completion.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/049-03b1ddbd1e50.mp3",
+      "bytes": 50880,
+      "duration": 6.3,
+      "sha256": "676fc12eba501cd3c5dbf054de9ac24e2292c94ccf0952a817d89c6cf5118e0a",
+      "source": "toeic-vocab-tw"
+    },
+    "deadline": {
+      "sentence": "The project deadline has been extended to next Friday.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/050-42e15181a028.mp3",
+      "bytes": 33216,
+      "duration": 4.1,
+      "sha256": "883913616be6d9ccbd1255eca7cce43835fcde613ab06b025346a04bbb24e7b0",
+      "source": "toeic-vocab-tw"
+    },
+    "semester": {
+      "sentence": "The tuition fee for this semester is due by the end of next week.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/051-d34d7f50115e.mp3",
+      "bytes": 38400,
+      "duration": 4.75,
+      "sha256": "0ccb68c92caa1aa036dd5a35bbc9c2815e3c7d04b3ea39b9e32dbf395da989a8",
+      "source": "toeic-vocab-tw"
+    },
+    "enrolment": {
+      "sentence": "Online enrolment closes at the end of this month.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/052-259cc4a15614.mp3",
+      "bytes": 29952,
+      "duration": 3.675,
+      "sha256": "2cf3fa1c31343e2eb026bed6f1bbb44be548d2b9525b9a6edd3f8658ad4912b8",
+      "source": "original-practice"
+    },
+    "scholarship": {
+      "sentence": "She received a full scholarship to study at the university.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/053-87ae74a920a8.mp3",
+      "bytes": 33408,
+      "duration": 4.125,
+      "sha256": "47506ff61266b6f46317eed6e8f787ab1a36f8058c080b54e6637c44466bfb02",
+      "source": "toeic-vocab-tw"
+    },
+    "tuition": {
+      "sentence": "University tuition fees have increased significantly over the past decade.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/054-aafb7caeb4a6.mp3",
+      "bytes": 46080,
+      "duration": 5.7,
+      "sha256": "56ae7f58b543b508c44279f2fc39ff7a0d0ca7bebf173c3b1e03adf1a2497f51",
+      "source": "toeic-vocab-tw"
+    },
+    "supervisor": {
+      "sentence": "The project supervisor will review the team's progress every Friday.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/055-6a933033f0ed.mp3",
+      "bytes": 38208,
+      "duration": 4.725,
+      "sha256": "b78c8a321dee32ecd5293c574fb30a5cdac75377be946c89911acbc265d3f61c",
+      "source": "toeic-vocab-tw"
+    },
+    "dissertation": {
+      "sentence": "She is currently writing her doctoral dissertation on the history of economic thought.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/056-c4b26c50acaa.mp3",
+      "bytes": 48192,
+      "duration": 5.975,
+      "sha256": "33ec8db3bd219ff60726c51ddb40a42fb884c0844b384a8004144d2c4bd15f81",
+      "source": "toeic-vocab-tw"
+    },
+    "assessment": {
+      "sentence": "The annual performance assessment will help identify areas for employee development.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/057-918e9a61fdfc.mp3",
+      "bytes": 46848,
+      "duration": 5.8,
+      "sha256": "26c2696007ac334fe4a7096bbd496d640d9e40be3a15ab7cffef67069551ad0c",
+      "source": "toeic-vocab-tw"
+    },
+    "curriculum": {
+      "sentence": "The company is updating its curriculum to include more training on data security.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/058-281fff459946.mp3",
+      "bytes": 47616,
+      "duration": 5.9,
+      "sha256": "223da7c94106cd3e86c9a9076fd591c4131e3a21eaae24b23330f1a13986906f",
+      "source": "toeic-vocab-tw"
+    },
+    "qualification": {
+      "sentence": "The job requires a recognised qualification in engineering.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/059-cc25bc85857b.mp3",
+      "bytes": 39168,
+      "duration": 4.825,
+      "sha256": "be145d320c6d373b4d3033c2ef9559a56a3ab3a0298566a5f5af9cacb9fb2f0e",
+      "source": "original-practice"
+    },
+    "attendance": {
+      "sentence": "The company requires a minimum attendance rate of 85% for all employees.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/060-0238635a8341.mp3",
+      "bytes": 49920,
+      "duration": 6.175,
+      "sha256": "a9a61cba0b465652419dcc3427a018eaf0f997da83af5d39aec77ee5dec161a5",
+      "source": "toeic-vocab-tw"
+    },
+    "questionnaire": {
+      "sentence": "The department implemented innovative questionnaire procedures to improve operational efficiency.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/061-cea7059823ff.mp3",
+      "bytes": 57984,
+      "duration": 7.2,
+      "sha256": "51275771a9081cbb96464ef5371c8f5ea67939039b3043ca0811b210c47795e2",
+      "source": "toeic-vocab-tw"
+    },
+    "respondent": {
+      "sentence": "Each respondent answered the same set of survey questions.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/062-a18cb0fb22da.mp3",
+      "bytes": 35136,
+      "duration": 4.325,
+      "sha256": "f1be64ae0a8123b34792d64ed1c4577c9c83e0deec4b24997c9b6913fc237bf1",
+      "source": "original-practice"
+    },
+    "survey": {
+      "sentence": "The marketing team conducted a customer satisfaction survey to identify areas for improvement.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/063-a69c662b65f1.mp3",
+      "bytes": 56640,
+      "duration": 7.025,
+      "sha256": "dcb455c61bc7276e3ff3f718db0be87162ce86bcf2572642177927ca0f4196fe",
+      "source": "toeic-vocab-tw"
+    },
+    "sample": {
+      "sentence": "The quality control department needs a sample of the new product to test its durability.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/064-41b326e3d771.mp3",
+      "bytes": 51264,
+      "duration": 6.35,
+      "sha256": "81e6986fbafc8ba7b46015009d11497d3c93ae6fb3fd9431557015e42d333eac",
+      "source": "toeic-vocab-tw"
+    },
+    "experiment": {
+      "sentence": "The marketing team is conducting an experiment with a new advertising campaign to gauge customer response.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/065-80f9639ee754.mp3",
+      "bytes": 62784,
+      "duration": 7.8,
+      "sha256": "c6e3a8e5693feb923a1b4340e9c195fe607545631fce2cba28f0390bcd613d87",
+      "source": "toeic-vocab-tw"
+    },
+    "hypothesis": {
+      "sentence": "The research team developed a new hypothesis to explain the observed phenomena.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/066-acdfd0c2c1f1.mp3",
+      "bytes": 47040,
+      "duration": 5.825,
+      "sha256": "2440f6f14e67fcc609fbc9f8208c9327f0901d9cd73a294584925a0df61f79b9",
+      "source": "toeic-vocab-tw"
+    },
+    "evidence": {
+      "sentence": "The contract clearly states the terms and conditions, providing ample evidence of the agreement.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/067-02a1e1b43707.mp3",
+      "bytes": 51648,
+      "duration": 6.4,
+      "sha256": "4e7a6201af96067690d9614ce2eb169cbd5582b2cf6d2267fe6a169867766c57",
+      "source": "toeic-vocab-tw"
+    },
+    "observation": {
+      "sentence": "Careful observation is crucial for scientific research.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/068-add0bd374ecb.mp3",
+      "bytes": 35328,
+      "duration": 4.35,
+      "sha256": "96f7078e5bdcade37d8b8c5d90832e60c412cbe6a2306efa98421c00adba48de",
+      "source": "toeic-vocab-tw"
+    },
+    "analysis": {
+      "sentence": "The quarterly financial analysis revealed significant cost savings opportunities across departments.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/069-416e5078e642.mp3",
+      "bytes": 58752,
+      "duration": 7.275,
+      "sha256": "502e722ca7242f001c2a9254be18b1f780d1709dad008bbd2f304efd671f164e",
+      "source": "toeic-vocab-tw"
+    },
+    "statistics": {
+      "sentence": "The company's sales statistics showed a significant increase in the third quarter.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/070-43918d6d6750.mp3",
+      "bytes": 45312,
+      "duration": 5.6,
+      "sha256": "e7636aa0d4755586258972d206e25142d4ffc7943bae8091a734500ba7ca3d2c",
+      "source": "toeic-vocab-tw"
+    },
+    "percentage": {
+      "sentence": "The chart shows the percentage of students living on campus.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/071-ecc724bf6a24.mp3",
+      "bytes": 33024,
+      "duration": 4.075,
+      "sha256": "0b080045833f0a0190fd184cd1c4c716190bd0b3081c024885556729fad1b7ac",
+      "source": "original-practice"
+    },
+    "participant": {
+      "sentence": "Every participant received a written explanation of the experiment.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/072-78bb00a1136f.mp3",
+      "bytes": 40128,
+      "duration": 4.95,
+      "sha256": "50449341b086aa456982651890a0c4cab0f57373fb9c27ebadce887ed88babe8",
+      "source": "original-practice"
+    },
+    "finding": {
+      "sentence": "The most important finding was a change in water quality.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/073-4dcb74588dd4.mp3",
+      "bytes": 35328,
+      "duration": 4.35,
+      "sha256": "70cc20dcf48d5ebd5ff994361a5f29e8593a26cb317354923ba4e35788446695",
+      "source": "original-practice"
+    },
+    "reliable": {
+      "sentence": "Our company prides itself on providing reliable shipping services to our clients.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/074-0fad8ed874d7.mp3",
+      "bytes": 46272,
+      "duration": 5.725,
+      "sha256": "06244db5eda11dcd4262930306bd2deb9f54f971c55fe99a49e8a21dbc714b79",
+      "source": "toeic-vocab-tw"
+    },
+    "conclusion": {
+      "sentence": "In conclusion, the project was a success due to the team's hard work and dedication.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/075-03d105c9c047.mp3",
+      "bytes": 49920,
+      "duration": 6.175,
+      "sha256": "bd2c0d89909a13c04a9c9621558e9f8284b937ed117a773447772dba30837b15",
+      "source": "toeic-vocab-tw"
+    },
+    "entrance": {
+      "sentence": "The main entrance to the office building is located on the west side.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/076-cd79b357d525.mp3",
+      "bytes": 38592,
+      "duration": 4.775,
+      "sha256": "44fd62a66e611d004b31f09e7ed3e2a989bc0b45be882a1d5ea46157d4ee83b9",
+      "source": "toeic-vocab-tw"
+    },
+    "exit": {
+      "sentence": "Please follow the signs to the nearest exit in case of an emergency.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/077-423ea5d6bac4.mp3",
+      "bytes": 41472,
+      "duration": 5.125,
+      "sha256": "4b59ef02df990cfb89c73f648aa762df76d6c02de0d038d7ae70a15c13de862f",
+      "source": "toeic-vocab-tw"
+    },
+    "intersection": {
+      "sentence": "Due to road construction, the intersection will be closed to traffic for two days.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/078-09c9f27ad2d2.mp3",
+      "bytes": 43392,
+      "duration": 5.375,
+      "sha256": "139ebf8b8c33f3349aaf94b6e1ecdbe4afdef76885f7dfcd0871dcfc02498bca",
+      "source": "toeic-vocab-tw"
+    },
+    "roundabout": {
+      "sentence": "Take the second exit at the roundabout near the station.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/079-372374e28822.mp3",
+      "bytes": 32832,
+      "duration": 4.05,
+      "sha256": "0b00386e29de57dd90b327f47628884c93018704ce6a4f0334da63b93b0073aa",
+      "source": "original-practice"
+    },
+    "junction": {
+      "sentence": "Turn left at the junction and continue towards the river.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/080-7c2d8682bb9d.mp3",
+      "bytes": 32064,
+      "duration": 3.95,
+      "sha256": "c5020d74c2449579e8f77d186665c1857788528afd2f827c028ec9c2165b9c29",
+      "source": "original-practice"
+    },
+    "opposite": {
+      "sentence": "The two departments have opposite goals for the project.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/081-5c807562f80d.mp3",
+      "bytes": 29568,
+      "duration": 3.625,
+      "sha256": "812ce453b06cf5b9c195be70ac2a90a06bccabfab90c999dec7966aefa0d564e",
+      "source": "toeic-vocab-tw"
+    },
+    "adjacent": {
+      "sentence": "The conference room is adjacent to the cafeteria, making it convenient for attendees to grab lunch.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/082-9047fb0853e6.mp3",
+      "bytes": 56064,
+      "duration": 6.95,
+      "sha256": "e7210a964c2264c95af825a2b3ace904eaaf5799e72f17bdbac88166c1f150c4",
+      "source": "toeic-vocab-tw"
+    },
+    "beyond": {
+      "sentence": "The project scope has expanded beyond our initial estimates.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/083-578610d8e0de.mp3",
+      "bytes": 36288,
+      "duration": 4.475,
+      "sha256": "7f1a475726b8df2f794303ce5c60933a4247a563eb1471a1c0a1569d4c0063d3",
+      "source": "toeic-vocab-tw"
+    },
+    "alongside": {
+      "sentence": "The new intern will work alongside the marketing team to learn the ropes.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/084-57027bce5474.mp3",
+      "bytes": 41088,
+      "duration": 5.075,
+      "sha256": "b667120e4c757f56ca42f2adc5b470bb581273546aa486e92831e6ce6573517a",
+      "source": "toeic-vocab-tw"
+    },
+    "diagonal": {
+      "sentence": "Draw a diagonal line from the top left corner to the bottom right corner.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/085-c3c68d16b53d.mp3",
+      "bytes": 43008,
+      "duration": 5.325,
+      "sha256": "59dbe94b306e8b96f7bd999586c7d6012c732b407da956a09ae0b7ffe47fb052",
+      "source": "toeic-vocab-tw"
+    },
+    "clockwise": {
+      "sentence": "Walk clockwise around the lake to reach the visitor centre.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/086-9635db4bd86e.mp3",
+      "bytes": 33600,
+      "duration": 4.15,
+      "sha256": "e61d50082dfeb02f20b6f1e816114d91f8a23bae6e5f80dacf6d0f1a64bf836c",
+      "source": "original-practice"
+    },
+    "corridor": {
+      "sentence": "Please keep the corridor clear of boxes and equipment for safety reasons.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/087-a71c0621857a.mp3",
+      "bytes": 42432,
+      "duration": 5.25,
+      "sha256": "44a9f5029dcea7f41aeb20590649cd27bf6a11ed41f47113bbe69da4a472070c",
+      "source": "toeic-vocab-tw"
+    },
+    "staircase": {
+      "sentence": "Please be careful when using the staircase, especially when carrying heavy boxes.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/088-24eb845473cc.mp3",
+      "bytes": 46272,
+      "duration": 5.725,
+      "sha256": "4ecbe06c5f5a50b6e845d01e925aa653a12e0c9747f852bfd884c0e5da6bd634",
+      "source": "toeic-vocab-tw"
+    },
+    "basement": {
+      "sentence": "The company is considering converting the basement into a storage area for excess inventory.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/089-976ee694be4b.mp3",
+      "bytes": 55488,
+      "duration": 6.875,
+      "sha256": "f2f3ec2baee66bb64a2f34441bb9ff68c963e1dddbf1a73dea896ae95abdde13",
+      "source": "toeic-vocab-tw"
+    },
+    "courtyard": {
+      "sentence": "The hotel's courtyard provides a tranquil space for guests to relax.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/090-de6b15eafff8.mp3",
+      "bytes": 39936,
+      "duration": 4.925,
+      "sha256": "fb5a7e3067e67a48b2bf621ac7382ecee44a414d6077e2626ae8db2600e15400",
+      "source": "toeic-vocab-tw"
+    },
+    "occupation": {
+      "sentence": "What is your occupation? I see you have extensive experience in the field.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/091-66277b572730.mp3",
+      "bytes": 41856,
+      "duration": 5.175,
+      "sha256": "e660b862f343d20e0e452ef87d99e18f569bbf11298e66e38f3fdccf3f74d691",
+      "source": "toeic-vocab-tw"
+    },
+    "recruitment": {
+      "sentence": "The company's new recruitment initiative exceeded expectations in the first quarter.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/092-6d0d6ef137c4.mp3",
+      "bytes": 49536,
+      "duration": 6.125,
+      "sha256": "21eb569e27fec68b2a612f359ba3257710cb66a9b41a5d6afd75f8820014c221",
+      "source": "toeic-vocab-tw"
+    },
+    "applicant": {
+      "sentence": "The applicant should include a copy of their degree certificate.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/093-866eecbf9ff5.mp3",
+      "bytes": 33792,
+      "duration": 4.175,
+      "sha256": "11fef2be9b9f2d405a814712346ef6f266daf2b4eecddd8c1527b0fda4026860",
+      "source": "original-practice"
+    },
+    "interview": {
+      "sentence": "Your interview will take place in the meeting room upstairs.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/094-88300c64c120.mp3",
+      "bytes": 31872,
+      "duration": 3.925,
+      "sha256": "f070cb92447620003243d4caa98d45336977cc0c426edf89d3ebf5ef3061d4f8",
+      "source": "original-practice"
+    },
+    "reference": {
+      "sentence": "Please include the reference number on all invoices for tracking purposes.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/095-3cdab536196c.mp3",
+      "bytes": 44352,
+      "duration": 5.475,
+      "sha256": "0ab50bfeb3a3aac93c674fb56fe4214a717170a1d15a56d46afd286cb541dcee",
+      "source": "toeic-vocab-tw"
+    },
+    "shift": {
+      "sentence": "The company implemented a new shift system to improve productivity.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/096-834dbd677c27.mp3",
+      "bytes": 40128,
+      "duration": 4.95,
+      "sha256": "0485b82770f5248cf978e73f447385b90a742ec999b9290ae0428f223a71c2b9",
+      "source": "toeic-vocab-tw"
+    },
+    "salary": {
+      "sentence": "The starting salary depends on your experience and training.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/097-6c1bb5cc2022.mp3",
+      "bytes": 35328,
+      "duration": 4.35,
+      "sha256": "277045847a2717e26987a04dfa9fc457e6d0c3c4dd7c1cfa4c519da9b272a091",
+      "source": "original-practice"
+    },
+    "wage": {
+      "sentence": "The company announced a wage increase for all employees to boost morale.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/098-d4fd13fe5cdd.mp3",
+      "bytes": 40128,
+      "duration": 4.95,
+      "sha256": "4f73384513b4eeab98d002c2d0fb4ea7477b5214aec4fddd816028ac77f5a9ee",
+      "source": "toeic-vocab-tw"
+    },
+    "overtime": {
+      "sentence": "The company offers overtime pay for employees who work beyond their regular hours.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/099-12330564ca6e.mp3",
+      "bytes": 48000,
+      "duration": 5.95,
+      "sha256": "56b0f473b4a6b872edf546e20d34000af0ee57f58c37355720543f640fb30c5f",
+      "source": "toeic-vocab-tw"
+    },
+    "colleague": {
+      "sentence": "I need to discuss this project with my colleague, Sarah, before the meeting.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/100-d4a8a85cedfe.mp3",
+      "bytes": 41088,
+      "duration": 5.075,
+      "sha256": "10ce64804f8c6983c3be9396b61b90ee73ffe0e6f5ff01e218c4f8d0b40c3b4c",
+      "source": "toeic-vocab-tw"
+    },
+    "employer": {
+      "sentence": "The employer announced a new health insurance plan for all staff.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/101-8c1b9b0bb130.mp3",
+      "bytes": 36288,
+      "duration": 4.475,
+      "sha256": "4ae2d709168846b7f0c87c7ccf451d6b6f6f393fa8eb8b9b6acd8d5b96eaa7eb",
+      "source": "toeic-vocab-tw"
+    },
+    "employee": {
+      "sentence": "Each employee can attend one training course every year.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/102-0143756cc03d.mp3",
+      "bytes": 33408,
+      "duration": 4.125,
+      "sha256": "70b26a21273a5d5903642da69e25e28c8e78aa75bcf9194c7fa046ea12397778",
+      "source": "original-practice"
+    },
+    "promotion": {
+      "sentence": "She received a promotion to Senior Manager after exceeding her sales targets.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/103-5017a54e2667.mp3",
+      "bytes": 44736,
+      "duration": 5.525,
+      "sha256": "1238567e47b3ae8b83a6eeeea5f5d2827ade2b68353fac12a53d06f5e2bd8f82",
+      "source": "toeic-vocab-tw"
+    },
+    "contract": {
+      "sentence": "The company is currently negotiating a contract with a new supplier.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/104-d6bf8c040e19.mp3",
+      "bytes": 39936,
+      "duration": 4.925,
+      "sha256": "9239c336df336e0f8f6b8fbf1095bc34a4e02be6a9e0ce051a7f60999a94b387",
+      "source": "toeic-vocab-tw"
+    },
+    "volunteer": {
+      "sentence": "Our company encourages employees to volunteer their time for community service projects.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/105-53398561d9c7.mp3",
+      "bytes": 50880,
+      "duration": 6.3,
+      "sha256": "5b5ca7ba6a636a6f6081ce4dd860b153ceebc4c110ef7f873d17504a44d0e84b",
+      "source": "toeic-vocab-tw"
+    },
+    "appointment": {
+      "sentence": "Please reschedule your appointment with Mr. Smith to next Tuesday.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/106-6af1074ba472.mp3",
+      "bytes": 37632,
+      "duration": 4.65,
+      "sha256": "473d744eb7d2476253061895258700a30c01d903ec18a5e7679d2ddeabc4356c",
+      "source": "toeic-vocab-tw"
+    },
+    "symptom": {
+      "sentence": "A persistent cough can be a symptom of several conditions.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/107-b332d6dadf90.mp3",
+      "bytes": 33408,
+      "duration": 4.125,
+      "sha256": "d96193f30d5b2be9b68073f15a8f5b4de264474bf6bb6723f47b6e6297d1026d",
+      "source": "original-practice"
+    },
+    "prescription": {
+      "sentence": "The company's health insurance requires employees to submit a prescription for any medication they take.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/108-5afeaf367586.mp3",
+      "bytes": 57984,
+      "duration": 7.2,
+      "sha256": "894cadfbbfb97addbbcc48b5da65090508ca331e94cbf755daad8d4ce59c1889",
+      "source": "toeic-vocab-tw"
+    },
+    "allergy": {
+      "sentence": "Please tell the nurse if you have a food allergy.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/109-44a7bad8a750.mp3",
+      "bytes": 27456,
+      "duration": 3.375,
+      "sha256": "dcfd39d675937402e1636a0816c1981c637b1d0679291fd4ae6fceebb699d9d5",
+      "source": "original-practice"
+    },
+    "treatment": {
+      "sentence": "The company offers comprehensive health treatment benefits to its employees.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/110-9b3c5d89b074.mp3",
+      "bytes": 42432,
+      "duration": 5.25,
+      "sha256": "cb6e8f08d21ac3655020f0ace6f6deef8e7fc808d584486b6a2b0cb03a77cc30",
+      "source": "toeic-vocab-tw"
+    },
+    "diagnosis": {
+      "sentence": "The company needs a thorough diagnosis of the production bottleneck to improve efficiency.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/111-c282b9e04364.mp3",
+      "bytes": 49920,
+      "duration": 6.175,
+      "sha256": "b64037e90e74970cae3f97ccd24d74042834feb1af3a83e26ce5e8ceb0584854",
+      "source": "toeic-vocab-tw"
+    },
+    "infection": {
+      "sentence": "The company implemented stricter hygiene protocols to prevent the spread of infection in the workplace.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/112-44d6f27f9e5f.mp3",
+      "bytes": 56064,
+      "duration": 6.95,
+      "sha256": "2be2e8dbe4e08ad633bedf619f5ede94055b1ca51bd56c264e115eafaaca7e97",
+      "source": "toeic-vocab-tw"
+    },
+    "injury": {
+      "sentence": "The company is providing compensation for the employee's work-related injury.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/113-a2572cb27a87.mp3",
+      "bytes": 47040,
+      "duration": 5.825,
+      "sha256": "cee4eb8393b1fb1846db11d4def448630fc255621614cffb0638c20eb101a97a",
+      "source": "toeic-vocab-tw"
+    },
+    "surgeon": {
+      "sentence": "The surgeon successfully performed a complex heart operation.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/114-0691fd0859e0.mp3",
+      "bytes": 35904,
+      "duration": 4.425,
+      "sha256": "1b94162707c810d39733a56ce5e766a86107043d13c2a4f058fa137ad0feecea",
+      "source": "toeic-vocab-tw"
+    },
+    "dentist": {
+      "sentence": "The company offers comprehensive health insurance, including dental coverage and regular visits to the dentist.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/115-2b3851ce4ef4.mp3",
+      "bytes": 61440,
+      "duration": 7.625,
+      "sha256": "265f82c356bd65ff847e3685266b9d427331344673f2fc7ba46fa531fbf53355",
+      "source": "toeic-vocab-tw"
+    },
+    "pharmacy": {
+      "sentence": "The nearest pharmacy is next to the health centre.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/116-6103f175894f.mp3",
+      "bytes": 28416,
+      "duration": 3.5,
+      "sha256": "ad368f5d20e8c239f20c526931432116b57ed37420f20f5b57d4ddde773dc6ea",
+      "source": "original-practice"
+    },
+    "vaccination": {
+      "sentence": "The clinic offers vaccination appointments on Tuesday mornings.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/117-0ad8703159cf.mp3",
+      "bytes": 35520,
+      "duration": 4.375,
+      "sha256": "922f39db51e3e19af68790b0eeec59c4a41f16f7f0b31694878db6e12b123069",
+      "source": "original-practice"
+    },
+    "fatigue": {
+      "sentence": "The company offers wellness programs to combat employee fatigue and improve productivity.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/118-db4f97875c54.mp3",
+      "bytes": 53760,
+      "duration": 6.65,
+      "sha256": "e0e1a89e24d10964f05adbe675bd7405d33215816af30299a88cc6cb562881bf",
+      "source": "toeic-vocab-tw"
+    },
+    "recovery": {
+      "sentence": "The company is focusing on a swift recovery from the recent economic downturn.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/119-bd5a49e9ee88.mp3",
+      "bytes": 47040,
+      "duration": 5.825,
+      "sha256": "81915721ef1523ab3121ff03826107105f208e102b6b1f180860d6fe057505e2",
+      "source": "toeic-vocab-tw"
+    },
+    "emergency": {
+      "sentence": "In case of an emergency, please contact security immediately.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/120-ce58c9403da3.mp3",
+      "bytes": 38592,
+      "duration": 4.775,
+      "sha256": "3c8bce0a145d290c762eb4261ed5dccb113c6204f9244393f982f3d84e9c677f",
+      "source": "toeic-vocab-tw"
+    },
+    "vegetarian": {
+      "sentence": "The hotel offers a wide range of vegetarian options on its menu to cater to diverse dietary needs.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/121-fa840ae563d8.mp3",
+      "bytes": 64704,
+      "duration": 8.025,
+      "sha256": "a129205a7e073956fc8cc11394bf82984c9a56b4813819da36dc48fc46685110",
+      "source": "toeic-vocab-tw"
+    },
+    "vegan": {
+      "sentence": "The hotel offers a wide range of vegan options to cater to diverse dietary needs.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/122-e8f9df8978c7.mp3",
+      "bytes": 54144,
+      "duration": 6.7,
+      "sha256": "58db0b906a2ae2625b54d1df59d6a6a719cc67f7a64eb722abb275dfdff596bf",
+      "source": "toeic-vocab-tw"
+    },
+    "protein": {
+      "sentence": "Protein is essential for building and repairing tissues in the body.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/123-a21a4d18f1c5.mp3",
+      "bytes": 42816,
+      "duration": 5.3,
+      "sha256": "883ce46264ea7a45ab52a0e7aba5a0178c2b21ba0f4bd3b1359ab843a060a326",
+      "source": "toeic-vocab-tw"
+    },
+    "carbohydrate": {
+      "sentence": "Rice is a common source of carbohydrate in many diets.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/124-d0c43250303c.mp3",
+      "bytes": 35520,
+      "duration": 4.375,
+      "sha256": "ded8d874f1824aadb6e1314cbf90c6ed0b45de5af40ba587acd9845fbeb032b1",
+      "source": "original-practice"
+    },
+    "fibre": {
+      "sentence": "Whole grains provide fibre that supports healthy digestion.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/125-709aec0cdcd4.mp3",
+      "bytes": 36864,
+      "duration": 4.55,
+      "sha256": "0d3549b3cadf8d786186ab9eb8c2952c94f58da89f4dec2b59412942cf791e42",
+      "source": "original-practice"
+    },
+    "vitamin": {
+      "sentence": "The study examined how a vitamin supplement affected recovery.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/126-068a9d066035.mp3",
+      "bytes": 40704,
+      "duration": 5.025,
+      "sha256": "5f8a07a2e9bdd476baec4d24b707b8a0763e6bb0209b8696e1685fcdaae093dd",
+      "source": "original-practice"
+    },
+    "mineral": {
+      "sentence": "The students tested the mineral content of the soil.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/127-67b7d9696989.mp3",
+      "bytes": 29952,
+      "duration": 3.675,
+      "sha256": "fb7c0a8b2d052a16b08fc4f246d4ec69634993e262c8be154d14b762c709b90f",
+      "source": "original-practice"
+    },
+    "ingredient": {
+      "sentence": "The main ingredient in this soup is fresh tomato.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/128-239e6e263f4f.mp3",
+      "bytes": 28800,
+      "duration": 3.55,
+      "sha256": "89fcdd7e467a866edc33daf116551916eb3ebda9b3adc78eba71a457cc3ea1e4",
+      "source": "original-practice"
+    },
+    "portion": {
+      "sentence": "Could I have a smaller portion of the pasta, please?",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/129-8a43970bb216.mp3",
+      "bytes": 29184,
+      "duration": 3.6,
+      "sha256": "d23948bf5f65d6ae1a2dce6a8d6f7096903a50d35e765e9357a6d582cb824459",
+      "source": "toeic-vocab-tw"
+    },
+    "nutrition": {
+      "sentence": "Our company is committed to providing employees with comprehensive nutrition education programs.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/130-7cb9df01d5c2.mp3",
+      "bytes": 55104,
+      "duration": 6.825,
+      "sha256": "83a39c234ad60edc1e666b3f14ac04976f91e84b46622a69ee427de29387ee61",
+      "source": "toeic-vocab-tw"
+    },
+    "cereal": {
+      "sentence": "Breakfast includes cereal, fresh fruit and a hot drink.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/131-020911236f48.mp3",
+      "bytes": 33792,
+      "duration": 4.175,
+      "sha256": "ebb248aa6166f09d9e5852111d2ca24ba9347058a62ab2d1a5fed2ca6082d5e1",
+      "source": "original-practice"
+    },
+    "dairy": {
+      "sentence": "The cafe offers several alternatives to dairy products.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/132-797a41836c8f.mp3",
+      "bytes": 34752,
+      "duration": 4.275,
+      "sha256": "b34466783ea6791c179feb541f5c2b0447d9b8ae1387c5489c16b57bacc23aa7",
+      "source": "original-practice"
+    },
+    "seafood": {
+      "sentence": "Our restaurant specializes in fresh seafood dishes from the local market.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/133-58eeed523063.mp3",
+      "bytes": 41856,
+      "duration": 5.175,
+      "sha256": "eb56b66c429c063815a3270b698b9d1a41015a3614c42406035c9b1c38815b85",
+      "source": "toeic-vocab-tw"
+    },
+    "beverage": {
+      "sentence": "Please choose a hot beverage from the menu.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/134-1be49a8ebd6f.mp3",
+      "bytes": 25536,
+      "duration": 3.125,
+      "sha256": "35d5e3a585051503355f41d040e9e34f7feab9256010bb070b32fde6093a2a33",
+      "source": "original-practice"
+    },
+    "catering": {
+      "sentence": "The catering team will prepare lunch for the conference.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/135-d486ea4a1c0e.mp3",
+      "bytes": 31296,
+      "duration": 3.85,
+      "sha256": "44369c216b242018d88950d4667ab16d8d34f0a1302dc5c362f54f663e500ba9",
+      "source": "original-practice"
+    },
+    "membership": {
+      "sentence": "Your membership includes free access to the fitness room.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/136-c0d40e4728e3.mp3",
+      "bytes": 32448,
+      "duration": 4,
+      "sha256": "e5a54788301cf3a4a824471c456372f856346e35c4296139981b219f4820fad7",
+      "source": "original-practice"
+    },
+    "equipment": {
+      "sentence": "The company invested heavily in new equipment to improve production efficiency.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/137-6fcf127dd11d.mp3",
+      "bytes": 46080,
+      "duration": 5.7,
+      "sha256": "02b871ec29dbd2301601442a9bea1893bc5a6e154a353a13b5af6ff1ac9395a4",
+      "source": "toeic-vocab-tw"
+    },
+    "instructor": {
+      "sentence": "The instructor will demonstrate the exercise before you begin.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/138-fc11973f3245.mp3",
+      "bytes": 37440,
+      "duration": 4.625,
+      "sha256": "1758dec3e1281073edfe924cc9caee2d53472c8dc3cd2e253db7e51255feec53",
+      "source": "original-practice"
+    },
+    "rehearsal": {
+      "sentence": "The team conducted a full rehearsal of the presentation before the big meeting.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/139-35bc00a23a24.mp3",
+      "bytes": 44160,
+      "duration": 5.45,
+      "sha256": "f67c490b24dcae74587947691ba05ebd12272098d6d96a2cf9386cd6087c51af",
+      "source": "toeic-vocab-tw"
+    },
+    "exhibition": {
+      "sentence": "The company will participate in an international exhibition to showcase its latest products.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/140-d87f7d0b2cca.mp3",
+      "bytes": 50688,
+      "duration": 6.275,
+      "sha256": "b0ca3b99a69eca254bdc789b8698e7c679a5b96f76d5a8528453da5b7e5ba3b6",
+      "source": "toeic-vocab-tw"
+    },
+    "gallery": {
+      "sentence": "The company is planning an exclusive art exhibition at the gallery to attract potential investors.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/141-1d225dfdc172.mp3",
+      "bytes": 52608,
+      "duration": 6.525,
+      "sha256": "9e480297094bbf65443609baa66d0b3e6215cc3f636c2bd3a39dd530f88d213b",
+      "source": "toeic-vocab-tw"
+    },
+    "audience": {
+      "sentence": "The speaker needs to engage the audience with compelling visuals and a clear message.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/142-08d9128c9933.mp3",
+      "bytes": 45888,
+      "duration": 5.675,
+      "sha256": "3d559eadd886dfcc0cc377e6e08173b7f746227d3d5e5e694fd4e9dfdb7063af",
+      "source": "toeic-vocab-tw"
+    },
+    "performance": {
+      "sentence": "The company is evaluating employee performance to determine salary increases.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/143-a650893cd433.mp3",
+      "bytes": 48000,
+      "duration": 5.95,
+      "sha256": "735dfb45d6dbfbf6810c22017bda2f785b9bf438ea28eb737faa5ee25233bc1e",
+      "source": "toeic-vocab-tw"
+    },
+    "leisure": {
+      "sentence": "The company offers employees flexible working hours to encourage a better work-life balance and more leisure time.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/144-69cfee3b3b21.mp3",
+      "bytes": 66048,
+      "duration": 8.2,
+      "sha256": "7154d2d9228a0325c0680d9ebbf678669a0ad7673716bd67f6584600f4d5af27",
+      "source": "toeic-vocab-tw"
+    },
+    "excursion": {
+      "sentence": "The company organized an excursion to a local museum to promote team bonding.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/145-1d092af21027.mp3",
+      "bytes": 47616,
+      "duration": 5.9,
+      "sha256": "2b5776be453e90fd4713240f60ef36cec6b22cb8491398d8cd72d514d365dad6",
+      "source": "toeic-vocab-tw"
+    },
+    "itinerary": {
+      "sentence": "Please review the itinerary carefully before the business trip to ensure everything is confirmed.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/146-068530e5496c.mp3",
+      "bytes": 54336,
+      "duration": 6.725,
+      "sha256": "32e6a87317a851f6d95a6c8d552d03904f630d73602ba2841ee957d8a182837b",
+      "source": "toeic-vocab-tw"
+    },
+    "souvenir": {
+      "sentence": "The company gifted each attendee a souvenir pen as a token of appreciation.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/147-5dd4db8405f9.mp3",
+      "bytes": 47808,
+      "duration": 5.925,
+      "sha256": "b28aa4a986b56e89152badcabae91102390fda047f4888515bdf60ae849376a7",
+      "source": "toeic-vocab-tw"
+    },
+    "admission": {
+      "sentence": "The university requires an admission fee of $50 for the application process.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/148-81f0e02446ae.mp3",
+      "bytes": 51648,
+      "duration": 6.4,
+      "sha256": "8dcc036cea1799cc29d7e84983dba6fb43f524ecdef5b793f40e8687638f43b1",
+      "source": "toeic-vocab-tw"
+    },
+    "spectator": {
+      "sentence": "Each spectator must show a ticket at the entrance.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/149-5878797136f9.mp3",
+      "bytes": 27264,
+      "duration": 3.35,
+      "sha256": "9d4ad90d445899412995e79c2c7a416df1093b359442ffe42812d4bbc4df9e64",
+      "source": "original-practice"
+    },
+    "competition": {
+      "sentence": "The company faces stiff competition in the global market.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/150-ede88d39c8c9.mp3",
+      "bytes": 34944,
+      "duration": 4.3,
+      "sha256": "6c60798cfe1c15a7b5cc63ef71c68849ef936c97957013bb8a06feddb6237b58",
+      "source": "toeic-vocab-tw"
+    },
+    "habitat": {
+      "sentence": "The company is seeking a new habitat in a more accessible location to attract more clients.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/151-51122d1438fe.mp3",
+      "bytes": 51648,
+      "duration": 6.4,
+      "sha256": "37b92f47579f528c66435458b34745243c032bc8646e355ba0f890b032856b86",
+      "source": "toeic-vocab-tw"
+    },
+    "species": {
+      "sentence": "Pandas are an endangered species.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/152-0f9f577dcc77.mp3",
+      "bytes": 23808,
+      "duration": 2.925,
+      "sha256": "70f9fb07871e83bf01429b654cc0bd4f09329f6266f385be1da83a71ce760601",
+      "source": "toeic-vocab-tw"
+    },
+    "predator": {
+      "sentence": "A lion is a formidable predator in the savanna.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/153-3664298a9c55.mp3",
+      "bytes": 30144,
+      "duration": 3.7,
+      "sha256": "975110ff3fc5fcb758f993eb064f7b3990e7904c7dfdf27d47e7e3bceac25181",
+      "source": "toeic-vocab-tw"
+    },
+    "prey": {
+      "sentence": "The lion stalks its prey silently.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/154-36890891265f.mp3",
+      "bytes": 22656,
+      "duration": 2.775,
+      "sha256": "3dc6de6371b4f7f583934549dc78ff7c70f7a2e3587920e122f3f4414bce6d5f",
+      "source": "toeic-vocab-tw"
+    },
+    "mammal": {
+      "sentence": "A dolphin is a mammal that spends its life in water.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/155-5f3a6f788d13.mp3",
+      "bytes": 31488,
+      "duration": 3.875,
+      "sha256": "22772f945c705a6b523ad5fac0cdc31c83c2606eef1f57eba3879e40f1a05026",
+      "source": "original-practice"
+    },
+    "reptile": {
+      "sentence": "The guide explained how to identify a reptile by its skin.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/156-f15ec2e1e03b.mp3",
+      "bytes": 35712,
+      "duration": 4.4,
+      "sha256": "841f875bdf2b3a8ae7193aff720597fa933e694d1e3f43f5bcc1133d0c79e42f",
+      "source": "original-practice"
+    },
+    "migration": {
+      "sentence": "The company is experiencing a significant migration of employees to other cities due to the new remote work policy.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/157-0273e59d1cd7.mp3",
+      "bytes": 67584,
+      "duration": 8.4,
+      "sha256": "8892a77027ade1f3bc1ccba6fa26f08ea3e0d2c2149719da762a2b0610ba21f8",
+      "source": "toeic-vocab-tw"
+    },
+    "breeding": {
+      "sentence": "The island is an important breeding site for seabirds.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/158-1efc2d30eae0.mp3",
+      "bytes": 32256,
+      "duration": 3.975,
+      "sha256": "eafa0c5b5608686bbe16a666c317b0c88cb54d982de559030c866344a50b720b",
+      "source": "original-practice"
+    },
+    "extinction": {
+      "sentence": "The company is committed to sustainable practices to prevent the extinction of endangered species.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/159-32bffdee721d.mp3",
+      "bytes": 56256,
+      "duration": 6.975,
+      "sha256": "1fef3a563c8bdf2aafc301d8446043c21c7e73a85dd783676d12dc3218113d7d",
+      "source": "toeic-vocab-tw"
+    },
+    "biodiversity": {
+      "sentence": "Protecting biodiversity is crucial for the health of our planet.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/160-b89a8f57d2a3.mp3",
+      "bytes": 38784,
+      "duration": 4.8,
+      "sha256": "925f5321b650bf2e2af401403dbd007eebae089d6c43009ac4beef105e5cd62f",
+      "source": "toeic-vocab-tw"
+    },
+    "vegetation": {
+      "sentence": "The mountain slopes are covered with dense vegetation.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/161-7e8acaedd2a4.mp3",
+      "bytes": 31872,
+      "duration": 3.925,
+      "sha256": "3afd3546040c70cdbc2d3b74ebc0503b8241fc8b0c68a662dde0a8c6a5d89a0d",
+      "source": "toeic-vocab-tw"
+    },
+    "ecosystem": {
+      "sentence": "Removing one species can affect the entire ecosystem.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/162-2c695afdb68b.mp3",
+      "bytes": 37056,
+      "duration": 4.575,
+      "sha256": "c7322123d8167e6143f36e9ba835eb043c41d0fe6c21a37fa6573d57805d2ed1",
+      "source": "original-practice"
+    },
+    "conservation": {
+      "sentence": "The company is committed to conservation efforts to reduce its environmental impact.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/163-718c2ae1e586.mp3",
+      "bytes": 50304,
+      "duration": 6.225,
+      "sha256": "ac73b346923f33ae540075e5c536cc8dfde9952fc4997769c9dd3c5282b90e77",
+      "source": "toeic-vocab-tw"
+    },
+    "endangered": {
+      "sentence": "The company is committed to sustainable practices to protect endangered species in the region.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/164-0391115c5c11.mp3",
+      "bytes": 54912,
+      "duration": 6.8,
+      "sha256": "39bd3569743d72bd89fcdb0ec4581b41e64ee65b5c2dc1c606b75a3b162c2c23",
+      "source": "toeic-vocab-tw"
+    },
+    "nocturnal": {
+      "sentence": "The researchers used cameras to observe nocturnal animals.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/165-1ec893845edf.mp3",
+      "bytes": 35520,
+      "duration": 4.375,
+      "sha256": "0d98e57d827b5c5cb978f804d4764d43791a99f03c1c1f7a3188ee6808b6b47c",
+      "source": "original-practice"
+    },
+    "pollution": {
+      "sentence": "The company is investing in new technologies to reduce pollution from its manufacturing processes.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/166-97279730b19d.mp3",
+      "bytes": 56448,
+      "duration": 7,
+      "sha256": "3d3c1a8b2087c2106d44313c9117c210d5106d1dfa930b6076e4db7ce239d073",
+      "source": "toeic-vocab-tw"
+    },
+    "emission": {
+      "sentence": "The report gives an estimate of the annual carbon emission.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/167-47aacb834ae5.mp3",
+      "bytes": 35136,
+      "duration": 4.325,
+      "sha256": "6cc2c1aa2f202febb174c3e50636c633a55e1f0a75d2cd13d400ed9ee3630f76",
+      "source": "original-practice"
+    },
+    "drought": {
+      "sentence": "The prolonged drought has severely impacted crop yields, forcing the company to consider alternative sourcing options.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/168-1efdf38d162e.mp3",
+      "bytes": 65856,
+      "duration": 8.175,
+      "sha256": "3319e213dae94036cee6a9006fc4734d6ab1242d9da80a4637647aa572765e08",
+      "source": "toeic-vocab-tw"
+    },
+    "flood": {
+      "sentence": "The village built a barrier to reduce the risk of a flood.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/169-77e9ec542e57.mp3",
+      "bytes": 32640,
+      "duration": 4.025,
+      "sha256": "c1143fa0305277f96666a0062633f979a4fffd5477d35f7a99c7c2997022107c",
+      "source": "original-practice"
+    },
+    "erosion": {
+      "sentence": "Planting trees can help reduce soil erosion on steep slopes.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/170-412da03329a7.mp3",
+      "bytes": 36288,
+      "duration": 4.475,
+      "sha256": "1a9d0d9feca32a450fc26e70ddb73065c489f6077627abada2268e2fc8eb29c9",
+      "source": "original-practice"
+    },
+    "deforestation": {
+      "sentence": "The report examines the effects of deforestation on local rainfall.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/171-cc02fd6ee07b.mp3",
+      "bytes": 43584,
+      "duration": 5.4,
+      "sha256": "fe4787ed4d20d92006038ffedde18c262718840554082e41ccba59cf3dd724f0",
+      "source": "original-practice"
+    },
+    "recycling": {
+      "sentence": "Our company is committed to improving its recycling program to reduce environmental impact.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/172-9e1565ef6b76.mp3",
+      "bytes": 55488,
+      "duration": 6.875,
+      "sha256": "0fe8e58508261aec1a06c894f6107c8b3dd8c0578485950b9947e8015987590f",
+      "source": "toeic-vocab-tw"
+    },
+    "landfill": {
+      "sentence": "The town wants to send less household waste to landfill.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/173-28e3b06c2a5f.mp3",
+      "bytes": 31296,
+      "duration": 3.85,
+      "sha256": "a3b6045adba1fdffa07b17df3389f420674af4f0092698c092e25d420d5f174c",
+      "source": "original-practice"
+    },
+    "sewage": {
+      "sentence": "The company is investing heavily in upgrading its sewage treatment facilities to meet environmental regulations.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/174-ace6f76df106.mp3",
+      "bytes": 67200,
+      "duration": 8.35,
+      "sha256": "afa83c6dae359612ee456b3b563faee1e116689b63da325103b0c5a0b252bec0",
+      "source": "toeic-vocab-tw"
+    },
+    "waste": {
+      "sentence": "The company is implementing new procedures to minimize waste and improve efficiency.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/175-bc19a863fb1b.mp3",
+      "bytes": 50688,
+      "duration": 6.275,
+      "sha256": "9374ceb56d6e3f8e29a3f3ff21b65468520f6649195ddc50d7079cdf2020cc9a",
+      "source": "toeic-vocab-tw"
+    },
+    "contamination": {
+      "sentence": "The laboratory checked the water for signs of contamination.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/176-9791ff70d01e.mp3",
+      "bytes": 33408,
+      "duration": 4.125,
+      "sha256": "834a4ba835332574d4ad0607c7b11878b1692ab117b2b7e47e056fccfd86d1e3",
+      "source": "original-practice"
+    },
+    "sustainable": {
+      "sentence": "Our company is committed to implementing sustainable business practices to reduce our environmental impact.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/177-f20f3132b44e.mp3",
+      "bytes": 61056,
+      "duration": 7.575,
+      "sha256": "3d35af49e09e875b03e22a320f25bf75a47ae8261b1adfcf0b9d79cb6f4194fa",
+      "source": "toeic-vocab-tw"
+    },
+    "climate": {
+      "sentence": "The company is adapting its supply chain to mitigate the impact of changing climate patterns.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/178-ef5106ddb515.mp3",
+      "bytes": 52608,
+      "duration": 6.525,
+      "sha256": "bd731ca1425b9837af8445b9543a0295041bf6fe2434e312ececf24890f946e4",
+      "source": "toeic-vocab-tw"
+    },
+    "temperature": {
+      "sentence": "The factory's production process requires maintaining a consistent temperature of 25 degrees Celsius.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/179-9c1c8d62e1c8.mp3",
+      "bytes": 63360,
+      "duration": 7.85,
+      "sha256": "55287a2518caf40d3a04e840c5d193466dff4bae5df263ba55c8f5c5f42179cd",
+      "source": "toeic-vocab-tw"
+    },
+    "humidity": {
+      "sentence": "The high humidity made it feel even hotter than the actual temperature.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/180-e3e3ba0e2cec.mp3",
+      "bytes": 40320,
+      "duration": 4.975,
+      "sha256": "7682fb6da3c5b706ceee9788b1b847f45882c11ae245eeb52f206757891d7d70",
+      "source": "toeic-vocab-tw"
+    },
+    "renewable": {
+      "sentence": "Our company is committed to using renewable energy sources to reduce our carbon footprint.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/181-2f28c869f3d1.mp3",
+      "bytes": 50688,
+      "duration": 6.275,
+      "sha256": "023d154e3d710a0d5e561b0763b03e4ef34ec1d31ec6ca89ee6af1901dd05197",
+      "source": "toeic-vocab-tw"
+    },
+    "solar": {
+      "sentence": "The company is investing heavily in solar energy to reduce its carbon footprint.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/182-f8a0166d5c20.mp3",
+      "bytes": 47808,
+      "duration": 5.925,
+      "sha256": "96147d9e657dfbee0bd20889dd7d47c191c8faec0221ceabdfd0841a0ef74670",
+      "source": "toeic-vocab-tw"
+    },
+    "turbine": {
+      "sentence": "Each turbine can generate electricity when the wind is strong enough.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/183-8d0017905b68.mp3",
+      "bytes": 39168,
+      "duration": 4.825,
+      "sha256": "f8c8d1456ca98105793500b9155a83a222cbc462b6980bb13e31f244d4ab620a",
+      "source": "original-practice"
+    },
+    "electricity": {
+      "sentence": "The company is investing in renewable electricity sources to reduce its carbon footprint.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/184-ab33b527c516.mp3",
+      "bytes": 52416,
+      "duration": 6.5,
+      "sha256": "6027858511a81284f69fed88914e346eef24254dfed81fcf12e97454bec8f9a0",
+      "source": "toeic-vocab-tw"
+    },
+    "fuel": {
+      "sentence": "The company is seeking a reliable supplier of low-cost fuel.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/185-f9764288e95e.mp3",
+      "bytes": 38400,
+      "duration": 4.75,
+      "sha256": "cc8bf9ab09018b1fc819bf0a939f510e0994d7e8bc80f52d9c7278113c996158",
+      "source": "toeic-vocab-tw"
+    },
+    "insulation": {
+      "sentence": "The company is investing in improved insulation to reduce energy consumption and lower operating costs.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/186-4eae8dac98ce.mp3",
+      "bytes": 63168,
+      "duration": 7.825,
+      "sha256": "799858ec6261e37bc382cfd7f1dd19f513b3c6a3b0f4ca0732cca3480281c01d",
+      "source": "toeic-vocab-tw"
+    },
+    "concrete": {
+      "sentence": "The project manager requested a concrete plan with timelines and deliverables.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/187-f4cdc10dad89.mp3",
+      "bytes": 47040,
+      "duration": 5.825,
+      "sha256": "c6f57010d338a0ea364438203c9d1ede7a20e27b6da9daeb26bbcb3ac8138524",
+      "source": "toeic-vocab-tw"
+    },
+    "steel": {
+      "sentence": "The construction company ordered a large shipment of steel for the new skyscraper project.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/188-ac2fb89f7aa5.mp3",
+      "bytes": 50880,
+      "duration": 6.3,
+      "sha256": "60515ee378ac817ee92efac34fa0190348674e7311bb8e0930d6095a57c695ab",
+      "source": "toeic-vocab-tw"
+    },
+    "timber": {
+      "sentence": "The construction company ordered a large shipment of timber for the new project.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/189-e2ce6c54e79e.mp3",
+      "bytes": 44352,
+      "duration": 5.475,
+      "sha256": "49c50a7cdebac0d5fe17c2da103a2d0858e05f30eeebf1fbecd53c58330dc011",
+      "source": "toeic-vocab-tw"
+    },
+    "aluminium": {
+      "sentence": "The frame is made of aluminium to keep the bicycle light.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/190-31be7bf1f64a.mp3",
+      "bytes": 35904,
+      "duration": 4.425,
+      "sha256": "d0e0944cef0fcb9049e0d63215bc128adfe9e34c9f6ea851f47284d9be0508db",
+      "source": "original-practice"
+    },
+    "copper": {
+      "sentence": "Copper is an excellent conductor of electricity, making it ideal for wiring.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/191-527519a25662.mp3",
+      "bytes": 48000,
+      "duration": 5.95,
+      "sha256": "e4f400db6aa9232e57a1d5fb9301ea0533327cc97e1b8ff7ecd4ca31ceaddf2a",
+      "source": "toeic-vocab-tw"
+    },
+    "plastic": {
+      "sentence": "The shop encourages customers to avoid single-use plastic.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/192-e3a0267d2508.mp3",
+      "bytes": 37632,
+      "duration": 4.65,
+      "sha256": "00bcdeb1a5441e47cc653ff7ed346bee8c714bb77fbefc41762ccfedb2c820d8",
+      "source": "original-practice"
+    },
+    "manufacture": {
+      "sentence": "The company plans to manufacture the parts locally.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/193-cc62cdc26c74.mp3",
+      "bytes": 31104,
+      "duration": 3.825,
+      "sha256": "d2ad93a724c1b843f85221546fc4635b03865f15c33412264ef89df78e17261d",
+      "source": "original-practice"
+    },
+    "efficiency": {
+      "sentence": "The company is striving to improve operational efficiency by streamlining its processes.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/194-c53240bf355a.mp3",
+      "bytes": 52416,
+      "duration": 6.5,
+      "sha256": "05b9ce24a6ff541596e24d4455f48fa4318bd08898ee14d72415361c21ff282b",
+      "source": "toeic-vocab-tw"
+    },
+    "capacity": {
+      "sentence": "The warehouse has a storage capacity of 5,000 units.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/195-e4429fa76db1.mp3",
+      "bytes": 36672,
+      "duration": 4.525,
+      "sha256": "7fe87739dee16a533ab40bca468328513e67bbc0b0a89bed1ea9384477b1d69f",
+      "source": "toeic-vocab-tw"
+    },
+    "agriculture": {
+      "sentence": "The company is investing heavily in sustainable agriculture to reduce its environmental impact.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/196-9807af4c3717.mp3",
+      "bytes": 59136,
+      "duration": 7.325,
+      "sha256": "7d4e03f6bb1d3a3c7b6b27c07141072e1c88013326e1575b1642c5371e3a87d7",
+      "source": "toeic-vocab-tw"
+    },
+    "irrigation": {
+      "sentence": "Modern irrigation techniques help farmers save water and increase crop yields.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/197-a94cc0823e8a.mp3",
+      "bytes": 45312,
+      "duration": 5.6,
+      "sha256": "7a2558ef65bb15eeb87a7413b5f1d3575ed0dd6b2d392e00b88b15dfa8c7f630",
+      "source": "toeic-vocab-tw"
+    },
+    "fertiliser": {
+      "sentence": "The farmer applied fertiliser before planting the new crop.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/198-35ee534c5822.mp3",
+      "bytes": 34560,
+      "duration": 4.25,
+      "sha256": "d391c1d73c53791e4b0eba7c5522039563d051285c9ebf60155c34eb637b4874",
+      "source": "original-practice"
+    },
+    "pesticide": {
+      "sentence": "The research team measured pesticide levels in the river.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/199-ea702b73be82.mp3",
+      "bytes": 32448,
+      "duration": 4,
+      "sha256": "c015f8b542d4c2f9c4470b9853cad1bf4ac15d0c51145ff6a9bfc183bd97757b",
+      "source": "original-practice"
+    },
+    "harvest": {
+      "sentence": "The company is expecting a bountiful harvest this year due to favorable weather conditions.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/200-ee4cd7d9f8ba.mp3",
+      "bytes": 53184,
+      "duration": 6.6,
+      "sha256": "3f81c4ea825288bc685bca52fbde275aec73d922ed1cc285a9bafe1938280b30",
+      "source": "toeic-vocab-tw"
+    },
+    "crop": {
+      "sentence": "The company is expecting a large crop of wheat this year due to favorable weather conditions.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/201-374d7ae52648.mp3",
+      "bytes": 51648,
+      "duration": 6.4,
+      "sha256": "66489910d33bf990f402ce70817ebc73e172e29b790a58a39b2528624414d088",
+      "source": "toeic-vocab-tw"
+    },
+    "livestock": {
+      "sentence": "The farm uses a separate field for its livestock.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/202-d601fc926182.mp3",
+      "bytes": 30912,
+      "duration": 3.8,
+      "sha256": "25c0566541145c746470a1e8553f65e2a19e3154b1801659e49c559689749cdc",
+      "source": "original-practice"
+    },
+    "soil": {
+      "sentence": "The company is exploring sustainable farming practices to improve soil health and reduce environmental impact.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/203-fc5f000eb5cd.mp3",
+      "bytes": 67008,
+      "duration": 8.325,
+      "sha256": "860595d6c105f0281bee772e918817835f1527ee7733d8d74258c5eddf89acb2",
+      "source": "toeic-vocab-tw"
+    },
+    "seed": {
+      "sentence": "Place each seed just below the surface of the soil.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/204-2771341f6558.mp3",
+      "bytes": 30912,
+      "duration": 3.8,
+      "sha256": "70033c0f9e0bf612eda665cf1cd6e3adb84ad264d33d552b049ed9cd250f8f5d",
+      "source": "original-practice"
+    },
+    "orchard": {
+      "sentence": "Visitors can pick apples in the orchard during autumn.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/205-0ea0f0c16fb3.mp3",
+      "bytes": 31488,
+      "duration": 3.875,
+      "sha256": "787c914a1b8c8326a9424a4b25f7f8281564da5eefad19023135d4b95b5695e2",
+      "source": "original-practice"
+    },
+    "greenhouse": {
+      "sentence": "The company is investing in a new greenhouse to increase its production of organic vegetables.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/206-62b53855b891.mp3",
+      "bytes": 54720,
+      "duration": 6.775,
+      "sha256": "53d04f0d0864ccb7cc1b1fa601c1271451f451dea6c693bf8da1fc8e2fb026c0",
+      "source": "toeic-vocab-tw"
+    },
+    "cultivation": {
+      "sentence": "The company invests heavily in the cultivation of its employees' leadership skills.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/207-639d3ba74c63.mp3",
+      "bytes": 46464,
+      "duration": 5.75,
+      "sha256": "6f618bcdaf9f0b313dbb7ee538e70400a6c6195ca22a6f5328fdf7cc23920904",
+      "source": "toeic-vocab-tw"
+    },
+    "yield": {
+      "sentence": "The factory's annual yield of widgets increased by 15% this year.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/208-daf525580292.mp3",
+      "bytes": 44160,
+      "duration": 5.45,
+      "sha256": "ed40a0e7332a38ff995f942a3ad66910c65f0b00df3852b37ec00e22701b5123",
+      "source": "toeic-vocab-tw"
+    },
+    "organic": {
+      "sentence": "The company is shifting its focus to sourcing organic produce for its restaurant chain.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/209-6d29c5eb0e57.mp3",
+      "bytes": 49152,
+      "duration": 6.075,
+      "sha256": "4b464d726a90e136eaf9fcf2cbd122ac8b99a9233fe8d96724690c9fa1e87a6f",
+      "source": "toeic-vocab-tw"
+    },
+    "pasture": {
+      "sentence": "The sheep return to the pasture after their health check.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/210-f26c78d1b26e.mp3",
+      "bytes": 31296,
+      "duration": 3.85,
+      "sha256": "60474f193b2ec7b2741c473cbbcab287b33fdb18cb4aaf69c236fa9b17eb0cb2",
+      "source": "original-practice"
+    },
+    "archaeology": {
+      "sentence": "The discovery of ancient artifacts is central to archaeology.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/211-fdc5297d336b.mp3",
+      "bytes": 39744,
+      "duration": 4.9,
+      "sha256": "2e3514f2300fac64c5d19b0ccd0a1b595542986c1d6cf0d151cc592373787810",
+      "source": "toeic-vocab-tw"
+    },
+    "artefact": {
+      "sentence": "The museum displays an artefact found near the ancient harbour.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/212-d59a3fe4cf7b.mp3",
+      "bytes": 37248,
+      "duration": 4.6,
+      "sha256": "3ecd6d4dd88db5b4d7676dc88080ad50571278a2c91590d70dca0319128fc99b",
+      "source": "original-practice"
+    },
+    "excavation": {
+      "sentence": "The construction project required extensive excavation before the foundation could be laid.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/213-a9307132ad8e.mp3",
+      "bytes": 52608,
+      "duration": 6.525,
+      "sha256": "7fe211b056cc4332c82d4414d8a22b2f5d3acc855d14c5622a51d91791c1c399",
+      "source": "toeic-vocab-tw"
+    },
+    "settlement": {
+      "sentence": "The company's new settlement initiative exceeded expectations in the first quarter.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/214-6993e183e6d4.mp3",
+      "bytes": 48768,
+      "duration": 6.025,
+      "sha256": "151fe652b8b68c2ef261bf783e65ea7c1a7573f77a9fab38ee230f97d655f53c",
+      "source": "toeic-vocab-tw"
+    },
+    "civilisation": {
+      "sentence": "The lecture explores how trade helped this civilisation develop.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/215-8527a9a5dac3.mp3",
+      "bytes": 36288,
+      "duration": 4.475,
+      "sha256": "0d67b140d74240b20dff31b03ffea96e610d6d1f8134e7a78d3cedeb81b17bc1",
+      "source": "original-practice"
+    },
+    "heritage": {
+      "sentence": "The company is committed to preserving its cultural heritage and incorporating it into its branding strategy.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/216-802c53ac1294.mp3",
+      "bytes": 58368,
+      "duration": 7.225,
+      "sha256": "49953a77d9a8fa294f5e43c9013b51afe7b173e67f5a6aea735b5874923c13e3",
+      "source": "toeic-vocab-tw"
+    },
+    "preservation": {
+      "sentence": "The department implemented innovative preservation procedures to improve operational efficiency.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/217-317faba7211c.mp3",
+      "bytes": 57792,
+      "duration": 7.175,
+      "sha256": "4cba57433d436be43c210fa8be8e1fbf25574bb2a535cb47f19c46b782fac372",
+      "source": "toeic-vocab-tw"
+    },
+    "restoration": {
+      "sentence": "The company is investing in the restoration of its aging factory equipment to improve efficiency.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/218-acf060461ab2.mp3",
+      "bytes": 56256,
+      "duration": 6.975,
+      "sha256": "d9de09813c0ed831bdeef36d075080054ab33b71cde8b2a9944a60b1e626fd03",
+      "source": "toeic-vocab-tw"
+    },
+    "monument": {
+      "sentence": "The Washington Monument is a famous landmark in the United States.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/219-e61afff01a40.mp3",
+      "bytes": 40128,
+      "duration": 4.95,
+      "sha256": "d5dbb8848e21f142df77f7154ca90c7a90543b3f4484b481dfd88c7f56f7a9b8",
+      "source": "toeic-vocab-tw"
+    },
+    "pottery": {
+      "sentence": "The company is sourcing unique pottery for its new hotel gift shop.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/220-da242016ffa9.mp3",
+      "bytes": 38208,
+      "duration": 4.725,
+      "sha256": "06ef75185ef617ed4a630fa05f1ced0497a51513d4f2a5d4a28a624b8dd6eedf",
+      "source": "toeic-vocab-tw"
+    },
+    "architecture": {
+      "sentence": "The company is investing heavily in modern architecture to attract high-profile tenants.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/221-15558f1cee27.mp3",
+      "bytes": 50688,
+      "duration": 6.275,
+      "sha256": "f095c1e80a6ccff575f2e12259ded7799ef9d1c2299a42ebbc0ebde7c5eb0d57",
+      "source": "toeic-vocab-tw"
+    },
+    "structure": {
+      "sentence": "The structure of the bridge allows it to withstand strong winds.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/222-bdabc9ab0780.mp3",
+      "bytes": 36288,
+      "duration": 4.475,
+      "sha256": "96b124bacf57c23f5793258d21d6443d229ba48c8a3c81fe0c613f499533ff13",
+      "source": "original-practice"
+    },
+    "foundation": {
+      "sentence": "The company's success is built on a solid foundation of customer loyalty.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/223-19bf063d147c.mp3",
+      "bytes": 45120,
+      "duration": 5.575,
+      "sha256": "e4bf08fbb8eee7f74932f4ce104fb7beef619329ee39b1a8a58fe9de018b5176",
+      "source": "toeic-vocab-tw"
+    },
+    "medieval": {
+      "sentence": "The town is famous for its medieval bridge and narrow streets.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/224-bc2086c36f42.mp3",
+      "bytes": 37632,
+      "duration": 4.65,
+      "sha256": "bcbd36074bac090496da4c393c8e89489ef2a1070ebe52cc73f9279c34f50f15",
+      "source": "original-practice"
+    },
+    "ancient": {
+      "sentence": "The company is restoring the ancient building to its former glory.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/225-f674e22bc17a.mp3",
+      "bytes": 38016,
+      "duration": 4.7,
+      "sha256": "41d49f59bce2f746cd02bda606a3adb7936c3542fb73f846a446e7a0f2aef737",
+      "source": "toeic-vocab-tw"
+    },
+    "january": {
+      "sentence": "The annual budget review will take place in January.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/226-a14ce00d8a73.mp3",
+      "bytes": 33216,
+      "duration": 4.1,
+      "sha256": "49d7be595bd97b2cca40e68b09f02dde3ff47d262ea5b3a6c6ecfbd3a24451d6",
+      "source": "toeic-vocab-tw"
+    },
+    "february": {
+      "sentence": "The annual sales conference is scheduled for February next year.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/227-f1fc74ca8ea4.mp3",
+      "bytes": 37248,
+      "duration": 4.6,
+      "sha256": "68b43b9fac5f8bce3b50b8be67aae4e9441b3e7805e6c52fa8171ceaa9c46669",
+      "source": "toeic-vocab-tw"
+    },
+    "wednesday": {
+      "sentence": "The meeting is scheduled for Wednesday morning at 9:00 AM.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/228-383eebe49c3d.mp3",
+      "bytes": 38208,
+      "duration": 4.725,
+      "sha256": "e235c0f88a7cdf7bdad6364bbc60cea2362ac77818aa06e17f6e970b861d2e71",
+      "source": "toeic-vocab-tw"
+    },
+    "thursday": {
+      "sentence": "The meeting has been rescheduled to Thursday at 2:00 PM.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/229-f4ba1491b6d4.mp3",
+      "bytes": 37632,
+      "duration": 4.65,
+      "sha256": "8cf3da138e43e1c8d86099bc7718b25862fffcef1b48eefcc7acfa0344b0f905",
+      "source": "toeic-vocab-tw"
+    },
+    "september": {
+      "sentence": "The annual sales conference is scheduled for September 15th.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/230-626c21211887.mp3",
+      "bytes": 37632,
+      "duration": 4.65,
+      "sha256": "2b7f52c27078dc7fa30afc97ece3f916586e0e20592be8dfbe0a23c49b0cbe19",
+      "source": "toeic-vocab-tw"
+    },
+    "december": {
+      "sentence": "The annual budget review will take place in December.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/231-27c52c12e7fa.mp3",
+      "bytes": 32448,
+      "duration": 4,
+      "sha256": "72a9f7a464ed5a994f7a5c6baaae497a442e571098850f79c3693cc9970ffe24",
+      "source": "toeic-vocab-tw"
+    },
+    "noon": {
+      "sentence": "The meeting is scheduled for noon.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/232-4233b39fe118.mp3",
+      "bytes": 20544,
+      "duration": 2.5,
+      "sha256": "89e40126250d44113133c68f3838868e924d91fd764fe0d4930cb78aa028b03e",
+      "source": "toeic-vocab-tw"
+    },
+    "midnight": {
+      "sentence": "The deadline for the project proposal is midnight on Friday.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/233-ebcefdfab21d.mp3",
+      "bytes": 37248,
+      "duration": 4.6,
+      "sha256": "b458e0fb8272c217baea968940bf0c9f02544bb1463ddf3de2699727095f1579",
+      "source": "toeic-vocab-tw"
+    },
+    "fortnight": {
+      "sentence": "The project deadline has been extended by a fortnight.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/234-ccd112202917.mp3",
+      "bytes": 32640,
+      "duration": 4.025,
+      "sha256": "e92e8e99014e2edb8bb5e430d120a6b24577f0c7ab8ff8d4a4d4a8554283a23b",
+      "source": "toeic-vocab-tw"
+    },
+    "annual": {
+      "sentence": "The company will hold its annual shareholders' meeting next Thursday.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/235-926e9dc3adb6.mp3",
+      "bytes": 38784,
+      "duration": 4.8,
+      "sha256": "717217ec09e0dbf91f38a40a5eaf0b7392a49fa66e4247a942b57a45c73df1d5",
+      "source": "toeic-vocab-tw"
+    },
+    "weekly": {
+      "sentence": "The project team holds weekly status meetings to track progress.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/236-b0368858d086.mp3",
+      "bytes": 39168,
+      "duration": 4.825,
+      "sha256": "4fb20955e8aedc32d9e967946d88b3a91514d9435cfd2f2dbfe83ed478d218f1",
+      "source": "toeic-vocab-tw"
+    },
+    "monthly": {
+      "sentence": "The company requires employees to submit their expense reports monthly.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/237-f78cfe7ce03e.mp3",
+      "bytes": 41280,
+      "duration": 5.1,
+      "sha256": "e28b03655567cd970fee1682782eb79cd6c997212de156cbfc747ce9616b0228",
+      "source": "toeic-vocab-tw"
+    },
+    "weekday": {
+      "sentence": "The library closes later on a weekday than on a Sunday.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/238-281e81991d1f.mp3",
+      "bytes": 33792,
+      "duration": 4.175,
+      "sha256": "1a5749f81002bce30d64aee05c40eed0eb4ce763f20f0813c479a14663addeb0",
+      "source": "original-practice"
+    },
+    "weekend": {
+      "sentence": "The deadline for the project has been extended until next weekend.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/239-a9cc114bb832.mp3",
+      "bytes": 38400,
+      "duration": 4.75,
+      "sha256": "561ba9f3174d6321260c3a7e4df9c866f12f6e311077d9b491dfe6c077d576f8",
+      "source": "toeic-vocab-tw"
+    },
+    "century": {
+      "sentence": "Our company has been a leader in the industry for over a century.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/240-f908fcceca29.mp3",
+      "bytes": 37824,
+      "duration": 4.675,
+      "sha256": "26bc48797e60408f4f789de482043821f6603aaf531d01f7268d3a376205b08b",
+      "source": "toeic-vocab-tw"
+    },
+    "compulsory": {
+      "sentence": "Attendance at the safety training session is compulsory for all employees.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/241-ed6cb74ca02a.mp3",
+      "bytes": 43968,
+      "duration": 5.425,
+      "sha256": "eb1ce0a6d34043208327f58bc99682d424be6b988dc950de422eec5a6fac7848",
+      "source": "toeic-vocab-tw"
+    },
+    "optional": {
+      "sentence": "Attending the training session is optional, but highly recommended for career development.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/242-711068bfb031.mp3",
+      "bytes": 48384,
+      "duration": 6,
+      "sha256": "f2cfd224a4f8a5680f88486521ff4c4462a5cfa8d0aac5bba16f4ba1846afa65",
+      "source": "toeic-vocab-tw"
+    },
+    "temporary": {
+      "sentence": "The company offered him a temporary position to assess his skills.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/243-b64bc8ade90b.mp3",
+      "bytes": 37632,
+      "duration": 4.65,
+      "sha256": "e2b19511146c122f328e33ef8025b2049427acb2bb124e766a97bbe760036b38",
+      "source": "toeic-vocab-tw"
+    },
+    "permanent": {
+      "sentence": "The company offers permanent positions with benefits after a probationary period.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/244-aeeaff644c1b.mp3",
+      "bytes": 48768,
+      "duration": 6.025,
+      "sha256": "c8983e7a4d760b7cf7c46add95489b6a1637509884d421ceebd758a550be8411",
+      "source": "toeic-vocab-tw"
+    },
+    "convenient": {
+      "sentence": "The station is in a convenient location near the city centre.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/245-515d3bf5f226.mp3",
+      "bytes": 38784,
+      "duration": 4.8,
+      "sha256": "55fa787706a471563ba8f66a2c153d3dcf62c9f74a7c9a2d7d8b7d261618c54c",
+      "source": "original-practice"
+    },
+    "accessible": {
+      "sentence": "The company website is designed to be accessible to users with disabilities.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/246-ccfadd648252.mp3",
+      "bytes": 45120,
+      "duration": 5.575,
+      "sha256": "68cf1d4fdb1d494227ae9223478bbc449ead7bd0d7414f4cfe82363abf749ccf",
+      "source": "toeic-vocab-tw"
+    },
+    "flexible": {
+      "sentence": "Our company offers flexible working hours to improve employee satisfaction.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/247-51255d728b65.mp3",
+      "bytes": 46464,
+      "duration": 5.75,
+      "sha256": "dc92995cf90230edc8a7564a2d1b658e4a04ce845d48b829c86844f0e0a0408e",
+      "source": "toeic-vocab-tw"
+    },
+    "eligible": {
+      "sentence": "To be eligible for the promotion, employees must have at least three years of experience.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/248-01577ec1e08a.mp3",
+      "bytes": 48960,
+      "duration": 6.05,
+      "sha256": "a405f83d23076fd7fa970f14b52124515576e4da790691b5839209cb9850f2b2",
+      "source": "toeic-vocab-tw"
+    },
+    "adequate": {
+      "sentence": "The company's current resources are adequate to handle the project's initial phase.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/249-537b3de0f8d3.mp3",
+      "bytes": 44736,
+      "duration": 5.525,
+      "sha256": "2b661de74055040398f0ab655173ee2d143275444fe7fe812936470bb9b77f78",
+      "source": "toeic-vocab-tw"
+    },
+    "accurate": {
+      "sentence": "The report needs to be reviewed to ensure the data is accurate.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/250-d26ebaa6ac76.mp3",
+      "bytes": 37632,
+      "duration": 4.65,
+      "sha256": "182147716dfcf6e976ae91d257d91591c6fe295b242854f7dd15f62cb2206baf",
+      "source": "toeic-vocab-tw"
+    },
+    "essential": {
+      "sentence": "Having a reliable internet connection is essential for remote workers.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/251-dc33ad3e27a8.mp3",
+      "bytes": 43584,
+      "duration": 5.4,
+      "sha256": "a5afb251431d9f07687c3b216c6123f6309568fa0d40e56838f5c7ddbcfd3bc3",
+      "source": "toeic-vocab-tw"
+    },
+    "approximately": {
+      "sentence": "The project is expected to be completed approximately two weeks from today.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/252-1c39d734af64.mp3",
+      "bytes": 42048,
+      "duration": 5.2,
+      "sha256": "3dbfd344b4606ec6f3da1ccd19d9386ad14f0ac6ece8fd854f57a8a1b30dde98",
+      "source": "toeic-vocab-tw"
+    },
+    "initially": {
+      "sentence": "Initially, the project was scheduled to be completed in six months.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/253-fa6830e5db16.mp3",
+      "bytes": 37824,
+      "duration": 4.675,
+      "sha256": "dfa551f599664d7c96a8023d6e255d10397c9fc04ef87487df9e004e64c9d228",
+      "source": "toeic-vocab-tw"
+    },
+    "currently": {
+      "sentence": "Currently, we are experiencing a high volume of orders, which may cause slight delays in shipping.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/254-8f87a63893a5.mp3",
+      "bytes": 55296,
+      "duration": 6.85,
+      "sha256": "3c362f7a9918b585048480dd4b9fee7b02a6e51dc8542e689ddb5f61c7be172c",
+      "source": "toeic-vocab-tw"
+    },
+    "previously": {
+      "sentence": "The company's financial performance was significantly better previously compared to this quarter.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/255-700dd3378c92.mp3",
+      "bytes": 52224,
+      "duration": 6.475,
+      "sha256": "6cf49909b4418a213578951c1b5447d3d92b577626af1e5411cdead9928c15d0",
+      "source": "toeic-vocab-tw"
+    },
+    "provide": {
+      "sentence": "Please provide all necessary documents for the visa application.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/256-389302e84dbc.mp3",
+      "bytes": 39744,
+      "duration": 4.9,
+      "sha256": "3ba408a3a8a751429bc78e4941365278865ea6ea65a5100de2a13e74bef4e92c",
+      "source": "toeic-vocab-tw"
+    },
+    "require": {
+      "sentence": "Some courses require students to complete a short placement.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/257-7be6c5459401.mp3",
+      "bytes": 34944,
+      "duration": 4.3,
+      "sha256": "20c25afda44652f3dd1d9f974da58fb973f76c3d46f6565c9265352b1942a2b5",
+      "source": "original-practice"
+    },
+    "recommend": {
+      "sentence": "I highly recommend this software for streamlining your workflow.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/258-c9a480a0cdce.mp3",
+      "bytes": 35712,
+      "duration": 4.4,
+      "sha256": "ca92efdef6738d95daba050d747447321329c080840ac46b690fac120c1fb4d3",
+      "source": "toeic-vocab-tw"
+    },
+    "arrange": {
+      "sentence": "Could you arrange a meeting with the marketing team to discuss the new campaign?",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/259-edc60ebe93ca.mp3",
+      "bytes": 43392,
+      "duration": 5.375,
+      "sha256": "251835514c713bdcd8397d4548c25c1992d811c90fa84854b3f4a19b25db202e",
+      "source": "toeic-vocab-tw"
+    },
+    "confirm": {
+      "sentence": "Could you confirm your attendance at the upcoming conference?",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/260-1b82ba1ba1ad.mp3",
+      "bytes": 32064,
+      "duration": 3.95,
+      "sha256": "7996cf528e17cefc0b9a2acd6b3849e64ae744f0737566563bfcb993454a3523",
+      "source": "toeic-vocab-tw"
+    },
+    "postpone": {
+      "sentence": "Due to unforeseen circumstances, we have to postpone the project launch until next month.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/261-fd76c4a7c436.mp3",
+      "bytes": 51840,
+      "duration": 6.425,
+      "sha256": "20eef9fdb2b558e0d8c5e4bc645161252e3e91cd5518abefa3aa8ec0371b8113",
+      "source": "toeic-vocab-tw"
+    },
+    "cancel": {
+      "sentence": "Due to unforeseen circumstances, we had to cancel the scheduled meeting.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/262-3f446b7e52f7.mp3",
+      "bytes": 42240,
+      "duration": 5.225,
+      "sha256": "c85bb45aa12f1678b29ec9cee7a4d83861b741d7497efba9c6254d1457077ad4",
+      "source": "toeic-vocab-tw"
+    },
+    "register": {
+      "sentence": "All attendees are required to register online before the conference.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/263-19c4c509db64.mp3",
+      "bytes": 40512,
+      "duration": 5,
+      "sha256": "6a03a1600b47aa108daa013658655d05a0af1e1e1a1d821401fddd0270095d5d",
+      "source": "toeic-vocab-tw"
+    },
+    "submit": {
+      "sentence": "Please submit your expense report by the end of the week.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/264-0a121d320c92.mp3",
+      "bytes": 32448,
+      "duration": 4,
+      "sha256": "1d2fd66d93bd62754d3285f3ec0ff1cf563419249468aad03c574b69ced9e8f2",
+      "source": "toeic-vocab-tw"
+    },
+    "collect": {
+      "sentence": "The marketing team needs to collect data on customer preferences to improve the product.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/265-eca8358c7ee7.mp3",
+      "bytes": 51456,
+      "duration": 6.375,
+      "sha256": "d767a473f88b7af7e8fd4b88272ea59c545610eb026577e767ab95450dd81113",
+      "source": "toeic-vocab-tw"
+    },
+    "borrow": {
+      "sentence": "Could I borrow your pen while I finish this report?",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/266-1870bfde5c20.mp3",
+      "bytes": 29568,
+      "duration": 3.625,
+      "sha256": "bd9ce538060dddfb21070fc9426aa6d700e0f0f34d09cad11e5521cd237ac16b",
+      "source": "toeic-vocab-tw"
+    },
+    "lend": {
+      "sentence": "The bank is willing to lend the company a substantial amount of capital for expansion.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/267-49f8a71f8b7c.mp3",
+      "bytes": 47616,
+      "duration": 5.9,
+      "sha256": "649f5b8203498e310a9d69a62c04dff9d6b2f1efaf6cafe631e3a914206479c3",
+      "source": "toeic-vocab-tw"
+    },
+    "replace": {
+      "sentence": "The council plans to replace the old heating system.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/268-e2e6d96e7f35.mp3",
+      "bytes": 30720,
+      "duration": 3.775,
+      "sha256": "98edab50b06ea61ade1069820c851b24f03661a90054d27ad663bfde899bf36c",
+      "source": "original-practice"
+    },
+    "repair": {
+      "sentence": "The maintenance team will repair the printer by tomorrow afternoon.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/269-5429b4c46937.mp3",
+      "bytes": 37824,
+      "duration": 4.675,
+      "sha256": "41652341f71b5b4cab9375f33168cc270b4f5b1b5e1a8cdb1545cd859530da65",
+      "source": "toeic-vocab-tw"
+    },
+    "deliver": {
+      "sentence": "The courier will deliver the package to your office by tomorrow morning.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/270-9c59b65b2f0a.mp3",
+      "bytes": 38784,
+      "duration": 4.8,
+      "sha256": "e304cecb2ec6d9cada8edb4d3b825d900cf9c5fb12c44d74c1cee57de06a7277",
+      "source": "toeic-vocab-tw"
+    },
+    "increase": {
+      "sentence": "Better transport links may increase the number of visitors.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/271-32bd045b83dd.mp3",
+      "bytes": 33024,
+      "duration": 4.075,
+      "sha256": "3549cb77f2321e8df01925c1e92481954f8cd4c87574e34b4f19b4530f83693a",
+      "source": "original-practice"
+    },
+    "decrease": {
+      "sentence": "The new equipment should decrease the amount of water used.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/272-f1040a716260.mp3",
+      "bytes": 30912,
+      "duration": 3.8,
+      "sha256": "e71f3f6db4ece309477a94f093a31fbd10c285cef28f9b4b95099108ed7deb1d",
+      "source": "original-practice"
+    },
+    "reduce": {
+      "sentence": "The company aims to reduce operating costs by streamlining its processes.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/273-dedd334e5aee.mp3",
+      "bytes": 43968,
+      "duration": 5.425,
+      "sha256": "04354575c2e0b634e8fc3fdcfe8bd419332e4abad0a765d6140e0cfdb4e26207",
+      "source": "toeic-vocab-tw"
+    },
+    "expand": {
+      "sentence": "The company plans to expand its operations into new markets next year.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/274-d349cd321c99.mp3",
+      "bytes": 42624,
+      "duration": 5.275,
+      "sha256": "132b70bd83de0a69de6f31f5e38cc27e158a7dbcd8970e440c8ffef8e1faeb33",
+      "source": "toeic-vocab-tw"
+    },
+    "improve": {
+      "sentence": "The company is investing in new technologies to improve efficiency.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/275-46c7e3f4ac15.mp3",
+      "bytes": 41664,
+      "duration": 5.15,
+      "sha256": "71faf2fe604c41036d2952a55a52a9adb5b493a3b67fcfb92df03804fd464d26",
+      "source": "toeic-vocab-tw"
+    },
+    "benefit": {
+      "sentence": "One benefit of the new timetable is a shorter journey.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/276-3146c6060a9e.mp3",
+      "bytes": 33984,
+      "duration": 4.2,
+      "sha256": "f43547298ea759b4cbcae6152037a3e469e12ff71be810e7c0860a93102cfa1f",
+      "source": "original-practice"
+    },
+    "drawback": {
+      "sentence": "One drawback of the new software is its compatibility issues with older systems.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/277-bc00b5115f3b.mp3",
+      "bytes": 47232,
+      "duration": 5.85,
+      "sha256": "289e3e6ec64cfdc239cfffc28578c377076e72118a4dac5a8a26197c0ba9be74",
+      "source": "toeic-vocab-tw"
+    },
+    "purpose": {
+      "sentence": "The main purpose of this meeting is to discuss the upcoming marketing campaign.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/278-eaaf43bad3c7.mp3",
+      "bytes": 43200,
+      "duration": 5.35,
+      "sha256": "6cdc80dc686612ef8293ff12feb594724406b566ba737c96c36f8e3889883f58",
+      "source": "toeic-vocab-tw"
+    },
+    "method": {
+      "sentence": "The researchers used a different method to collect the samples.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/279-dea78ba8eb3a.mp3",
+      "bytes": 36480,
+      "duration": 4.5,
+      "sha256": "8325476980aeecf448af7b7836cf71d3d4bbcdcaff81274b61f48e6ba2f4fdcf",
+      "source": "original-practice"
+    },
+    "alternative": {
+      "sentence": "We need to explore alternative solutions to reduce costs.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/280-05c24c842d69.mp3",
+      "bytes": 35904,
+      "duration": 4.425,
+      "sha256": "ee68b224ccc3b0897353eb8c4ab9f32408402b85f1b77fccabb85c8270583b07",
+      "source": "toeic-vocab-tw"
+    },
+    "priority": {
+      "sentence": "Our top priority is to ensure customer satisfaction.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/281-93ccf52f9ad2.mp3",
+      "bytes": 35328,
+      "duration": 4.35,
+      "sha256": "59e71819c2fd02dc22c3abe32726a2b4998579759fc28225f2ac04d81282649f",
+      "source": "toeic-vocab-tw"
+    },
+    "restriction": {
+      "sentence": "There is a restriction on parking near the hospital entrance.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/282-a6b37f40e4ca.mp3",
+      "bytes": 32640,
+      "duration": 4.025,
+      "sha256": "277a3ca78e37b8c855ab21c99fa4a14461360433b179d4aece0f4134eee43e70",
+      "source": "original-practice"
+    },
+    "prohibition": {
+      "sentence": "The notice explains the prohibition on swimming near the dam.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/283-80e3f8c29622.mp3",
+      "bytes": 35520,
+      "duration": 4.375,
+      "sha256": "0e193e79c38abd8afaf902ba4ba8fe59978ce8a42e7bbe0ba76cc64b47d3ef8b",
+      "source": "original-practice"
+    },
+    "permission": {
+      "sentence": "Before using the company's equipment, you need to obtain permission from your supervisor.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/284-9d050a67c040.mp3",
+      "bytes": 46080,
+      "duration": 5.7,
+      "sha256": "b18f0d82fb70c80520e690fdcc5f6d0c49c6ddd898ed6a985e0b840a76c39a9b",
+      "source": "toeic-vocab-tw"
+    },
+    "obligation": {
+      "sentence": "Employees have an obligation to adhere to company policies and procedures.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/285-81fe97127e4c.mp3",
+      "bytes": 47424,
+      "duration": 5.875,
+      "sha256": "88a11f063e74fb6cd61df40e12ba92ca1221ff2d7cfe96c8123e17ed29e3c4a8",
+      "source": "toeic-vocab-tw"
+    },
+    "psychology": {
+      "sentence": "She chose to study psychology at the local university.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/286-0f1012c22b9a.mp3",
+      "bytes": 36288,
+      "duration": 4.475,
+      "sha256": "8a2326f05e91d852f137041203d03aa3b345f3c68e73e212c0343d3cda3db9c1",
+      "source": "original-practice"
+    },
+    "physiology": {
+      "sentence": "She is studying the physiology of the human heart.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/287-312282340b8b.mp3",
+      "bytes": 29760,
+      "duration": 3.65,
+      "sha256": "71c6daa42d07c3029d8abcc2230a2c023a79334a2144138dcccecff2b783dc4a",
+      "source": "toeic-vocab-tw"
+    },
+    "laboratory": {
+      "sentence": "The R&D department, or laboratory, is working on a new prototype.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/288-dac5bd1fcd83.mp3",
+      "bytes": 41856,
+      "duration": 5.175,
+      "sha256": "2fec429b184b5f689deb600d46a49fc9cee64e481100c338aaa0da7fdc6a92c3",
+      "source": "toeic-vocab-tw"
+    },
+    "pronunciation": {
+      "sentence": "Listening to the recording can help improve your pronunciation.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/289-3a36da5ba0ac.mp3",
+      "bytes": 35520,
+      "duration": 4.375,
+      "sha256": "069f484bfbb95321c68e817e2ca293c36d13bbd10ec2cd71924b8ba113b3a9ce",
+      "source": "original-practice"
+    },
+    "conscience": {
+      "sentence": "His conscience prevented him from taking credit for another person's work.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/290-8b21063a28a7.mp3",
+      "bytes": 40896,
+      "duration": 5.05,
+      "sha256": "b6c470acb1d6d27d2e76a22fc9c915fec8215ff8146bfaaecacef4a1bf8e0951",
+      "source": "original-practice"
+    },
+    "conscious": {
+      "sentence": "The manager needs to be conscious of the team's workload to prevent burnout.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/291-dce703aa33a5.mp3",
+      "bytes": 41472,
+      "duration": 5.125,
+      "sha256": "3c497365820cf2e8f1c71762f8eaed8786cb9eb03ddcf83629cbd9f519bfa00b",
+      "source": "toeic-vocab-tw"
+    },
+    "stationery": {
+      "sentence": "The office manager ordered a large supply of stationery, including pens, paper, and folders.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/292-43ee59985871.mp3",
+      "bytes": 57216,
+      "duration": 7.1,
+      "sha256": "88690398d7617630cdfb8cbdcd7f73024edf6983d7adc633eecbb2fb252af55b",
+      "source": "toeic-vocab-tw"
+    },
+    "stationary": {
+      "sentence": "Please remain stationary while the technician adjusts the equipment.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/293-f47d19fc5e9e.mp3",
+      "bytes": 37440,
+      "duration": 4.625,
+      "sha256": "1f7eb53fb4e7ad81c55918fd626546218262aec77ba508d954501ae472b026c6",
+      "source": "original-practice"
+    },
+    "principal": {
+      "sentence": "The principal reason for the project's delay is the lack of funding.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/294-db0abf8f27d1.mp3",
+      "bytes": 37440,
+      "duration": 4.625,
+      "sha256": "41dea75c63f8e49c8214f79de4cb76e9a977041d773180a463c71db8c67774b6",
+      "source": "toeic-vocab-tw"
+    },
+    "principle": {
+      "sentence": "Our company operates on the principle of fairness and transparency.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/295-db643904d451.mp3",
+      "bytes": 39168,
+      "duration": 4.825,
+      "sha256": "f3702a445ebaf94135820e43d227d5a64419838e1137f4307e1d7a524930e534",
+      "source": "toeic-vocab-tw"
+    },
+    "compliment": {
+      "sentence": "The visitor paid the guide a compliment after the tour.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/296-5eda9d6abc2d.mp3",
+      "bytes": 29184,
+      "duration": 3.6,
+      "sha256": "3ac6956d8a3cafd5c33eff4bf3f5f8b56ebcc2f0b6e018775cf2da4090b5a85c",
+      "source": "original-practice"
+    },
+    "complement": {
+      "sentence": "Fresh vegetables complement the main course very well.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/297-32342a24bb0a.mp3",
+      "bytes": 32256,
+      "duration": 3.975,
+      "sha256": "e82679d08a45d31fc481c313acb02c5f1588e99e1a99985b88c7c517f4472009",
+      "source": "original-practice"
+    },
+    "guarantee": {
+      "sentence": "The manufacturer provides a guarantee against defects for one year.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/298-6627c50fac96.mp3",
+      "bytes": 39744,
+      "duration": 4.9,
+      "sha256": "3d23d44db7469435e6f3f9557ebc4bc6a4325a7e52d024a0fb3a8d9e7b5d04f5",
+      "source": "original-practice"
+    },
+    "necessary": {
+      "sentence": "It is necessary to review the contract before signing.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/299-96a0cd114011.mp3",
+      "bytes": 33984,
+      "duration": 4.2,
+      "sha256": "6d284a562ba87caf5038eea50572d6d8b4c0b9a9de64abdf608542cf4b0f4c61",
+      "source": "toeic-vocab-tw"
+    },
+    "separate": {
+      "sentence": "Please separate the invoices by date for easier reconciliation.",
+      "file": "assets/dictation/ielts-listening-300/heart-v1/300-eda2c591dd43.mp3",
+      "bytes": 39936,
+      "duration": 4.925,
+      "sha256": "0e6be398dfb8bf4b83bdc328c3eea26a71f5feea8669f6afd39426e631f7930e",
+      "source": "toeic-vocab-tw"
+    }
+  },
+  "count": 300,
+  "totalBytes": 12545088
+}

@@ -1,13 +1,29 @@
-const CACHE='english-memory-lab-v5-ui-20261026-71';
+const CACHE='english-memory-lab-v5-ui-20261026-72';
 const CORE=['./','./index.html','./manifest.webmanifest','./icon.svg','./styles.css','./theme.css','./ielts-full-exam.css','./boot.js','./ui.html','./app.js','./sync-config.js','./vocab-sync-core.js','./app-1.js','./app-2.js','./app-3.js','./app-4.js','./app-5.js','./app-6.js','./app-7.js','./app-8.js','./app-9.js','./app-10.js','./app-11.js','./app-12.js','./app-13.js','./app-14.js','./app-15.js','./app-16.js','./app-17.js','./app-18.js','./app-19.js','./memorization-text.js','./app-20.js','./app-21.js','./app-22.js','./app-23.js','./app-24.js','./app-25.js','./ielts-listening-vocab.js','./vocab-dictation.js','./vocab-dictation.css','./data/ielts-listening-300.json','./speaking-bank-parser.mjs','./cambridge/ielts9/metadata.json','./cambridge/ielts9/test1.json','./cambridge/ielts9/test2.json','./cambridge/ielts9/test3.json','./cambridge/ielts9/test4.json','./assets/mascot/wanwang-flat-sage-512.webp','./assets/mascot/wanwang-hello.webp','./assets/mascot/wanwang-celebrate.webp','./assets/mascot/wanwang-reading.webp','./data/toeic-manifest.json','./data/toeic-core.json','./data/preqin-literature.json','./data/exam-practice.json','./data/ielts-atlas-manifest.json','./data/ielts-custom-manifest.json','./data/ielts-speaking-2026-09.json','./data/ielts-custom-media/dg_front_pack_panel.svg','./data/italian-manifest.json','./data/english-word-relations.json'];
 CORE.splice(CORE.indexOf('./app-2.js'),0,'./piper-speech.js','./piper-worker.js','./kokoro-speech.js','./kokoro-worker.js');
 const ALLOWED_REMOTE=['https://raw.githubusercontent.com','https://cdn.jsdelivr.net'];
+const DICTATION_AUDIO_CACHE='english-memory-dictation-audio-v1';
+CORE.push('./dictation-audio.js','./data/ielts-listening-300-audio.json');
+async function dictationAudioResponse(request,url){
+  const cache=await caches.open(DICTATION_AUDIO_CACHE),fullRequest=new Request(url.href),saved=await cache.match(fullRequest);
+  let response=saved;
+  if(!response){response=await fetch(fullRequest);if(response.ok&&/audio\//i.test(response.headers.get('content-type')||'')){try{await cache.put(fullRequest,response.clone())}catch{}}}
+  const range=request.headers.get('range');if(!range||!response.ok)return response;
+  const blob=await response.blob(),match=/^bytes=(\d*)-(\d*)$/.exec(range);
+  if(!match||(!match[1]&&!match[2]))return new Response(null,{status:416,headers:{'Content-Range':`bytes */${blob.size}`}});
+  const start=match[1]?Number(match[1]):Math.max(0,blob.size-Number(match[2])),end=match[1]?(match[2]?Math.min(Number(match[2]),blob.size-1):blob.size-1):blob.size-1;
+  if(start>end||start>=blob.size)return new Response(null,{status:416,headers:{'Content-Range':`bytes */${blob.size}`}});
+  return new Response(blob.slice(start,end+1),{status:206,headers:{'Content-Type':'audio/mpeg','Accept-Ranges':'bytes','Content-Range':`bytes ${start}-${end}/${blob.size}`,'Content-Length':String(end-start+1)}});
+}
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('english-memory-lab-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
 self.addEventListener('fetch',event=>{
   if(event.request.method!=='GET')return;
   const url=new URL(event.request.url),sameOrigin=url.origin===self.location.origin,cacheableRemote=ALLOWED_REMOTE.some(origin=>url.origin===origin);
   if(!sameOrigin&&!cacheableRemote)return;
+  if(sameOrigin&&url.pathname.includes('/assets/dictation/')){
+    event.respondWith(dictationAudioResponse(event.request,url).catch(()=>new Response('Audio unavailable offline',{status:503})));return;
+  }
   if(sameOrigin){
     event.respondWith(fetch(event.request,{cache:'no-store'}).then(response=>{
       if(response&&response.ok){const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(event.request,copy)).catch(()=>{})}

@@ -3,6 +3,7 @@
 #dictationTrainer{border-top:1px solid var(--line);margin-top:18px;padding-top:18px}
 #dictationTrainer[hidden],#dictationQuestion[hidden],#dictationFeedback[hidden],#dictationNext[hidden],#dictationResult[hidden]{display:none}
 .dictation-audio{margin:22px 0;gap:10px}.dictation-audio>.sub{flex-basis:100%}
+.dictation-audio-options .field{flex:1 1 280px;width:auto;max-width:100%;min-width:0}.dictation-audio-options .btn{min-height:44px}
 .dictation-sentence{font-size:clamp(20px,2.5vw,28px);line-height:2.2;overflow-wrap:anywhere;margin:18px 0 24px;color:var(--text)}
 .dictation-input{display:inline-block;box-sizing:border-box;width:clamp(150px,35vw,320px);max-width:100%;padding:4px 10px;border:0;border-bottom:3px solid var(--primary,#6c63e8);border-radius:6px 6px 0 0;background:var(--bg,#f6f7fb);color:var(--text);font:inherit;vertical-align:baseline;outline-offset:4px}
 .dictation-input:disabled{opacity:1}.dictation-repeat-blank{display:inline-block;min-width:5em;border-bottom:2px solid var(--muted)}
