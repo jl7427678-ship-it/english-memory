@@ -1,6 +1,7 @@
 // Sentence completion reuses the existing vocabulary decks, speech and profile storage.
 const DICTATION_EXAMPLES_VERSION='2026.10.26.1';
 let dictationExamples=null,dictationLoading=null,dictationBusy=false;
+let dictationSpeechRun=0,dictationVoiceBusy=false;
 const DICTATION_SPELLING_PAIRS=[['fibre','fiber'],['aluminium','aluminum'],['fertiliser','fertilizer'],['civilisation','civilization'],['artefact','artifact'],['enrolment','enrollment'],['instalment','installment'],['centre','center'],['colour','color'],['organisation','organization'],['organise','organize'],['programme','program'],['theatre','theater'],['neighbour','neighbor'],['labour','labor']];
 function dictationNorm(value){return String(value||'').normalize('NFKC').replace(/[’‘]/g,"'").trim().replace(/\s+/g,' ').toLowerCase()}
 function dictationStore(){const existing=state.vocab.dictation;if(!existing||existing.version!==1)state.vocab.dictation={version:1,byDeck:{}};return state.vocab.dictation}
@@ -52,11 +53,47 @@ function dictationAnswerMatches(input,answer){
 function dictationSession(){return dictationActive().session}
 function dictationQuestion(){const session=dictationSession();return session?.queue?.[session.index]||null}
 function dictationSave(){save({refresh:false})}
-function dictationStop(){window.PiperSpeech?.stop();window.KokoroSpeech?.stop();stopSystemSpeech()}
-function playDictationSentence(){const question=dictationQuestion();if(!question)return;return speak(question.sentence,{userInitiated:true,immediate:true,lang:dictationSession().speechLang||'en-GB'})}
+function dictationStop(){dictationSpeechRun++;window.PiperSpeech?.stop();window.KokoroSpeech?.stop();stopSystemSpeech()}
+function renderDictationVoice(detail=window.KokoroSpeech?.getStatus()){
+  const button=$('#dictationPrepareVoice'),status=$('#dictationVoiceStatus');
+  if(!button||!status)return;
+  const ready=['ready','speaking'].includes(detail?.state);
+  button.disabled=dictationVoiceBusy||ready;
+  button.textContent=ready?'Kokoro 已就绪':dictationVoiceBusy?'正在准备 Kokoro…':detail?.state==='downloaded'?'初始化 Kokoro':'准备 Kokoro（首次下载约 92 MB）';
+  const voice=window.KokoroSpeech?.voiceOptions?.find(item=>item.id===(state.settings.kokoroVoice||'af_heart'));
+  status.textContent=`Kokoro · ${voice?.label||state.settings.kokoroVoice||'Heart'} · ${detail?.message||'请先准备声音'}。下载并初始化后可离线朗读；不会切换为设备默认声音。`;
+}
+async function prepareDictationVoice(){
+  if(dictationVoiceBusy)return false;
+  const engine=window.KokoroSpeech;if(!engine){$('#dictationVoiceStatus').textContent='Kokoro 未载入，请刷新页面重试。';return false}
+  dictationStop();dictationVoiceBusy=true;renderDictationVoice();let failure='';
+  try{
+    engine.prime();
+    try{await engine.prepare()}catch(error){
+      if(!/第一步.*下载/.test(error?.message||''))throw error;
+      await engine.download();
+    }
+    return true;
+  }catch(error){failure='Kokoro 准备失败：'+(error?.message||'请重试');return false}
+  finally{dictationVoiceBusy=false;renderDictationVoice();if(failure)$('#dictationVoiceStatus').textContent=failure}
+}
+async function playDictationSentence(){
+  const question=dictationQuestion();if(!question)return false;
+  dictationStop();const run=dictationSpeechRun,engine=window.KokoroSpeech;
+  try{
+    if(!engine)throw Error('Kokoro 未载入，请刷新页面重试');
+    engine.prime();
+    const played=await engine.speak(question.sentence,{voice:state.settings.kokoroVoice||'af_heart',speed:Math.max(.75,Math.min(1.25,Number(state.settings.speechRate)||.9))});
+    return run===dictationSpeechRun&&played!==false;
+  }catch(error){
+    if(run===dictationSpeechRun){renderDictationVoice();$('#dictationVoiceStatus').textContent='Kokoro 暂未能播放：'+(error?.message||'请重试')+'。请点上方准备按钮；不会切换为设备默认声音。'}
+    return false;
+  }
+}
 function renderDictation(){
   const session=dictationSession(),trainer=$('#dictationTrainer');if(!session){trainer.hidden=true;return}
   trainer.hidden=false;$('#dictationTitle').textContent=session.title+' · 例句听写';
+  renderDictationVoice();
   const total=session.queue.length,done=Math.min(session.index,total),finished=session.index>=total;
   $('#dictationPosition').textContent=finished?'本组完成':`${done+1} / ${total}`;
   $('#dictationProgress').style.width=(total?done/total*100:0)+'%';
@@ -148,6 +185,8 @@ $('#dictationStart').onclick=()=>startVocabDictation(false);$('#dictationNew').o
 $('#dictationDeck').onchange=()=>{dictationStop();$('#dictationTrainer').hidden=true;$('#dictationStatus').textContent='已选择词库。点击开始可恢复该词库的本机进度。'};
 $('#dictationForm').onsubmit=event=>{event.preventDefault();checkVocabDictation(false)};
 $('#dictationReveal').onclick=()=>checkVocabDictation(true);$('#dictationPlay').onclick=playDictationSentence;$('#dictationStop').onclick=dictationStop;$('#dictationNext').onclick=nextVocabDictation;
+$('#dictationPrepareVoice').onclick=prepareDictationVoice;
+window.addEventListener('kokoro-status',event=>renderDictationVoice(event.detail));
 $('#dictationExit').onclick=()=>{dictationStop();dictationSave();$('#dictationTrainer').hidden=true;$('#dictationStatus').textContent='听写进度已保存在本机，下次可继续。'};
 const listeningCard=$('#ieltsListeningWords .row');
 if(listeningCard){const entry=document.createElement('button');entry.className='btn';entry.type='button';entry.textContent='例句听写';entry.onclick=()=>openVocabDictation('ielts_listening_300');listeningCard.appendChild(entry)}

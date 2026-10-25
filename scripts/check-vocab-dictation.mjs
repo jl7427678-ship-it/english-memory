@@ -14,6 +14,7 @@ function harness(saved=null,cached=null){
  const state=saved||{vocab:{decks:[deck],progress:{'other|word':[1,2,3]},session:{phase:'screen',queue:['unchanged'],index:0}},settings:{}};
  const ctx={state,$,Date,URLSearchParams,location:{search:''},BUILTIN_VOCAB:{},builtinDeckCache:new Map(),vocabAdvanceTimer:null,clearTimeout(){},vocabExampleData:word=>({sentence:word.example||'',translation:word.exampleZh||'',source:word.exampleSource||''}),esc:value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),primeSpeech(){},stopSystemSpeech(){},window:{},speak:(text,options)=>{played.push({text,options});return true},save:()=>{saveCount++},toast:text=>notices.push(text),console:{warn(){}},idbGetDeck:async()=>cached,idbPutDeck:async data=>{cached=data},fetchVocabJson:async()=>{requests++;return examples}};
  vm.createContext(ctx);vm.runInContext(logic,ctx);
+ ctx.window.KokoroSpeech={prime(){},stop(){},getStatus:()=>({state:'ready',message:'已就绪'}),speak:async(text,options)=>{played.push({text,options});return true}};
  return {ctx,$,played,deck,get requests(){return requests},get savedExamples(){return cached},get saves(){return saveCount}};
 }
 
@@ -37,7 +38,25 @@ assert.ok(ctx.state.vocab.session.suspended,'existing choice session is preserve
 assert.equal(ctx.state.vocab.session.queue[0],'unchanged');
 assert.equal($('#dictationFeedback').hidden,true,'translation and answer stay hidden');
 assert.match($('#dictationSentence').innerHTML,/dictation-input/);
-ctx.playDictationSentence();assert.equal(h.played.at(-1).text,ctx.dictationQuestion().sentence);assert.equal(h.played.at(-1).options.immediate,true);
+ctx.state.settings.kokoroVoice='bf_emma';ctx.state.settings.speechRate=.85;
+assert.equal(await ctx.playDictationSentence(),true);assert.equal(h.played.at(-1).text,ctx.dictationQuestion().sentence);assert.equal(h.played.at(-1).options.voice,'bf_emma');assert.equal(h.played.at(-1).options.speed,.85);
+ctx.speak=()=>assert.fail('dictation must not fall back to device speech');
+const originalSpeak=ctx.window.KokoroSpeech.speak;
+ctx.window.KokoroSpeech.speak=async()=>{throw Error('请先完成第一步 Kokoro 断点下载')};
+assert.equal(await ctx.playDictationSentence(),false);assert.match($('#dictationVoiceStatus').textContent,/准备按钮/);assert.equal(ctx.dictationSession().attempts,0);
+let rejectStale;ctx.window.KokoroSpeech.speak=()=>new Promise((_,reject)=>{rejectStale=reject});
+const stale=ctx.playDictationSentence();ctx.dictationStop();$('#dictationVoiceStatus').textContent='已停止';rejectStale(Error('old request failed'));assert.equal(await stale,false);assert.equal($('#dictationVoiceStatus').textContent,'已停止');
+ctx.window.KokoroSpeech.speak=originalSpeak;
+let voiceState='missing',downloads=0,prepared=0;
+const originalStatus=ctx.window.KokoroSpeech.getStatus;
+ctx.window.KokoroSpeech.getStatus=()=>({state:voiceState,message:voiceState});
+ctx.window.KokoroSpeech.prepare=async()=>{prepared++;if(voiceState==='missing')throw Error('请先完成第一步 Kokoro 断点下载');voiceState='ready'};
+ctx.window.KokoroSpeech.download=async()=>{downloads++;voiceState='downloaded'};
+assert.equal(await ctx.prepareDictationVoice(),true);assert.equal(downloads,1);assert.equal(voiceState,'downloaded');assert.match($('#dictationPrepareVoice').textContent,/初始化/);
+assert.equal(await ctx.prepareDictationVoice(),true);assert.equal(downloads,1);assert.equal(prepared,2);assert.equal(voiceState,'ready');
+ctx.window.KokoroSpeech.prepare=async()=>{voiceState='error';throw Error('network unavailable')};
+assert.equal(await ctx.prepareDictationVoice(),false);assert.match($('#dictationVoiceStatus').textContent,/network unavailable/);assert.equal($('#dictationPrepareVoice').disabled,false);
+ctx.window.KokoroSpeech.getStatus=originalStatus;
 $('#dictationInput').value='';ctx.checkVocabDictation();assert.equal(ctx.dictationSession().attempts,0,'empty answers are not marked wrong accidentally');
 const target=ctx.dictationQuestion().word;$('#dictationInput').value='misspelled';ctx.checkVocabDictation();
 assert.equal(ctx.dictationActive().stats[ctx.dictationNorm(target)].wrong,1);
